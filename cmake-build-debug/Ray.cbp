@@ -1,0 +1,420 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="Ray"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\library\;CMake Files\library\glfw-3.3.2\;CMake Files\library\glfw-3.3.2\src\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="D:/Code/Ray/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Ray">
+				<Option output="D:/Code/Ray/cmake-build-debug/Ray.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="D:/Code/Ray/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DGLFW_DLL"/>
+					<Add directory="D:/Code/Ray/./include"/>
+					<Add directory="D:/Code/Ray/library/glew-2.2.0/include"/>
+					<Add directory="D:/Code/Ray/library/glfw-3.3.2/include"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/mingw32"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/backward"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/../../../../include"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include-fixed"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/Makefile&quot;  VERBOSE=1 Ray"/>
+					<CompileFile command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Ray/fast">
+				<Option output="D:/Code/Ray/cmake-build-debug/Ray.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="D:/Code/Ray/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DGLFW_DLL"/>
+					<Add directory="D:/Code/Ray/./include"/>
+					<Add directory="D:/Code/Ray/library/glew-2.2.0/include"/>
+					<Add directory="D:/Code/Ray/library/glfw-3.3.2/include"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/mingw32"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/backward"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/../../../../include"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include-fixed"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/Makefile&quot;  VERBOSE=1 Ray/fast"/>
+					<CompileFile command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="install/local">
+				<Option working_dir="D:/Code/Ray/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/Makefile&quot;  VERBOSE=1 install/local"/>
+					<CompileFile command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="install">
+				<Option working_dir="D:/Code/Ray/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/Makefile&quot;  VERBOSE=1 install"/>
+					<CompileFile command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="D:/Code/Ray/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="D:/Code/Ray/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="list_install_components">
+				<Option working_dir="D:/Code/Ray/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/Makefile&quot;  VERBOSE=1 list_install_components"/>
+					<CompileFile command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="install/strip">
+				<Option working_dir="D:/Code/Ray/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/Makefile&quot;  VERBOSE=1 install/strip"/>
+					<CompileFile command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="uninstall">
+				<Option working_dir="D:/Code/Ray/cmake-build-debug/library/glfw-3.3.2"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/library/glfw-3.3.2/Makefile&quot;  VERBOSE=1 uninstall"/>
+					<CompileFile command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/library/glfw-3.3.2/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/library/glfw-3.3.2/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/library/glfw-3.3.2/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="glfw">
+				<Option output="D:/Code/Ray/cmake-build-debug/library/glfw-3.3.2/src/glfw3.dll" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="D:/Code/Ray/cmake-build-debug/library/glfw-3.3.2/src"/>
+				<Option object_output="./"/>
+				<Option type="3"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-D_GLFW_USE_CONFIG_H"/>
+					<Add option="-D_UNICODE"/>
+					<Add option="-DUNICODE"/>
+					<Add option="-DWINVER=0x0501"/>
+					<Add directory="D:/Code/Ray/./include"/>
+					<Add directory="D:/Code/Ray/library/glew-2.2.0/include"/>
+					<Add directory="D:/Code/Ray/library/glfw-3.3.2/include"/>
+					<Add directory="D:/Code/Ray/library/glfw-3.3.2/src"/>
+					<Add directory="D:/Code/Ray/cmake-build-debug/library/glfw-3.3.2/src"/>
+					<Add directory="D:/Code/Ray/library/glfw-3.3.2/deps/mingw"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/mingw32"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/backward"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/../../../../include"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include-fixed"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/library/glfw-3.3.2/src/Makefile&quot;  VERBOSE=1 glfw"/>
+					<CompileFile command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/library/glfw-3.3.2/src/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/library/glfw-3.3.2/src/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/library/glfw-3.3.2/src/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="glfw/fast">
+				<Option output="D:/Code/Ray/cmake-build-debug/library/glfw-3.3.2/src/glfw3.dll" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="D:/Code/Ray/cmake-build-debug/library/glfw-3.3.2/src"/>
+				<Option object_output="./"/>
+				<Option type="3"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-D_GLFW_USE_CONFIG_H"/>
+					<Add option="-D_UNICODE"/>
+					<Add option="-DUNICODE"/>
+					<Add option="-DWINVER=0x0501"/>
+					<Add directory="D:/Code/Ray/./include"/>
+					<Add directory="D:/Code/Ray/library/glew-2.2.0/include"/>
+					<Add directory="D:/Code/Ray/library/glfw-3.3.2/include"/>
+					<Add directory="D:/Code/Ray/library/glfw-3.3.2/src"/>
+					<Add directory="D:/Code/Ray/cmake-build-debug/library/glfw-3.3.2/src"/>
+					<Add directory="D:/Code/Ray/library/glfw-3.3.2/deps/mingw"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/mingw32"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/backward"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/../../../../include"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include-fixed"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/library/glfw-3.3.2/src/Makefile&quot;  VERBOSE=1 glfw/fast"/>
+					<CompileFile command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/library/glfw-3.3.2/src/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/library/glfw-3.3.2/src/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/library/glfw-3.3.2/src/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="D:/Code/Ray/AreaLight.cpp">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/BVH.cpp">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/Camera.cpp">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/Config.cpp">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/Dielectric.cpp">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/Hittable.cpp">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/HittableList.cpp">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/HittableList.h">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/IllumModelFactory.cpp">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/Light.cpp">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/Material.cpp">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/Phong.cpp">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/Photon.cpp">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/Ray.cpp">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/Scene.cpp">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/Shader.cpp">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/Sphere.cpp">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/Triangle.cpp">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/Utility.cpp">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/Whitted.cpp">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/cmake-build-debug/library/glfw-3.3.2/src/glfw_config.h">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/include/AreaLight.h">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/include/BVH.h">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/include/Camera.h">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/include/Config.h">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/include/Dielectric.h">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/include/Hittable.h">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/include/IllumModel.h">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/include/IllumModelFactory.h">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/include/Light.h">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/include/Material.h">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/include/OBJ_Loader.h">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/include/Phong.h">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/include/Photon.h">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/include/Ray.h">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/include/Scene.h">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/include/Shader.h">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/include/Sphere.h">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/include/Triangle.h">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/include/Whitted.h">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/library/glfw-3.3.2/include/GLFW/glfw3.h">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/library/glfw-3.3.2/include/GLFW/glfw3native.h">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/library/glfw-3.3.2/src/context.c">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/library/glfw-3.3.2/src/egl_context.c">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/library/glfw-3.3.2/src/egl_context.h">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/library/glfw-3.3.2/src/init.c">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/library/glfw-3.3.2/src/input.c">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/library/glfw-3.3.2/src/internal.h">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/library/glfw-3.3.2/src/mappings.h">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/library/glfw-3.3.2/src/monitor.c">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/library/glfw-3.3.2/src/osmesa_context.c">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/library/glfw-3.3.2/src/osmesa_context.h">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/library/glfw-3.3.2/src/vulkan.c">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/library/glfw-3.3.2/src/wgl_context.c">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/library/glfw-3.3.2/src/wgl_context.h">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/library/glfw-3.3.2/src/win32_init.c">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/library/glfw-3.3.2/src/win32_joystick.c">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/library/glfw-3.3.2/src/win32_joystick.h">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/library/glfw-3.3.2/src/win32_monitor.c">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/library/glfw-3.3.2/src/win32_platform.h">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/library/glfw-3.3.2/src/win32_thread.c">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/library/glfw-3.3.2/src/win32_time.c">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/library/glfw-3.3.2/src/win32_window.c">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/library/glfw-3.3.2/src/window.c">
+			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/main.cpp">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/library/glfw-3.3.2/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\library\glfw-3.3.2\"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/library/glfw-3.3.2/cmake_uninstall.cmake.in">
+			<Option virtualFolder="CMake Files\library\glfw-3.3.2\"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/library/glfw-3.3.2/src/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\library\glfw-3.3.2\src\"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/library/glfw-3.3.2/src/glfw3.pc.in">
+			<Option virtualFolder="CMake Files\library\glfw-3.3.2\src\"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/library/glfw-3.3.2/src/glfw3Config.cmake.in">
+			<Option virtualFolder="CMake Files\library\glfw-3.3.2\src\"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/library/glfw-3.3.2/src/glfw_config.h.in">
+			<Option virtualFolder="CMake Files\library\glfw-3.3.2\src\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

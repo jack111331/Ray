@@ -1,0 +1,54 @@
+LookAt 200 250 70   0 33 -50   0 0 1
+Camera "perspective" "float fov" [38]
+Film "image"  "integer xresolution" [1368] "integer yresolution" [1026] "string filename" "killeroo-whitted.png"
+#Film "image"  "integer xresolution" [684] "integer yresolution" [513] "string filename" "killeroo-whitted.png"
+Sampler "sobol" "integer pixelsamples" 128
+Integrator "whitted"
+
+WorldBegin
+AttributeBegin
+#Scale 1 -1 1
+#LightSource "infinite" "integer nsamples" [ 8 ] # [64]
+#	"string mapname" "textures/skylight-morn.exr"
+Material "matte" "color Kd" [0 0 0]
+AreaLightSource "diffuse"  "color L" [50 50 50]
+Translate 0 0 800
+ReverseOrientation
+Shape "disk" "float radius" [150] # was 300
+AttributeEnd
+
+AttributeBegin
+CoordSysTransform "camera"
+LightSource "distant" "color L" [.2 .2 .2]
+AttributeEnd
+
+AttributeBegin
+  Material "matte" "color Kd" [.5 .5 .5]
+  Translate 0 0 -140
+Texture "grid" "color" "imagemap" "string filename" ["textures/lines.png"]
+Texture "sgrid" "color" "scale" "texture tex1" "grid" "color tex2" [ .5 .5 .5 ]
+Material "matte" "texture Kd" "sgrid"
+Shape "trianglemesh" "point P" [ -400 -400 0 400 -400 0 400 400 0 -400 400 0 ]
+      "float uv" [ 0 0 5 0 5 5 0 5 ]
+	"integer indices" [ 0 1 2 2 3 0]
+Shape "trianglemesh" "point P" [ -400 -400 0 400 -400 0 
+	400 -400  1000 -400 -400 1000 ]
+      "float uv" [ 0 0 5 0 5 5 0 5 ]
+	"integer indices" [ 0 1 2 2 3 0]
+Shape "trianglemesh" "point P" [ -400 -400 0 -400 400 0  -400 400 1000 -400 -400 1000 ]
+      "float uv" [ 0 0 5 0 5 5 0 5 ]
+	"integer indices" [ 0 1 2 2 3 0]
+#Shape "trianglemesh" "point P" [ -400 400 0 400 400 0 
+#	400 400  1000 -400 400 1000 ]
+#      "float uv" [ 0 0 5 0 5 5 0 5 ]
+#	"integer indices" [ 0 1 2 2 3 0]
+#Shape "trianglemesh" "point P" [ 400 -400 0 400 400 0  400 400 1000 400 -400 1000 ]
+#      "float uv" [ 0 0 5 0 5 5 0 5 ]
+#	"integer indices" [ 0 1 2 2 3 0]
+
+AttributeEnd
+AttributeBegin
+Material "glass"
+    Include "geometry/killeroo3.pbrt"
+AttributeEnd
+WorldEnd

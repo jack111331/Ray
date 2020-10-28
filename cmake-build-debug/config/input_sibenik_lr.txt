@@ -1,0 +1,13 @@
+E -6.0 0.0 0.0
+V -20 0 0.0 0 1 0
+F 80
+R 800 800
+MDF 0.5 0.5 1.0 0.1 0.9 0.3 20.0 0.0
+OBJBVH resource/model/sibenik/ball.obj
+OBJBVH resource/model/sibenik/cone.obj
+OBJBVH resource/model/sibenik/cylinder.obj
+OBJBVH resource/model/sibenik/plane.obj
+OBJBVH resource/model/sibenik/plane001.obj
+OBJBVH resource/model/sibenik/sphere002.obj
+OBJBVH resource/model/sibenik/sibenik.obj
+L 0.0 0.0 25.0

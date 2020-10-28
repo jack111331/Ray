@@ -1,0 +1,5 @@
+﻿  Building Custom Rule D:/Code/FluidDynamic/library/glfw-3.3.2/tests/CMakeLists.txt
+  triangle-vulkan.c
+  glad_vulkan.c
+  正在產生程式碼...
+  triangle-vulkan.vcxproj -> D:\Code\FluidDynamic\library\glfw-3.3.2\build\tests\Debug\triangle-vulkan.exe

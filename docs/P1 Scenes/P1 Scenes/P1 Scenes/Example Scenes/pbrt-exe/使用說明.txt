@@ -1,0 +1,4 @@
+./pbrt.exe sibenik-whitted.pbrt
+./pbrt.exe cornell-whitted.pbrt
+./pbrt.exe killeroo-whitted-glass.pbrt
+./pbrt.exe killeroo-whitted-matte.pbrt

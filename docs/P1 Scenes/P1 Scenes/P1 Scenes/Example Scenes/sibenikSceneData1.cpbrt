@@ -1,0 +1,71 @@
+Film "image"
+# for orthographic vs perspective comparisons:
+	"integer xresolution" [800] "integer yresolution" [800]
+	"string filename" "sibenik-whitted.png"
+
+Sampler "integer pixelsamples" [16]
+
+# persp & ortho
+LookAt 0 3.5 0.0635 4.3 0.6 0 0 1 0 
+
+Camera "perspective" "float fov" [80]
+
+WorldBegin
+
+	#point light
+	AttributeBegin
+		LightSource "point" "color L" [15 15 15] "point from" [0 9.2 0]
+	AttributeEnd
+
+	#shpere
+	AttributeBegin
+		Translate 4 1.2 0.6
+		Material "color Kd" [0.6 0.95 0.95] "color Ks" [0.1 0.1 0.1]
+		Shape "sphere" "float radius" [0.25]
+	AttributeEnd
+
+	#shpere
+	AttributeBegin
+		Translate 4 1.2 0
+		Material "mirror"
+		Shape "sphere" "float radius" [0.25]
+	AttributeEnd
+
+	#cylinder
+	AttributeBegin
+		Translate 3 0.9 0
+		Rotate 90 1 0 0
+		Material "color Kd" [0.8 0.1 0.1] "color Ks" [0.1 0.1 0.1]
+		Shape "cylinder" "float radius" [0.25] "float ymin" [-0.5] "float ymax" [0.5]
+	AttributeEnd
+
+	#cone
+	AttributeBegin
+		Translate 4 1.2 -0.6
+		Material "color Kd" [0.1 0.1 0.1] "color Ks" [0.1 0.1 0.1]
+		Shape "cone" "float radius" [0.25] "float height" [0.5]
+	AttributeEnd
+
+	#plane
+	AttributeBegin
+		Translate 0 0.6 0
+		Rotate 90 0 0 1
+		Material "color map" "sibenik/mramor6x6.png" "bump map" "sibenik/bump_mramor.png"
+		Shape "plane" "float width" [2.5] "float height" [2.0]
+	AttributeEnd
+
+	#plane
+	AttributeBegin
+		Translate 8.5 2 0
+		Material "mirror"
+		Shape "plane" "float width" [1.0] "float height" [2.0]
+	AttributeEnd
+
+	#import obj
+	AttributeBegin
+		Translate 0 7.655 0
+		Scale 0.5 0.5 0.5
+		Include "sibenik/sibenik.obj"
+	AttributeEnd	
+	
+WorldEnd
