@@ -20,12 +20,14 @@ Color Scene::castRay(Ray &ray, double intensity, Color &color, int depth) {
 }
 
 void *Scene::castJitteredRay(void *castRayThreadArgs) {
+//    srand(0);
     CastRayThreadArgs *args = (CastRayThreadArgs *) castRayThreadArgs;
     for (int k = 0; k < args->sampleAmount; ++k) {
         Ray perturbatedRay = {args->ray.origin,
                               args->ray.velocity + Util::randomInUnit() * args->unitHorizontalScreen +
                               Util::randomInUnit() * args->unitVerticalScreen};
         Color color = {};
+//        std::cout << args->ray.origin << args->ray.velocity << std::endl;
         args->scene->m_camera->m_screen[args->i][args->j] += args->scene->castRay(perturbatedRay, 1.0, color, 0);
     }
     args->scene->m_camera->m_screen[args->i][args->j] /= (float) args->sampleAmount;
@@ -68,13 +70,14 @@ void Scene::displayScene() {
             args->unitVerticalScreen = unitVerticalScreen;
             args->unitHorizontalScreen = unitHorizontalScreen;
 //            castJitteredRay(args);
-            pthread_create(&threadCastRay, nullptr, &Scene::castJitteredRay, (void *)args);
+//            delete args;
+            pthread_create(&threadCastRay, nullptr, &Scene::castJitteredRay, (void *) args);
             threadList.push_back({threadCastRay, args});
-            std::cout << "[" << i << ", " << j << "] Rendering" << std::endl;
-            fflush(stdout);
-            if(threadList.size() >= 40) {
-                std::cout << "batch Rendering" << std::endl;
-                fflush(stdout);
+//            std::cout << "[" << i << ", " << j << "] Rendering" << std::endl;
+//            fflush(stdout);
+            if (threadList.size() >= 40) {
+//                std::cout << "batch Rendering" << std::endl;
+//                fflush(stdout);
                 for (auto thread : threadList) {
                     pthread_join(thread.id, nullptr);
                     delete thread.castRayThreadArgs;
@@ -177,6 +180,7 @@ void Scene::displayPhotonMappingScene() {
     for (auto areaLight : m_areaLightList) {
         for (int i = 0; i < photonAmount; ++i) {
             Ray photonTraceRay;
+            Velocity photonDirection;
             do {
                 // determine photon position and emit direction
                 float photonPositionU, photonPositionV;
@@ -187,7 +191,6 @@ void Scene::displayPhotonMappingScene() {
                 Coord photonPosition = areaLight->m_point + photonPositionU * areaLight->m_uDirection +
                                        photonPositionV * areaLight->m_vDirection;
 
-                Velocity photonDirection;
                 photonDirection = Util::randomSphere();
 
                 // photon tracing and store photon on hitted surface
@@ -198,6 +201,7 @@ void Scene::displayPhotonMappingScene() {
     std::cout << "Photon traced" << std::endl;
     // second pass: ray tracing photon
     std::vector<ThreadInfo> threadList;
+    srand(time(0));
     for (int i = 0; i < m_camera->m_height; ++i) {
         for (int j = 0; j < m_camera->m_width; ++j) {
             m_camera->m_screen[i][j] = Color{0.0f, 0.0f, 0.0f};
@@ -215,20 +219,26 @@ void Scene::displayPhotonMappingScene() {
             args->sampleAmount = sampleAmount;
             args->unitVerticalScreen = unitVerticalScreen;
             args->unitHorizontalScreen = unitHorizontalScreen;
-//            castJitteredRay(args);
-            pthread_create(&threadCastRay, nullptr, &Scene::castJitteredRay, (void *)args);
-            threadList.push_back({threadCastRay, args});
+            castJitteredRay(args);
+            delete args;
+//            pthread_create(&threadCastRay, nullptr, &Scene::castJitteredRay, args);
+//            getchar();
+//            threadList.push_back({threadCastRay, args});
 //            std::cout << "[" << i << ", " << j << "] Rendering" << std::endl;
 //            fflush(stdout);
-            if(threadList.size() >= 40) {
+//            if(threadList.size() >= 40) {
 //                std::cout << "batch Rendering" << std::endl;
 //                fflush(stdout);
-                for (auto thread : threadList) {
-                    pthread_join(thread.id, nullptr);
-                    delete thread.castRayThreadArgs;
-                }
-                threadList.clear();
-            }
+//                for (auto thread : threadList) {
+//                    int err;
+//                    void *retval;
+//                    if((err = pthread_join(thread.id, &retval))) {
+//                        std::cout << err << std::endl;
+//                    }
+//                    delete thread.castRayThreadArgs;
+//                }
+//                threadList.clear();
+//            }
         }
     }
 }

@@ -429,21 +429,25 @@ PolygonMeshBVH::PolygonMeshBVH(const std::string &objPath, Material *material) {
         for (int i = 0; i < Loader.LoadedMeshes.size(); i++) {
             m_objects.push_back(new Object(Loader.LoadedMeshes[i]));
             m_extents[i] = new Extent[m_objects[i]->m_indices.size() / 3];
-            Material *newMaterial = new Material;
-            newMaterial->m_color =
-                    (Color) {Loader.LoadedMaterials[i].Kd.X, Loader.LoadedMaterials[i].Kd.Y,
-                             Loader.LoadedMaterials[i].Kd.Z};
-            newMaterial->m_constantAmbient =
-                    Loader.LoadedMaterials[i].Ka.X;
-            newMaterial->m_constantDiffuse =
-                    Loader.LoadedMaterials[i].Kd.X;
-            newMaterial->m_constantSpecular =
-                    Loader.LoadedMaterials[i].Ks.X;
-            newMaterial->m_constantSpecularExp =
-                    Loader.LoadedMaterials[i].Ns;
-            newMaterial->m_constantReflectionRatio =
-                    Loader.LoadedMaterials[i].Ni;
-            m_objects[i]->m_material = newMaterial;
+            if(!material) {
+                Material *newMaterial = new Material;
+                newMaterial->m_color =
+                        (Color) {Loader.LoadedMaterials[i].Kd.X, Loader.LoadedMaterials[i].Kd.Y,
+                                 Loader.LoadedMaterials[i].Kd.Z};
+                newMaterial->m_constantAmbient =
+                        Loader.LoadedMaterials[i].Ka.X;
+                newMaterial->m_constantDiffuse =
+                        Loader.LoadedMaterials[i].Kd.X;
+                newMaterial->m_constantSpecular =
+                        Loader.LoadedMaterials[i].Ks.X;
+                newMaterial->m_constantSpecularExp =
+                        Loader.LoadedMaterials[i].Ns;
+                newMaterial->m_constantReflectionRatio =
+                        Loader.LoadedMaterials[i].Ni;
+                m_objects[i]->m_material = newMaterial;
+            } else {
+                m_objects[i]->m_material = material;
+            }
         }
         for (int i = 0; i < Loader.LoadedMeshes.size(); ++i) {
             for (int j = 0; j < 7; ++j)
@@ -495,6 +499,7 @@ bool PolygonMeshBVH::isHit(double tmin, const Ray &ray, HitRecord &record) {
     }
     float tNear = -1e9, tFar = 1e9;
     uint8_t planeIndex;
+    // FIXME
     if (!m_octree->m_root->m_nodeExtent.isHit(ray, precomputedNumerator, precomputedDenominator, tNear, tFar,
                                               planeIndex)) {
         return false;

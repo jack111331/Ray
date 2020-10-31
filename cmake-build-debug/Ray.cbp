@@ -227,6 +227,9 @@
 		<Unit filename="D:/Code/Ray/IllumModelFactory.cpp">
 			<Option target="Ray"/>
 		</Unit>
+		<Unit filename="D:/Code/Ray/Lambertian.cpp">
+			<Option target="Ray"/>
+		</Unit>
 		<Unit filename="D:/Code/Ray/Light.cpp">
 			<Option target="Ray"/>
 		</Unit>
@@ -285,6 +288,9 @@
 			<Option target="Ray"/>
 		</Unit>
 		<Unit filename="D:/Code/Ray/include/IllumModelFactory.h">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/include/Lambertian.h">
 			<Option target="Ray"/>
 		</Unit>
 		<Unit filename="D:/Code/Ray/include/Light.h">

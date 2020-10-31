@@ -65,13 +65,13 @@ void KDTree::nearestSearch(KDTreeNode *node, const Coord &point, int k, int dept
     }
     int dim = depth % DIMENSION;
     float dx = point[dim] - node->m_data.m_origin[dim];
-    KDTreeNode *nearNode = dx<0?node->m_left:node->m_right;
-    KDTreeNode *farNode = dx<0?node->m_right:node->m_left;
+    KDTreeNode *nearNode = dx < 0 ? node->m_left : node->m_right;
+    KDTreeNode *farNode = dx < 0 ? node->m_right : node->m_left;
     if (nearNode) {
         nearestSearch(nearNode, point, k, depth + 1,
                       photonHeap);
     }
-    if (dx*dx >= photonHeap.top().m_distance) {
+    if (dx * dx >= photonHeap.top().m_distance) {
         return;
     }
     if (farNode) {
@@ -118,12 +118,15 @@ Color PhotonMappingModel::castRay(const Scene *scene, Ray &ray, double intensity
     record.t = -1.0;
     int tracePhotomAmount = 50;
     if (scene->m_hittableList->isHit(0.00001, ray, record)) {
-        if (record.material->getType() == Material::MaterialType::DIFFUSE || record.material->getType() == Material::MaterialType::AREALIGHT) {
+//        std::cout << record.point << std::endl;
+        if (record.material->getType() == Material::MaterialType::DIFFUSE ||
+            record.material->getType() == Material::MaterialType::AREALIGHT) {
             if (depth > 4) {
                 return record.material->m_color;
             }
             priority_queue<PhotonElement> photonHeap;
             m_kdTree->nearestSearch(record.point, tracePhotomAmount, photonHeap);
+//            std::cout << photonHeap.top().m_distance << std::endl;
             Color photonColor = {0, 0, 0};
             if (!photonHeap.empty()) {
                 // squared distance
@@ -135,18 +138,18 @@ Color PhotonMappingModel::castRay(const Scene *scene, Ray &ray, double intensity
                 }
             }
             Color diffuseColor = {0, 0, 0};
-            for(int i = 0;i < 3;++i) {
+            for (int i = 0; i < 1; ++i) {
                 Velocity diffuseDirection = Util::randomSphere();
                 // if ray velocity dot record normal is negative and diffuse direction dot record normal is positive
                 // or ray velocity dot record normal is positive and diffuse direction dot record normal is negative
                 // then we don't need to negative the diffuse direction, otherwise we should fix diffuse direction
-                if(ray.velocity.dot(record.normal) * diffuseDirection.dot(record.normal) > 0.0) {
+                if (ray.velocity.dot(record.normal) * diffuseDirection.dot(record.normal) > 0.0) {
                     diffuseDirection = -diffuseDirection;
                 }
                 ray = {record.point, diffuseDirection};
                 diffuseColor += record.material->m_color * castRay(scene, ray, intensity, color, depth + 1);
             }
-            return photonColor + diffuseColor / 3.0;
+            return photonColor + diffuseColor / 1.0;
         } else if (record.material->getType() == Material::MaterialType::DIELECTRIC) {
             DielectricMaterial *dielectricMaterial = (DielectricMaterial *) record.material;
             Velocity outwardNormal;
@@ -171,7 +174,7 @@ Color PhotonMappingModel::castRay(const Scene *scene, Ray &ray, double intensity
                 refractivity = 0.0;
             }
 
-            for(int i = 0;i < 3;++i) {
+            for (int i = 0; i < 1; ++i) {
                 Scene::EmitType emitType = scene->russianRoulette(reflectivity, refractivity);
                 if (emitType == Scene::EmitType::REFLECTED) {
                     Velocity reflectedDirection = ray.velocity.reflect(record.normal);
@@ -184,7 +187,7 @@ Color PhotonMappingModel::castRay(const Scene *scene, Ray &ray, double intensity
                     dielectricColor += castRay(scene, ray, intensity * refractivity, color, depth + 1);
                 }
             }
-            return dielectricColor / 3.0;
+            return dielectricColor / 1.0;
         }
     }
     return {0, 0, 0};

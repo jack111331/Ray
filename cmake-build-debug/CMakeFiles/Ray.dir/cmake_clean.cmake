@@ -7,6 +7,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/Ray.dir/Hittable.cpp.obj"
   "CMakeFiles/Ray.dir/HittableList.cpp.obj"
   "CMakeFiles/Ray.dir/IllumModelFactory.cpp.obj"
+  "CMakeFiles/Ray.dir/Lambertian.cpp.obj"
   "CMakeFiles/Ray.dir/Light.cpp.obj"
   "CMakeFiles/Ray.dir/Material.cpp.obj"
   "CMakeFiles/Ray.dir/Phong.cpp.obj"

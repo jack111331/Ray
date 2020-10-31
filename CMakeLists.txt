@@ -67,6 +67,7 @@ list(APPEND SOURCE_LIST
         BVH.cpp
         Photon.cpp
         AreaLight.cpp
+        Lambertian.cpp
         )
 list(APPEND HEADER_LIST
         include/Ray.h
@@ -89,6 +90,7 @@ list(APPEND HEADER_LIST
         include/OBJ_Loader.h
         include/Photon.h
         include/AreaLight.h
+        include/Lambertian.h
         )
 
 add_executable(Ray main.cpp ${HEADER_LIST} ${SOURCE_LIST})

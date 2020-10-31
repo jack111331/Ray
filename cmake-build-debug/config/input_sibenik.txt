@@ -9,5 +9,6 @@ OBJBVH resource/model/sibenik/cylinder.obj
 OBJBVH resource/model/sibenik/plane.obj
 OBJBVH resource/model/sibenik/plane001.obj
 OBJBVH resource/model/sibenik/sphere002.obj
+UBM
 OBJBVH resource/model/sibenik/sibenik.obj
 L 0.0 0.0 25.0

@@ -107,6 +107,8 @@ void Config::loadConfig(const string &configFilename, Scene *scene) {
             DielectricMaterial *material = new DielectricMaterial();
             ss >> *material;
             boundMaterial = material;
+        } else if(cmd == "UBM") {
+            boundMaterial = nullptr;
         } else if(cmd == "L") {
             Coord lightOrigin;
             ss >> lightOrigin;

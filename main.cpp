@@ -71,10 +71,10 @@ void localRender(vector<Object> &objectList, const Camera *camera, const vector<
         glBindVertexArray(object.m_objectInfo.m_vao);
         // uniform
         const Material *material = object.m_material;
-        glm::mat4 projection = glm::perspective(glm::radians(camera->m_fov), (float) camera->m_width / (float) camera->m_height,
+        glm::mat4 projection = glm::perspective(glm::radians(camera->m_fov * 2.0f), (float) camera->m_width / (float) camera->m_height,
                                                 0.1f, 100.0f);
         glm::mat4 view = glm::lookAt(glm::vec3(camera->m_eyeCoord.x, camera->m_eyeCoord.y, camera->m_eyeCoord.z),
-                                     glm::vec3(camera->m_direction.x, camera->m_direction.y, camera->m_direction.z),
+                                     glm::vec3(camera->m_eyeCoord.x + camera->m_direction.x, camera->m_eyeCoord.y + camera->m_direction.y, camera->m_eyeCoord.z + camera->m_direction.z),
                                      glm::vec3(camera->m_up.x, camera->m_up.y, camera->m_up.z));
         objectShader->uniformMat4f("projection", projection);
         objectShader->uniformMat4f("view", view);
@@ -87,7 +87,6 @@ void localRender(vector<Object> &objectList, const Camera *camera, const vector<
                                 lightList[0]->m_origin.z);
         objectShader->uniform3f("viewPos", camera->m_eyeCoord.x, camera->m_eyeCoord.y, camera->m_eyeCoord.z);
         objectShader->uniform3f("lightColor", 1.0, 1.0, 1.0);
-        // TODO add bvh support
         objectShader->uniform3f("objectColor", material->m_color.r, material->m_color.g, material->m_color.b);
         // draw call
         glDrawElements(GL_TRIANGLES, object.m_objectInfo.m_indicesAmount, GL_UNSIGNED_INT, 0);
@@ -118,7 +117,7 @@ int main(int argc, char **argv) {
     if(!whitted && !photonMapping) {
 //        config->loadConfig("config/hw2_input.txt", scene);
         config->loadConfig("config/input_cornell.txt", scene);
-//        config->loadConfig("config/input_sibenik.txt", scene);
+//        config->loadConfig("config/input_sibenik_lr.txt", scene);
     } else if (whitted){
 //        config->loadConfig("config/input_whitted.txt", scene);
 //        config->loadConfig("config/input_with_model.txt", scene);

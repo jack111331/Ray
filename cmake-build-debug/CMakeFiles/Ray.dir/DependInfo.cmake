@@ -12,6 +12,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "D:/Code/Ray/Hittable.cpp" "D:/Code/Ray/cmake-build-debug/CMakeFiles/Ray.dir/Hittable.cpp.obj"
   "D:/Code/Ray/HittableList.cpp" "D:/Code/Ray/cmake-build-debug/CMakeFiles/Ray.dir/HittableList.cpp.obj"
   "D:/Code/Ray/IllumModelFactory.cpp" "D:/Code/Ray/cmake-build-debug/CMakeFiles/Ray.dir/IllumModelFactory.cpp.obj"
+  "D:/Code/Ray/Lambertian.cpp" "D:/Code/Ray/cmake-build-debug/CMakeFiles/Ray.dir/Lambertian.cpp.obj"
   "D:/Code/Ray/Light.cpp" "D:/Code/Ray/cmake-build-debug/CMakeFiles/Ray.dir/Light.cpp.obj"
   "D:/Code/Ray/Material.cpp" "D:/Code/Ray/cmake-build-debug/CMakeFiles/Ray.dir/Material.cpp.obj"
   "D:/Code/Ray/Phong.cpp" "D:/Code/Ray/cmake-build-debug/CMakeFiles/Ray.dir/Phong.cpp.obj"

@@ -410,6 +410,33 @@ IllumModelFactory.cpp.s:
 	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/IllumModelFactory.cpp.s
 .PHONY : IllumModelFactory.cpp.s
 
+Lambertian.obj: Lambertian.cpp.obj
+
+.PHONY : Lambertian.obj
+
+# target to build an object file
+Lambertian.cpp.obj:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/Lambertian.cpp.obj
+.PHONY : Lambertian.cpp.obj
+
+Lambertian.i: Lambertian.cpp.i
+
+.PHONY : Lambertian.i
+
+# target to preprocess a source file
+Lambertian.cpp.i:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/Lambertian.cpp.i
+.PHONY : Lambertian.cpp.i
+
+Lambertian.s: Lambertian.cpp.s
+
+.PHONY : Lambertian.s
+
+# target to generate assembly for a file
+Lambertian.cpp.s:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/Lambertian.cpp.s
+.PHONY : Lambertian.cpp.s
+
 Light.obj: Light.cpp.obj
 
 .PHONY : Light.obj
@@ -773,6 +800,9 @@ help:
 	@echo ... IllumModelFactory.obj
 	@echo ... IllumModelFactory.i
 	@echo ... IllumModelFactory.s
+	@echo ... Lambertian.obj
+	@echo ... Lambertian.i
+	@echo ... Lambertian.s
 	@echo ... Light.obj
 	@echo ... Light.i
 	@echo ... Light.s
