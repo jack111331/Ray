@@ -2,8 +2,8 @@
 // Created by Edge on 2020/7/7.
 //
 
-#ifndef ADVANCED_COMPUTER_GRAPH_SPHERE_H
-#define ADVANCED_COMPUTER_GRAPH_SPHERE_H
+#ifndef RAY_SPHERE_H
+#define RAY_SPHERE_H
 
 #include "Utility.h"
 #include "Ray.h"
@@ -22,4 +22,4 @@ public:
 };
 
 
-#endif //ADVANCED_COMPUTER_GRAPH_SPHERE_H
+#endif //RAY_SPHERE_H

@@ -2,8 +2,8 @@
 // Created by Edge on 2020/10/14.
 //
 
-#ifndef ADVANCED_COMPUTER_GRAPH_WHITTED_H
-#define ADVANCED_COMPUTER_GRAPH_WHITTED_H
+#ifndef RAY_WHITTED_H
+#define RAY_WHITTED_H
 
 #include <vector>
 #include "Ray.h"
@@ -15,9 +15,12 @@ class HittableList;
 
 class WhittedModel : public IlluminationModel {
 public:
-    virtual Color castRay(const Scene *scene, Ray &ray, double intensity, Color &color, int depth);
+    virtual Color castRay(const Scene *scene, Ray &ray, int depth);
+    virtual std::string getModelName() const {
+        return "Whitted";
+    }
 };
 
 
 
-#endif //ADVANCED_COMPUTER_GRAPH_WHITTED_H
+#endif //RAY_WHITTED_H

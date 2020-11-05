@@ -2,8 +2,8 @@
 // Created by Edge on 2020/7/7.
 //
 
-#ifndef ADVANCED_COMPUTER_GRAPH_RAY_H
-#define ADVANCED_COMPUTER_GRAPH_RAY_H
+#ifndef RAY_RAY_H
+#define RAY_RAY_H
 
 #include "Utility.h"
 
@@ -18,4 +18,4 @@ public:
     }
 };
 
-#endif //ADVANCED_COMPUTER_GRAPH_RAY_H
+#endif //RAY_RAY_H

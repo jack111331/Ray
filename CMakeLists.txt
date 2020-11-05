@@ -61,13 +61,13 @@ list(APPEND SOURCE_LIST
         HittableList.cpp
         Shader.cpp
         IllumModelFactory.cpp
-        Phong.cpp
         Whitted.cpp
         Dielectric.cpp
         BVH.cpp
         Photon.cpp
         AreaLight.cpp
         Lambertian.cpp
+        Texture.cpp
         )
 list(APPEND HEADER_LIST
         include/Ray.h
@@ -83,7 +83,6 @@ list(APPEND HEADER_LIST
         include/Shader.h
         include/IllumModel.h
         include/IllumModelFactory.h
-        include/Phong.h
         include/Whitted.h
         include/Dielectric.h
         include/BVH.h
@@ -91,6 +90,8 @@ list(APPEND HEADER_LIST
         include/Photon.h
         include/AreaLight.h
         include/Lambertian.h
+        include/Texture.h
+        include/stb_image.h
         )
 
 add_executable(Ray main.cpp ${HEADER_LIST} ${SOURCE_LIST})

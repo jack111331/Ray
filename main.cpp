@@ -16,6 +16,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <IllumModelFactory.h>
 #include <sys/time.h>
+#include <Lambertian.h>
 
 static bool localRendering = false;
 static bool whitted = false;
@@ -65,75 +66,56 @@ void initLocalRendering(const Scene *scene) {
 
 void localRender(vector<Object> &objectList, const Camera *camera, const vector<Light *> &lightList) {
     for (auto object: objectList) {
-        // shader binding
-        objectShader->bind();
-        // object binding
-        glBindVertexArray(object.m_objectInfo.m_vao);
-        // uniform
-        const Material *material = object.m_material;
-        glm::mat4 projection = glm::perspective(glm::radians(camera->m_fov * 2.0f), (float) camera->m_width / (float) camera->m_height,
-                                                0.1f, 100.0f);
-        glm::mat4 view = glm::lookAt(glm::vec3(camera->m_eyeCoord.x, camera->m_eyeCoord.y, camera->m_eyeCoord.z),
-                                     glm::vec3(camera->m_eyeCoord.x + camera->m_direction.x, camera->m_eyeCoord.y + camera->m_direction.y, camera->m_eyeCoord.z + camera->m_direction.z),
-                                     glm::vec3(camera->m_up.x, camera->m_up.y, camera->m_up.z));
-        objectShader->uniformMat4f("projection", projection);
-        objectShader->uniformMat4f("view", view);
+        if(object.m_material->getType() == Material::MaterialType::LAMBERTIAN) {
+            // shader binding
+            objectShader->bind();
+            // object binding
+            glBindVertexArray(object.m_objectInfo.m_vao);
+            // uniform
+            glm::mat4 projection = glm::perspective(glm::radians(camera->m_fov * 2.0f), (float) camera->m_width / (float) camera->m_height,
+                                                    0.1f, 100.0f);
+            glm::mat4 view = glm::lookAt(glm::vec3(camera->m_eyeCoord.x, camera->m_eyeCoord.y, camera->m_eyeCoord.z),
+                                         glm::vec3(camera->m_eyeCoord.x + camera->m_direction.x, camera->m_eyeCoord.y + camera->m_direction.y, camera->m_eyeCoord.z + camera->m_direction.z),
+                                         glm::vec3(camera->m_up.x, camera->m_up.y, camera->m_up.z));
+            objectShader->uniformMat4f("projection", projection);
+            objectShader->uniformMat4f("view", view);
 
-        // world transformation
-        glm::mat4 model = glm::mat4(1.0f);
-        objectShader->uniformMat4f("model", model);
+            // world transformation
+            glm::mat4 model = glm::mat4(1.0f);
+            objectShader->uniformMat4f("model", model);
 
-        objectShader->uniform3f("lightPos", lightList[0]->m_origin.x, lightList[0]->m_origin.y,
-                                lightList[0]->m_origin.z);
-        objectShader->uniform3f("viewPos", camera->m_eyeCoord.x, camera->m_eyeCoord.y, camera->m_eyeCoord.z);
-        objectShader->uniform3f("lightColor", 1.0, 1.0, 1.0);
-        objectShader->uniform3f("objectColor", material->m_color.r, material->m_color.g, material->m_color.b);
-        // draw call
-        glDrawElements(GL_TRIANGLES, object.m_objectInfo.m_indicesAmount, GL_UNSIGNED_INT, 0);
+            objectShader->uniform3f("lightPos", lightList[0]->m_origin.x, lightList[0]->m_origin.y,
+                                    lightList[0]->m_origin.z);
+            objectShader->uniform3f("viewPos", camera->m_eyeCoord.x, camera->m_eyeCoord.y, camera->m_eyeCoord.z);
+            objectShader->uniform3f("lightColor", 1.0, 1.0, 1.0);
+
+            const LambertianMaterial *material = (LambertianMaterial *)object.m_material;
+            objectShader->uniform3f("objectColor", material->m_diffuseColor.r, material->m_diffuseColor.g, material->m_diffuseColor.b);
+            // draw call
+            glDrawElements(GL_TRIANGLES, object.m_objectInfo.m_indicesAmount, GL_UNSIGNED_INT, 0);
+        }
     }
 }
 
 int main(int argc, char **argv) {
-    if (argc > 1) {
-        if (!strcmp(argv[1], "LR")) {
-            localRendering = true;
-        } else if(!strcmp(argv[1], "WT")) {
-            whitted = true;
-        } else if(!strcmp(argv[1], "PM")) {
-            photonMapping = true;
-        }
-    }
-    IlluminationModel *model;
-    if(whitted) {
-        model = IlluminationModelFactory::createModel("Whitted");
-    } else if(photonMapping) {
-        model = IlluminationModelFactory::createModel("PhotonMapping");
-    } else {
-        model = IlluminationModelFactory::createModel("Phong");
-    }
-    Scene *scene = new Scene(model);
     Config *config = new Config();
-
-    if(!whitted && !photonMapping) {
-//        config->loadConfig("config/hw2_input.txt", scene);
-        config->loadConfig("config/input_cornell.txt", scene);
-//        config->loadConfig("config/input_sibenik_lr.txt", scene);
-    } else if (whitted){
-//        config->loadConfig("config/input_whitted.txt", scene);
-//        config->loadConfig("config/input_with_model.txt", scene);
-//        config->loadConfig("config/input_with_model_monkey.txt", scene);
-//        config->loadConfig("config/input_with_model_bv.txt", scene);
-//        config->loadConfig("config/input_with_model_bvh.txt", scene);
-//        config->loadConfig("config/input_with_model_bvh_monkey.txt", scene);
-        config->loadConfig("config/input_cornell.txt", scene);
-//        config->loadConfig("config/input_sibenik.txt", scene);
+    Scene *scene = nullptr;
+    if (argc > 1) {
+        if(!strcmp(argv[1], "LR") ) {
+            localRendering = true;
+        }
+        scene = config->loadConfig(argv[1]);
+        if(!scene) {
+            cout << "[ERROR] Create scene failed" << endl;
+            exit(1);
+        }
     } else {
-//        config->loadConfig("config/input_with_model_pm.txt", scene);
-        config->loadConfig("config/input_cornell_pm.txt", scene);
+        cout << "[ERROR] No valid argument" << endl;
+        exit(1);
     }
     const Camera *camera = scene->m_camera;
     if (!localRendering) {
-        if(!photonMapping) {
+        if(scene->m_model->getModelName() != "PhotonMapping") {
             scene->displayScene();
         } else {
             scene->displayPhotonMappingScene();
@@ -153,7 +135,7 @@ int main(int argc, char **argv) {
         glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     }
 
-    GLFWwindow *window = glfwCreateWindow(scene->m_camera->m_width, scene->m_camera->m_height, "Ray", NULL,
+    GLFWwindow *window = glfwCreateWindow(camera->m_width, camera->m_height, "Ray", NULL,
                                           NULL);
     if (window == nullptr) {
         std::cout << "[GLFW] failed to create window" << std::endl;

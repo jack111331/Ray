@@ -1,3 +1,4 @@
+MODEL Whitted
 E 0 0 0.1
 V 0 0 1 0 1 0
 F 45

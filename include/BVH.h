@@ -25,6 +25,7 @@ public:
 
 public:
     std::vector<Coord> m_vertices;
+    std::vector<Coord2D> m_texCoords;
     std::vector<Velocity> m_normals;
     std::vector<uint32_t> m_indices;
 };

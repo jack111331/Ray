@@ -1,0 +1,91 @@
+How to build:
+1. Open terminal and switch the Ray project root directory
+2. Make a directory named "build"
+3. Switch directory to build
+4. type in "cmake ../" to generate necessary build file
+5.a If you use visual studio's .sln file to generate necessary build file, open sln file and build it.
+5.b If you simply use MAKEFILE to generate necessary build file, simply type the "make" and it will appear.
+
+
+How to execute:
+
+1. Open terminal and switch the Ray project root directory
+2. Type in "./Ray.exe <Lighting Model> <Scene description file>", there is following parameter to enter
+2.a No parameter, then it will ray trace the scene and output phong lighting model result
+2.b "LR", then it will use OpenGL to buffer scene information, simply apply matrix transform on scene and output phong lighting model result too.
+2,c "WT", then it will ray trace the scene and for Lambertian surface it will use phong lighting model to display it, and for Dielectric surface, 
+it will generate reflect ray and refrace ray to continue ray tracing until it encounter the Lambertian surface or out of depth.
+2.d "PM", then it will first spread photon from area light source, and then ray trace the scene to find each ray's near photon to decide its emittance.
+Sample usage: "./Ray.exe PM"
+
+Notice:
+There is one prebuilt binary to execute in cmake-build-debug directory.
+All the resources are in the cmake-build-debug/resource directory.
+All the scene description file are in the cmake-build-debug/config directory.
+All the local shading shader are in the cmake-build-debug/shader directory.
+
+
+What's the meaning of scene description file?
+
+"E <Origin X> <Origin Y> <Origin Z>" stands for camera position in the world coordinate system.
+
+"V <View Direction X> <View Direction Y> <View Direction Z> <View Up X> <View Up Y> <View Up Z>" stands for camera orientation.
+
+"F <FOV>" stands for field of view, unit is angle not radian.
+
+"R <Vertical Resolution> <Horizontal Resolution>" stands for output resolution.
+
+"MDF <Diffuse Color R> <Diffuse Color G> <Diffuse Color B> <Ambient Light Intensity> <Diffuse Light Intensity> <Specular Light Intensity> <Specular light exponential> <Reflectivity>"
+stands for Lambertian material properties.
+
+"MDI <Diffuse Color R> <Diffuse Color G> <Diffuse Color B> <Ambient Light Intensity> <Diffuse Light Intensity> <Specular Light Intensity> <Specular light exponential> <Reflectivity> <Reference Index>"
+stands for Dielectric material properties.
+
+"T <1st Coordinate X> <1st Coordinate Y> <1st Coordinate Z> <2nd Coordinate X> <2nd Coordinate Y> <2nd Coordinate Z> <3rd Coordinate X> <3rd Coordinate Y> <3rd Triangle Coordinate Z>"
+stands for Triangle properties.
+
+"S <Sphere Coordinate X> <Sphere Coordinate Y> <Sphere Coordinate Z> <Sphere Radius>" stands for sphere properties.
+
+"L <Point Light Coordinate X> <Point Light Coordinate Y> <Point Light Coordinate Z>" stands for point light's properties.
+
+"AL <Area Light 1st Rectangle Coordinate X> <Area Light 1st Rectangle Coordinate Y> <Area Light 1st Rectangle Coordinate Z>
+ <Area Light 2nd Rectangle Coordinate X> <Area Light 2nd Rectangle Coordinate Y> <Area Light 2nd Rectangle Coordinate Z>
+ <Area Light 3rd Rectangle Coordinate X> <Area Light 3rd Rectangle Coordinate Y> <Area Light 3rd Rectangle Coordinate Z>
+ <Area Light 4th Rectangle Coordinate X> <Area Light 4th Rectangle Coordinate Y> <Area 4th 1st Rectangle Coordinate Z>" stands for area light's properties.
+Note that it should follow two triangle properties in the next two line to make ray hit it, and I only implement area light on photon mapping illumination model.
+
+"OBJ <.obj Object file name>" stands for object not using any acceleration structure.
+
+"OBJBV <.obj Object file name>" stands for object using Bounding Volume to accelerate.
+
+"OBJBVH <.obj Object file name>" stands for object using Bounding Volume hierarchy to accelerate.
+
+Notice:
+The Material definition is **ALWAYS** before object(include triangle, sphere, object file) to bind material to object.
+
+
+Minimal requirement:
+
+For Parsing file, I wrote config.cpp and include/config.h to parse scene description. First they identify the properties' token, and then distribute them to each properties own class to store them.
+
+For local rendering, I first load object properties into OpenGL buffer, and then use matrix transformation to convert objects to world coordinate system, camera coordinate system, and then multiply Perspective matrix
+to make them looks solid.
+
+For generating ray from camera, I use fov, eye coordinate, viewing information to calculate the virtual window's four points' coordinate in world coordinate system, and then generate each ray from eye coordinate to each point in virtual window.
+I use linear interpolation to calculate all the intermediate pixels' world coordinate in virtual window.
+
+For intersection mechanism in ray-object intersection computation, I defind a superclass called Hittable and force all the subclass to implement isHit(). For each different object, it will not only determine whether the ray hit it but also record
+hit information in the HitRecord structure.
+
+For Whitted Illumination model, I use local shading when ray hit Lambertian material, and continue ray trace when ray hit dielectric material. Here I use schlick approximation to calculate reflectivity.
+
+For Phong interpolation I use fragment shader to interpolate object's color.
+
+For anti-aliasing, I only implement it on Whitted and Photon Mapping Illumination model by jittering ray in pixel and cast ray to ray trace, and finally divide them the amount of ray jittered in one pixel to anti-aliasing it.
+
+For implementing data-structure to accelerate ray-intersection test, I implemented bounding volume, and bounding volume hierarchy to accelerate ray-intersection test, their idea are simply test whether the approximation of object is hit,
+then test whether the exact object was hit. I've planed to implement grid approximation, but I have no time, so it isn't implement complete.
+
+
+
+

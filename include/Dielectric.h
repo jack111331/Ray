@@ -2,8 +2,8 @@
 // Created by Edge on 2020/10/14.
 //
 
-#ifndef ADVANCED_COMPUTER_GRAPH_DIELECTRIC_H
-#define ADVANCED_COMPUTER_GRAPH_DIELECTRIC_H
+#ifndef RAY_DIELECTRIC_H
+#define RAY_DIELECTRIC_H
 
 
 #include "Utility.h"
@@ -15,7 +15,9 @@ class DielectricMaterial : public Material {
 public:
     friend std::istream &operator >> (std::istream &is, DielectricMaterial &rhs);
 
-    virtual Color calculatePhong(const Scene *scene, const Ray &ray, const HitRecord &record, const LightRecord &shadeLightRecord);
+    virtual Color calculatePhong(const Scene *scene, Ray &ray, const HitRecord &record, const LightRecord &shadeLightRecord, ShadeRecord &shadeRecord) const;
+
+    virtual void calculatePhotonMapping(const Scene *scene, const PhotonMappingModel &model, Ray &ray, const HitRecord &record, ShadeRecord &shadeRecord) const;
 
     virtual MaterialType getType() {return DIELECTRIC;}
 
@@ -24,4 +26,4 @@ public:
 };
 
 
-#endif //ADVANCED_COMPUTER_GRAPH_DIELECTRIC_H
+#endif //RAY_DIELECTRIC_H

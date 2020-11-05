@@ -2,8 +2,8 @@
 // Created by Edge on 2020/7/13.
 //
 
-#ifndef ADVANCED_COMPUTER_GRAPH_LIGHT_H
-#define ADVANCED_COMPUTER_GRAPH_LIGHT_H
+#ifndef RAY_LIGHT_H
+#define RAY_LIGHT_H
 
 
 #include "Utility.h"
@@ -15,4 +15,4 @@ public:
     Coord m_origin;
 };
 
-#endif //ADVANCED_COMPUTER_GRAPH_LIGHT_H
+#endif //RAY_LIGHT_H

@@ -7,22 +7,27 @@
 #include <sstream>
 #include <Dielectric.h>
 #include <BVH.h>
+#include <Lambertian.h>
+#include <IllumModelFactory.h>
 #include "Config.h"
 #include "Sphere.h"
 #include "Triangle.h"
 #include "Light.h"
 #include "HittableList.h"
+#include "AreaLight.h"
 
 using namespace std;
 
-void Config::loadConfig(const string &configFilename, Scene *scene) {
+Scene *Config::loadConfig(const string &configFilename) {
     ifstream ifs;
     ifs.open(configFilename);
     if (!ifs.is_open()) {
-        std::cerr << "Error opening file " << configFilename << std::endl;
+        std::cerr << "[Error] Failed to open file: " << configFilename << std::endl;
         exit(1);
     }
     string line;
+
+    Scene *scene = new Scene();
 
     scene->m_hittableList = new HittableList();
 
@@ -36,7 +41,11 @@ void Config::loadConfig(const string &configFilename, Scene *scene) {
         stringstream ss(line);
         string cmd;
         ss >> cmd;
-        if (cmd == "E") {
+        if (cmd == "MODEL") {
+            string modelName;
+            ss >> modelName;
+            scene->setModel(IlluminationModelFactory::createModel(modelName));
+        }else if (cmd == "E") {
             ss >> eyeCoord;
         } else if (cmd == "V") {
             // Viewing Direction
@@ -72,41 +81,28 @@ void Config::loadConfig(const string &configFilename, Scene *scene) {
             triangle->setMaterial(boundMaterial);
             scene->m_hittableList->addHittable(triangle);
         } else if (cmd == "OBJ") {
-            if(!boundMaterial) {
-                cerr << "No valid material bound in this object" << endl;
-                exit(1);
-            }
             string objPath;
             ss >> objPath;
             Hittable *polygonMesh = new PolygonMesh(objPath);
             polygonMesh->setMaterial(boundMaterial);
             scene->m_hittableList->addHittable(polygonMesh);
         } else if (cmd == "OBJBV") {
-            if(!boundMaterial) {
-                cerr << "No valid material bound in this object" << endl;
-                exit(1);
-            }
             string objPath;
             ss >> objPath;
             Hittable *polygonMeshBV = new PolygonMeshBV(objPath);
             polygonMeshBV->setMaterial(boundMaterial);
             scene->m_hittableList->addHittable(polygonMeshBV);
         } else if (cmd == "OBJBVH") {
-            if(!boundMaterial) {
-                cerr << "No valid material bound in this object" << endl;
-                exit(1);
-            }
             string objPath;
             ss >> objPath;
             Hittable *polygonMeshBVH = new PolygonMeshBVH(objPath, boundMaterial);
             scene->m_hittableList->addHittable(polygonMeshBVH);
         } else if (cmd == "MDF") {
-            boundMaterial = new Material();
-            ss >> *boundMaterial;
+            boundMaterial = new LambertianMaterial();
+            ss >> *(LambertianMaterial *)boundMaterial;
         } else if (cmd == "MDI") {
-            DielectricMaterial *material = new DielectricMaterial();
-            ss >> *material;
-            boundMaterial = material;
+            boundMaterial = new DielectricMaterial();
+            ss >> *(DielectricMaterial *)boundMaterial;
         } else if(cmd == "UBM") {
             boundMaterial = nullptr;
         } else if(cmd == "L") {
@@ -114,15 +110,22 @@ void Config::loadConfig(const string &configFilename, Scene *scene) {
             ss >> lightOrigin;
             scene->m_lightList.push_back(new Light(lightOrigin));
         } else if(cmd == "AL") {
-            Coord planePoint[4];
-            for(int i = 0;i < 4;++i) {
-                ss >> planePoint[i];
-            }
-            AreaLight *areaLight = new AreaLight(&planePoint);
+            AreaLight *areaLight = new AreaLight();
             ss >> *areaLight;
             scene->m_areaLightList.push_back(areaLight);
             boundMaterial = areaLight;
+
+            Coord coordList[3] = {areaLight->m_point,areaLight->m_point + areaLight->m_uDirection, areaLight->m_point + areaLight->m_uDirection + areaLight->m_vDirection};
+            Hittable *triangle = new Triangle(&coordList);
+            triangle->setMaterial(boundMaterial);
+            scene->m_hittableList->addHittable(triangle);
+
+            coordList[1] = areaLight->m_point + areaLight->m_vDirection;
+            triangle = new Triangle(&coordList);
+            triangle->setMaterial(boundMaterial);
+            scene->m_hittableList->addHittable(triangle);
         }
     }
     scene->m_camera = new Camera(screenWidth, screenHeight, eyeCoord, fov, direction, up);
+    return scene;
 }

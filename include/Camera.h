@@ -2,8 +2,8 @@
 // Created by Edge on 2020/7/8.
 //
 
-#ifndef ADVANCED_COMPUTER_GRAPH_CAMERA_H
-#define ADVANCED_COMPUTER_GRAPH_CAMERA_H
+#ifndef RAY_CAMERA_H
+#define RAY_CAMERA_H
 
 
 #include "Utility.h"
@@ -23,4 +23,4 @@ public:
 };
 
 
-#endif //ADVANCED_COMPUTER_GRAPH_CAMERA_H
+#endif //RAY_CAMERA_H

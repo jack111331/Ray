@@ -2,8 +2,8 @@
 // Created by Edge on 2020/7/9.
 //
 
-#ifndef ADVANCED_COMPUTER_GRAPH_TRIANGLE_H
-#define ADVANCED_COMPUTER_GRAPH_TRIANGLE_H
+#ifndef RAY_TRIANGLE_H
+#define RAY_TRIANGLE_H
 
 
 #include "Utility.h"
@@ -26,4 +26,4 @@ public:
 };
 
 
-#endif //ADVANCED_COMPUTER_GRAPH_TRIANGLE_H
+#endif //RAY_TRIANGLE_H

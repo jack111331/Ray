@@ -10,10 +10,11 @@
 #include "IllumModel.h"
 #include <pthread.h>
 #include <functional>
+#include "AreaLight.h"
 
-Color Scene::castRay(Ray &ray, double intensity, Color &color, int depth) {
+Color Scene::castRay(Ray &ray) {
     if (m_model) {
-        return m_model->castRay(this, ray, intensity, color, depth);
+        return m_model->castRay(this, ray);
     } else {
         return {.0, .0, .0};
     }
@@ -26,9 +27,7 @@ void *Scene::castJitteredRay(void *castRayThreadArgs) {
         Ray perturbatedRay = {args->ray.origin,
                               args->ray.velocity + Util::randomInUnit() * args->unitHorizontalScreen +
                               Util::randomInUnit() * args->unitVerticalScreen};
-        Color color = {};
-//        std::cout << args->ray.origin << args->ray.velocity << std::endl;
-        args->scene->m_camera->m_screen[args->i][args->j] += args->scene->castRay(perturbatedRay, 1.0, color, 0);
+        args->scene->m_camera->m_screen[args->i][args->j] += args->scene->castRay(perturbatedRay);
     }
     args->scene->m_camera->m_screen[args->i][args->j] /= (float) args->sampleAmount;
     args->scene->m_camera->m_screen[args->i][args->j].clamp();
@@ -69,21 +68,21 @@ void Scene::displayScene() {
             args->sampleAmount = sampleAmount;
             args->unitVerticalScreen = unitVerticalScreen;
             args->unitHorizontalScreen = unitHorizontalScreen;
-//            castJitteredRay(args);
-//            delete args;
-            pthread_create(&threadCastRay, nullptr, &Scene::castJitteredRay, (void *) args);
-            threadList.push_back({threadCastRay, args});
+            castJitteredRay(args);
+            delete args;
+//            pthread_create(&threadCastRay, nullptr, &Scene::castJitteredRay, (void *) args);
+//            threadList.push_back({threadCastRay, args});
 //            std::cout << "[" << i << ", " << j << "] Rendering" << std::endl;
 //            fflush(stdout);
-            if (threadList.size() >= 40) {
+//            if (threadList.size() >= 40) {
 //                std::cout << "batch Rendering" << std::endl;
 //                fflush(stdout);
-                for (auto thread : threadList) {
-                    pthread_join(thread.id, nullptr);
-                    delete thread.castRayThreadArgs;
-                }
-                threadList.clear();
-            }
+//                for (auto thread : threadList) {
+//                    pthread_join(thread.id, nullptr);
+//                    delete thread.castRayThreadArgs;
+//                }
+//                threadList.clear();
+//            }
         }
     }
 }
@@ -94,7 +93,6 @@ bool Scene::photonTracing(Ray &ray, float power, int depth) {
     }
     // hit photon and store photon
     HitRecord record;
-    record.t = -1.0;
     if (m_hittableList->isHit(0.001, ray, record)) {
         // calculate refractivity and reflectivity
         float reflectivity = 0.0, refractivity = 0.0;
@@ -119,12 +117,11 @@ bool Scene::photonTracing(Ray &ray, float power, int depth) {
                 reflectivity = 1.0;
             }
             refractivity = 1.0 - reflectivity;
-        } else if (record.material->getType() == Material::MaterialType::DIFFUSE) {
+        } else if (record.material->getType() == Material::MaterialType::LAMBERTIAN) {
             PhotonMappingModel *model = (PhotonMappingModel *) m_model;
             Photon photon = {
                     record.point,
                     power,
-                    record.material->m_color,
                     ray.velocity,
                     Photon::Flag::NORMAL
             };
@@ -134,13 +131,12 @@ bool Scene::photonTracing(Ray &ray, float power, int depth) {
             Photon photon = {
                     record.point,
                     power,
-                    record.material->m_color,
                     ray.velocity,
                     Photon::Flag::NORMAL
             };
             model->m_kdTree->insert(photon);
         }
-        EmitType emitType = russianRoulette(reflectivity, refractivity);
+        EmitType emitType = Util::russianRoulette(reflectivity, refractivity);
         if (emitType == EmitType::ABSORBED) {
             // reflected or transmitted ray
             // influenced power
@@ -156,7 +152,6 @@ bool Scene::photonTracing(Ray &ray, float power, int depth) {
     }
     return false;
 }
-
 
 void Scene::displayPhotonMappingScene() {
     if (!m_camera) {
@@ -177,27 +172,11 @@ void Scene::displayPhotonMappingScene() {
     // first pass: photon tracing
     const float photonPower = .2;// watt
     const float photonAmount = 500;
-    for (auto areaLight : m_areaLightList) {
-        for (int i = 0; i < photonAmount; ++i) {
-            Ray photonTraceRay;
-            Velocity photonDirection;
-            do {
-                // determine photon position and emit direction
-                float photonPositionU, photonPositionV;
-                do {
-                    photonPositionU = Util::randomInUnit();
-                    photonPositionV = Util::randomInUnit();
-                } while (photonPositionU < 0 || photonPositionV < 0 || photonPositionU + photonPositionV > 1);
-                Coord photonPosition = areaLight->m_point + photonPositionU * areaLight->m_uDirection +
-                                       photonPositionV * areaLight->m_vDirection;
-
-                photonDirection = Util::randomSphere();
-
-                // photon tracing and store photon on hitted surface
-                photonTraceRay = {photonPosition, photonDirection};
-            } while (!photonTracing(photonTraceRay, photonPower, 0));
-        }
+    if(m_areaLightList.empty()) {
+        std::cerr << "No area light" << std::endl;
+        exit(1);
     }
+    photonGenerating(photonPower, photonAmount);
     std::cout << "Photon traced" << std::endl;
     // second pass: ray tracing photon
     std::vector<ThreadInfo> threadList;
@@ -222,13 +201,8 @@ void Scene::displayPhotonMappingScene() {
             castJitteredRay(args);
             delete args;
 //            pthread_create(&threadCastRay, nullptr, &Scene::castJitteredRay, args);
-//            getchar();
 //            threadList.push_back({threadCastRay, args});
-//            std::cout << "[" << i << ", " << j << "] Rendering" << std::endl;
-//            fflush(stdout);
 //            if(threadList.size() >= 40) {
-//                std::cout << "batch Rendering" << std::endl;
-//                fflush(stdout);
 //                for (auto thread : threadList) {
 //                    int err;
 //                    void *retval;
@@ -243,13 +217,26 @@ void Scene::displayPhotonMappingScene() {
     }
 }
 
-Scene::EmitType Scene::russianRoulette(float reflectivity, float refractivity) const {
-    float randomValue = Util::randomInUnit();
-    if (randomValue < reflectivity) {
-        return EmitType::REFLECTED;
-    } else if (randomValue < reflectivity + refractivity) {
-        return EmitType::TRANSMITTED;
-    } else {
-        return EmitType::ABSORBED;
+void Scene::photonGenerating(float photonPower, float photonAmount) {
+    for (auto areaLight : m_areaLightList) {
+        for (int i = 0; i < photonAmount; ++i) {
+            Ray photonTraceRay;
+            Velocity photonDirection;
+            do {
+                // determine photon position and emit direction
+                float photonPositionU, photonPositionV;
+                do {
+                    photonPositionU = Util::randomInUnit();
+                    photonPositionV = Util::randomInUnit();
+                } while (photonPositionU < 0 || photonPositionV < 0 || photonPositionU + photonPositionV > 1);
+                Coord photonPosition = areaLight->m_point + photonPositionU * areaLight->m_uDirection +
+                                       photonPositionV * areaLight->m_vDirection;
+
+                photonDirection = Util::randomSphere();
+
+                // photon tracing and store photon on hitted surface
+                photonTraceRay = {photonPosition, photonDirection};
+            } while (!photonTracing(photonTraceRay, photonPower, 0));
+        }
     }
 }

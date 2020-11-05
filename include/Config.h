@@ -2,16 +2,16 @@
 // Created by Edge on 2020/7/8.
 //
 
-#ifndef ADVANCED_COMPUTER_GRAPH_CONFIG_H
-#define ADVANCED_COMPUTER_GRAPH_CONFIG_H
+#ifndef RAY_CONFIG_H
+#define RAY_CONFIG_H
 
 
 #include "Scene.h"
 
 class Config {
 public:
-    void loadConfig(const std::string &configFilename, Scene *scene);
+    Scene *loadConfig(const std::string &configFilename);
 };
 
 
-#endif //ADVANCED_COMPUTER_GRAPH_CONFIG_H
+#endif //RAY_CONFIG_H

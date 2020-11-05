@@ -2,8 +2,8 @@
 // Created by Edge on 2020/7/7.
 //
 
-#ifndef ADVANCED_COMPUTER_GRAPH_HITTABLE_H
-#define ADVANCED_COMPUTER_GRAPH_HITTABLE_H
+#ifndef RAY_HITTABLE_H
+#define RAY_HITTABLE_H
 
 #include "Ray.h"
 #include "Material.h"
@@ -32,4 +32,4 @@ public:
 
 };
 
-#endif //ADVANCED_COMPUTER_GRAPH_HITTABLE_H
+#endif //RAY_HITTABLE_H

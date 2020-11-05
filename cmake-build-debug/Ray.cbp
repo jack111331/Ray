@@ -236,9 +236,6 @@
 		<Unit filename="D:/Code/Ray/Material.cpp">
 			<Option target="Ray"/>
 		</Unit>
-		<Unit filename="D:/Code/Ray/Phong.cpp">
-			<Option target="Ray"/>
-		</Unit>
 		<Unit filename="D:/Code/Ray/Photon.cpp">
 			<Option target="Ray"/>
 		</Unit>
@@ -252,6 +249,9 @@
 			<Option target="Ray"/>
 		</Unit>
 		<Unit filename="D:/Code/Ray/Sphere.cpp">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/Texture.cpp">
 			<Option target="Ray"/>
 		</Unit>
 		<Unit filename="D:/Code/Ray/Triangle.cpp">
@@ -302,9 +302,6 @@
 		<Unit filename="D:/Code/Ray/include/OBJ_Loader.h">
 			<Option target="Ray"/>
 		</Unit>
-		<Unit filename="D:/Code/Ray/include/Phong.h">
-			<Option target="Ray"/>
-		</Unit>
 		<Unit filename="D:/Code/Ray/include/Photon.h">
 			<Option target="Ray"/>
 		</Unit>
@@ -320,10 +317,16 @@
 		<Unit filename="D:/Code/Ray/include/Sphere.h">
 			<Option target="Ray"/>
 		</Unit>
+		<Unit filename="D:/Code/Ray/include/Texture.h">
+			<Option target="Ray"/>
+		</Unit>
 		<Unit filename="D:/Code/Ray/include/Triangle.h">
 			<Option target="Ray"/>
 		</Unit>
 		<Unit filename="D:/Code/Ray/include/Whitted.h">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/include/stb_image.h">
 			<Option target="Ray"/>
 		</Unit>
 		<Unit filename="D:/Code/Ray/library/glfw-3.3.2/include/GLFW/glfw3.h">

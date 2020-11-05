@@ -3,16 +3,29 @@
 
 CMakeFiles/Ray.dir/AreaLight.cpp.obj
  ../include/AreaLight.h
+ ../include/Camera.h
+ ../include/IllumModel.h
+ ../include/Light.h
  ../include/Material.h
+ ../include/Photon.h
+ ../include/Ray.h
+ ../include/Scene.h
  ../include/Utility.h
  D:/Code/Ray/AreaLight.cpp
 CMakeFiles/Ray.dir/BVH.cpp.obj
  ../include/BVH.h
+ ../include/Camera.h
  ../include/GL/glew.h
  ../include/Hittable.h
+ ../include/IllumModel.h
+ ../include/Lambertian.h
+ ../include/Light.h
  ../include/Material.h
  ../include/OBJ_Loader.h
+ ../include/Photon.h
  ../include/Ray.h
+ ../include/Scene.h
+ ../include/Texture.h
  ../include/Utility.h
  D:/Code/Ray/BVH.cpp
 CMakeFiles/Ray.dir/Camera.cpp.obj
@@ -27,80 +40,92 @@ CMakeFiles/Ray.dir/Config.cpp.obj
  ../include/Config.h
  ../include/Dielectric.h
  ../include/Hittable.h
+ ../include/IllumModel.h
+ ../include/IllumModelFactory.h
+ ../include/Lambertian.h
  ../include/Light.h
  ../include/Material.h
+ ../include/Photon.h
  ../include/Ray.h
  ../include/Scene.h
  ../include/Sphere.h
+ ../include/Texture.h
  ../include/Triangle.h
  ../include/Utility.h
  D:/Code/Ray/Config.cpp
  D:/Code/Ray/HittableList.h
 CMakeFiles/Ray.dir/Dielectric.cpp.obj
- ../include/AreaLight.h
  ../include/Camera.h
  ../include/Dielectric.h
+ ../include/IllumModel.h
  ../include/Light.h
  ../include/Material.h
+ ../include/Photon.h
  ../include/Ray.h
  ../include/Scene.h
  ../include/Utility.h
  D:/Code/Ray/Dielectric.cpp
 CMakeFiles/Ray.dir/Hittable.cpp.obj
+ ../include/Camera.h
  ../include/Hittable.h
+ ../include/IllumModel.h
+ ../include/Light.h
  ../include/Material.h
+ ../include/Photon.h
  ../include/Ray.h
+ ../include/Scene.h
  ../include/Utility.h
  D:/Code/Ray/Hittable.cpp
 CMakeFiles/Ray.dir/HittableList.cpp.obj
+ ../include/Camera.h
  ../include/Hittable.h
+ ../include/IllumModel.h
+ ../include/Light.h
  ../include/Material.h
+ ../include/Photon.h
  ../include/Ray.h
+ ../include/Scene.h
  ../include/Utility.h
  D:/Code/Ray/HittableList.cpp
  D:/Code/Ray/HittableList.h
 CMakeFiles/Ray.dir/IllumModelFactory.cpp.obj
- ../include/AreaLight.h
  ../include/Camera.h
  ../include/IllumModel.h
  ../include/IllumModelFactory.h
  ../include/Light.h
- ../include/Material.h
- ../include/Phong.h
  ../include/Photon.h
  ../include/Ray.h
  ../include/Scene.h
  ../include/Utility.h
  ../include/Whitted.h
  D:/Code/Ray/IllumModelFactory.cpp
+CMakeFiles/Ray.dir/Lambertian.cpp.obj
+ ../include/Camera.h
+ ../include/IllumModel.h
+ ../include/Lambertian.h
+ ../include/Light.h
+ ../include/Material.h
+ ../include/Photon.h
+ ../include/Ray.h
+ ../include/Scene.h
+ ../include/Texture.h
+ ../include/Utility.h
+ D:/Code/Ray/Lambertian.cpp
 CMakeFiles/Ray.dir/Light.cpp.obj
  ../include/Light.h
  ../include/Utility.h
  D:/Code/Ray/Light.cpp
 CMakeFiles/Ray.dir/Material.cpp.obj
- ../include/AreaLight.h
  ../include/Camera.h
+ ../include/IllumModel.h
  ../include/Light.h
  ../include/Material.h
+ ../include/Photon.h
  ../include/Ray.h
  ../include/Scene.h
  ../include/Utility.h
  D:/Code/Ray/Material.cpp
-CMakeFiles/Ray.dir/Phong.cpp.obj
- ../include/AreaLight.h
- ../include/Camera.h
- ../include/Hittable.h
- ../include/IllumModel.h
- ../include/Light.h
- ../include/Material.h
- ../include/Phong.h
- ../include/Ray.h
- ../include/Scene.h
- ../include/Utility.h
- D:/Code/Ray/HittableList.h
- D:/Code/Ray/Phong.cpp
 CMakeFiles/Ray.dir/Photon.cpp.obj
- ../include/AreaLight.h
  ../include/Camera.h
  ../include/Dielectric.h
  ../include/Hittable.h
@@ -285,18 +310,33 @@ CMakeFiles/Ray.dir/Shader.cpp.obj
  ../include/glm/vector_relational.hpp
  D:/Code/Ray/Shader.cpp
 CMakeFiles/Ray.dir/Sphere.cpp.obj
+ ../include/Camera.h
  ../include/GL/glew.h
  ../include/Hittable.h
+ ../include/IllumModel.h
+ ../include/Light.h
  ../include/Material.h
+ ../include/Photon.h
  ../include/Ray.h
+ ../include/Scene.h
  ../include/Sphere.h
  ../include/Utility.h
  D:/Code/Ray/Sphere.cpp
+CMakeFiles/Ray.dir/Texture.cpp.obj
+ ../include/Texture.h
+ ../include/Utility.h
+ ../include/stb_image.h
+ D:/Code/Ray/Texture.cpp
 CMakeFiles/Ray.dir/Triangle.cpp.obj
+ ../include/Camera.h
  ../include/GL/glew.h
  ../include/Hittable.h
+ ../include/IllumModel.h
+ ../include/Light.h
  ../include/Material.h
+ ../include/Photon.h
  ../include/Ray.h
+ ../include/Scene.h
  ../include/Triangle.h
  ../include/Utility.h
  D:/Code/Ray/Triangle.cpp
@@ -304,13 +344,13 @@ CMakeFiles/Ray.dir/Utility.cpp.obj
  ../include/Utility.h
  D:/Code/Ray/Utility.cpp
 CMakeFiles/Ray.dir/Whitted.cpp.obj
- ../include/AreaLight.h
  ../include/Camera.h
  ../include/Dielectric.h
  ../include/Hittable.h
  ../include/IllumModel.h
  ../include/Light.h
  ../include/Material.h
+ ../include/Photon.h
  ../include/Ray.h
  ../include/Scene.h
  ../include/Utility.h
@@ -318,7 +358,6 @@ CMakeFiles/Ray.dir/Whitted.cpp.obj
  D:/Code/Ray/HittableList.h
  D:/Code/Ray/Whitted.cpp
 CMakeFiles/Ray.dir/main.cpp.obj
- ../include/AreaLight.h
  ../include/Camera.h
  ../include/Config.h
  ../include/GL/glew.h
@@ -326,12 +365,15 @@ CMakeFiles/Ray.dir/main.cpp.obj
  ../include/Hittable.h
  ../include/IllumModel.h
  ../include/IllumModelFactory.h
+ ../include/Lambertian.h
  ../include/Light.h
  ../include/Material.h
+ ../include/Photon.h
  ../include/Ray.h
  ../include/Scene.h
  ../include/Shader.h
  ../include/Sphere.h
+ ../include/Texture.h
  ../include/Utility.h
  ../include/glm/common.hpp
  ../include/glm/detail/_fixes.hpp

@@ -6,8 +6,28 @@
 #define RAY_LAMBERTIAN_H
 
 
-class Lambertian {
+#include "Material.h"
+#include "Texture.h"
 
+class LambertianMaterial : public Material {
+public:
+    friend std::istream &operator >> (std::istream &lhs, LambertianMaterial &material);
+
+    virtual Color calculatePhong(const Scene *scene, Ray &ray, const HitRecord &record, const LightRecord &shadeLightRecord, ShadeRecord &shadeRecord) const;
+    virtual void calculatePhotonMapping(const Scene *scene, const PhotonMappingModel &photonMappingModel, Ray &ray,
+                                               const HitRecord &record, ShadeRecord &shadeRecord) const;
+    virtual MaterialType getType() {return LAMBERTIAN;}
+
+    Color m_diffuseColor = {.0f, .0f, .0f};
+    Color m_ambientColor = {.0f, .0f, .0f};
+    Color m_specularColor = {.0f, .0f, .0f};
+
+    float m_constantSpecularExp = .0f;
+
+    float m_constantRoughness = .0f;
+
+    Texture *m_ambientTexture = nullptr;
+    Texture *m_diffuseTexture = nullptr;
 };
 
 

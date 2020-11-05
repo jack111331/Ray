@@ -1,0 +1,23 @@
+Project description:
+
+A ray tracing testbed to perform some experiment while discovering or coming up new idea.
+
+
+What I have learned from this project:
+
+The acceleration structure is interesting, the simple idea can lead whole algorithm to significantly speed-up is a very wonderful thing.
+
+But the ordinary CPU computation on Ray tracing algorithm is acceptable on simple scene, but a disaster on complex scene.
+The sibenik scene take me countless time to render..., so I abandomed rendering it...
+
+When watching scene finally rendered by myself, it brought me a bunch of accomplishment.
+
+
+The algorithm implemented by myself:
+BVH tree to accelerate ray-triangle intersection test. Result: not bad.
+KD tree to accelerate k nearest neighbor search in photon mapping illumination model. Result: good.
+Photon Mapping. Result: not bad.
+
+Three algorithms listed above are the most accomplishment algorithms I implemented. I ask a lot of people, searching a lot of articles on the Internet and turned to 李飛 for help on photon mapping implementation.
+They are truly interesting, the BVH tree utilize simple idea to accelerate the ray-triangle intersection, the KD tree's space partition in dimension is indeed powerful on searching k-nearest neighbors.
+The photon mapping illumination model is not completely implemented what paper mentioned, but I think the caustic effect it generated is good for me.

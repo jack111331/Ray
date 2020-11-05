@@ -6,6 +6,7 @@
 #include <cmath>
 #include <queue>
 #include <GL/glew.h>
+#include <Lambertian.h>
 
 using namespace std;
 
@@ -23,6 +24,7 @@ Object::Object(const objl::Mesh &mesh) {
     for (int j = 0; j < mesh.Vertices.size(); j++) {
         m_vertices.push_back({mesh.Vertices[j].Position.X, mesh.Vertices[j].Position.Y,
                               mesh.Vertices[j].Position.Z});
+        m_texCoords.push_back({mesh.Vertices[j].TextureCoordinate.X, mesh.Vertices[j].TextureCoordinate.Y});
         m_normals.push_back(
                 {mesh.Vertices[j].Normal.X, mesh.Vertices[j].Normal.Y, mesh.Vertices[j].Normal.Z});
 
@@ -35,36 +37,7 @@ Object::Object(const objl::Mesh &mesh) {
 bool Object::isHit(double tmin, const Ray &ray, HitRecord &record) {
     bool isHitted = false;
     for (uint32_t j = 0; j < m_indices.size(); j += 3) {
-        const double EPSILON = 1e-7;
-        const Coord (&point)[3] = {m_vertices[m_indices[j]], m_vertices[m_indices[j + 1]],
-                                   m_vertices[m_indices[j + 2]]};
-        Velocity planeVector[2] = {point[1] - point[0],
-                                   point[2] - point[0]};
-        Velocity h = ray.velocity.cross(planeVector[1]);
-        double a = planeVector[0].dot(h);
-        if (std::abs(a) < EPSILON)
-            continue;
-        double f = 1.0 / a;
-        Velocity s = ray.origin - point[0];
-        double u = f * s.dot(h);
-        if (u < 0.0 || u > 1.0)
-            continue;
-        Velocity q = s.cross(planeVector[0]);
-        double v = f * ray.velocity.dot(q);
-        if (v < 0.0 || v + u > 1.0)
-            continue;
-
-        double t = f * planeVector[1].dot(q);
-        if (t > EPSILON && t > tmin) {
-            if (record.t < 0.0f || record.t > t) {
-                // ray.origin + t * ray.velocity is intersection point
-                record.t = t;
-                record.point = ray.pointAt(t);
-                record.normal = planeVector[0].cross(planeVector[1]).normalize();
-                record.material = m_material;
-                isHitted = true;
-            }
-        }
+        isHitted = max(isHitted, isHitSingle(tmin, j, ray, record));
     }
     return isHitted;
 }
@@ -96,6 +69,8 @@ bool Object::isHitSingle(float tmin, uint32_t index, const Ray &ray, HitRecord &
             record.t = t;
             record.point = ray.pointAt(t);
             record.normal = planeVector[0].cross(planeVector[1]).normalize();
+            record.texCoord = m_texCoords[m_indices[index * 3]] + u * (m_texCoords[m_indices[index * 3+1]] - m_texCoords[m_indices[index * 3]]) +
+                              v * (m_texCoords[m_indices[index * 3 + 2]] - m_texCoords[m_indices[index * 3]]);
             record.material = m_material;
             return true;
         }
@@ -125,6 +100,14 @@ std::vector<ObjectInfo> Object::createVAO(const Material *material) {
     glBufferData(GL_ARRAY_BUFFER, sizeof(Velocity) * m_normals.size(), m_normals.data(), GL_DYNAMIC_DRAW);
     glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
     glEnableVertexAttribArray(1);
+
+    // Texture Coordinatte VBO
+    uint32_t texCoordVbo;
+    glGenBuffers(1, &texCoordVbo);
+    glBindBuffer(GL_ARRAY_BUFFER, texCoordVbo);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(Coord2D) * m_texCoords.size(), m_texCoords.data(), GL_DYNAMIC_DRAW);
+    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), nullptr);
+    glEnableVertexAttribArray(2);
 
     // EBO
     uint32_t ebo;
@@ -429,21 +412,25 @@ PolygonMeshBVH::PolygonMeshBVH(const std::string &objPath, Material *material) {
         for (int i = 0; i < Loader.LoadedMeshes.size(); i++) {
             m_objects.push_back(new Object(Loader.LoadedMeshes[i]));
             m_extents[i] = new Extent[m_objects[i]->m_indices.size() / 3];
-            if(!material) {
-                Material *newMaterial = new Material;
-                newMaterial->m_color =
+            if (!material) {
+                LambertianMaterial *newMaterial = new LambertianMaterial;
+                newMaterial->m_ambientColor =
+                        (Color) {Loader.LoadedMaterials[i].Ka.X, Loader.LoadedMaterials[i].Ka.Y,
+                                 Loader.LoadedMaterials[i].Ka.Z};
+                newMaterial->m_diffuseColor =
                         (Color) {Loader.LoadedMaterials[i].Kd.X, Loader.LoadedMaterials[i].Kd.Y,
                                  Loader.LoadedMaterials[i].Kd.Z};
-                newMaterial->m_constantAmbient =
-                        Loader.LoadedMaterials[i].Ka.X;
-                newMaterial->m_constantDiffuse =
-                        Loader.LoadedMaterials[i].Kd.X;
-                newMaterial->m_constantSpecular =
-                        Loader.LoadedMaterials[i].Ks.X;
+                newMaterial->m_specularColor =
+                        (Color) {Loader.LoadedMaterials[i].Ks.X, Loader.LoadedMaterials[i].Ks.Y,
+                                 Loader.LoadedMaterials[i].Ks.Z};
                 newMaterial->m_constantSpecularExp =
                         Loader.LoadedMaterials[i].Ns;
-                newMaterial->m_constantReflectionRatio =
+                // FIXME reference index
+                newMaterial->m_constantRoughness =
                         Loader.LoadedMaterials[i].Ni;
+                if(!Loader.LoadedMaterials[i].map_Kd.empty()) {
+                    newMaterial->m_diffuseTexture = new Texture(objPath.substr(0, objPath.find_last_of('/') + 1) + Loader.LoadedMaterials[i].map_Kd);
+                }
                 m_objects[i]->m_material = newMaterial;
             } else {
                 m_objects[i]->m_material = material;

@@ -2,11 +2,12 @@
 // Created by Edge on 2020/7/13.
 //
 
-#ifndef ADVANCED_COMPUTER_GRAPH_MATERIAL_H
-#define ADVANCED_COMPUTER_GRAPH_MATERIAL_H
+#ifndef RAY_MATERIAL_H
+#define RAY_MATERIAL_H
 
 
 #include "Utility.h"
+#include "Photon.h"
 #include <iostream>
 
 class Scene;
@@ -15,27 +16,18 @@ class Ray;
 class Material {
 public:
     enum MaterialType {
-        DIFFUSE,
+        LAMBERTIAN,
         DIELECTRIC,
-        AREALIGHT
+        AREALIGHT,
+        NONE
     };
+    // return value is for one hit and end, shadeRecord is for following scatter
+    virtual Color calculatePhong(const Scene *scene, Ray &ray, const HitRecord &record, const LightRecord &shadeLightRecord, ShadeRecord &shadeRecord) const = 0;
+    virtual void calculatePhotonMapping(const Scene *scene, const PhotonMappingModel &photonMappingModel, Ray &ray, const HitRecord &record, ShadeRecord &shadeRecord) const = 0;
 
-    friend std::istream &operator >> (std::istream &is, Material &rhs);
-
-    virtual Color calculatePhong(const Scene *scene, const Ray &ray, const HitRecord &record, const LightRecord &shadeLightRecord);
-
-    virtual MaterialType getType() {return DIFFUSE;}
-
-    Color m_color;
-    double m_constantAmbient;
-    double m_constantDiffuse;
-
-    double m_constantSpecular;
-    double m_constantSpecularExp;
-
-    double m_constantReflectionRatio;
+    virtual MaterialType getType() {return NONE;}
 
 };
 
 
-#endif //ADVANCED_COMPUTER_GRAPH_MATERIAL_H
+#endif //RAY_MATERIAL_H

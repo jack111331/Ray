@@ -16,7 +16,6 @@ public:
     };
     Coord m_origin;
     float m_power;
-    Color m_color;
     Velocity m_incident;
     short m_flag;
 };
@@ -27,9 +26,6 @@ struct PhotonElement {
     bool operator <(const PhotonElement &rhs) const {
         return m_distance < rhs.m_distance;
     }
-//    bool operator ()(const PhotonElement &lhs, const PhotonElement &rhs) const {
-//        return lhs.m_distance < rhs.m_distance;
-//    }
 };
 
 struct KDTreeNode {
@@ -86,11 +82,14 @@ public:
     PhotonMappingModel() {
         m_kdTree = new KDTree;
     }
-    virtual Color castRay(const Scene *scene, Ray &ray, double intensity, Color &color, int depth);
+    virtual Color castRay(const Scene *scene, Ray &ray, int depth);
+    virtual std::string getModelName() const {
+        return "PhotonMapping";
+    }
+
 
     KDTree *m_kdTree;
-    // FIXME
-    float m_radius = 2.0;
+    const int TRACE_PHOTON_AMOUNT = 50;
 };
 
 #endif //RAY_PHOTON_H

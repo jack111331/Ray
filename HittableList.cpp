@@ -15,7 +15,7 @@ bool HittableList::isHit(double tmin, const Ray &ray, HitRecord &record) {
 bool HittableList::isHitShadow(double tmin, const Ray &ray, HitRecord &record) {
     bool isHit = false;
     for (auto hittable: m_hittableList) {
-        if(hittable->m_material->getType() != Material::MaterialType::DIFFUSE) {
+        if(hittable->m_material->getType() != Material::MaterialType::LAMBERTIAN) {
             isHit = std::max(isHit, hittable->isHit(tmin, ray, record));
         }
     }

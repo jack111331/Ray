@@ -491,33 +491,6 @@ Material.cpp.s:
 	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/Material.cpp.s
 .PHONY : Material.cpp.s
 
-Phong.obj: Phong.cpp.obj
-
-.PHONY : Phong.obj
-
-# target to build an object file
-Phong.cpp.obj:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/Phong.cpp.obj
-.PHONY : Phong.cpp.obj
-
-Phong.i: Phong.cpp.i
-
-.PHONY : Phong.i
-
-# target to preprocess a source file
-Phong.cpp.i:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/Phong.cpp.i
-.PHONY : Phong.cpp.i
-
-Phong.s: Phong.cpp.s
-
-.PHONY : Phong.s
-
-# target to generate assembly for a file
-Phong.cpp.s:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/Phong.cpp.s
-.PHONY : Phong.cpp.s
-
 Photon.obj: Photon.cpp.obj
 
 .PHONY : Photon.obj
@@ -652,6 +625,33 @@ Sphere.s: Sphere.cpp.s
 Sphere.cpp.s:
 	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/Sphere.cpp.s
 .PHONY : Sphere.cpp.s
+
+Texture.obj: Texture.cpp.obj
+
+.PHONY : Texture.obj
+
+# target to build an object file
+Texture.cpp.obj:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/Texture.cpp.obj
+.PHONY : Texture.cpp.obj
+
+Texture.i: Texture.cpp.i
+
+.PHONY : Texture.i
+
+# target to preprocess a source file
+Texture.cpp.i:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/Texture.cpp.i
+.PHONY : Texture.cpp.i
+
+Texture.s: Texture.cpp.s
+
+.PHONY : Texture.s
+
+# target to generate assembly for a file
+Texture.cpp.s:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/Texture.cpp.s
+.PHONY : Texture.cpp.s
 
 Triangle.obj: Triangle.cpp.obj
 
@@ -809,9 +809,6 @@ help:
 	@echo ... Material.obj
 	@echo ... Material.i
 	@echo ... Material.s
-	@echo ... Phong.obj
-	@echo ... Phong.i
-	@echo ... Phong.s
 	@echo ... Photon.obj
 	@echo ... Photon.i
 	@echo ... Photon.s
@@ -827,6 +824,9 @@ help:
 	@echo ... Sphere.obj
 	@echo ... Sphere.i
 	@echo ... Sphere.s
+	@echo ... Texture.obj
+	@echo ... Texture.i
+	@echo ... Texture.s
 	@echo ... Triangle.obj
 	@echo ... Triangle.i
 	@echo ... Triangle.s

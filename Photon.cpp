@@ -113,82 +113,15 @@ void KDTree::nearestSearchBF(KDTreeNode *node, const Coord &point, int k, int de
     }
 }
 
-Color PhotonMappingModel::castRay(const Scene *scene, Ray &ray, double intensity, Color &color, int depth) {
+Color PhotonMappingModel::castRay(const Scene *scene, Ray &ray, int depth) {
     HitRecord record;
-    record.t = -1.0;
-    int tracePhotomAmount = 50;
     if (scene->m_hittableList->isHit(0.00001, ray, record)) {
-//        std::cout << record.point << std::endl;
-        if (record.material->getType() == Material::MaterialType::DIFFUSE ||
-            record.material->getType() == Material::MaterialType::AREALIGHT) {
-            if (depth > 4) {
-                return record.material->m_color;
-            }
-            priority_queue<PhotonElement> photonHeap;
-            m_kdTree->nearestSearch(record.point, tracePhotomAmount, photonHeap);
-//            std::cout << photonHeap.top().m_distance << std::endl;
-            Color photonColor = {0, 0, 0};
-            if (!photonHeap.empty()) {
-                // squared distance
-                float squaredRadius = photonHeap.top().m_distance;
-                float area = squaredRadius * acos(-1);
-                while (!photonHeap.empty()) {
-                    photonColor += photonHeap.top().m_photon->m_power / area * Color{1.0, 1.0, 1.0};
-                    photonHeap.pop();
-                }
-            }
-            Color diffuseColor = {0, 0, 0};
-            for (int i = 0; i < 1; ++i) {
-                Velocity diffuseDirection = Util::randomSphere();
-                // if ray velocity dot record normal is negative and diffuse direction dot record normal is positive
-                // or ray velocity dot record normal is positive and diffuse direction dot record normal is negative
-                // then we don't need to negative the diffuse direction, otherwise we should fix diffuse direction
-                if (ray.velocity.dot(record.normal) * diffuseDirection.dot(record.normal) > 0.0) {
-                    diffuseDirection = -diffuseDirection;
-                }
-                ray = {record.point, diffuseDirection};
-                diffuseColor += record.material->m_color * castRay(scene, ray, intensity, color, depth + 1);
-            }
-            return photonColor + diffuseColor / 1.0;
-        } else if (record.material->getType() == Material::MaterialType::DIELECTRIC) {
-            DielectricMaterial *dielectricMaterial = (DielectricMaterial *) record.material;
-            Velocity outwardNormal;
-            float cosine;
-            float niOverNt;
-            if (ray.velocity.dot(record.normal) > 0.0) {
-                outwardNormal = -record.normal;
-                niOverNt = dielectricMaterial->m_constantReferenceIndex;
-                cosine = dielectricMaterial->m_constantReferenceIndex * ray.velocity.dot(record.normal) /
-                         ray.velocity.length();
-            } else {
-                outwardNormal = record.normal;
-                niOverNt = 1.0 / dielectricMaterial->m_constantReferenceIndex;
-                cosine = -ray.velocity.dot(record.normal) / ray.velocity.length();
-            }
-            float reflectivity = Util::schlickApprox(cosine, dielectricMaterial->m_constantReferenceIndex);
-            float refractivity = 1.0 - reflectivity;
-            Velocity refractedDirection;
-            Color dielectricColor = {0, 0, 0};
-            if (!ray.velocity.refract(outwardNormal, niOverNt, refractedDirection)) {
-                reflectivity = 1.0;
-                refractivity = 0.0;
-            }
-
-            for (int i = 0; i < 1; ++i) {
-                Scene::EmitType emitType = scene->russianRoulette(reflectivity, refractivity);
-                if (emitType == Scene::EmitType::REFLECTED) {
-                    Velocity reflectedDirection = ray.velocity.reflect(record.normal);
-                    ray = {record.point, reflectedDirection};
-                    // * reflectivity
-                    dielectricColor += castRay(scene, ray, intensity * reflectivity, color, depth + 1);
-                } else if (emitType == Scene::EmitType::TRANSMITTED) {
-                    ray = {record.point, refractedDirection};
-                    // * refractivity
-                    dielectricColor += castRay(scene, ray, intensity * refractivity, color, depth + 1);
-                }
-            }
-            return dielectricColor / 1.0;
+        ShadeRecord shadeRecord;
+        record.material->calculatePhotonMapping(scene, *this, ray, record, shadeRecord);
+        if(depth > 4 || !shadeRecord.isHasAttenuation()) {
+            return shadeRecord.emit + shadeRecord.attenuation;
         }
+        return shadeRecord.emit + shadeRecord.attenuation * castRay(scene, ray, depth + 1);
     }
-    return {0, 0, 0};
+    return scene->m_backgroundColor;
 }

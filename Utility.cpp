@@ -20,4 +20,15 @@ namespace Util {
         return result;
     }
 
+    EmitType russianRoulette(float reflectivity, float refractivity) {
+        float randomValue = Util::randomInUnit();
+        if (randomValue < reflectivity) {
+            return EmitType::REFLECTED;
+        } else if (randomValue < reflectivity + refractivity) {
+            return EmitType::TRANSMITTED;
+        } else {
+            return EmitType::ABSORBED;
+        }
+    }
+
 };

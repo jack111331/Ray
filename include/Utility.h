@@ -2,8 +2,8 @@
 // Created by Edge on 2020/7/7.
 //
 
-#ifndef ADVANCED_COMPUTER_GRAPH_UTILITY_H
-#define ADVANCED_COMPUTER_GRAPH_UTILITY_H
+#ifndef RAY_UTILITY_H
+#define RAY_UTILITY_H
 
 #include <cmath>
 #include <iostream>
@@ -40,15 +40,15 @@ public:
         return copy;
     }
 
-    double length() const {
+    float length() const {
         return sqrt(x * x + y * y + z * z);
     }
 
-    double lengthWithoutSquare() const {
+    float lengthWithoutSquare() const {
         return x * x + y * y + z * z;
     }
 
-    double dot(const Velocity &rhs) const {
+    float dot(const Velocity &rhs) const {
         return x * rhs.x + y * rhs.y + z * rhs.z;
     }
 
@@ -65,7 +65,7 @@ public:
         return reflectedVelocity - 2.0 * dot * normal;
     }
 
-    bool refract(const Velocity &normal, float niOverNt, Velocity &refracted) {
+    bool refract(const Velocity &normal, float niOverNt, Velocity &refracted) const {
         Velocity unitVector = (*this);
         unitVector = unitVector.normalize();
         float dt = unitVector.dot(normal);
@@ -84,7 +84,7 @@ public:
     }
 
     Velocity &normalize() {
-        double velocityLength = length();
+        float velocityLength = length();
         x /= velocityLength;
         y /= velocityLength;
         z /= velocityLength;
@@ -163,6 +163,29 @@ public:
 
 };
 
+class Coord2D {
+public:
+    float x, y;
+
+    friend Coord2D operator*(float lhs, const Coord2D &rhs) {
+        return {lhs * rhs.x , lhs * rhs.y};
+    }
+
+    Coord2D operator-(const Coord2D &rhs) const {
+        return {x - rhs.x, y - rhs.y};
+    }
+
+    Coord2D operator+(const Coord2D &rhs) const {
+        return {x + rhs.x, y + rhs.y};
+    }
+};
+
+class Coord2Di {
+public:
+    int x, y;
+};
+
+
 class Color {
 public:
     float r, g, b;
@@ -227,10 +250,11 @@ class Material;
 
 class HitRecord {
 public:
-    double t;
+    float t = -1.0f;
     Coord point;
     Velocity normal;
     Material *material;
+    Coord2D texCoord;
 };
 
 class LightRecord {
@@ -242,13 +266,29 @@ public:
     std::vector<bool> isShadedLightList;
 };
 
+class ShadeRecord {
+public:
+    Color emit = {.0f, .0f, .0f};
+    Color attenuation = {.0f, .0f, .0f};
+    bool isHasAttenuation() const {
+        return attenuation.r >= 1e-6 && attenuation.g >= 1e-6 && attenuation.b >= 1e-6;
+    }
+};
+
+enum EmitType {
+    ABSORBED, REFLECTED, TRANSMITTED
+};
+
 namespace Util {
     float schlickApprox(float cosine, float referenceIndex);
 
     float randomInUnit();
 
     Velocity randomSphere();
+
+    EmitType russianRoulette(float reflectivity, float refractivity);
+
 };
 
 
-#endif //ADVANCED_COMPUTER_GRAPH_UTILITY_H
+#endif //RAY_UTILITY_H
