@@ -410,6 +410,60 @@ IllumModelFactory.cpp.s:
 	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/IllumModelFactory.cpp.s
 .PHONY : IllumModelFactory.cpp.s
 
+InstantRadiosity.obj: InstantRadiosity.cpp.obj
+
+.PHONY : InstantRadiosity.obj
+
+# target to build an object file
+InstantRadiosity.cpp.obj:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/InstantRadiosity.cpp.obj
+.PHONY : InstantRadiosity.cpp.obj
+
+InstantRadiosity.i: InstantRadiosity.cpp.i
+
+.PHONY : InstantRadiosity.i
+
+# target to preprocess a source file
+InstantRadiosity.cpp.i:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/InstantRadiosity.cpp.i
+.PHONY : InstantRadiosity.cpp.i
+
+InstantRadiosity.s: InstantRadiosity.cpp.s
+
+.PHONY : InstantRadiosity.s
+
+# target to generate assembly for a file
+InstantRadiosity.cpp.s:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/InstantRadiosity.cpp.s
+.PHONY : InstantRadiosity.cpp.s
+
+KDTree.obj: KDTree.cpp.obj
+
+.PHONY : KDTree.obj
+
+# target to build an object file
+KDTree.cpp.obj:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/KDTree.cpp.obj
+.PHONY : KDTree.cpp.obj
+
+KDTree.i: KDTree.cpp.i
+
+.PHONY : KDTree.i
+
+# target to preprocess a source file
+KDTree.cpp.i:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/KDTree.cpp.i
+.PHONY : KDTree.cpp.i
+
+KDTree.s: KDTree.cpp.s
+
+.PHONY : KDTree.s
+
+# target to generate assembly for a file
+KDTree.cpp.s:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/KDTree.cpp.s
+.PHONY : KDTree.cpp.s
+
 Lambertian.obj: Lambertian.cpp.obj
 
 .PHONY : Lambertian.obj
@@ -517,6 +571,33 @@ Photon.s: Photon.cpp.s
 Photon.cpp.s:
 	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/Photon.cpp.s
 .PHONY : Photon.cpp.s
+
+Pipeline.obj: Pipeline.cpp.obj
+
+.PHONY : Pipeline.obj
+
+# target to build an object file
+Pipeline.cpp.obj:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/Pipeline.cpp.obj
+.PHONY : Pipeline.cpp.obj
+
+Pipeline.i: Pipeline.cpp.i
+
+.PHONY : Pipeline.i
+
+# target to preprocess a source file
+Pipeline.cpp.i:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/Pipeline.cpp.i
+.PHONY : Pipeline.cpp.i
+
+Pipeline.s: Pipeline.cpp.s
+
+.PHONY : Pipeline.s
+
+# target to generate assembly for a file
+Pipeline.cpp.s:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/Pipeline.cpp.s
+.PHONY : Pipeline.cpp.s
 
 Ray.obj: Ray.cpp.obj
 
@@ -800,6 +881,12 @@ help:
 	@echo ... IllumModelFactory.obj
 	@echo ... IllumModelFactory.i
 	@echo ... IllumModelFactory.s
+	@echo ... InstantRadiosity.obj
+	@echo ... InstantRadiosity.i
+	@echo ... InstantRadiosity.s
+	@echo ... KDTree.obj
+	@echo ... KDTree.i
+	@echo ... KDTree.s
 	@echo ... Lambertian.obj
 	@echo ... Lambertian.i
 	@echo ... Lambertian.s
@@ -812,6 +899,9 @@ help:
 	@echo ... Photon.obj
 	@echo ... Photon.i
 	@echo ... Photon.s
+	@echo ... Pipeline.obj
+	@echo ... Pipeline.i
+	@echo ... Pipeline.s
 	@echo ... Ray.obj
 	@echo ... Ray.i
 	@echo ... Ray.s

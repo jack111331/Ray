@@ -3,6 +3,7 @@
 //
 
 #include <Photon.h>
+#include <InstantRadiosity.h>
 #include "IllumModelFactory.h"
 #include "Whitted.h"
 
@@ -11,5 +12,7 @@ IlluminationModel *IlluminationModelFactory::createModel(const std::string &mode
         return new WhittedModel();
     } else if(modelName == "PhotonMapping") {
         return new PhotonMappingModel();
+    } else if(modelName == "InstantRadiosity") {
+        return new InstantRadiosityModel();
     }
 }

@@ -112,15 +112,15 @@ Scene *Config::loadConfig(const string &configFilename) {
         } else if(cmd == "AL") {
             AreaLight *areaLight = new AreaLight();
             ss >> *areaLight;
-            scene->m_areaLightList.push_back(areaLight);
+            scene->m_lightList.push_back(areaLight);
             boundMaterial = areaLight;
 
-            Coord coordList[3] = {areaLight->m_point,areaLight->m_point + areaLight->m_uDirection, areaLight->m_point + areaLight->m_uDirection + areaLight->m_vDirection};
+            Coord coordList[3] = {areaLight->m_origin, areaLight->m_origin + areaLight->m_uDirection, areaLight->m_origin + areaLight->m_uDirection + areaLight->m_vDirection};
             Hittable *triangle = new Triangle(&coordList);
             triangle->setMaterial(boundMaterial);
             scene->m_hittableList->addHittable(triangle);
 
-            coordList[1] = areaLight->m_point + areaLight->m_vDirection;
+            coordList[1] = areaLight->m_origin + areaLight->m_vDirection;
             triangle = new Triangle(&coordList);
             triangle->setMaterial(boundMaterial);
             scene->m_hittableList->addHittable(triangle);

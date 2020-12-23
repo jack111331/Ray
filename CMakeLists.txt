@@ -68,6 +68,9 @@ list(APPEND SOURCE_LIST
         AreaLight.cpp
         Lambertian.cpp
         Texture.cpp
+        InstantRadiosity.cpp
+        KDTree.cpp
+        Pipeline.cpp
         )
 list(APPEND HEADER_LIST
         include/Ray.h
@@ -91,6 +94,10 @@ list(APPEND HEADER_LIST
         include/AreaLight.h
         include/Lambertian.h
         include/Texture.h
+        include/InstantRadiosity.h
+        include/KDTree.h
+        include/Pipeline.h
+        include/GLUtil.h
         include/stb_image.h
         )
 

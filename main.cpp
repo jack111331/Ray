@@ -19,10 +19,9 @@
 #include <Lambertian.h>
 
 static bool localRendering = false;
-static bool whitted = false;
-static bool photonMapping = false;
 
 using namespace std;
+
 struct Object {
     ObjectInfo m_objectInfo;
     Material *m_material;
@@ -31,7 +30,7 @@ struct Object {
 static vector<Object> objectList;
 static Shader *objectShader;
 
-void printGraphicCardInfo() {
+static void printGraphicCardInfo() {
     const GLubyte *vendor = glGetString(GL_VENDOR); // Returns the vendor
     const GLubyte *renderer = glGetString(GL_RENDERER);
     cout << "Current Vendor: " << (const char *) vendor << endl;
@@ -55,7 +54,7 @@ void initLocalRendering(const Scene *scene) {
     auto hittableList = scene->m_hittableList->m_hittableList;
     for (auto hittable : hittableList) {
         std::vector<ObjectInfo> objectInfoList = hittable->createVAO(hittable->m_material);
-        for(auto objectInfo: objectInfoList) {
+        for (auto objectInfo: objectInfoList) {
             objectList.push_back({objectInfo, hittable->m_material});
         }
     }
@@ -66,16 +65,19 @@ void initLocalRendering(const Scene *scene) {
 
 void localRender(vector<Object> &objectList, const Camera *camera, const vector<Light *> &lightList) {
     for (auto object: objectList) {
-        if(object.m_material->getType() == Material::MaterialType::LAMBERTIAN) {
+        if (object.m_material->getType() == Material::MaterialType::LAMBERTIAN) {
             // shader binding
             objectShader->bind();
             // object binding
             glBindVertexArray(object.m_objectInfo.m_vao);
             // uniform
-            glm::mat4 projection = glm::perspective(glm::radians(camera->m_fov * 2.0f), (float) camera->m_width / (float) camera->m_height,
+            glm::mat4 projection = glm::perspective(glm::radians(camera->m_fov * 2.0f),
+                                                    (float) camera->m_width / (float) camera->m_height,
                                                     0.1f, 100.0f);
             glm::mat4 view = glm::lookAt(glm::vec3(camera->m_eyeCoord.x, camera->m_eyeCoord.y, camera->m_eyeCoord.z),
-                                         glm::vec3(camera->m_eyeCoord.x + camera->m_direction.x, camera->m_eyeCoord.y + camera->m_direction.y, camera->m_eyeCoord.z + camera->m_direction.z),
+                                         glm::vec3(camera->m_eyeCoord.x + camera->m_direction.x,
+                                                   camera->m_eyeCoord.y + camera->m_direction.y,
+                                                   camera->m_eyeCoord.z + camera->m_direction.z),
                                          glm::vec3(camera->m_up.x, camera->m_up.y, camera->m_up.z));
             objectShader->uniformMat4f("projection", projection);
             objectShader->uniformMat4f("view", view);
@@ -89,8 +91,9 @@ void localRender(vector<Object> &objectList, const Camera *camera, const vector<
             objectShader->uniform3f("viewPos", camera->m_eyeCoord.x, camera->m_eyeCoord.y, camera->m_eyeCoord.z);
             objectShader->uniform3f("lightColor", 1.0, 1.0, 1.0);
 
-            const LambertianMaterial *material = (LambertianMaterial *)object.m_material;
-            objectShader->uniform3f("objectColor", material->m_diffuseColor.r, material->m_diffuseColor.g, material->m_diffuseColor.b);
+            const LambertianMaterial *material = (LambertianMaterial *) object.m_material;
+            objectShader->uniform3f("objectColor", material->m_diffuseColor.r, material->m_diffuseColor.g,
+                                    material->m_diffuseColor.b);
             // draw call
             glDrawElements(GL_TRIANGLES, object.m_objectInfo.m_indicesAmount, GL_UNSIGNED_INT, 0);
         }
@@ -101,11 +104,11 @@ int main(int argc, char **argv) {
     Config *config = new Config();
     Scene *scene = nullptr;
     if (argc > 1) {
-        if(!strcmp(argv[1], "LR") ) {
+        if (!strcmp(argv[1], "LR")) {
             localRendering = true;
         }
         scene = config->loadConfig(argv[1]);
-        if(!scene) {
+        if (!scene) {
             cout << "[ERROR] Create scene failed" << endl;
             exit(1);
         }
@@ -115,8 +118,10 @@ int main(int argc, char **argv) {
     }
     const Camera *camera = scene->m_camera;
     if (!localRendering) {
-        if(scene->m_model->getModelName() != "PhotonMapping") {
+        if (scene->m_model->getModelName() != "PhotonMapping") {
             scene->displayScene();
+        } else if (scene->m_model->getModelName() != "InstantRadiosity") {
+
         } else {
             scene->displayPhotonMappingScene();
         }

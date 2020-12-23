@@ -7,7 +7,7 @@
 
 #include "Material.h"
 
-class AreaLight : public Material {
+class AreaLight : public Material, public Light {
 public:
     friend std::istream &operator >> (std::istream &lhs, AreaLight &areaLight);
 
@@ -16,9 +16,10 @@ public:
 
     virtual MaterialType getType() {return AREALIGHT;}
 
+    virtual Coord getLightOrigin() const;
+
     Color m_emitColor = {.0f, .0f, .0f};
 
-    Coord m_point;
     Velocity m_uDirection, m_vDirection;
 
 };

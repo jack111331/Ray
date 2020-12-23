@@ -46,7 +46,7 @@ Color LambertianMaterial::calculatePhong(const Scene *scene, Ray &ray, const Hit
 void
 LambertianMaterial::calculatePhotonMapping(const Scene *scene, const PhotonMappingModel &photonMappingModel, Ray &ray,
                                            const HitRecord &record, ShadeRecord &shadeRecord) const {
-    priority_queue<PhotonElement> photonHeap;
+    priority_queue<CoordDataElement<Photon>> photonHeap;
     photonMappingModel.m_kdTree->nearestSearch(record.point, photonMappingModel.TRACE_PHOTON_AMOUNT, photonHeap);
     if (!photonHeap.empty()) {
         // squared distance

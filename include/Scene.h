@@ -36,7 +36,6 @@ public:
 
     HittableList *m_hittableList;
     std::vector<Light *> m_lightList;
-    std::vector<AreaLight *> m_areaLightList;
     Camera *m_camera;
     IlluminationModel *m_model;
     Color m_backgroundColor = {.0f, .0f, .0f};

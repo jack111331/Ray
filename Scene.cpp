@@ -119,21 +119,21 @@ bool Scene::photonTracing(Ray &ray, float power, int depth) {
             refractivity = 1.0 - reflectivity;
         } else if (record.material->getType() == Material::MaterialType::LAMBERTIAN) {
             PhotonMappingModel *model = (PhotonMappingModel *) m_model;
-            Photon photon = {
+            Photon photon(
                     record.point,
                     power,
                     ray.velocity,
                     Photon::Flag::NORMAL
-            };
+            );
             model->m_kdTree->insert(photon);
         } else if (record.material->getType() == Material::MaterialType::AREALIGHT) {
             PhotonMappingModel *model = (PhotonMappingModel *) m_model;
-            Photon photon = {
+            Photon photon(
                     record.point,
                     power,
                     ray.velocity,
                     Photon::Flag::NORMAL
-            };
+            );
             model->m_kdTree->insert(photon);
         }
         EmitType emitType = Util::russianRoulette(reflectivity, refractivity);
@@ -172,8 +172,8 @@ void Scene::displayPhotonMappingScene() {
     // first pass: photon tracing
     const float photonPower = .2;// watt
     const float photonAmount = 500;
-    if(m_areaLightList.empty()) {
-        std::cerr << "No area light" << std::endl;
+    if (m_lightList.empty()) {
+        std::cerr << "No light" << std::endl;
         exit(1);
     }
     photonGenerating(photonPower, photonAmount);
@@ -218,20 +218,14 @@ void Scene::displayPhotonMappingScene() {
 }
 
 void Scene::photonGenerating(float photonPower, float photonAmount) {
-    for (auto areaLight : m_areaLightList) {
+    for (auto light : m_lightList) {
         for (int i = 0; i < photonAmount; ++i) {
             Ray photonTraceRay;
+            Coord photonPosition;
             Velocity photonDirection;
             do {
                 // determine photon position and emit direction
-                float photonPositionU, photonPositionV;
-                do {
-                    photonPositionU = Util::randomInUnit();
-                    photonPositionV = Util::randomInUnit();
-                } while (photonPositionU < 0 || photonPositionV < 0 || photonPositionU + photonPositionV > 1);
-                Coord photonPosition = areaLight->m_point + photonPositionU * areaLight->m_uDirection +
-                                       photonPositionV * areaLight->m_vDirection;
-
+                photonPosition = light->getLightOrigin();
                 photonDirection = Util::randomSphere();
 
                 // photon tracing and store photon on hitted surface

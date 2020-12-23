@@ -13,7 +13,7 @@ istream &operator>>(istream &lhs, AreaLight &areaLight) {
     for (int i = 0; i < 4; ++i) {
         lhs >> planePoint[i];
     }
-    areaLight.m_point = planePoint[0];
+    areaLight.m_origin = planePoint[0];
     areaLight.m_uDirection = planePoint[1] - planePoint[0];
     areaLight.m_vDirection = planePoint[3] - planePoint[0];
 }
@@ -28,7 +28,7 @@ AreaLight::calculatePhong(const Scene *scene, Ray &ray, const HitRecord &record,
 
 void AreaLight::calculatePhotonMapping(const Scene *scene, const PhotonMappingModel &photonMappingModel, Ray &ray,
                                        const HitRecord &record, ShadeRecord &shadeRecord) const {
-    priority_queue<PhotonElement> photonHeap;
+    priority_queue<CoordDataElement<Photon>> photonHeap;
     photonMappingModel.m_kdTree->nearestSearch(record.point, photonMappingModel.TRACE_PHOTON_AMOUNT, photonHeap);
     if (!photonHeap.empty()) {
         // squared distance
@@ -50,3 +50,11 @@ void AreaLight::calculatePhotonMapping(const Scene *scene, const PhotonMappingMo
     ray = {record.point, diffuseDirection};
 }
 
+Coord AreaLight::getLightOrigin() const {
+    float photonPositionU, photonPositionV;
+    do {
+        photonPositionU = Util::randomInUnit();
+        photonPositionV = Util::randomInUnit();
+    } while (photonPositionU < 0 || photonPositionV < 0 || photonPositionU + photonPositionV > 1);
+    return m_origin + photonPositionU * m_uDirection + photonPositionV * m_vDirection;
+}

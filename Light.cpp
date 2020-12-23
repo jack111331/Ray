@@ -3,3 +3,7 @@
 //
 
 #include "Light.h"
+
+Coord Light::getLightOrigin() const {
+    return m_origin;
+}

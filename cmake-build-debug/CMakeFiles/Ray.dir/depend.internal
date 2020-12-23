@@ -5,12 +5,14 @@ CMakeFiles/Ray.dir/AreaLight.cpp.obj
  ../include/AreaLight.h
  ../include/Camera.h
  ../include/IllumModel.h
+ ../include/KDTree.h
  ../include/Light.h
  ../include/Material.h
  ../include/Photon.h
  ../include/Ray.h
  ../include/Scene.h
  ../include/Utility.h
+ ../include/utility.h
  D:/Code/Ray/AreaLight.cpp
 CMakeFiles/Ray.dir/BVH.cpp.obj
  ../include/BVH.h
@@ -18,6 +20,7 @@ CMakeFiles/Ray.dir/BVH.cpp.obj
  ../include/GL/glew.h
  ../include/Hittable.h
  ../include/IllumModel.h
+ ../include/KDTree.h
  ../include/Lambertian.h
  ../include/Light.h
  ../include/Material.h
@@ -27,6 +30,7 @@ CMakeFiles/Ray.dir/BVH.cpp.obj
  ../include/Scene.h
  ../include/Texture.h
  ../include/Utility.h
+ ../include/utility.h
  D:/Code/Ray/BVH.cpp
 CMakeFiles/Ray.dir/Camera.cpp.obj
  ../include/Camera.h
@@ -42,6 +46,7 @@ CMakeFiles/Ray.dir/Config.cpp.obj
  ../include/Hittable.h
  ../include/IllumModel.h
  ../include/IllumModelFactory.h
+ ../include/KDTree.h
  ../include/Lambertian.h
  ../include/Light.h
  ../include/Material.h
@@ -52,56 +57,81 @@ CMakeFiles/Ray.dir/Config.cpp.obj
  ../include/Texture.h
  ../include/Triangle.h
  ../include/Utility.h
+ ../include/utility.h
  D:/Code/Ray/Config.cpp
  D:/Code/Ray/HittableList.h
 CMakeFiles/Ray.dir/Dielectric.cpp.obj
  ../include/Camera.h
  ../include/Dielectric.h
  ../include/IllumModel.h
+ ../include/KDTree.h
  ../include/Light.h
  ../include/Material.h
  ../include/Photon.h
  ../include/Ray.h
  ../include/Scene.h
  ../include/Utility.h
+ ../include/utility.h
  D:/Code/Ray/Dielectric.cpp
 CMakeFiles/Ray.dir/Hittable.cpp.obj
  ../include/Camera.h
  ../include/Hittable.h
  ../include/IllumModel.h
+ ../include/KDTree.h
  ../include/Light.h
  ../include/Material.h
  ../include/Photon.h
  ../include/Ray.h
  ../include/Scene.h
- ../include/Utility.h
+ ../include/utility.h
  D:/Code/Ray/Hittable.cpp
 CMakeFiles/Ray.dir/HittableList.cpp.obj
  ../include/Camera.h
  ../include/Hittable.h
  ../include/IllumModel.h
+ ../include/KDTree.h
  ../include/Light.h
  ../include/Material.h
  ../include/Photon.h
  ../include/Ray.h
  ../include/Scene.h
  ../include/Utility.h
+ ../include/utility.h
  D:/Code/Ray/HittableList.cpp
  D:/Code/Ray/HittableList.h
 CMakeFiles/Ray.dir/IllumModelFactory.cpp.obj
  ../include/Camera.h
  ../include/IllumModel.h
  ../include/IllumModelFactory.h
+ ../include/InstantRadiosity.h
+ ../include/KDTree.h
  ../include/Light.h
  ../include/Photon.h
  ../include/Ray.h
  ../include/Scene.h
  ../include/Utility.h
  ../include/Whitted.h
+ ../include/utility.h
  D:/Code/Ray/IllumModelFactory.cpp
+CMakeFiles/Ray.dir/InstantRadiosity.cpp.obj
+ ../include/Camera.h
+ ../include/IllumModel.h
+ ../include/InstantRadiosity.h
+ ../include/KDTree.h
+ ../include/Light.h
+ ../include/Ray.h
+ ../include/Scene.h
+ ../include/Utility.h
+ ../include/utility.h
+ D:/Code/Ray/InstantRadiosity.cpp
+CMakeFiles/Ray.dir/KDTree.cpp.obj
+ ../include/KDTree.h
+ ../include/utility.h
+ D:/Code/Ray/KDTree.cpp
 CMakeFiles/Ray.dir/Lambertian.cpp.obj
  ../include/Camera.h
  ../include/IllumModel.h
+ ../include/KDTree.h
  ../include/Lambertian.h
  ../include/Light.h
  ../include/Material.h
@@ -110,6 +140,7 @@ CMakeFiles/Ray.dir/Lambertian.cpp.obj
  ../include/Scene.h
  ../include/Texture.h
  ../include/Utility.h
+ ../include/utility.h
  D:/Code/Ray/Lambertian.cpp
 CMakeFiles/Ray.dir/Light.cpp.obj
  ../include/Light.h
@@ -118,26 +149,183 @@ CMakeFiles/Ray.dir/Light.cpp.obj
 CMakeFiles/Ray.dir/Material.cpp.obj
  ../include/Camera.h
  ../include/IllumModel.h
+ ../include/KDTree.h
  ../include/Light.h
  ../include/Material.h
  ../include/Photon.h
  ../include/Ray.h
  ../include/Scene.h
  ../include/Utility.h
+ ../include/utility.h
  D:/Code/Ray/Material.cpp
 CMakeFiles/Ray.dir/Photon.cpp.obj
  ../include/Camera.h
  ../include/Dielectric.h
  ../include/Hittable.h
  ../include/IllumModel.h
+ ../include/KDTree.h
  ../include/Light.h
  ../include/Material.h
  ../include/Photon.h
  ../include/Ray.h
  ../include/Scene.h
  ../include/Utility.h
+ ../include/utility.h
  D:/Code/Ray/HittableList.h
  D:/Code/Ray/Photon.cpp
+CMakeFiles/Ray.dir/Pipeline.cpp.obj
+ ../include/Pipeline.h
+ ../include/Shader.h
+ ../include/glm/common.hpp
+ ../include/glm/detail/_fixes.hpp
+ ../include/glm/detail/_swizzle.hpp
+ ../include/glm/detail/_swizzle_func.hpp
+ ../include/glm/detail/_vectorize.hpp
+ ../include/glm/detail/compute_common.hpp
+ ../include/glm/detail/compute_vector_relational.hpp
+ ../include/glm/detail/func_common.inl
+ ../include/glm/detail/func_common_simd.inl
+ ../include/glm/detail/func_exponential.inl
+ ../include/glm/detail/func_exponential_simd.inl
+ ../include/glm/detail/func_geometric.inl
+ ../include/glm/detail/func_geometric_simd.inl
+ ../include/glm/detail/func_integer.inl
+ ../include/glm/detail/func_integer_simd.inl
+ ../include/glm/detail/func_matrix.inl
+ ../include/glm/detail/func_matrix_simd.inl
+ ../include/glm/detail/func_packing.inl
+ ../include/glm/detail/func_packing_simd.inl
+ ../include/glm/detail/func_trigonometric.inl
+ ../include/glm/detail/func_trigonometric_simd.inl
+ ../include/glm/detail/func_vector_relational.inl
+ ../include/glm/detail/func_vector_relational_simd.inl
+ ../include/glm/detail/qualifier.hpp
+ ../include/glm/detail/setup.hpp
+ ../include/glm/detail/type_half.hpp
+ ../include/glm/detail/type_half.inl
+ ../include/glm/detail/type_mat2x2.hpp
+ ../include/glm/detail/type_mat2x2.inl
+ ../include/glm/detail/type_mat2x3.hpp
+ ../include/glm/detail/type_mat2x3.inl
+ ../include/glm/detail/type_mat2x4.hpp
+ ../include/glm/detail/type_mat2x4.inl
+ ../include/glm/detail/type_mat3x2.hpp
+ ../include/glm/detail/type_mat3x2.inl
+ ../include/glm/detail/type_mat3x3.hpp
+ ../include/glm/detail/type_mat3x3.inl
+ ../include/glm/detail/type_mat3x4.hpp
+ ../include/glm/detail/type_mat3x4.inl
+ ../include/glm/detail/type_mat4x2.hpp
+ ../include/glm/detail/type_mat4x2.inl
+ ../include/glm/detail/type_mat4x3.hpp
+ ../include/glm/detail/type_mat4x3.inl
+ ../include/glm/detail/type_mat4x4.hpp
+ ../include/glm/detail/type_mat4x4.inl
+ ../include/glm/detail/type_mat4x4_simd.inl
+ ../include/glm/detail/type_vec1.hpp
+ ../include/glm/detail/type_vec1.inl
+ ../include/glm/detail/type_vec2.hpp
+ ../include/glm/detail/type_vec2.inl
+ ../include/glm/detail/type_vec3.hpp
+ ../include/glm/detail/type_vec3.inl
+ ../include/glm/detail/type_vec4.hpp
+ ../include/glm/detail/type_vec4.inl
+ ../include/glm/detail/type_vec4_simd.inl
+ ../include/glm/exponential.hpp
+ ../include/glm/ext/matrix_double2x2.hpp
+ ../include/glm/ext/matrix_double2x2_precision.hpp
+ ../include/glm/ext/matrix_double2x3.hpp
+ ../include/glm/ext/matrix_double2x3_precision.hpp
+ ../include/glm/ext/matrix_double2x4.hpp
+ ../include/glm/ext/matrix_double2x4_precision.hpp
+ ../include/glm/ext/matrix_double3x2.hpp
+ ../include/glm/ext/matrix_double3x2_precision.hpp
+ ../include/glm/ext/matrix_double3x3.hpp
+ ../include/glm/ext/matrix_double3x3_precision.hpp
+ ../include/glm/ext/matrix_double3x4.hpp
+ ../include/glm/ext/matrix_double3x4_precision.hpp
+ ../include/glm/ext/matrix_double4x2.hpp
+ ../include/glm/ext/matrix_double4x2_precision.hpp
+ ../include/glm/ext/matrix_double4x3.hpp
+ ../include/glm/ext/matrix_double4x3_precision.hpp
+ ../include/glm/ext/matrix_double4x4.hpp
+ ../include/glm/ext/matrix_double4x4_precision.hpp
+ ../include/glm/ext/matrix_float2x2.hpp
+ ../include/glm/ext/matrix_float2x2_precision.hpp
+ ../include/glm/ext/matrix_float2x3.hpp
+ ../include/glm/ext/matrix_float2x3_precision.hpp
+ ../include/glm/ext/matrix_float2x4.hpp
+ ../include/glm/ext/matrix_float2x4_precision.hpp
+ ../include/glm/ext/matrix_float3x2.hpp
+ ../include/glm/ext/matrix_float3x2_precision.hpp
+ ../include/glm/ext/matrix_float3x3.hpp
+ ../include/glm/ext/matrix_float3x3_precision.hpp
+ ../include/glm/ext/matrix_float3x4.hpp
+ ../include/glm/ext/matrix_float3x4_precision.hpp
+ ../include/glm/ext/matrix_float4x2.hpp
+ ../include/glm/ext/matrix_float4x2_precision.hpp
+ ../include/glm/ext/matrix_float4x3.hpp
+ ../include/glm/ext/matrix_float4x3_precision.hpp
+ ../include/glm/ext/matrix_float4x4.hpp
+ ../include/glm/ext/matrix_float4x4_precision.hpp
+ ../include/glm/ext/vector_bool2.hpp
+ ../include/glm/ext/vector_bool2_precision.hpp
+ ../include/glm/ext/vector_bool3.hpp
+ ../include/glm/ext/vector_bool3_precision.hpp
+ ../include/glm/ext/vector_bool4.hpp
+ ../include/glm/ext/vector_bool4_precision.hpp
+ ../include/glm/ext/vector_double2.hpp
+ ../include/glm/ext/vector_double2_precision.hpp
+ ../include/glm/ext/vector_double3.hpp
+ ../include/glm/ext/vector_double3_precision.hpp
+ ../include/glm/ext/vector_double4.hpp
+ ../include/glm/ext/vector_double4_precision.hpp
+ ../include/glm/ext/vector_float2.hpp
+ ../include/glm/ext/vector_float2_precision.hpp
+ ../include/glm/ext/vector_float3.hpp
+ ../include/glm/ext/vector_float3_precision.hpp
+ ../include/glm/ext/vector_float4.hpp
+ ../include/glm/ext/vector_float4_precision.hpp
+ ../include/glm/ext/vector_int2.hpp
+ ../include/glm/ext/vector_int2_precision.hpp
+ ../include/glm/ext/vector_int3.hpp
+ ../include/glm/ext/vector_int3_precision.hpp
+ ../include/glm/ext/vector_int4.hpp
+ ../include/glm/ext/vector_int4_precision.hpp
+ ../include/glm/ext/vector_uint2.hpp
+ ../include/glm/ext/vector_uint2_precision.hpp
+ ../include/glm/ext/vector_uint3.hpp
+ ../include/glm/ext/vector_uint3_precision.hpp
+ ../include/glm/ext/vector_uint4.hpp
+ ../include/glm/ext/vector_uint4_precision.hpp
+ ../include/glm/fwd.hpp
+ ../include/glm/geometric.hpp
+ ../include/glm/glm.hpp
+ ../include/glm/integer.hpp
+ ../include/glm/mat2x2.hpp
+ ../include/glm/mat2x3.hpp
+ ../include/glm/mat2x4.hpp
+ ../include/glm/mat3x2.hpp
+ ../include/glm/mat3x3.hpp
+ ../include/glm/mat3x4.hpp
+ ../include/glm/mat4x2.hpp
+ ../include/glm/mat4x3.hpp
+ ../include/glm/mat4x4.hpp
+ ../include/glm/matrix.hpp
+ ../include/glm/packing.hpp
+ ../include/glm/simd/common.h
+ ../include/glm/simd/exponential.h
+ ../include/glm/simd/geometric.h
+ ../include/glm/simd/integer.h
+ ../include/glm/simd/matrix.h
+ ../include/glm/simd/neon.h
+ ../include/glm/simd/platform.h
+ ../include/glm/trigonometric.hpp
+ ../include/glm/vec2.hpp
+ ../include/glm/vec3.hpp
+ ../include/glm/vec4.hpp
+ ../include/glm/vector_relational.hpp
+ D:/Code/Ray/Pipeline.cpp
 CMakeFiles/Ray.dir/Ray.cpp.obj
  ../include/Ray.h
  ../include/Utility.h
@@ -148,12 +336,14 @@ CMakeFiles/Ray.dir/Scene.cpp.obj
  ../include/Dielectric.h
  ../include/Hittable.h
  ../include/IllumModel.h
+ ../include/KDTree.h
  ../include/Light.h
  ../include/Material.h
  ../include/Photon.h
  ../include/Ray.h
  ../include/Scene.h
  ../include/Utility.h
+ ../include/utility.h
  D:/Code/Ray/HittableList.h
  D:/Code/Ray/Scene.cpp
 CMakeFiles/Ray.dir/Shader.cpp.obj
@@ -314,6 +504,7 @@ CMakeFiles/Ray.dir/Sphere.cpp.obj
  ../include/GL/glew.h
  ../include/Hittable.h
  ../include/IllumModel.h
+ ../include/KDTree.h
  ../include/Light.h
  ../include/Material.h
  ../include/Photon.h
@@ -321,6 +512,7 @@ CMakeFiles/Ray.dir/Sphere.cpp.obj
  ../include/Scene.h
  ../include/Sphere.h
  ../include/Utility.h
+ ../include/utility.h
  D:/Code/Ray/Sphere.cpp
 CMakeFiles/Ray.dir/Texture.cpp.obj
  ../include/Texture.h
@@ -332,6 +524,7 @@ CMakeFiles/Ray.dir/Triangle.cpp.obj
  ../include/GL/glew.h
  ../include/Hittable.h
  ../include/IllumModel.h
+ ../include/KDTree.h
  ../include/Light.h
  ../include/Material.h
  ../include/Photon.h
@@ -339,6 +532,7 @@ CMakeFiles/Ray.dir/Triangle.cpp.obj
  ../include/Scene.h
  ../include/Triangle.h
  ../include/Utility.h
+ ../include/utility.h
  D:/Code/Ray/Triangle.cpp
 CMakeFiles/Ray.dir/Utility.cpp.obj
  ../include/Utility.h
@@ -348,6 +542,7 @@ CMakeFiles/Ray.dir/Whitted.cpp.obj
  ../include/Dielectric.h
  ../include/Hittable.h
  ../include/IllumModel.h
+ ../include/KDTree.h
  ../include/Light.h
  ../include/Material.h
  ../include/Photon.h
@@ -355,6 +550,7 @@ CMakeFiles/Ray.dir/Whitted.cpp.obj
  ../include/Scene.h
  ../include/Utility.h
  ../include/Whitted.h
+ ../include/utility.h
  D:/Code/Ray/HittableList.h
  D:/Code/Ray/Whitted.cpp
 CMakeFiles/Ray.dir/main.cpp.obj
@@ -365,6 +561,7 @@ CMakeFiles/Ray.dir/main.cpp.obj
  ../include/Hittable.h
  ../include/IllumModel.h
  ../include/IllumModelFactory.h
+ ../include/KDTree.h
  ../include/Lambertian.h
  ../include/Light.h
  ../include/Material.h

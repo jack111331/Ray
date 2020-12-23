@@ -227,6 +227,12 @@
 		<Unit filename="D:/Code/Ray/IllumModelFactory.cpp">
 			<Option target="Ray"/>
 		</Unit>
+		<Unit filename="D:/Code/Ray/InstantRadiosity.cpp">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/KDTree.cpp">
+			<Option target="Ray"/>
+		</Unit>
 		<Unit filename="D:/Code/Ray/Lambertian.cpp">
 			<Option target="Ray"/>
 		</Unit>
@@ -237,6 +243,9 @@
 			<Option target="Ray"/>
 		</Unit>
 		<Unit filename="D:/Code/Ray/Photon.cpp">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/Pipeline.cpp">
 			<Option target="Ray"/>
 		</Unit>
 		<Unit filename="D:/Code/Ray/Ray.cpp">
@@ -281,6 +290,9 @@
 		<Unit filename="D:/Code/Ray/include/Dielectric.h">
 			<Option target="Ray"/>
 		</Unit>
+		<Unit filename="D:/Code/Ray/include/GLUtil.h">
+			<Option target="Ray"/>
+		</Unit>
 		<Unit filename="D:/Code/Ray/include/Hittable.h">
 			<Option target="Ray"/>
 		</Unit>
@@ -288,6 +300,12 @@
 			<Option target="Ray"/>
 		</Unit>
 		<Unit filename="D:/Code/Ray/include/IllumModelFactory.h">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/include/InstantRadiosity.h">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/include/KDTree.h">
 			<Option target="Ray"/>
 		</Unit>
 		<Unit filename="D:/Code/Ray/include/Lambertian.h">
@@ -303,6 +321,9 @@
 			<Option target="Ray"/>
 		</Unit>
 		<Unit filename="D:/Code/Ray/include/Photon.h">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/include/Pipeline.h">
 			<Option target="Ray"/>
 		</Unit>
 		<Unit filename="D:/Code/Ray/include/Ray.h">
