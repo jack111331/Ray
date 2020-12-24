@@ -2,13 +2,12 @@
 // Created by Edge on 2020/12/23.
 //
 
-#include "Pipeline.h"
 #include "Shader.h"
 #include <GL/glew.h>
+#include "Pipeline.h"
 #include <Lambertian.h>
 #include <glm/gtc/matrix_transform.hpp>
 #include <GLUtil.h>
-#include <GLFW/glfw3.h>
 #include "HittableList.h"
 
 PhongShadingPass::PhongShadingPass() : Pass() {

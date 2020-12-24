@@ -7,12 +7,17 @@
 
 
 #include "Utility.h"
+#include <yaml-cpp/yaml.h>
 
 class Camera {
 public:
+    Camera() : m_screen(nullptr) {}
     Camera(int width, int height, Coord eyeCoord, double fov, Velocity direction, Velocity up);
     void toPpm(const std::string &filename) const;
     void bufferToTexture(uint32_t bufferId) const;
+
+    // Need more abstraction, better use adapter to adapt different type of file
+    bool readCameraInfo(const YAML::Node &node);
 
     int m_width, m_height;
     Color **m_screen;

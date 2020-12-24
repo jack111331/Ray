@@ -41,6 +41,7 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   ".././include"
   "../library/glew-2.2.0/include"
+  ".././public/yaml-cpp/include"
   "../library/glfw-3.3.2/include"
   )
 

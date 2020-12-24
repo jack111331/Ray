@@ -58,3 +58,11 @@ Coord AreaLight::getLightOrigin() const {
     } while (photonPositionU < 0 || photonPositionV < 0 || photonPositionU + photonPositionV > 1);
     return m_origin + photonPositionU * m_uDirection + photonPositionV * m_vDirection;
 }
+
+bool AreaLight::readLightInfo(const YAML::Node &node) {
+    bool result = Light::readLightInfo(node);
+    result = min(result, !node["position"] || !node["color"]));
+    m_uDirection = Velocity::toVelocity(node["u-direction"].as<std::vector<float>>());
+    m_vDirection = Velocity::toVelocity(node["v-direction"].as<std::vector<float>>());
+    return result;
+}

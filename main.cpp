@@ -1,23 +1,8 @@
 #include <iostream>
 
-#include "Sphere.h"
+#include <Pipeline.h>
 #include "Scene.h"
 #include "Config.h"
-
-#include <GL/glew.h>
-#include <GLFW/glfw3.h>
-#include <cstring>
-
-#include "HittableList.h"
-#include <vector>
-#include <Shader.h>
-#include <glm/glm.hpp>
-#include <glm/ext/matrix_transform.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-#include <IllumModelFactory.h>
-#include <sys/time.h>
-#include <Lambertian.h>
-#include <Pipeline.h>
 
 static bool localRendering = false;
 

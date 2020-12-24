@@ -10,6 +10,7 @@
 #include "Ray.h"
 #include "Light.h"
 #include "Camera.h"
+#include <yaml-cpp/yaml.h>
 //#include "AreaLight.h"
 //
 class HittableList;
@@ -21,6 +22,9 @@ class AreaLight;
 class Scene {
 public:
     Scene() : m_model(nullptr) {};
+
+    // Need more abstraction, better use adapter to adapt different type of file
+    bool readSceneInfo(const YAML::Node &node);
 
     void setModel(IlluminationModel *model) {m_model = model;}
 
@@ -36,7 +40,7 @@ public:
 
     HittableList *m_hittableList;
     std::vector<Light *> m_lightList;
-    Camera *m_camera;
+    std::map<std::string, Material *> m_materialTable;
     IlluminationModel *m_model;
     Color m_backgroundColor = {.0f, .0f, .0f};
 

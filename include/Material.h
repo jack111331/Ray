@@ -27,6 +27,8 @@ public:
 
     virtual MaterialType getType() {return NONE;}
 
+    virtual bool readMaterialInfo(const YAML::Node &node) {};
+
 };
 
 

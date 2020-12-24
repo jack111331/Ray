@@ -75,3 +75,11 @@ void DielectricMaterial::calculatePhotonMapping(const Scene *scene, const Photon
     }
     shadeRecord.attenuation = {1.0f, 1.0f, 1.0f};
 }
+
+bool DielectricMaterial::readMaterialInfo(const YAML::Node &node) {
+    if(!node["reference-index"]) {
+        return false;
+    }
+    m_constantReferenceIndex = node["reference-index"].as<float>();
+    return true;
+}

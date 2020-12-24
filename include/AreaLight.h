@@ -9,16 +9,22 @@
 
 class AreaLight : public Material, public Light {
 public:
-    friend std::istream &operator >> (std::istream &lhs, AreaLight &areaLight);
+    AreaLight() : Light(), m_uDirection{0, 0, 0}, m_vDirection{0, 0, 0} {}
 
-    virtual Color calculatePhong(const Scene *scene, Ray &ray, const HitRecord &record, const LightRecord &shadeLightRecord, ShadeRecord &shadeRecord) const;
-    virtual void calculatePhotonMapping(const Scene *scene, const PhotonMappingModel &photonMappingModel, Ray &ray, const HitRecord &record, ShadeRecord &shadeRecord) const;
+    friend std::istream &operator>>(std::istream &lhs, AreaLight &areaLight);
 
-    virtual MaterialType getType() {return AREALIGHT;}
+    virtual Color
+    calculatePhong(const Scene *scene, Ray &ray, const HitRecord &record, const LightRecord &shadeLightRecord,
+                   ShadeRecord &shadeRecord) const;
+
+    virtual void calculatePhotonMapping(const Scene *scene, const PhotonMappingModel &photonMappingModel, Ray &ray,
+                                        const HitRecord &record, ShadeRecord &shadeRecord) const;
+
+    virtual MaterialType getType() { return AREALIGHT; }
+
+    virtual bool readLightInfo(const YAML::Node &node);
 
     virtual Coord getLightOrigin() const;
-
-    Color m_emitColor = {.0f, .0f, .0f};
 
     Velocity m_uDirection, m_vDirection;
 

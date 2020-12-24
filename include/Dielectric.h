@@ -21,6 +21,8 @@ public:
 
     virtual MaterialType getType() {return DIELECTRIC;}
 
+    virtual bool readMaterialInfo(const YAML::Node &node);
+
     float m_constantReferenceIndex;
 
 };

@@ -15,27 +15,35 @@
 #include "Light.h"
 #include "HittableList.h"
 #include "AreaLight.h"
+#include <yaml-cpp/yaml.h>
 
 using namespace std;
 
 Pipeline *Config::loadConfig(const string &configFilename) {
-    ifstream ifs;
-    ifs.open(configFilename);
-    if (!ifs.is_open()) {
-        std::cerr << "[Error] Failed to open file: " << configFilename << std::endl;
-        exit(1);
+    YAML::Node configNode = YAML::LoadFile(configFilename);
+    if(configNode.IsNull()) {
+        return nullptr;
     }
-    string line;
 
-    Scene *scene = new Scene();
     Pipeline *pipeline = nullptr;
+    if(configNode["model"]) {
+        // TODO different pipeline
+        pipeline = new PhongShadingPipeline();
+    }
 
-    scene->m_hittableList = new HittableList();
+    if(configNode["scene"]) {
+        Scene *scene = new Scene();
+        scene->readSceneInfo(configNode["scene"]);
+        pipeline->setupScene(scene);
+    }
 
-    Coord eyeCoord;
-    int screenWidth, screenHeight;
-    Velocity direction, up;
-    double fov;
+    if(configNode["viewer"]) {
+        Camera *camera = new Camera();
+        camera->readCameraInfo(configNode["viewer"]);
+        pipeline->setupCamera(camera);
+    }
+    return pipeline;
+
     Material *boundMaterial = nullptr;
 
     while (getline(ifs, line)) {
@@ -136,7 +144,5 @@ Pipeline *Config::loadConfig(const string &configFilename) {
             scene->m_hittableList->addHittable(triangle);
         }
     }
-    scene->m_camera = new Camera(screenWidth, screenHeight, eyeCoord, fov, direction, up);
-    pipeline->setupScene(scene);
-    return pipeline;
+
 }

@@ -68,3 +68,16 @@ LambertianMaterial::calculatePhotonMapping(const Scene *scene, const PhotonMappi
     }
     ray = {record.point, diffuseDirection};
 }
+
+bool LambertianMaterial::readMaterialInfo(const YAML::Node &node) {
+    if (!node["ambient-color"] || !node["diffuse-color"] || !node["specular-color"] || !node["specular-exp"] ||
+        !node["roughness"]) {
+        return false;
+    }
+    m_ambientColor = Color::toColor(node["ambient-color"].as<std::vector<float>>());
+    m_diffuseColor = Color::toColor(node["diffuse-color"].as<std::vector<float>>());
+    m_specularColor = Color::toColor(node["specular-color"].as<std::vector<float>>());
+    m_constantSpecularExp = node["specular-exp"].as<float>();
+    m_constantRoughness = node["roughness"].as<float>();
+    return true;
+}

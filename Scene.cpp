@@ -10,7 +10,98 @@
 #include "IllumModel.h"
 #include <pthread.h>
 #include <functional>
+#include <Lambertian.h>
 #include "AreaLight.h"
+#include <map>
+
+bool Scene::readSceneInfo(const YAML::Node &node) {
+    m_hittableList = new HittableList();
+
+    if (node["light"]) {
+        for (YAML::const_iterator it = node["light"].begin(); it != node["light"].end(); ++it) {
+            if (it->second["type"].as<std::string>() == "point-light") {
+                Light *light = new Light();
+                light->readLightInfo(it->second);
+                m_lightList.push_back(light);
+            } else if (it->second["type"].as<std::string>() == "area-light") {
+                AreaLight *light = new AreaLight();
+                light->readLightInfo(it->second);
+                m_lightList.push_back(light);
+            }
+        }
+    }
+    if (node["material"]) {
+        for (YAML::const_iterator it = node["material"].begin(); it != node["material"].end(); ++it) {
+            if (it->second["type"].as<std::string>() == "lambertian") {
+                LambertianMaterial *material = new LambertianMaterial();
+                material->readMaterialInfo(it->second);
+                m_materialTable[it->first.as<std::string>()] = material;
+            } else if (it->second["type"].as<std::string>() == "dielectric") {
+                DielectricMaterial *material = new DielectricMaterial();
+                material->readMaterialInfo(it->second);
+                m_materialTable[it->first.as<std::string>()] = material;
+            }
+        }
+    }
+    else if (cmd == "T") {
+        if (!boundMaterial) {
+            cerr << "No valid material bound in this object" << endl;
+            exit(1);
+        }
+        Coord coord[3];
+        for (int i = 0; i < 3; ++i) {
+            ss >> coord[i];
+        }
+        Hittable *triangle = new Triangle(&coord);
+        triangle->setMaterial(boundMaterial);
+        scene->m_hittableList->addHittable(triangle);
+    } else if (cmd == "OBJ") {
+        string objPath;
+        ss >> objPath;
+        Hittable *polygonMesh = new PolygonMesh(objPath);
+        polygonMesh->setMaterial(boundMaterial);
+        scene->m_hittableList->addHittable(polygonMesh);
+    } else if (cmd == "OBJBV") {
+        string objPath;
+        ss >> objPath;
+        Hittable *polygonMeshBV = new PolygonMeshBV(objPath);
+        polygonMeshBV->setMaterial(boundMaterial);
+        scene->m_hittableList->addHittable(polygonMeshBV);
+    } else if (cmd == "OBJBVH") {
+        string objPath;
+        ss >> objPath;
+        Hittable *polygonMeshBVH = new PolygonMeshBVH(objPath, boundMaterial);
+        scene->m_hittableList->addHittable(polygonMeshBVH);
+    } else if (cmd == "MDF") {
+        boundMaterial = new LambertianMaterial();
+        ss >> *(LambertianMaterial *) boundMaterial;
+    } else if (cmd == "MDI") {
+        boundMaterial = new DielectricMaterial();
+        ss >> *(DielectricMaterial *) boundMaterial;
+    } else if (cmd == "UBM") {
+        boundMaterial = nullptr;
+    } else if (cmd == "L") {
+        Coord lightOrigin;
+        ss >> lightOrigin;
+        scene->m_lightList.push_back(new Light(lightOrigin));
+    } else if (cmd == "AL") {
+        AreaLight *areaLight = new AreaLight();
+        ss >> *areaLight;
+        scene->m_lightList.push_back(areaLight);
+        boundMaterial = areaLight;
+
+        Coord coordList[3] = {areaLight->m_origin, areaLight->m_origin + areaLight->m_uDirection,
+                              areaLight->m_origin + areaLight->m_uDirection + areaLight->m_vDirection};
+        Hittable *triangle = new Triangle(&coordList);
+        triangle->setMaterial(boundMaterial);
+        scene->m_hittableList->addHittable(triangle);
+
+        coordList[1] = areaLight->m_origin + areaLight->m_vDirection;
+        triangle = new Triangle(&coordList);
+        triangle->setMaterial(boundMaterial);
+        scene->m_hittableList->addHittable(triangle);
+    }
+}
 
 Color Scene::castRay(Ray &ray) {
     if (m_model) {

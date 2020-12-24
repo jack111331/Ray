@@ -69,10 +69,18 @@ private:
 
 class Pipeline {
 public:
-    Pipeline() : m_scene(nullptr), m_window(nullptr) {}
+    Pipeline() : m_window(nullptr), m_model(nullptr), m_scene(nullptr), m_camera(nullptr) {}
+
+    void setupIlluminationModel(IlluminationModel *model) {
+        m_model = model;
+    }
 
     void setupScene(Scene *scene) {
         m_scene = scene;
+    }
+
+    void setupCamera(Camera *camera) {
+        m_camera = camera;
     }
 
     virtual void setupEnvironment();
@@ -91,7 +99,9 @@ protected:
 
 
     GLFWwindow *m_window;
+    IlluminationModel *m_model;
     Scene *m_scene;
+    Camera *m_camera;
 };
 
 class RayTracingPipeline : public Pipeline {

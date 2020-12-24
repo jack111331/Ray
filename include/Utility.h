@@ -103,6 +103,12 @@ public:
         return {lhs * rhs.x, lhs * rhs.y, lhs * rhs.z};
     }
 
+    static Velocity toVelocity(const std::vector<float> &floatList) {
+        if(floatList.size() == 3) {
+            return {floatList[0], floatList[1], floatList[2]};
+        }
+    }
+
 };
 
 class Coord {
@@ -159,6 +165,12 @@ public:
 
     bool operator<=(const Coord &rhs) const {
         return x <= rhs.x && y <= rhs.y && z <= rhs.z;
+    }
+
+    static Coord toCoord(const std::vector<float> &floatList) {
+        if(floatList.size() == 3) {
+            return {floatList[0], floatList[1], floatList[2]};
+        }
     }
 
 };
@@ -238,6 +250,12 @@ public:
 
     Color operator+(const Color &rhs) const {
         return {r + rhs.r, g + rhs.g, b + rhs.b};
+    }
+
+    static Color toColor(const std::vector<float> &floatList) {
+        if(floatList.size() == 3) {
+            return {floatList[0], floatList[1], floatList[2]};
+        }
     }
 
 };
