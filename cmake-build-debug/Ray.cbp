@@ -215,6 +215,9 @@
 		<Unit filename="D:/Code/Ray/Dielectric.cpp">
 			<Option target="Ray"/>
 		</Unit>
+		<Unit filename="D:/Code/Ray/GLUtil.cpp">
+			<Option target="Ray"/>
+		</Unit>
 		<Unit filename="D:/Code/Ray/Hittable.cpp">
 			<Option target="Ray"/>
 		</Unit>

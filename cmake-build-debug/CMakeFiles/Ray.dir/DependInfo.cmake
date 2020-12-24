@@ -9,6 +9,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "D:/Code/Ray/Camera.cpp" "D:/Code/Ray/cmake-build-debug/CMakeFiles/Ray.dir/Camera.cpp.obj"
   "D:/Code/Ray/Config.cpp" "D:/Code/Ray/cmake-build-debug/CMakeFiles/Ray.dir/Config.cpp.obj"
   "D:/Code/Ray/Dielectric.cpp" "D:/Code/Ray/cmake-build-debug/CMakeFiles/Ray.dir/Dielectric.cpp.obj"
+  "D:/Code/Ray/GLUtil.cpp" "D:/Code/Ray/cmake-build-debug/CMakeFiles/Ray.dir/GLUtil.cpp.obj"
   "D:/Code/Ray/Hittable.cpp" "D:/Code/Ray/cmake-build-debug/CMakeFiles/Ray.dir/Hittable.cpp.obj"
   "D:/Code/Ray/HittableList.cpp" "D:/Code/Ray/cmake-build-debug/CMakeFiles/Ray.dir/HittableList.cpp.obj"
   "D:/Code/Ray/IllumModelFactory.cpp" "D:/Code/Ray/cmake-build-debug/CMakeFiles/Ray.dir/IllumModelFactory.cpp.obj"

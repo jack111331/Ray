@@ -6,11 +6,11 @@
 #define RAY_CONFIG_H
 
 
-#include "Scene.h"
+#include "Pipeline.h"
 
 class Config {
 public:
-    Scene *loadConfig(const std::string &configFilename);
+    Pipeline *loadConfig(const std::string &configFilename);
 };
 
 

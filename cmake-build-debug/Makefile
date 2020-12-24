@@ -329,6 +329,33 @@ Dielectric.cpp.s:
 	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/Dielectric.cpp.s
 .PHONY : Dielectric.cpp.s
 
+GLUtil.obj: GLUtil.cpp.obj
+
+.PHONY : GLUtil.obj
+
+# target to build an object file
+GLUtil.cpp.obj:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/GLUtil.cpp.obj
+.PHONY : GLUtil.cpp.obj
+
+GLUtil.i: GLUtil.cpp.i
+
+.PHONY : GLUtil.i
+
+# target to preprocess a source file
+GLUtil.cpp.i:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/GLUtil.cpp.i
+.PHONY : GLUtil.cpp.i
+
+GLUtil.s: GLUtil.cpp.s
+
+.PHONY : GLUtil.s
+
+# target to generate assembly for a file
+GLUtil.cpp.s:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/GLUtil.cpp.s
+.PHONY : GLUtil.cpp.s
+
 Hittable.obj: Hittable.cpp.obj
 
 .PHONY : Hittable.obj
@@ -872,6 +899,9 @@ help:
 	@echo ... Dielectric.obj
 	@echo ... Dielectric.i
 	@echo ... Dielectric.s
+	@echo ... GLUtil.obj
+	@echo ... GLUtil.i
+	@echo ... GLUtil.s
 	@echo ... Hittable.obj
 	@echo ... Hittable.i
 	@echo ... Hittable.s

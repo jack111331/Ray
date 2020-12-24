@@ -5,7 +5,14 @@
 #ifndef RAY_GLUTIL_H
 #define RAY_GLUTIL_H
 
+#include <vector>
+#include <cstdint>
+
+class Light;
+
+namespace RayUtil {
 // TODO IMPL:
-uint32_t generateLightUBO(const std::vector<Light *> lightList);
+    uint32_t generateLightUBO(const std::vector<Light *> &lightList);
+}
 
 #endif //RAY_GLUTIL_H

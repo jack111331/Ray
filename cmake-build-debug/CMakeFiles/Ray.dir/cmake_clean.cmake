@@ -4,6 +4,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/Ray.dir/Camera.cpp.obj"
   "CMakeFiles/Ray.dir/Config.cpp.obj"
   "CMakeFiles/Ray.dir/Dielectric.cpp.obj"
+  "CMakeFiles/Ray.dir/GLUtil.cpp.obj"
   "CMakeFiles/Ray.dir/Hittable.cpp.obj"
   "CMakeFiles/Ray.dir/HittableList.cpp.obj"
   "CMakeFiles/Ray.dir/IllumModelFactory.cpp.obj"

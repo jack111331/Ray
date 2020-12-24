@@ -18,7 +18,7 @@
 
 using namespace std;
 
-Scene *Config::loadConfig(const string &configFilename) {
+Pipeline *Config::loadConfig(const string &configFilename) {
     ifstream ifs;
     ifs.open(configFilename);
     if (!ifs.is_open()) {
@@ -28,6 +28,7 @@ Scene *Config::loadConfig(const string &configFilename) {
     string line;
 
     Scene *scene = new Scene();
+    Pipeline *pipeline = nullptr;
 
     scene->m_hittableList = new HittableList();
 
@@ -41,11 +42,19 @@ Scene *Config::loadConfig(const string &configFilename) {
         stringstream ss(line);
         string cmd;
         ss >> cmd;
-        if (cmd == "MODEL") {
+        if (cmd == "PIPELINE") {
+            string pipelineName;
+            ss >> pipelineName;
+            if(pipelineName == "LR") {
+                pipeline = new PhongShadingPipeline();
+            } else if(pipelineName == "RT") {
+
+            }
+        } else if (cmd == "MODEL") {
             string modelName;
             ss >> modelName;
             scene->setModel(IlluminationModelFactory::createModel(modelName));
-        }else if (cmd == "E") {
+        } else if (cmd == "E") {
             ss >> eyeCoord;
         } else if (cmd == "V") {
             // Viewing Direction
@@ -57,7 +66,7 @@ Scene *Config::loadConfig(const string &configFilename) {
         } else if (cmd == "R") {
             ss >> screenWidth >> screenHeight;
         } else if (cmd == "S") {
-            if(!boundMaterial) {
+            if (!boundMaterial) {
                 cerr << "No valid material bound in this object" << endl;
                 exit(1);
             }
@@ -69,7 +78,7 @@ Scene *Config::loadConfig(const string &configFilename) {
             sphere->setMaterial(boundMaterial);
             scene->m_hittableList->addHittable(sphere);
         } else if (cmd == "T") {
-            if(!boundMaterial) {
+            if (!boundMaterial) {
                 cerr << "No valid material bound in this object" << endl;
                 exit(1);
             }
@@ -99,23 +108,24 @@ Scene *Config::loadConfig(const string &configFilename) {
             scene->m_hittableList->addHittable(polygonMeshBVH);
         } else if (cmd == "MDF") {
             boundMaterial = new LambertianMaterial();
-            ss >> *(LambertianMaterial *)boundMaterial;
+            ss >> *(LambertianMaterial *) boundMaterial;
         } else if (cmd == "MDI") {
             boundMaterial = new DielectricMaterial();
-            ss >> *(DielectricMaterial *)boundMaterial;
-        } else if(cmd == "UBM") {
+            ss >> *(DielectricMaterial *) boundMaterial;
+        } else if (cmd == "UBM") {
             boundMaterial = nullptr;
-        } else if(cmd == "L") {
+        } else if (cmd == "L") {
             Coord lightOrigin;
             ss >> lightOrigin;
             scene->m_lightList.push_back(new Light(lightOrigin));
-        } else if(cmd == "AL") {
+        } else if (cmd == "AL") {
             AreaLight *areaLight = new AreaLight();
             ss >> *areaLight;
             scene->m_lightList.push_back(areaLight);
             boundMaterial = areaLight;
 
-            Coord coordList[3] = {areaLight->m_origin, areaLight->m_origin + areaLight->m_uDirection, areaLight->m_origin + areaLight->m_uDirection + areaLight->m_vDirection};
+            Coord coordList[3] = {areaLight->m_origin, areaLight->m_origin + areaLight->m_uDirection,
+                                  areaLight->m_origin + areaLight->m_uDirection + areaLight->m_vDirection};
             Hittable *triangle = new Triangle(&coordList);
             triangle->setMaterial(boundMaterial);
             scene->m_hittableList->addHittable(triangle);
@@ -127,5 +137,6 @@ Scene *Config::loadConfig(const string &configFilename) {
         }
     }
     scene->m_camera = new Camera(screenWidth, screenHeight, eyeCoord, fov, direction, up);
-    return scene;
+    pipeline->setupScene(scene);
+    return pipeline;
 }

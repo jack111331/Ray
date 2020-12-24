@@ -71,6 +71,7 @@ list(APPEND SOURCE_LIST
         InstantRadiosity.cpp
         KDTree.cpp
         Pipeline.cpp
+        GLUtil.cpp
         )
 list(APPEND HEADER_LIST
         include/Ray.h
