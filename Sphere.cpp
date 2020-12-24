@@ -110,7 +110,22 @@ vector<ObjectInfo> Sphere::createVAO(const Material *material) {
     glBindVertexArray(0);
 
     vector<ObjectInfo> result;
-    result.push_back({vao,  6 * (slices * stacks + slices)});
+    result.push_back({vao, 6 * (slices * stacks + slices)});
 
     return result;
+}
+
+bool Sphere::readObjectInfo(const YAML::Node &node, const Scene *scene) {
+    bool result = Hittable::readObjectInfo(node, scene);
+    result = min(result, !node["position"] || !node["radius"]);
+    if (!result) {
+        return false;
+    }
+    m_origin = Coord::toCoord(node["position"].as<std::vector<float>>());
+    m_radius = node["radius"].as<float>();
+    return result;
+}
+
+ObjectBoundingBox Sphere::getBoundingBox() {
+    return {m_origin - Velocity{m_radius, m_radius, m_radius}, m_origin + Velocity{m_radius, m_radius, m_radius}};
 }

@@ -21,6 +21,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/Ray.dir/Sphere.cpp.obj"
   "CMakeFiles/Ray.dir/Texture.cpp.obj"
   "CMakeFiles/Ray.dir/Triangle.cpp.obj"
+  "CMakeFiles/Ray.dir/TriangleGroup.cpp.obj"
   "CMakeFiles/Ray.dir/Utility.cpp.obj"
   "CMakeFiles/Ray.dir/Whitted.cpp.obj"
   "CMakeFiles/Ray.dir/main.cpp.obj"

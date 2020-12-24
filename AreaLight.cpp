@@ -61,7 +61,10 @@ Coord AreaLight::getLightOrigin() const {
 
 bool AreaLight::readLightInfo(const YAML::Node &node) {
     bool result = Light::readLightInfo(node);
-    result = min(result, !node["position"] || !node["color"]));
+    result = min(result, !node["u-direction"] || !node["v-direction"]);
+    if(!result) {
+        return false;
+    }
     m_uDirection = Velocity::toVelocity(node["u-direction"].as<std::vector<float>>());
     m_vDirection = Velocity::toVelocity(node["v-direction"].as<std::vector<float>>());
     return result;

@@ -271,6 +271,9 @@
 		<Unit filename="D:/Code/Ray/Triangle.cpp">
 			<Option target="Ray"/>
 		</Unit>
+		<Unit filename="D:/Code/Ray/TriangleGroup.cpp">
+			<Option target="Ray"/>
+		</Unit>
 		<Unit filename="D:/Code/Ray/Utility.cpp">
 			<Option target="Ray"/>
 		</Unit>
@@ -347,6 +350,9 @@
 			<Option target="Ray"/>
 		</Unit>
 		<Unit filename="D:/Code/Ray/include/Triangle.h">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/include/TriangleGroup.h">
 			<Option target="Ray"/>
 		</Unit>
 		<Unit filename="D:/Code/Ray/include/Whitted.h">

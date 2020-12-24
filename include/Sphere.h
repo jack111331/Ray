@@ -11,14 +11,20 @@
 
 class Sphere : public Hittable {
 public:
-    Sphere(Coord origin, double radius) : m_origin(origin), m_radius(radius) {};
+    Sphere() : m_origin{0, 0, 0}, m_radius(0) {};
+
+    Sphere(Coord origin, float radius) : m_origin(origin), m_radius(radius) {};
 
     virtual bool isHit(double tmin, const Ray &ray, HitRecord &record);
 
     virtual std::vector<ObjectInfo> createVAO(const Material *material);
 
+    virtual bool readObjectInfo(const YAML::Node &node, const Scene *scene);
+
+    virtual ObjectBoundingBox getBoundingBox();
+
     Coord m_origin;
-    double m_radius;
+    float m_radius;
 };
 
 

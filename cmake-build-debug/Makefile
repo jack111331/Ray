@@ -788,6 +788,33 @@ Triangle.cpp.s:
 	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/Triangle.cpp.s
 .PHONY : Triangle.cpp.s
 
+TriangleGroup.obj: TriangleGroup.cpp.obj
+
+.PHONY : TriangleGroup.obj
+
+# target to build an object file
+TriangleGroup.cpp.obj:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/TriangleGroup.cpp.obj
+.PHONY : TriangleGroup.cpp.obj
+
+TriangleGroup.i: TriangleGroup.cpp.i
+
+.PHONY : TriangleGroup.i
+
+# target to preprocess a source file
+TriangleGroup.cpp.i:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/TriangleGroup.cpp.i
+.PHONY : TriangleGroup.cpp.i
+
+TriangleGroup.s: TriangleGroup.cpp.s
+
+.PHONY : TriangleGroup.s
+
+# target to generate assembly for a file
+TriangleGroup.cpp.s:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/TriangleGroup.cpp.s
+.PHONY : TriangleGroup.cpp.s
+
 Utility.obj: Utility.cpp.obj
 
 .PHONY : Utility.obj
@@ -950,6 +977,9 @@ help:
 	@echo ... Triangle.obj
 	@echo ... Triangle.i
 	@echo ... Triangle.s
+	@echo ... TriangleGroup.obj
+	@echo ... TriangleGroup.i
+	@echo ... TriangleGroup.s
 	@echo ... Utility.obj
 	@echo ... Utility.i
 	@echo ... Utility.s

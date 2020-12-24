@@ -22,6 +22,9 @@ public:
 
     virtual std::vector<ObjectInfo> createVAO(const Material *material);
 
+    virtual bool readObjectInfo(const YAML::Node &node, const Scene *scene);
+
+
     Coord m_point[3];
 };
 

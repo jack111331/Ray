@@ -79,3 +79,14 @@ vector<ObjectInfo> Triangle::createVAO(const Material *material) {
 
     return result;
 }
+
+bool Triangle::readObjectInfo(const YAML::Node &node, const Scene *scene) {
+    bool result = Hittable::readObjectInfo(node, scene);
+    result = min(result, !node["position"] || !node["radius"]);
+    if(!result) {
+        return false;
+    }
+    m_origin = Coord::toCoord(node["position"].as<std::vector<float>>());
+    m_radius = node["radius"].as<float>();
+    return result;
+}

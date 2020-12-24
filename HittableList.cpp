@@ -24,4 +24,9 @@ bool HittableList::isHitShadow(double tmin, const Ray &ray, HitRecord &record) {
 
 void HittableList::addHittable(Hittable *hittable) {
     m_hittableList.push_back(hittable);
+    m_boundingBox.updateBoundingBox(hittable->getBoundingBox());
+}
+
+ObjectBoundingBox HittableList::getBoundingBox() {
+    return m_boundingBox;
 }

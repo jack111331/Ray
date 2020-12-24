@@ -13,6 +13,28 @@ struct ObjectInfo {
     int m_indicesAmount;
 };
 
+class ObjectBoundingBox {
+public:
+    ObjectBoundingBox() : m_bounding{{1e9,  1e9,  1e9},
+                                     {-1e9, -1e9, -1e9}} {}
+
+    void updateBoundingBox(const Coord &coord) {
+        for (int i = 0; i < 3; ++i) {
+            m_bounding[0][i] = std::min(m_bounding[0][i], coord[i]);
+            m_bounding[1][i] = std::max(m_bounding[1][i], coord[i]);
+        }
+    }
+
+    void updateBoundingBox(const ObjectBoundingBox &boundingBox) {
+        for (int i = 0; i < 3; ++i) {
+            m_bounding[0][i] = std::min(m_bounding[0][i], boundingBox[0][i]);
+            m_bounding[1][i] = std::max(m_bounding[1][i], boundingBox[1][i]);
+        }
+    }
+
+    Coord m_bounding[2];
+};
+
 class Hittable {
 public:
     virtual bool isHit(double tmin, const Ray &ray, HitRecord &record) = 0;
@@ -27,6 +49,10 @@ public:
     void setMaterial(Material *material) {
         m_material = material;
     }
+
+    virtual bool readObjectInfo(const YAML::Node &node, const Scene *scene);
+
+    virtual ObjectBoundingBox getBoundingBox() = 0;
 
     Material *m_material;
 

@@ -74,6 +74,7 @@ list(APPEND SOURCE_LIST
         KDTree.cpp
         Pipeline.cpp
         GLUtil.cpp
+        TriangleGroup.cpp
         )
 list(APPEND HEADER_LIST
         include/Ray.h
@@ -101,6 +102,7 @@ list(APPEND HEADER_LIST
         include/KDTree.h
         include/Pipeline.h
         include/GLUtil.h
+        include/TriangleGroup.h
         include/stb_image.h
         )
 

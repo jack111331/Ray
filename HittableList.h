@@ -16,7 +16,12 @@ public:
 
     void addHittable(Hittable *hittable);
 
+    virtual ObjectBoundingBox getBoundingBox();
+
     std::vector<Hittable *> m_hittableList;
+
+public:
+    ObjectBoundingBox m_boundingBox;
 };
 
 

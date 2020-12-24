@@ -26,6 +26,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "D:/Code/Ray/Sphere.cpp" "D:/Code/Ray/cmake-build-debug/CMakeFiles/Ray.dir/Sphere.cpp.obj"
   "D:/Code/Ray/Texture.cpp" "D:/Code/Ray/cmake-build-debug/CMakeFiles/Ray.dir/Texture.cpp.obj"
   "D:/Code/Ray/Triangle.cpp" "D:/Code/Ray/cmake-build-debug/CMakeFiles/Ray.dir/Triangle.cpp.obj"
+  "D:/Code/Ray/TriangleGroup.cpp" "D:/Code/Ray/cmake-build-debug/CMakeFiles/Ray.dir/TriangleGroup.cpp.obj"
   "D:/Code/Ray/Utility.cpp" "D:/Code/Ray/cmake-build-debug/CMakeFiles/Ray.dir/Utility.cpp.obj"
   "D:/Code/Ray/Whitted.cpp" "D:/Code/Ray/cmake-build-debug/CMakeFiles/Ray.dir/Whitted.cpp.obj"
   "D:/Code/Ray/main.cpp" "D:/Code/Ray/cmake-build-debug/CMakeFiles/Ray.dir/main.cpp.obj"
