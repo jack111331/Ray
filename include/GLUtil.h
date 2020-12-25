@@ -11,7 +11,6 @@
 class Light;
 
 namespace RayUtil {
-// TODO IMPL:
     uint32_t generateLightUBO(const std::vector<Light *> &lightList);
 }
 

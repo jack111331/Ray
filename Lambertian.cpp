@@ -26,13 +26,12 @@ Color LambertianMaterial::calculatePhong(const Scene *scene, Ray &ray, const Hit
     float specularIntensity = .0f;
     for (int i = 0; i < scene->m_lightList.size(); ++i) {
         if (shadeLightRecord.isShadedLightList[i]) {
-            Velocity lightDirection = (scene->m_lightList[i]->m_origin - record.point).normalize();
+            Velocity lightDirection = (scene->m_lightList[i]->getLightOrigin() - record.point).normalize();
             diffuseIntensity += max(.0f, normal.dot(lightDirection));
             Velocity halfwayVector = (lightDirection - ray.velocity.normalize()).normalize();
             specularIntensity += pow(max(.0f, normal.dot(halfwayVector)), m_constantSpecularExp);
         }
     }
-    // TODO handle area light
     // FIXME result color bug
     Color resultColor = m_ambientColor + min(1.0f, diffuseIntensity) * m_diffuseColor +
                         min(1.0f, specularIntensity) * m_specularColor;

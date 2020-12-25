@@ -11,8 +11,6 @@ class AreaLight : public Material, public Light {
 public:
     AreaLight() : Light(), m_uDirection{0, 0, 0}, m_vDirection{0, 0, 0} {}
 
-    friend std::istream &operator>>(std::istream &lhs, AreaLight &areaLight);
-
     virtual Color
     calculatePhong(const Scene *scene, Ray &ray, const HitRecord &record, const LightRecord &shadeLightRecord,
                    ShadeRecord &shadeRecord) const;

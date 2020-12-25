@@ -4,10 +4,6 @@
 
 #include "InstantRadiosity.h"
 
-void InstantRadiosityModel::constructModel(const std::vector<Light *> pointLightList, const std::vector<AreaLight *> areaLightList) {
-
-}
-
 Color InstantRadiosityModel::castRay(const Scene *scene, Ray &ray, int depth) {
 
 }

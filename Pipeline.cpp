@@ -8,6 +8,7 @@
 #include <Lambertian.h>
 #include <glm/gtc/matrix_transform.hpp>
 #include <GLUtil.h>
+#include <Whitted.h>
 #include "HittableList.h"
 
 PhongShadingPass::PhongShadingPass() : Pass() {
@@ -15,12 +16,12 @@ PhongShadingPass::PhongShadingPass() : Pass() {
     m_shader->buildShader();
 }
 
-uint32_t PhongShadingPass::renderPass(const std::vector<ShadeObject *> &shadingList) {
+void PhongShadingPass::renderPass(const std::vector<ShadeObject *> &shadingList) {
     Pass::renderPass(shadingList);
 
     PhongPassSetting *setting = (PhongPassSetting *) m_setting;
 
-    // Switch to current frame buffer
+    // TODO Switch to current frame buffer
 
     // FIXME Bind light buffer to location 1
     glBindBufferBase(GL_UNIFORM_BUFFER, 1, setting->m_lightUBO);
@@ -57,7 +58,6 @@ uint32_t PhongShadingPass::renderPass(const std::vector<ShadeObject *> &shadingL
 
         }
     }
-    return m_outputFrameBuffer;
 }
 
 void Pipeline::setupEnvironment() {
@@ -66,14 +66,16 @@ void Pipeline::setupEnvironment() {
         exit(1);
     }
 }
+
 // TODO pipeline object's initialization
 void RayTracingPipeline::setupEnvironment() {
     if (!m_scene) {
+        // TODO require better handler
         exit(1);
     }
     Pipeline::setupEnvironment();
 
-    m_window = glfwCreateWindow(m_scene->m_camera->m_width, m_scene->m_camera->m_height, "Ray", NULL,
+    m_window = glfwCreateWindow(m_camera->m_width, m_camera->m_height, "Ray", NULL,
                                 NULL);
 
     if (m_window == nullptr) {
@@ -100,19 +102,21 @@ void RayTracingPipeline::setupEnvironment() {
 void RayTracingPipeline::pipelineLoop() {
     while (!glfwWindowShouldClose(m_window)) {
         // Ray tracing
+        generateImage();
+
         // Setup GL
-        glViewport(0, 0, m_scene->m_camera->m_width, m_scene->m_camera->m_height);
+        glViewport(0, 0, m_camera->m_width, m_camera->m_height);
         glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         glMatrixMode(GL_PROJECTION);
         glLoadIdentity();
-        float ratio = m_scene->m_camera->m_width / (float) m_scene->m_camera->m_height;
+        float ratio = m_camera->m_width / (float) m_camera->m_height;
         glOrtho(-ratio, ratio, -1.f, 1.f, 1.f, -1.f);
         glMatrixMode(GL_MODELVIEW);
         glLoadIdentity();
 
-        m_scene->m_camera->bufferToTexture(m_frameTextureId);
+        m_camera->bufferToTexture(m_frameTextureId);
 //        glGenerateMipmap(GL_TEXTURE_2D);
 
         glBindTexture(GL_TEXTURE_2D, m_frameTextureId);
@@ -138,6 +142,54 @@ void RayTracingPipeline::pipelineLoop() {
 
 }
 
+void RayTracingPipeline::generateImage() {
+    if (!m_camera) {
+        return;
+    }
+    // Upper left start
+    // Lower right end
+    Velocity left = m_camera->m_direction.cross(m_camera->m_up);
+    const double PI = acos(-1);
+    Coord center = m_camera->m_eyeCoord + m_camera->m_direction.normalize();
+    double widthFactor = tan(m_camera->m_fov / 180.0 * PI);
+    double heightFactor = widthFactor * m_camera->m_height / m_camera->m_width;
+    Coord leftUpper = center + widthFactor * left.normalize() + heightFactor * m_camera->m_up.normalize();
+    Velocity unitHorizontalScreen = 1 / (float) (m_camera->m_width - 1) * 2.0 * widthFactor * left.normalize();
+    Velocity unitVerticalScreen =
+            1 / (float) (m_camera->m_height - 1) * 2.0 * heightFactor * m_camera->m_up.normalize();
+    const int sampleAmount = 2;//30
+    for (int i = 0; i < m_camera->m_height; ++i) {
+        for (int j = 0; j < m_camera->m_width; ++j) {
+            m_camera->m_screen[i][j] = Color{0.0f, 0.0f, 0.0f};
+            Coord currentRayOnScreen = leftUpper - (float) j * unitHorizontalScreen - (float) i * unitVerticalScreen;
+            Ray ray = {
+                    m_camera->m_eyeCoord,
+                    currentRayOnScreen - m_camera->m_eyeCoord
+            };
+            m_camera->m_screen[i][j] = traceRay(ray);
+        }
+    }
+}
+
+void WhittedPipeline::setupPipeline() {
+    RayTracingPipeline::setupEnvironment();
+    WhittedModel *model = new WhittedModel();
+    model->setupBackgroundColor(m_backgroundColor);
+    setIlluminationModel(model);
+}
+
+void PhotonMappingPipeline::setupPipeline() {
+    RayTracingPipeline::setupEnvironment();
+    if(!m_photonAmount || m_photonPower < 1e-6) {
+        // TODO require proper handler
+        exit(1);
+    }
+    PhotonMappingModel *model = new PhotonMappingModel();
+    model->setup(m_scene, m_photonAmount, m_photonPower, m_photonTraceDepth);
+    model->setupBackgroundColor(m_backgroundColor);
+    setIlluminationModel(model);
+}
+
 void LocalRenderingPipeline::setupEnvironment() {
     if (!m_scene) {
         exit(1);
@@ -148,7 +200,7 @@ void LocalRenderingPipeline::setupEnvironment() {
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 5);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-    m_window = glfwCreateWindow(m_scene->m_camera->m_width, m_scene->m_camera->m_height, "Ray", NULL,
+    m_window = glfwCreateWindow(m_camera->m_width, m_camera->m_height, "Ray", NULL,
                                 NULL);
 
     if (m_window == nullptr) {
@@ -169,7 +221,7 @@ void LocalRenderingPipeline::pipelineLoop() {
         glEnable(GL_DEPTH_TEST);
         glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-        shadingPass->renderPass(m_objectList);
+        m_shadingPass->renderPass(m_objectList);
 
         glfwSwapBuffers(m_window);
         glfwPollEvents();
@@ -180,23 +232,22 @@ void LocalRenderingPipeline::pipelineLoop() {
 }
 
 void PhongShadingPipeline::setupPipeline() {
-    shadingPass = new PhongShadingPass();
+    m_shadingPass = new PhongShadingPass();
     shadingSetting = new PhongPassSetting();
-    Camera *camera = m_scene->m_camera;
-    shadingSetting->m_projectionMatrix = glm::perspective(glm::radians(camera->m_fov * 2.0f),
-                                                          (float) camera->m_width / (float) camera->m_height,
+    shadingSetting->m_projectionMatrix = glm::perspective(glm::radians(m_camera->m_fov * 2.0f),
+                                                          (float) m_camera->m_width / (float) m_camera->m_height,
                                                           0.1f, 100.0f);
     shadingSetting->m_viewMatrix = glm::lookAt(
-            glm::vec3(camera->m_eyeCoord.x, camera->m_eyeCoord.y, camera->m_eyeCoord.z),
-            glm::vec3(camera->m_eyeCoord.x + camera->m_direction.x,
-                      camera->m_eyeCoord.y + camera->m_direction.y,
-                      camera->m_eyeCoord.z + camera->m_direction.z),
-            glm::vec3(camera->m_up.x, camera->m_up.y, camera->m_up.z));
-    shadingSetting->m_camera = m_scene->m_camera;
+            glm::vec3(m_camera->m_eyeCoord.x, m_camera->m_eyeCoord.y, m_camera->m_eyeCoord.z),
+            glm::vec3(m_camera->m_eyeCoord.x + m_camera->m_direction.x,
+                      m_camera->m_eyeCoord.y + m_camera->m_direction.y,
+                      m_camera->m_eyeCoord.z + m_camera->m_direction.z),
+            glm::vec3(m_camera->m_up.x, m_camera->m_up.y, m_camera->m_up.z));
+    shadingSetting->m_camera = m_camera;
     shadingSetting->m_lightList = m_scene->m_lightList;
     shadingSetting->m_lightUBO = RayUtil::generateLightUBO(shadingSetting->m_lightList);
 
-    shadingPass->setupPassSetting(shadingSetting);
+    m_shadingPass->setupPassSetting(shadingSetting);
 
     auto hittableList = m_scene->m_hittableList->m_hittableList;
     for (auto hittable : hittableList) {
@@ -205,8 +256,4 @@ void PhongShadingPipeline::setupPipeline() {
             m_objectList.push_back(new ShadeObject{objectInfo, hittable->m_material});
         }
     }
-}
-
-void PhongShadingPipeline::pipelineLoop() {
-
 }

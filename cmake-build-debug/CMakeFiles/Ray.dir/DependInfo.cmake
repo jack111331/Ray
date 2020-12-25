@@ -20,6 +20,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "D:/Code/Ray/Material.cpp" "D:/Code/Ray/cmake-build-debug/CMakeFiles/Ray.dir/Material.cpp.obj"
   "D:/Code/Ray/Photon.cpp" "D:/Code/Ray/cmake-build-debug/CMakeFiles/Ray.dir/Photon.cpp.obj"
   "D:/Code/Ray/Pipeline.cpp" "D:/Code/Ray/cmake-build-debug/CMakeFiles/Ray.dir/Pipeline.cpp.obj"
+  "D:/Code/Ray/PipelineFactory.cpp" "D:/Code/Ray/cmake-build-debug/CMakeFiles/Ray.dir/PipelineFactory.cpp.obj"
   "D:/Code/Ray/Ray.cpp" "D:/Code/Ray/cmake-build-debug/CMakeFiles/Ray.dir/Ray.cpp.obj"
   "D:/Code/Ray/Scene.cpp" "D:/Code/Ray/cmake-build-debug/CMakeFiles/Ray.dir/Scene.cpp.obj"
   "D:/Code/Ray/Shader.cpp" "D:/Code/Ray/cmake-build-debug/CMakeFiles/Ray.dir/Shader.cpp.obj"

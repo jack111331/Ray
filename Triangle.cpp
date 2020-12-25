@@ -11,13 +11,13 @@ using namespace std;
 
 bool Triangle::isHit(double tmin, const Ray &ray, HitRecord &record) {
     const double EPSILON = 1e-7;
-    Velocity planeVector[2] = {m_point[1] - m_point[0], m_point[2] - m_point[0]};
+    Velocity planeVector[2] = {m_point[1]->m_coord - m_point[0]->m_coord, m_point[2]->m_coord - m_point[0]->m_coord};
     Velocity h = ray.velocity.cross(planeVector[1]);
     double a = planeVector[0].dot(h);
     if (std::abs(a) < EPSILON)
         return false;
     double f = 1.0 / a;
-    Velocity s = ray.origin - m_point[0];
+    Velocity s = ray.origin - m_point[0]->m_coord;
     double u = f * s.dot(h);
     if (u < 0.0 || u > 1.0)
         return false;
@@ -55,7 +55,7 @@ vector<ObjectInfo> Triangle::createVAO(const Material *material) {
     glEnableVertexAttribArray(0);
 
     // Normal VBO
-    Velocity planeVector[2] = {m_point[1] - m_point[0], m_point[2] - m_point[0]};
+    Velocity planeVector[2] = {m_point[1]->m_coord - m_point[0]->m_coord, m_point[2]->m_coord - m_point[0]->m_coord};
     Velocity normal = planeVector[0].cross(planeVector[1]);
     Velocity normalList[3] = {normal, normal, normal};
     uint32_t normalVbo;
@@ -82,11 +82,18 @@ vector<ObjectInfo> Triangle::createVAO(const Material *material) {
 
 bool Triangle::readObjectInfo(const YAML::Node &node, const Scene *scene) {
     bool result = Hittable::readObjectInfo(node, scene);
-    result = min(result, !node["position"] || !node["radius"]);
     if(!result) {
         return false;
     }
-    m_origin = Coord::toCoord(node["position"].as<std::vector<float>>());
-    m_radius = node["radius"].as<float>();
+
+    for(int i = 0;i < 3;++i) {
+        TriangleNode *triangleNode = new TriangleNode{Coord::toCoord((*node.begin())["position"].as<std::vector<float>>()), {0, 0}, {0, 0, 0}};
+        m_boundingBox.updateBoundingBox(triangleNode->m_coord);
+        m_point[i] = triangleNode;
+    }
     return result;
+}
+
+ObjectBoundingBox Triangle::getBoundingBox() {
+    return m_boundingBox;
 }

@@ -10,13 +10,36 @@
 #include "Hittable.h"
 #include "Material.h"
 
+class TriangleNode {
+public:
+    Coord m_coord;
+    Coord2D m_texCoord;
+    Velocity m_normal;
+};
+
 class Triangle : public Hittable {
 public:
-    Triangle(Coord (*coord)[3]) {
+    Triangle(): m_point{} {}
+
+    Triangle(Coord (*coord)[3]): m_point{} {
         for (int i = 0; i < 3; ++i) {
-            m_point[i] = (*coord)[i];
+            m_point[i] = new TriangleNode;
+            m_point[i]->m_coord = (*coord)[i];
+            m_boundingBox.updateBoundingBox(m_point[i]->m_coord);
         }
-    };
+    }
+
+    void fromTriangleNode(const std::string &materialName, const Scene *scene, TriangleNode *firstNode, TriangleNode *secondNode, TriangleNode *thirdNode) {
+        auto it = scene->m_materialTable.find(materialName);
+        if(it == scene->m_materialTable.end()) {
+            // TODO better handler require
+            exit(1);
+        }
+        setMaterial(it->second);
+        m_point[0] = firstNode;
+        m_point[1] = secondNode;
+        m_point[2] = thirdNode;
+    }
 
     virtual bool isHit(double tmin, const Ray &ray, HitRecord &record);
 
@@ -24,8 +47,11 @@ public:
 
     virtual bool readObjectInfo(const YAML::Node &node, const Scene *scene);
 
+    virtual ObjectBoundingBox getBoundingBox();
 
-    Coord m_point[3];
+    TriangleNode *m_point[3];
+
+    ObjectBoundingBox m_boundingBox;
 };
 
 

@@ -75,6 +75,7 @@ list(APPEND SOURCE_LIST
         Pipeline.cpp
         GLUtil.cpp
         TriangleGroup.cpp
+        PipelineFactory.cpp
         )
 list(APPEND HEADER_LIST
         include/Ray.h
@@ -103,6 +104,7 @@ list(APPEND HEADER_LIST
         include/Pipeline.h
         include/GLUtil.h
         include/TriangleGroup.h
+        include/PipelineFactory.h
         include/stb_image.h
         )
 

@@ -626,6 +626,33 @@ Pipeline.cpp.s:
 	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/Pipeline.cpp.s
 .PHONY : Pipeline.cpp.s
 
+PipelineFactory.obj: PipelineFactory.cpp.obj
+
+.PHONY : PipelineFactory.obj
+
+# target to build an object file
+PipelineFactory.cpp.obj:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/PipelineFactory.cpp.obj
+.PHONY : PipelineFactory.cpp.obj
+
+PipelineFactory.i: PipelineFactory.cpp.i
+
+.PHONY : PipelineFactory.i
+
+# target to preprocess a source file
+PipelineFactory.cpp.i:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/PipelineFactory.cpp.i
+.PHONY : PipelineFactory.cpp.i
+
+PipelineFactory.s: PipelineFactory.cpp.s
+
+.PHONY : PipelineFactory.s
+
+# target to generate assembly for a file
+PipelineFactory.cpp.s:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/PipelineFactory.cpp.s
+.PHONY : PipelineFactory.cpp.s
+
 Ray.obj: Ray.cpp.obj
 
 .PHONY : Ray.obj
@@ -959,6 +986,9 @@ help:
 	@echo ... Pipeline.obj
 	@echo ... Pipeline.i
 	@echo ... Pipeline.s
+	@echo ... PipelineFactory.obj
+	@echo ... PipelineFactory.i
+	@echo ... PipelineFactory.s
 	@echo ... Ray.obj
 	@echo ... Ray.i
 	@echo ... Ray.s

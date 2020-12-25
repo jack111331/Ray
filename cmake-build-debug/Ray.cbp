@@ -253,6 +253,9 @@
 		<Unit filename="D:/Code/Ray/Pipeline.cpp">
 			<Option target="Ray"/>
 		</Unit>
+		<Unit filename="D:/Code/Ray/PipelineFactory.cpp">
+			<Option target="Ray"/>
+		</Unit>
 		<Unit filename="D:/Code/Ray/Ray.cpp">
 			<Option target="Ray"/>
 		</Unit>
@@ -332,6 +335,9 @@
 			<Option target="Ray"/>
 		</Unit>
 		<Unit filename="D:/Code/Ray/include/Pipeline.h">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/include/PipelineFactory.h">
 			<Option target="Ray"/>
 		</Unit>
 		<Unit filename="D:/Code/Ray/include/Ray.h">

@@ -117,15 +117,23 @@ vector<ObjectInfo> Sphere::createVAO(const Material *material) {
 
 bool Sphere::readObjectInfo(const YAML::Node &node, const Scene *scene) {
     bool result = Hittable::readObjectInfo(node, scene);
-    result = min(result, !node["position"] || !node["radius"]);
+    result = min(result, !node["position"] || !node["radius"] || !node["material"]);
     if (!result) {
         return false;
     }
     m_origin = Coord::toCoord(node["position"].as<std::vector<float>>());
     m_radius = node["radius"].as<float>();
+    const std::string &materialName = node["material"].as<std::string>();
+    auto it = scene->m_materialTable.find(materialName);
+    if (it == scene->m_materialTable.end()) {
+        // TODO better handler require
+        exit(1);
+    }
+    setMaterial(it->second);
     return result;
 }
 
 ObjectBoundingBox Sphere::getBoundingBox() {
-    return {m_origin - Velocity{m_radius, m_radius, m_radius}, m_origin + Velocity{m_radius, m_radius, m_radius}};
+    return ObjectBoundingBox(m_origin - Velocity{m_radius, m_radius, m_radius},
+                             m_origin + Velocity{m_radius, m_radius, m_radius});
 }

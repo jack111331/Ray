@@ -13,8 +13,6 @@
 
 class DielectricMaterial : public Material {
 public:
-    friend std::istream &operator >> (std::istream &is, DielectricMaterial &rhs);
-
     virtual Color calculatePhong(const Scene *scene, Ray &ray, const HitRecord &record, const LightRecord &shadeLightRecord, ShadeRecord &shadeRecord) const;
 
     virtual void calculatePhotonMapping(const Scene *scene, const PhotonMappingModel &model, Ray &ray, const HitRecord &record, ShadeRecord &shadeRecord) const;

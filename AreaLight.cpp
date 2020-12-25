@@ -6,19 +6,6 @@
 
 using namespace std;
 
-istream &operator>>(istream &lhs, AreaLight &areaLight) {
-    lhs >> areaLight.m_emitColor;
-
-    Coord planePoint[4];
-    for (int i = 0; i < 4; ++i) {
-        lhs >> planePoint[i];
-    }
-    areaLight.m_origin = planePoint[0];
-    areaLight.m_uDirection = planePoint[1] - planePoint[0];
-    areaLight.m_vDirection = planePoint[3] - planePoint[0];
-}
-
-
 Color
 AreaLight::calculatePhong(const Scene *scene, Ray &ray, const HitRecord &record, const LightRecord &shadeLightRecord,
                           ShadeRecord &shadeRecord) const {

@@ -22,13 +22,10 @@ Color WhittedModel::castRay(const Scene *scene, Ray &ray, int depth) {
         }
         ShadeRecord shadeRecord;
         record.material->calculatePhong(scene, ray, record, lightRecord, shadeRecord);
-//        std::cout << shadeRecord.emit.r << " " << shadeRecord.emit.g << " " << shadeRecord.emit.b << " " << std::endl;
-//        std::cout << shadeRecord.attenuation.r << " " << shadeRecord.attenuation.g << " " << shadeRecord.attenuation.b << " " << std::endl;
-//        getchar();
         if(depth > 5 || !shadeRecord.isHasAttenuation()) {
             return shadeRecord.emit + shadeRecord.attenuation;
         }
         return shadeRecord.emit + shadeRecord.attenuation * castRay(scene, ray, depth + 1);
     }
-    return scene->m_backgroundColor;
+    return m_backgroundColor;
 }

@@ -14,7 +14,9 @@ public:
 
     bool isHitShadow(double tmin, const Ray &ray, HitRecord &record);
 
-    void addHittable(Hittable *hittable);
+    void addHittable(Hittable * hittable);
+
+    void addHittable(std::vector<Hittable *> hittableList);
 
     virtual ObjectBoundingBox getBoundingBox();
 

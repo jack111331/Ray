@@ -151,6 +151,10 @@ public:
         return {x / rhs.x, y / rhs.y, z / rhs.z};
     }
 
+    Coord operator/(float rhs) const {
+        return {x / rhs, y / rhs, z / rhs};
+    }
+
     Coord operator+(const Velocity &rhs) const {
         return {x + rhs.x, y + rhs.y, z + rhs.z};
     }

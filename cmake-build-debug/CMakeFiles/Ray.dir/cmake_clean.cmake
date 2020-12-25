@@ -15,6 +15,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/Ray.dir/Material.cpp.obj"
   "CMakeFiles/Ray.dir/Photon.cpp.obj"
   "CMakeFiles/Ray.dir/Pipeline.cpp.obj"
+  "CMakeFiles/Ray.dir/PipelineFactory.cpp.obj"
   "CMakeFiles/Ray.dir/Ray.cpp.obj"
   "CMakeFiles/Ray.dir/Scene.cpp.obj"
   "CMakeFiles/Ray.dir/Shader.cpp.obj"

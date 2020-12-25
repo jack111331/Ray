@@ -26,9 +26,10 @@ public:
     Camera *m_camera;
 };
 
+// Pass Tree
 class Pass {
 public:
-    Pass() : m_shader(nullptr), m_outputFrameBuffer(0), m_setting(nullptr), m_pass(nullptr) {
+    Pass() : m_shader(nullptr), m_setting(nullptr) {
 
     }
 
@@ -36,18 +37,25 @@ public:
         m_setting = setting;
     }
 
-    virtual uint32_t renderPass(const std::vector<ShadeObject *> &shadingList) {
-        if(m_pass) {
+    virtual void renderPass(const std::vector<ShadeObject *> &shadingList) {
+        for (auto pass: m_requirePass) {
             // TODO filter
-            //m_pass->renderPass();
+            // Assume each pass is configured beforehand
+            pass->renderPass(shadingList);
         }
     };
 
+    std::vector<uint32_t> getOutputFrameBuffer() {
+        return m_outputFrameBuffer;
+    }
+
+    virtual std::string getType() = 0;
+
 protected:
     Shader *m_shader;
-    uint32_t m_outputFrameBuffer;
+    std::vector<uint32_t> m_outputFrameBuffer;
     PassSetting *m_setting;
-    Pass *m_pass;
+    std::vector<Pass *> m_requirePass;
 };
 
 class PhongPassSetting : public PassSetting {
@@ -61,7 +69,12 @@ class PhongShadingPass : public Pass {
 public:
     PhongShadingPass();
 
-    virtual uint32_t renderPass(const std::vector<ShadeObject *> &shadingList);
+    virtual void renderPass(const std::vector<ShadeObject *> &shadingList);
+
+    virtual std::string getType() {
+        return "PhongShadingPass";
+    }
+
 
 private:
 
@@ -69,11 +82,7 @@ private:
 
 class Pipeline {
 public:
-    Pipeline() : m_window(nullptr), m_model(nullptr), m_scene(nullptr), m_camera(nullptr) {}
-
-    void setupIlluminationModel(IlluminationModel *model) {
-        m_model = model;
-    }
+    Pipeline() : m_window(nullptr), m_scene(nullptr), m_camera(nullptr) {}
 
     void setupScene(Scene *scene) {
         m_scene = scene;
@@ -99,19 +108,56 @@ protected:
 
 
     GLFWwindow *m_window;
-    IlluminationModel *m_model;
     Scene *m_scene;
     Camera *m_camera;
+
 };
 
 class RayTracingPipeline : public Pipeline {
 public:
+    RayTracingPipeline(): m_model(nullptr) {}
+
     virtual void setupEnvironment();
 
     virtual void pipelineLoop();
 
+    void generateImage();
+
+    Color traceRay(Ray &ray) {
+        if (m_model) {
+            return m_model->castRay(m_scene, ray);
+        } else {
+            return m_backgroundColor;
+        }
+    }
+
+    void setIlluminationModel(IlluminationModel *model) {
+        m_model = model;
+    }
+
+protected:
+    IlluminationModel *m_model;
+
+    Color m_backgroundColor = {.0f, .0f, .0f};
+
 private:
     uint32_t m_frameTextureId;
+
+
+};
+
+class WhittedPipeline: public RayTracingPipeline {
+public:
+    virtual void setupPipeline();
+};
+
+class PhotonMappingPipeline: public RayTracingPipeline {
+public:
+    virtual void setupPipeline();
+
+    int m_photonAmount;
+    float m_photonPower;
+    int m_photonTraceDepth;
 };
 
 class LocalRenderingPipeline : public Pipeline {
@@ -121,7 +167,7 @@ public:
     virtual void pipelineLoop();
 
 protected:
-    PhongShadingPass *shadingPass;
+    Pass *m_shadingPass;
 
     std::vector<ShadeObject *> m_objectList;
 

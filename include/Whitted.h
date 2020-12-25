@@ -11,8 +11,6 @@
 #include "Camera.h"
 #include "IllumModel.h"
 
-class HittableList;
-
 class WhittedModel : public IlluminationModel {
 public:
     virtual Color castRay(const Scene *scene, Ray &ray, int depth);

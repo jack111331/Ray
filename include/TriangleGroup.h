@@ -6,15 +6,38 @@
 #define RAY_TRIANGLEGROUP_H
 
 #include "Hittable.h"
-#include "OBJ_Loader.h"
+#include "Triangle.h"
+#include "BVH.h"
+
+class TriangleGroup;
+
+
+namespace objl {
+    class Mesh;
+}
+
+class BVH {
+public:
+    BVH(TriangleGroup *triangleGroup);
+
+    bool isHit(double tmin, const Ray &ray, HitRecord &record);
+
+    void updateBVH(TriangleGroup *triangleGroup);
+
+    Octree<TriangleGroup> *m_octree;
+};
 
 class TriangleGroup : public Hittable {
 public:
+    TriangleGroup() : Hittable(), m_accel(nullptr) {}
+
+    static std::vector<Hittable *> fromObj(const YAML::Node &node, const Scene *scene);
+
     bool fromObj(const objl::Mesh &mesh, const Scene *scene);
+
     bool readObjectInfo(const YAML::Node &node, const Scene *scene);
 
     virtual bool isHit(double tmin, const Ray &ray, HitRecord &record);
-    bool isHitSingle(float tmin, uint32_t index, const Ray &ray, HitRecord &record) const;
 
     // For local shading
     virtual std::vector<ObjectInfo> createVAO(const Material *material);
@@ -22,11 +45,10 @@ public:
     virtual ObjectBoundingBox getBoundingBox();
 
 public:
-    std::vector<Coord> m_vertices;
-    std::vector<Coord2D> m_texCoords;
-    std::vector<Velocity> m_normals;
-    std::vector<uint32_t> m_indices;
+    std::vector<Triangle *> m_triangles;
     ObjectBoundingBox m_boundingBox;
+
+    BVH *m_accel;
 };
 
 

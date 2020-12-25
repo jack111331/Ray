@@ -21,46 +21,15 @@ class AreaLight;
 
 class Scene {
 public:
-    Scene() : m_model(nullptr) {};
+    Scene() {}
 
     // Need more abstraction, better use adapter to adapt different type of file
     bool readSceneInfo(const YAML::Node &node);
 
-    void setModel(IlluminationModel *model) {m_model = model;}
-
-    Color castRay(Ray &ray);
-
-    static void *castJitteredRay(void *castRayThreadArgs);
-
-    void displayScene();
-
-    void displayPhotonMappingScene();
-
-    bool photonTracing(Ray &ray, float power, int depth);
-
     HittableList *m_hittableList;
     std::vector<Light *> m_lightList;
     std::map<std::string, Material *> m_materialTable;
-    IlluminationModel *m_model;
-    Color m_backgroundColor = {.0f, .0f, .0f};
 
-    // damn conversion
-    struct CastRayThreadArgs {
-        Scene *scene;
-        int i;
-        int j;
-        Ray ray;
-        int sampleAmount;
-        Velocity unitHorizontalScreen;
-        Velocity unitVerticalScreen;
-    };
-
-    struct ThreadInfo {
-        pthread_t id;
-        CastRayThreadArgs *castRayThreadArgs;
-    };
-
-    void photonGenerating(float photonPower, float photonAmount);
 };
 
 

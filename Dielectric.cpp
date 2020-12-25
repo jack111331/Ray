@@ -7,10 +7,6 @@
 
 using namespace std;
 
-istream &operator>>(istream &is, DielectricMaterial &rhs) {
-    is >> rhs.m_constantReferenceIndex;
-}
-
 Color DielectricMaterial::calculatePhong(const Scene *scene, Ray &ray, const HitRecord &record,
                                const LightRecord &shadeLightRecord, ShadeRecord &shadeRecord) const {
     Velocity outwardNormal;

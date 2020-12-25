@@ -17,7 +17,6 @@ public:
     InstantRadiosityModel() {
         m_kdTree = new KDTree<VPL>;
     }
-    virtual void constructModel(const std::vector<Light *> pointLightList, const std::vector<AreaLight *> areaLightList);
     virtual Color castRay(const Scene *scene, Ray &ray, int depth);
     virtual std::string getModelName() const {
         return "InstantRadiosity";

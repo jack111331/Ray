@@ -18,6 +18,8 @@ public:
     ObjectBoundingBox() : m_bounding{{1e9,  1e9,  1e9},
                                      {-1e9, -1e9, -1e9}} {}
 
+    ObjectBoundingBox(const Coord &minCoord, const Coord &maxCoord) : m_bounding{minCoord, maxCoord} {}
+
     void updateBoundingBox(const Coord &coord) {
         for (int i = 0; i < 3; ++i) {
             m_bounding[0][i] = std::min(m_bounding[0][i], coord[i]);
@@ -27,16 +29,20 @@ public:
 
     void updateBoundingBox(const ObjectBoundingBox &boundingBox) {
         for (int i = 0; i < 3; ++i) {
-            m_bounding[0][i] = std::min(m_bounding[0][i], boundingBox[0][i]);
-            m_bounding[1][i] = std::max(m_bounding[1][i], boundingBox[1][i]);
+            m_bounding[0][i] = std::min(m_bounding[0][i], boundingBox.m_bounding[0][i]);
+            m_bounding[1][i] = std::max(m_bounding[1][i], boundingBox.m_bounding[1][i]);
         }
     }
+
+    bool isHit(const Ray &ray);
 
     Coord m_bounding[2];
 };
 
 class Hittable {
 public:
+    Hittable() : m_material(nullptr) {}
+
     virtual bool isHit(double tmin, const Ray &ray, HitRecord &record) = 0;
 
     // For local shading
