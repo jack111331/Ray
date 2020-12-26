@@ -1,9 +1,0 @@
-D:/Code/Ray/build/CMakeFiles/Ray.dir
-D:/Code/Ray/build/CMakeFiles/INSTALL.dir
-D:/Code/Ray/build/CMakeFiles/ALL_BUILD.dir
-D:/Code/Ray/build/CMakeFiles/ZERO_CHECK.dir
-D:/Code/Ray/build/library/glfw-3.3.2/CMakeFiles/uninstall.dir
-D:/Code/Ray/build/library/glfw-3.3.2/CMakeFiles/INSTALL.dir
-D:/Code/Ray/build/library/glfw-3.3.2/CMakeFiles/ALL_BUILD.dir
-D:/Code/Ray/build/library/glfw-3.3.2/src/CMakeFiles/glfw.dir
-D:/Code/Ray/build/library/glfw-3.3.2/src/CMakeFiles/INSTALL.dir
