@@ -25,7 +25,7 @@ install:
 before_build:
   # Build dependencies
    - cmd: cd public/glew
-   - cmd: msbuild build/%GLEW_GENERATOR%/glew.sln
+   - cmd: msbuild /p:Configuration=Release build/%GLEW_GENERATOR%/glew.sln
    - cmd: cd ../..
 
    - cmd: mkdir build
