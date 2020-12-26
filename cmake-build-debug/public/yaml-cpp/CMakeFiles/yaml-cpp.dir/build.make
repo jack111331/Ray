@@ -559,7 +559,6 @@ public/yaml-cpp/libyaml-cppd.dll: public/yaml-cpp/CMakeFiles/yaml-cpp.dir/src/si
 public/yaml-cpp/libyaml-cppd.dll: public/yaml-cpp/CMakeFiles/yaml-cpp.dir/src/stream.cpp.obj
 public/yaml-cpp/libyaml-cppd.dll: public/yaml-cpp/CMakeFiles/yaml-cpp.dir/src/tag.cpp.obj
 public/yaml-cpp/libyaml-cppd.dll: public/yaml-cpp/CMakeFiles/yaml-cpp.dir/build.make
-public/yaml-cpp/libyaml-cppd.dll: ../library/glew-2.2.0/lib/Release/Win32/glew32.lib
 public/yaml-cpp/libyaml-cppd.dll: public/yaml-cpp/CMakeFiles/yaml-cpp.dir/linklibs.rsp
 public/yaml-cpp/libyaml-cppd.dll: public/yaml-cpp/CMakeFiles/yaml-cpp.dir/objects1.rsp
 public/yaml-cpp/libyaml-cppd.dll: public/yaml-cpp/CMakeFiles/yaml-cpp.dir/link.txt

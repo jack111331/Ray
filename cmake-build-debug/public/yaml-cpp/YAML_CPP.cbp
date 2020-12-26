@@ -66,7 +66,6 @@
 				<Compiler>
 					<Add option="-DYAML_CPP_DLL"/>
 					<Add directory="D:/Code/Ray/./include"/>
-					<Add directory="D:/Code/Ray/library/glew-2.2.0/include"/>
 					<Add directory="D:/Code/Ray/public/yaml-cpp/include"/>
 					<Add directory="D:/Code/Ray/public/yaml-cpp/src"/>
 					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++"/>
@@ -92,7 +91,6 @@
 				<Compiler>
 					<Add option="-DYAML_CPP_DLL"/>
 					<Add directory="D:/Code/Ray/./include"/>
-					<Add directory="D:/Code/Ray/library/glew-2.2.0/include"/>
 					<Add directory="D:/Code/Ray/public/yaml-cpp/include"/>
 					<Add directory="D:/Code/Ray/public/yaml-cpp/src"/>
 					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++"/>
@@ -117,7 +115,6 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="D:/Code/Ray/./include"/>
-					<Add directory="D:/Code/Ray/library/glew-2.2.0/include"/>
 					<Add directory="D:/Code/Ray/public/yaml-cpp/include"/>
 					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++"/>
 					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/mingw32"/>
@@ -141,7 +138,6 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="D:/Code/Ray/./include"/>
-					<Add directory="D:/Code/Ray/library/glew-2.2.0/include"/>
 					<Add directory="D:/Code/Ray/public/yaml-cpp/include"/>
 					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++"/>
 					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/mingw32"/>
@@ -165,7 +161,6 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="D:/Code/Ray/./include"/>
-					<Add directory="D:/Code/Ray/library/glew-2.2.0/include"/>
 					<Add directory="D:/Code/Ray/public/yaml-cpp/include"/>
 					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++"/>
 					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/mingw32"/>
@@ -189,7 +184,6 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="D:/Code/Ray/./include"/>
-					<Add directory="D:/Code/Ray/library/glew-2.2.0/include"/>
 					<Add directory="D:/Code/Ray/public/yaml-cpp/include"/>
 					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++"/>
 					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/mingw32"/>
@@ -213,7 +207,6 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="D:/Code/Ray/./include"/>
-					<Add directory="D:/Code/Ray/library/glew-2.2.0/include"/>
 					<Add directory="D:/Code/Ray/public/yaml-cpp/include"/>
 					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++"/>
 					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/mingw32"/>
@@ -237,7 +230,6 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="D:/Code/Ray/./include"/>
-					<Add directory="D:/Code/Ray/library/glew-2.2.0/include"/>
 					<Add directory="D:/Code/Ray/public/yaml-cpp/include"/>
 					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++"/>
 					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/mingw32"/>

@@ -79,9 +79,7 @@ yaml__cpp__parse_EXTERNAL_OBJECTS =
 
 public/yaml-cpp/util/parse.exe: public/yaml-cpp/util/CMakeFiles/yaml-cpp-parse.dir/parse.cpp.obj
 public/yaml-cpp/util/parse.exe: public/yaml-cpp/util/CMakeFiles/yaml-cpp-parse.dir/build.make
-public/yaml-cpp/util/parse.exe: ../library/glew-2.2.0/lib/Release/Win32/glew32.lib
 public/yaml-cpp/util/parse.exe: public/yaml-cpp/libyaml-cppd.dll.a
-public/yaml-cpp/util/parse.exe: ../library/glew-2.2.0/lib/Release/Win32/glew32.lib
 public/yaml-cpp/util/parse.exe: public/yaml-cpp/util/CMakeFiles/yaml-cpp-parse.dir/linklibs.rsp
 public/yaml-cpp/util/parse.exe: public/yaml-cpp/util/CMakeFiles/yaml-cpp-parse.dir/objects1.rsp
 public/yaml-cpp/util/parse.exe: public/yaml-cpp/util/CMakeFiles/yaml-cpp-parse.dir/link.txt

@@ -5,13 +5,10 @@ include_directories("./include")
 
 #set(CMAKE_VERBOSE_MAKEFILE ON)
 
-# - Setup Library
-set(CMAKE_PREFIX_PATH "./library/glew-2.2.0")
-set(CMAKE_LIBRARY_PATH "./library/glew-2.2.0/lib/Release/Win32/")
-find_package(GLEW REQUIRED)
+set(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH} public/glew/build/cmake")
+find_package(glew REQUIRED)
 if (GLEW_FOUND)
-    include_directories(${GLEW_INCLUDE_DIRS})
-    link_libraries(${GLEW_LIBRARIES})
+    message("Found GLEW")
 endif()
 
 set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
@@ -22,9 +19,6 @@ set(GLFW_USE_HYBRID_HPG ON CACHE BOOL "" FORCE)
 add_subdirectory("./library/glfw-3.3.2")
 
 find_package(OpenGL REQUIRED)
-
-set(THREADS_PREFER_PTHREAD_FLAG ON)
-find_package(Threads REQUIRED)
 
 #set(CMAKE_MODULE_PATH {CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/modules")
 #message("${CMAKE_MODULE_PATH}")
@@ -43,6 +37,7 @@ find_package(Threads REQUIRED)
 #add_subdirectory(library/assimp-5.0.1)
 
 add_subdirectory(public/yaml-cpp)
+include_directories("public/yaml-cpp/include")
 
 set(CMAKE_CXX_STANDARD 11)
 
@@ -109,4 +104,4 @@ list(APPEND HEADER_LIST
         )
 
 add_executable(Ray main.cpp ${HEADER_LIST} ${SOURCE_LIST})
-target_link_libraries(Ray ${CMAKE_SOURCE_DIR}/library/glew32.lib glfw OpenGL::GL Threads::Threads yaml-cpp)
+target_link_libraries(Ray glew glfw OpenGL::GL yaml-cpp)

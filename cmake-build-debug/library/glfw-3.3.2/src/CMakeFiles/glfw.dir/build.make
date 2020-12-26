@@ -303,7 +303,6 @@ library/glfw-3.3.2/src/glfw3.dll: library/glfw-3.3.2/src/CMakeFiles/glfw.dir/wgl
 library/glfw-3.3.2/src/glfw3.dll: library/glfw-3.3.2/src/CMakeFiles/glfw.dir/egl_context.c.obj
 library/glfw-3.3.2/src/glfw3.dll: library/glfw-3.3.2/src/CMakeFiles/glfw.dir/osmesa_context.c.obj
 library/glfw-3.3.2/src/glfw3.dll: library/glfw-3.3.2/src/CMakeFiles/glfw.dir/build.make
-library/glfw-3.3.2/src/glfw3.dll: ../library/glew-2.2.0/lib/Release/Win32/glew32.lib
 library/glfw-3.3.2/src/glfw3.dll: library/glfw-3.3.2/src/CMakeFiles/glfw.dir/linklibs.rsp
 library/glfw-3.3.2/src/glfw3.dll: library/glfw-3.3.2/src/CMakeFiles/glfw.dir/objects1.rsp
 library/glfw-3.3.2/src/glfw3.dll: library/glfw-3.3.2/src/CMakeFiles/glfw.dir/link.txt

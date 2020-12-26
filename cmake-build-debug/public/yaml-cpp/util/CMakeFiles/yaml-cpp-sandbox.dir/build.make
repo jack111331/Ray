@@ -79,9 +79,7 @@ yaml__cpp__sandbox_EXTERNAL_OBJECTS =
 
 public/yaml-cpp/util/sandbox.exe: public/yaml-cpp/util/CMakeFiles/yaml-cpp-sandbox.dir/sandbox.cpp.obj
 public/yaml-cpp/util/sandbox.exe: public/yaml-cpp/util/CMakeFiles/yaml-cpp-sandbox.dir/build.make
-public/yaml-cpp/util/sandbox.exe: ../library/glew-2.2.0/lib/Release/Win32/glew32.lib
 public/yaml-cpp/util/sandbox.exe: public/yaml-cpp/libyaml-cppd.dll.a
-public/yaml-cpp/util/sandbox.exe: ../library/glew-2.2.0/lib/Release/Win32/glew32.lib
 public/yaml-cpp/util/sandbox.exe: public/yaml-cpp/util/CMakeFiles/yaml-cpp-sandbox.dir/linklibs.rsp
 public/yaml-cpp/util/sandbox.exe: public/yaml-cpp/util/CMakeFiles/yaml-cpp-sandbox.dir/objects1.rsp
 public/yaml-cpp/util/sandbox.exe: public/yaml-cpp/util/CMakeFiles/yaml-cpp-sandbox.dir/link.txt

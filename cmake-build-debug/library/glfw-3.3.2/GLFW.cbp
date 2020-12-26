@@ -39,7 +39,6 @@
 					<Add option="-DUNICODE"/>
 					<Add option="-DWINVER=0x0501"/>
 					<Add directory="D:/Code/Ray/./include"/>
-					<Add directory="D:/Code/Ray/library/glew-2.2.0/include"/>
 					<Add directory="D:/Code/Ray/library/glfw-3.3.2/include"/>
 					<Add directory="D:/Code/Ray/library/glfw-3.3.2/src"/>
 					<Add directory="D:/Code/Ray/cmake-build-debug/library/glfw-3.3.2/src"/>
@@ -70,7 +69,6 @@
 					<Add option="-DUNICODE"/>
 					<Add option="-DWINVER=0x0501"/>
 					<Add directory="D:/Code/Ray/./include"/>
-					<Add directory="D:/Code/Ray/library/glew-2.2.0/include"/>
 					<Add directory="D:/Code/Ray/library/glfw-3.3.2/include"/>
 					<Add directory="D:/Code/Ray/library/glfw-3.3.2/src"/>
 					<Add directory="D:/Code/Ray/cmake-build-debug/library/glfw-3.3.2/src"/>

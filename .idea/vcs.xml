@@ -3,6 +3,7 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/library/assimp" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/public/glew" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/public/yaml-cpp" vcs="Git" />
   </component>
 </project>

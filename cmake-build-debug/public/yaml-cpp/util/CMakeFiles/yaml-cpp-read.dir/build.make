@@ -79,9 +79,7 @@ yaml__cpp__read_EXTERNAL_OBJECTS =
 
 public/yaml-cpp/util/read.exe: public/yaml-cpp/util/CMakeFiles/yaml-cpp-read.dir/read.cpp.obj
 public/yaml-cpp/util/read.exe: public/yaml-cpp/util/CMakeFiles/yaml-cpp-read.dir/build.make
-public/yaml-cpp/util/read.exe: ../library/glew-2.2.0/lib/Release/Win32/glew32.lib
 public/yaml-cpp/util/read.exe: public/yaml-cpp/libyaml-cppd.dll.a
-public/yaml-cpp/util/read.exe: ../library/glew-2.2.0/lib/Release/Win32/glew32.lib
 public/yaml-cpp/util/read.exe: public/yaml-cpp/util/CMakeFiles/yaml-cpp-read.dir/linklibs.rsp
 public/yaml-cpp/util/read.exe: public/yaml-cpp/util/CMakeFiles/yaml-cpp-read.dir/objects1.rsp
 public/yaml-cpp/util/read.exe: public/yaml-cpp/util/CMakeFiles/yaml-cpp-read.dir/link.txt

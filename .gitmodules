@@ -1,3 +1,7 @@
 [submodule "public/yaml-cpp"]
 	path = public/yaml-cpp
 	url = https://github.com/jbeder/yaml-cpp
+
+[submodule "public/glew"]
+	path = public/glew
+	url = https://github.com/Perlmint/glew-cmake
