@@ -11,7 +11,6 @@
 
 class LambertianMaterial : public Material {
 public:
-    friend std::istream &operator >> (std::istream &lhs, LambertianMaterial &material);
 
     virtual Color calculatePhong(const Scene *scene, Ray &ray, const HitRecord &record, const LightRecord &shadeLightRecord, ShadeRecord &shadeRecord) const;
     virtual void calculatePhotonMapping(const Scene *scene, const PhotonMappingModel &photonMappingModel, Ray &ray,

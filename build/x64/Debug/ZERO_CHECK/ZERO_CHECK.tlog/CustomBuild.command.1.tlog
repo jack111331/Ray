@@ -1,0 +1,10 @@
+^D:\CODE\RAY\BUILD\CMAKEFILES\34E7BC06D146D14286C77AC3098BACB0\GENERATE.STAMP.RULE
+setlocal
+"D:\Program Files\JetBrains\CLion 2019.2.4\bin\cmake\win\bin\cmake.exe" -SD:/Code/Ray -BD:/Code/Ray/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file D:/Code/Ray/build/Ray.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

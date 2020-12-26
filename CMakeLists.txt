@@ -42,7 +42,7 @@ find_package(Threads REQUIRED)
 #message("${ASSIMP_LIBRARY}")
 #add_subdirectory(library/assimp-5.0.1)
 
-include_directories("./public/yaml-cpp/include")
+add_subdirectory(public/yaml-cpp)
 
 set(CMAKE_CXX_STANDARD 11)
 
@@ -109,4 +109,4 @@ list(APPEND HEADER_LIST
         )
 
 add_executable(Ray main.cpp ${HEADER_LIST} ${SOURCE_LIST})
-target_link_libraries(Ray ${CMAKE_SOURCE_DIR}/library/glew32.lib glfw OpenGL::GL Threads::Threads ${CMAKE_SOURCE_DIR}/library/yaml-cppd.lib)
+target_link_libraries(Ray ${CMAKE_SOURCE_DIR}/library/glew32.lib glfw OpenGL::GL Threads::Threads yaml-cpp)

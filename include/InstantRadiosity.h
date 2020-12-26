@@ -7,23 +7,20 @@
 
 #include "KDTree.h"
 #include "IllumModel.h"
+#include "Pipeline.h"
 
-class VPL : public CoordData {
+class VPL {
 
 };
 
-class InstantRadiosityModel : public IlluminationModel {
+class InstantRadiosityPipeline : public LocalRenderingPipeline {
 public:
-    InstantRadiosityModel() {
-        m_kdTree = new KDTree<VPL>;
-    }
-    virtual Color castRay(const Scene *scene, Ray &ray, int depth);
-    virtual std::string getModelName() const {
-        return "InstantRadiosity";
-    }
 
+    virtual void setupPipeline();
 
-    KDTree<VPL> *m_kdTree;
+protected:
+    virtual void renderAllPass();
+    PhongPassSetting *shadingSetting;
 };
 
 

@@ -5,7 +5,7 @@
 		<Option title="GLFW"/>
 		<Option makefile_is_custom="1"/>
 		<Option compiler="gcc"/>
-		<Option virtualFolders="CMake Files\;CMake Files\library\;CMake Files\library\glfw-3.3.2\;CMake Files\library\glfw-3.3.2\src\;"/>
+		<Option virtualFolders="CMake Files\;CMake Files\library\;CMake Files\library\glfw-3.3.2\;CMake Files\library\glfw-3.3.2\src\;CMake Files\public\;CMake Files\public\yaml-cpp\;CMake Files\public\yaml-cpp\util\;"/>
 		<Build>
 			<Target title="all">
 				<Option working_dir="D:/Code/Ray/cmake-build-debug/library/glfw-3.3.2"/>
@@ -185,6 +185,18 @@
 		</Unit>
 		<Unit filename="D:/Code/Ray/library/glfw-3.3.2/src/glfw_config.h.in">
 			<Option virtualFolder="CMake Files\library\glfw-3.3.2\src\"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/public/yaml-cpp/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\public\yaml-cpp\"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/public/yaml-cpp/yaml-cpp-config.cmake.in">
+			<Option virtualFolder="CMake Files\public\yaml-cpp\"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/public/yaml-cpp/yaml-cpp.pc.in">
+			<Option virtualFolder="CMake Files\public\yaml-cpp\"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/public/yaml-cpp/util/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\public\yaml-cpp\util\"/>
 		</Unit>
 	</Project>
 </CodeBlocks_project_file>

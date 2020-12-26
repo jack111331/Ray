@@ -1,0 +1,18 @@
+# CMake generation dependency list for this directory.
+D:/Code/Ray/library/glfw-3.3.2/CMakeLists.txt
+D:/Code/Ray/library/glfw-3.3.2/cmake_uninstall.cmake.in
+D:/Code/Ray/library/glfw-3.3.2/src/glfw3.pc.in
+D:/Code/Ray/library/glfw-3.3.2/src/glfw3Config.cmake.in
+D:/Code/Ray/library/glfw-3.3.2/src/glfw_config.h.in
+D:/Program Files/JetBrains/CLion 2019.2.4/bin/cmake/win/share/cmake-3.16/Modules/BasicConfigVersion-SameMajorVersion.cmake.in
+D:/Program Files/JetBrains/CLion 2019.2.4/bin/cmake/win/share/cmake-3.16/Modules/CMakeDependentOption.cmake
+D:/Program Files/JetBrains/CLion 2019.2.4/bin/cmake/win/share/cmake-3.16/Modules/CMakePackageConfigHelpers.cmake
+D:/Program Files/JetBrains/CLion 2019.2.4/bin/cmake/win/share/cmake-3.16/Modules/CheckCSourceCompiles.cmake
+D:/Program Files/JetBrains/CLion 2019.2.4/bin/cmake/win/share/cmake-3.16/Modules/CheckIncludeFile.c.in
+D:/Program Files/JetBrains/CLion 2019.2.4/bin/cmake/win/share/cmake-3.16/Modules/CheckIncludeFile.cmake
+D:/Program Files/JetBrains/CLion 2019.2.4/bin/cmake/win/share/cmake-3.16/Modules/CheckLibraryExists.cmake
+D:/Program Files/JetBrains/CLion 2019.2.4/bin/cmake/win/share/cmake-3.16/Modules/FindPackageHandleStandardArgs.cmake
+D:/Program Files/JetBrains/CLion 2019.2.4/bin/cmake/win/share/cmake-3.16/Modules/FindPackageMessage.cmake
+D:/Program Files/JetBrains/CLion 2019.2.4/bin/cmake/win/share/cmake-3.16/Modules/FindThreads.cmake
+D:/Program Files/JetBrains/CLion 2019.2.4/bin/cmake/win/share/cmake-3.16/Modules/GNUInstallDirs.cmake
+D:/Program Files/JetBrains/CLion 2019.2.4/bin/cmake/win/share/cmake-3.16/Modules/WriteBasicConfigVersionFile.cmake

@@ -4,6 +4,15 @@ out vec4 finalColor;
 in vec3 fPos;
 in vec3 fNormal;
 
+struct LightAttribute {
+    vec4 position;
+    vec4 color;
+}
+
+layout(std140, binding = 1) uniform Lights {
+    LightAttribute lights[100];
+};
+
 uniform vec3 lightPos;
 uniform vec3 viewPos;
 uniform vec3 lightColor;

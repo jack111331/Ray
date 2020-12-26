@@ -498,7 +498,7 @@ Ray.exe: CMakeFiles/Ray.dir/build.make
 Ray.exe: ../library/glew-2.2.0/lib/Release/Win32/glew32.lib
 Ray.exe: ../library/glew32.lib
 Ray.exe: library/glfw-3.3.2/src/libglfw3dll.a
-Ray.exe: ../library/yaml-cppd.lib
+Ray.exe: public/yaml-cpp/libyaml-cppd.dll.a
 Ray.exe: ../library/glew-2.2.0/lib/Release/Win32/glew32.lib
 Ray.exe: CMakeFiles/Ray.dir/linklibs.rsp
 Ray.exe: CMakeFiles/Ray.dir/objects1.rsp

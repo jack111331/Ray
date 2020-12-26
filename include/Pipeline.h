@@ -121,6 +121,11 @@ public:
 
     virtual void pipelineLoop();
 
+    void setIlluminationModel(IlluminationModel *model) {
+        m_model = model;
+    }
+
+protected:
     void generateImage();
 
     Color traceRay(Ray &ray) {
@@ -131,11 +136,6 @@ public:
         }
     }
 
-    void setIlluminationModel(IlluminationModel *model) {
-        m_model = model;
-    }
-
-protected:
     IlluminationModel *m_model;
 
     Color m_backgroundColor = {.0f, .0f, .0f};
@@ -167,6 +167,8 @@ public:
     virtual void pipelineLoop();
 
 protected:
+    virtual void renderAllPass() = 0;
+
     Pass *m_shadingPass;
 
     std::vector<ShadeObject *> m_objectList;
@@ -176,9 +178,11 @@ protected:
 
 class PhongShadingPipeline : public LocalRenderingPipeline {
 public:
-    void setupPipeline();
+    virtual void setupPipeline();
 
-    virtual void pipelineLoop();
+
+protected:
+    virtual void renderAllPass();
 
 private:
     PhongPassSetting *shadingSetting;

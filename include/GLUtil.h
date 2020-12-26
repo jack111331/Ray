@@ -7,10 +7,16 @@
 
 #include <vector>
 #include <cstdint>
+#include "Utility.h"
 
 class Light;
 
 namespace RayUtil {
+    struct LightAttribute {
+        float position[4];
+        float color[4];
+    };
+
     uint32_t generateLightUBO(const std::vector<Light *> &lightList);
 }
 

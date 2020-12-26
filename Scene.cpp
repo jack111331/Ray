@@ -56,4 +56,5 @@ bool Scene::readSceneInfo(const YAML::Node &node) {
             }
         }
     }
+    return true;
 }

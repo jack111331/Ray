@@ -106,6 +106,9 @@ public:
     static Velocity toVelocity(const std::vector<float> &floatList) {
         if(floatList.size() == 3) {
             return {floatList[0], floatList[1], floatList[2]};
+        } else {
+            // TODO error handler
+            return {};
         }
     }
 
@@ -174,6 +177,9 @@ public:
     static Coord toCoord(const std::vector<float> &floatList) {
         if(floatList.size() == 3) {
             return {floatList[0], floatList[1], floatList[2]};
+        } else {
+            // TODO error handler
+            return {};
         }
     }
 
@@ -214,6 +220,7 @@ public:
         os << (uint8_t) (color.r > 1.0 ? 255 : (255.99 * color.r))
            << (uint8_t) (color.g > 1.0 ? 255 : (255.99 * color.g))
            << (uint8_t) (color.b > 1.0 ? 255 : (255.99 * color.b));
+        return os;
     }
 
     void clamp() {
@@ -259,6 +266,9 @@ public:
     static Color toColor(const std::vector<float> &floatList) {
         if(floatList.size() == 3) {
             return {floatList[0], floatList[1], floatList[2]};
+        } else {
+            // TODO error handler
+            return {};
         }
     }
 

@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="YAML_CPP"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\library\;CMake Files\library\glfw-3.3.2\;CMake Files\library\glfw-3.3.2\src\;CMake Files\public\;CMake Files\public\yaml-cpp\;CMake Files\public\yaml-cpp\util\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="D:/Code/Ray/cmake-build-debug/public/yaml-cpp"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/public/yaml-cpp/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/public/yaml-cpp/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/public/yaml-cpp/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/public/yaml-cpp/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Experimental">
+				<Option working_dir="D:/Code/Ray/cmake-build-debug/public/yaml-cpp"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/public/yaml-cpp/Makefile&quot;  VERBOSE=1 Experimental"/>
+					<CompileFile command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/public/yaml-cpp/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/public/yaml-cpp/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/public/yaml-cpp/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="format">
+				<Option working_dir="D:/Code/Ray/cmake-build-debug/public/yaml-cpp"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/public/yaml-cpp/Makefile&quot;  VERBOSE=1 format"/>
+					<CompileFile command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/public/yaml-cpp/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/public/yaml-cpp/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/public/yaml-cpp/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Continuous">
+				<Option working_dir="D:/Code/Ray/cmake-build-debug/public/yaml-cpp"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/public/yaml-cpp/Makefile&quot;  VERBOSE=1 Continuous"/>
+					<CompileFile command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/public/yaml-cpp/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/public/yaml-cpp/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/public/yaml-cpp/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Nightly">
+				<Option working_dir="D:/Code/Ray/cmake-build-debug/public/yaml-cpp"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/public/yaml-cpp/Makefile&quot;  VERBOSE=1 Nightly"/>
+					<CompileFile command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/public/yaml-cpp/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/public/yaml-cpp/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/public/yaml-cpp/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="yaml-cpp">
+				<Option output="D:/Code/Ray/cmake-build-debug/public/yaml-cpp/libyaml-cppd.dll" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="D:/Code/Ray/cmake-build-debug/public/yaml-cpp"/>
+				<Option object_output="./"/>
+				<Option type="3"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DYAML_CPP_DLL"/>
+					<Add directory="D:/Code/Ray/./include"/>
+					<Add directory="D:/Code/Ray/library/glew-2.2.0/include"/>
+					<Add directory="D:/Code/Ray/public/yaml-cpp/include"/>
+					<Add directory="D:/Code/Ray/public/yaml-cpp/src"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/mingw32"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/backward"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/../../../../include"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include-fixed"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/public/yaml-cpp/Makefile&quot;  VERBOSE=1 yaml-cpp"/>
+					<CompileFile command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/public/yaml-cpp/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/public/yaml-cpp/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/public/yaml-cpp/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="yaml-cpp/fast">
+				<Option output="D:/Code/Ray/cmake-build-debug/public/yaml-cpp/libyaml-cppd.dll" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="D:/Code/Ray/cmake-build-debug/public/yaml-cpp"/>
+				<Option object_output="./"/>
+				<Option type="3"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DYAML_CPP_DLL"/>
+					<Add directory="D:/Code/Ray/./include"/>
+					<Add directory="D:/Code/Ray/library/glew-2.2.0/include"/>
+					<Add directory="D:/Code/Ray/public/yaml-cpp/include"/>
+					<Add directory="D:/Code/Ray/public/yaml-cpp/src"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/mingw32"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/backward"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/../../../../include"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include-fixed"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/public/yaml-cpp/Makefile&quot;  VERBOSE=1 yaml-cpp/fast"/>
+					<CompileFile command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/public/yaml-cpp/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/public/yaml-cpp/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/public/yaml-cpp/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="yaml-cpp-parse">
+				<Option output="D:/Code/Ray/cmake-build-debug/public/yaml-cpp/util/parse.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="D:/Code/Ray/cmake-build-debug/public/yaml-cpp/util"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="D:/Code/Ray/./include"/>
+					<Add directory="D:/Code/Ray/library/glew-2.2.0/include"/>
+					<Add directory="D:/Code/Ray/public/yaml-cpp/include"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/mingw32"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/backward"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/../../../../include"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include-fixed"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/public/yaml-cpp/util/Makefile&quot;  VERBOSE=1 yaml-cpp-parse"/>
+					<CompileFile command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/public/yaml-cpp/util/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/public/yaml-cpp/util/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/public/yaml-cpp/util/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="yaml-cpp-parse/fast">
+				<Option output="D:/Code/Ray/cmake-build-debug/public/yaml-cpp/util/parse.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="D:/Code/Ray/cmake-build-debug/public/yaml-cpp/util"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="D:/Code/Ray/./include"/>
+					<Add directory="D:/Code/Ray/library/glew-2.2.0/include"/>
+					<Add directory="D:/Code/Ray/public/yaml-cpp/include"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/mingw32"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/backward"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/../../../../include"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include-fixed"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/public/yaml-cpp/util/Makefile&quot;  VERBOSE=1 yaml-cpp-parse/fast"/>
+					<CompileFile command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/public/yaml-cpp/util/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/public/yaml-cpp/util/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/public/yaml-cpp/util/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="yaml-cpp-sandbox">
+				<Option output="D:/Code/Ray/cmake-build-debug/public/yaml-cpp/util/sandbox.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="D:/Code/Ray/cmake-build-debug/public/yaml-cpp/util"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="D:/Code/Ray/./include"/>
+					<Add directory="D:/Code/Ray/library/glew-2.2.0/include"/>
+					<Add directory="D:/Code/Ray/public/yaml-cpp/include"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/mingw32"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/backward"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/../../../../include"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include-fixed"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/public/yaml-cpp/util/Makefile&quot;  VERBOSE=1 yaml-cpp-sandbox"/>
+					<CompileFile command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/public/yaml-cpp/util/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/public/yaml-cpp/util/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/public/yaml-cpp/util/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="yaml-cpp-sandbox/fast">
+				<Option output="D:/Code/Ray/cmake-build-debug/public/yaml-cpp/util/sandbox.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="D:/Code/Ray/cmake-build-debug/public/yaml-cpp/util"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="D:/Code/Ray/./include"/>
+					<Add directory="D:/Code/Ray/library/glew-2.2.0/include"/>
+					<Add directory="D:/Code/Ray/public/yaml-cpp/include"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/mingw32"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/backward"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/../../../../include"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include-fixed"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/public/yaml-cpp/util/Makefile&quot;  VERBOSE=1 yaml-cpp-sandbox/fast"/>
+					<CompileFile command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/public/yaml-cpp/util/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/public/yaml-cpp/util/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/public/yaml-cpp/util/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="yaml-cpp-read">
+				<Option output="D:/Code/Ray/cmake-build-debug/public/yaml-cpp/util/read.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="D:/Code/Ray/cmake-build-debug/public/yaml-cpp/util"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="D:/Code/Ray/./include"/>
+					<Add directory="D:/Code/Ray/library/glew-2.2.0/include"/>
+					<Add directory="D:/Code/Ray/public/yaml-cpp/include"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/mingw32"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/backward"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/../../../../include"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include-fixed"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/public/yaml-cpp/util/Makefile&quot;  VERBOSE=1 yaml-cpp-read"/>
+					<CompileFile command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/public/yaml-cpp/util/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/public/yaml-cpp/util/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/public/yaml-cpp/util/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="yaml-cpp-read/fast">
+				<Option output="D:/Code/Ray/cmake-build-debug/public/yaml-cpp/util/read.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="D:/Code/Ray/cmake-build-debug/public/yaml-cpp/util"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="D:/Code/Ray/./include"/>
+					<Add directory="D:/Code/Ray/library/glew-2.2.0/include"/>
+					<Add directory="D:/Code/Ray/public/yaml-cpp/include"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/mingw32"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/backward"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/../../../../include"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include-fixed"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/public/yaml-cpp/util/Makefile&quot;  VERBOSE=1 yaml-cpp-read/fast"/>
+					<CompileFile command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/public/yaml-cpp/util/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/public/yaml-cpp/util/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/MinGW/bin/make.exe -f &quot;D:/Code/Ray/cmake-build-debug/public/yaml-cpp/util/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="D:/Code/Ray/public/yaml-cpp/src/binary.cpp">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/public/yaml-cpp/src/contrib/graphbuilder.cpp">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/public/yaml-cpp/src/contrib/graphbuilderadapter.cpp">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/public/yaml-cpp/src/contrib/graphbuilderadapter.h">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/public/yaml-cpp/src/convert.cpp">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/public/yaml-cpp/src/depthguard.cpp">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/public/yaml-cpp/src/directives.cpp">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/public/yaml-cpp/src/directives.h">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/public/yaml-cpp/src/emit.cpp">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/public/yaml-cpp/src/emitfromevents.cpp">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/public/yaml-cpp/src/emitter.cpp">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/public/yaml-cpp/src/emitterstate.cpp">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/public/yaml-cpp/src/emitterstate.h">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/public/yaml-cpp/src/emitterutils.cpp">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/public/yaml-cpp/src/emitterutils.h">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/public/yaml-cpp/src/exceptions.cpp">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/public/yaml-cpp/src/exp.cpp">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/public/yaml-cpp/src/exp.h">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/public/yaml-cpp/src/memory.cpp">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/public/yaml-cpp/src/node.cpp">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/public/yaml-cpp/src/node_data.cpp">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/public/yaml-cpp/src/nodebuilder.cpp">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/public/yaml-cpp/src/nodebuilder.h">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/public/yaml-cpp/src/nodeevents.cpp">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/public/yaml-cpp/src/nodeevents.h">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/public/yaml-cpp/src/null.cpp">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/public/yaml-cpp/src/ostream_wrapper.cpp">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/public/yaml-cpp/src/parse.cpp">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/public/yaml-cpp/src/parser.cpp">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/public/yaml-cpp/src/regex_yaml.cpp">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/public/yaml-cpp/src/regex_yaml.h">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/public/yaml-cpp/src/scanner.cpp">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/public/yaml-cpp/src/scanner.h">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/public/yaml-cpp/src/scanscalar.cpp">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/public/yaml-cpp/src/scanscalar.h">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/public/yaml-cpp/src/scantag.cpp">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/public/yaml-cpp/src/scantag.h">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/public/yaml-cpp/src/scantoken.cpp">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/public/yaml-cpp/src/simplekey.cpp">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/public/yaml-cpp/src/singledocparser.cpp">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/public/yaml-cpp/src/singledocparser.h">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/public/yaml-cpp/src/stream.cpp">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/public/yaml-cpp/src/stream.h">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/public/yaml-cpp/src/tag.cpp">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/public/yaml-cpp/src/tag.h">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/public/yaml-cpp/util/parse.cpp">
+			<Option target="yaml-cpp-parse"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/public/yaml-cpp/util/read.cpp">
+			<Option target="yaml-cpp-read"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/public/yaml-cpp/util/sandbox.cpp">
+			<Option target="yaml-cpp-sandbox"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/library/glfw-3.3.2/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\library\glfw-3.3.2\"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/library/glfw-3.3.2/cmake_uninstall.cmake.in">
+			<Option virtualFolder="CMake Files\library\glfw-3.3.2\"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/library/glfw-3.3.2/src/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\library\glfw-3.3.2\src\"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/library/glfw-3.3.2/src/glfw3.pc.in">
+			<Option virtualFolder="CMake Files\library\glfw-3.3.2\src\"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/library/glfw-3.3.2/src/glfw3Config.cmake.in">
+			<Option virtualFolder="CMake Files\library\glfw-3.3.2\src\"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/library/glfw-3.3.2/src/glfw_config.h.in">
+			<Option virtualFolder="CMake Files\library\glfw-3.3.2\src\"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/public/yaml-cpp/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\public\yaml-cpp\"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/public/yaml-cpp/yaml-cpp-config.cmake.in">
+			<Option virtualFolder="CMake Files\public\yaml-cpp\"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/public/yaml-cpp/yaml-cpp.pc.in">
+			<Option virtualFolder="CMake Files\public\yaml-cpp\"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/public/yaml-cpp/util/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\public\yaml-cpp\util\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

@@ -172,14 +172,12 @@ void RayTracingPipeline::generateImage() {
 }
 
 void WhittedPipeline::setupPipeline() {
-    RayTracingPipeline::setupEnvironment();
     WhittedModel *model = new WhittedModel();
     model->setupBackgroundColor(m_backgroundColor);
     setIlluminationModel(model);
 }
 
 void PhotonMappingPipeline::setupPipeline() {
-    RayTracingPipeline::setupEnvironment();
     if(!m_photonAmount || m_photonPower < 1e-6) {
         // TODO require proper handler
         exit(1);
@@ -221,7 +219,7 @@ void LocalRenderingPipeline::pipelineLoop() {
         glEnable(GL_DEPTH_TEST);
         glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-        m_shadingPass->renderPass(m_objectList);
+        renderAllPass();
 
         glfwSwapBuffers(m_window);
         glfwPollEvents();
@@ -232,6 +230,9 @@ void LocalRenderingPipeline::pipelineLoop() {
 }
 
 void PhongShadingPipeline::setupPipeline() {
+    if(!m_scene || !m_camera) {
+        // TODO error handler
+    }
     m_shadingPass = new PhongShadingPass();
     shadingSetting = new PhongPassSetting();
     shadingSetting->m_projectionMatrix = glm::perspective(glm::radians(m_camera->m_fov * 2.0f),
@@ -256,4 +257,8 @@ void PhongShadingPipeline::setupPipeline() {
             m_objectList.push_back(new ShadeObject{objectInfo, hittable->m_material});
         }
     }
+}
+
+void PhongShadingPipeline::renderAllPass() {
+    m_shadingPass->renderPass(m_objectList);
 }

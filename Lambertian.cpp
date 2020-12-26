@@ -7,14 +7,6 @@
 
 using namespace std;
 
-istream &operator>>(istream &is, LambertianMaterial &rhs) {
-    is >> rhs.m_ambientColor;
-    is >> rhs.m_diffuseColor;
-    is >> rhs.m_specularColor;
-    is >> rhs.m_constantSpecularExp;
-    is >> rhs.m_constantRoughness;
-}
-
 Color LambertianMaterial::calculatePhong(const Scene *scene, Ray &ray, const HitRecord &record,
                                          const LightRecord &shadeLightRecord, ShadeRecord &shadeRecord) const {
     // calculate diffuse and specular

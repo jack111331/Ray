@@ -6,7 +6,6 @@
 #define RAY_SCENE_H
 
 #include <vector>
-#include <pthread.h>
 #include "Ray.h"
 #include "Light.h"
 #include "Camera.h"

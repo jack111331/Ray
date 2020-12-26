@@ -7,6 +7,7 @@
 
 
 #include "Pipeline.h"
+#include "InstantRadiosity.h"
 
 class PipelineFactory {
 public:
@@ -20,6 +21,8 @@ public:
         } else if(typeName == "local-rendering") {
             if(pipelineName == "phong-shading") {
                 return new PhongShadingPipeline();
+            } else if(pipelineName == "instant-radiosity") {
+                return new InstantRadiosityPipeline();
             }
         }
         return nullptr;

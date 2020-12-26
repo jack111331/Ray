@@ -118,6 +118,12 @@ BUILD_FRAMEWORK:BOOL=OFF
 //Build shared libraries
 BUILD_SHARED_LIBS:BOOL=ON
 
+//Build the testing tree.
+BUILD_TESTING:BOOL=ON
+
+//Path to a program.
+BZRCOMMAND:FILEPATH=BZRCOMMAND-NOTFOUND
+
 //Path to a program.
 CMAKE_ADDR2LINE:FILEPATH=D:/MinGW/bin/addr2line.exe
 
@@ -411,6 +417,31 @@ CMAKE_STRIP:FILEPATH=D:/MinGW/bin/strip.exe
 // Studio IDE projects all commands are done without /nologo.
 CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 
+//Path to the coverage program that CTest uses for performing coverage
+// inspection
+COVERAGE_COMMAND:FILEPATH=D:/MinGW/bin/gcov.exe
+
+//Extra command line flags to pass to the coverage tool
+COVERAGE_EXTRA_FLAGS:STRING=-l
+
+//How many times to retry timed-out CTest submissions.
+CTEST_SUBMIT_RETRY_COUNT:STRING=3
+
+//How long to wait between timed-out CTest submissions.
+CTEST_SUBMIT_RETRY_DELAY:STRING=5
+
+//Path to a program.
+CVSCOMMAND:FILEPATH=CVSCOMMAND-NOTFOUND
+
+//Options passed to the cvs update command.
+CVS_UPDATE_OPTIONS:STRING=-d -A -P
+
+//Maximum time allowed before CTest will kill the test.
+DART_TESTING_TIMEOUT:STRING=1500
+
+//Path to a program.
+GITCOMMAND:FILEPATH=C:/Program Files/Git/cmd/git.exe
+
 //The directory containing a CMake configuration file for GLEW.
 GLEW_DIR:PATH=GLEW_DIR-NOTFOUND
 
@@ -453,6 +484,9 @@ GLFW_USE_HYBRID_HPG:BOOL=ON
 //Assume the Vulkan loader is linked with the application
 GLFW_VULKAN_STATIC:BOOL=OFF
 
+//Path to a program.
+HGCOMMAND:FILEPATH=HGCOMMAND-NOTFOUND
+
 //Enable Hunter package manager support
 HUNTER_ENABLED:BOOL=OFF
 
@@ -471,11 +505,23 @@ IGNORE_GIT_HASH:BOOL=OFF
 //Inject debug postfix in .a/.so/.dll lib names
 INJECT_DEBUG_POSTFIX:BOOL=ON
 
+//Command to build the project
+MAKECOMMAND:STRING=D:/Program\ Files/JetBrains/CLion\ 2019.2.4/bin/cmake/win/bin/cmake.exe --build . --config "${CTEST_CONFIGURATION_TYPE}"
+
+//Path to the memory checking command, used for memory error detection.
+MEMORYCHECK_COMMAND:FILEPATH=MEMORYCHECK_COMMAND-NOTFOUND
+
+//File that contains suppressions for the memory checker
+MEMORYCHECK_SUPPRESSIONS_FILE:FILEPATH=
+
 //OpenGL library for win32
 OPENGL_gl_LIBRARY:STRING=opengl32
 
 //GLU library for win32
 OPENGL_glu_LIBRARY:STRING=glu32
+
+//Path to a program.
+P4COMMAND:FILEPATH=P4COMMAND-NOTFOUND
 
 //Value Computed by CMake
 Ray_BINARY_DIR:STATIC=D:/Code/Ray/cmake-build-debug
@@ -483,8 +529,38 @@ Ray_BINARY_DIR:STATIC=D:/Code/Ray/cmake-build-debug
 //Value Computed by CMake
 Ray_SOURCE_DIR:STATIC=D:/Code/Ray
 
+//Name of the computer/site where compile is being run
+SITE:STRING=MSI
+
+//Path to the SLURM sbatch executable
+SLURM_SBATCH_COMMAND:FILEPATH=SLURM_SBATCH_COMMAND-NOTFOUND
+
+//Path to the SLURM srun executable
+SLURM_SRUN_COMMAND:FILEPATH=SLURM_SRUN_COMMAND-NOTFOUND
+
+//Path to a program.
+SVNCOMMAND:FILEPATH=D:/Program Files/SlikSvn/bin/svn.exe
+
 //Use system installed Irrlicht/IrrXML library.
 SYSTEM_IRRXML:BOOL=OFF
+
+//Build yaml-cpp shared library
+YAML_BUILD_SHARED_LIBS:BOOL=ON
+
+//Value Computed by CMake
+YAML_CPP_BINARY_DIR:STATIC=D:/Code/Ray/cmake-build-debug/public/yaml-cpp
+
+//Enable yaml-cpp contrib in library
+YAML_CPP_BUILD_CONTRIB:BOOL=ON
+
+//Enable parse tools
+YAML_CPP_BUILD_TOOLS:BOOL=ON
+
+//Path to a program.
+YAML_CPP_CLANG_FORMAT_EXE:FILEPATH=D:/Program Files/LLVM/bin/clang-format.exe
+
+//Value Computed by CMake
+YAML_CPP_SOURCE_DIR:STATIC=D:/Code/Ray/public/yaml-cpp
 
 //Path to a library.
 assimp:FILEPATH=D:/Code/Ray/cmake-build-debug/library/assimp/assimp.dll
@@ -495,11 +571,16 @@ assimp_DIR:PATH=assimp_DIR-NOTFOUND
 //Dependencies for the target
 glfw_LIB_DEPENDS:STATIC=general;D:/Code/Ray/library/glew-2.2.0/lib/Release/Win32/glew32.lib;general;-static-libgcc;
 
+//Dependencies for the target
+yaml-cpp_LIB_DEPENDS:STATIC=general;D:/Code/Ray/library/glew-2.2.0/lib/Release/Win32/glew32.lib;
+
 
 ########################
 # INTERNAL cache entries
 ########################
 
+//ADVANCED property for variable: BZRCOMMAND
+BZRCOMMAND-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_ADDR2LINE
 CMAKE_ADDR2LINE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_AR
@@ -518,6 +599,8 @@ CMAKE_COLOR_MAKEFILE-ADVANCED:INTERNAL=1
 CMAKE_COMMAND:INTERNAL=D:/Program Files/JetBrains/CLion 2019.2.4/bin/cmake/win/bin/cmake.exe
 //Path to cpack program executable.
 CMAKE_CPACK_COMMAND:INTERNAL=D:/Program Files/JetBrains/CLion 2019.2.4/bin/cmake/win/bin/cpack.exe
+//ADVANCED property for variable: CMAKE_CTEST_COMMAND
+CMAKE_CTEST_COMMAND-ADVANCED:INTERNAL=1
 //Path to ctest program executable.
 CMAKE_CTEST_COMMAND:INTERNAL=D:/Program Files/JetBrains/CLion 2019.2.4/bin/cmake/win/bin/ctest.exe
 //ADVANCED property for variable: CMAKE_CXX_COMPILER
@@ -646,7 +729,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=3
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=5
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
@@ -700,6 +783,20 @@ CMAKE_STATIC_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 CMAKE_STRIP-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: COVERAGE_COMMAND
+COVERAGE_COMMAND-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: COVERAGE_EXTRA_FLAGS
+COVERAGE_EXTRA_FLAGS-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CTEST_SUBMIT_RETRY_COUNT
+CTEST_SUBMIT_RETRY_COUNT-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CTEST_SUBMIT_RETRY_DELAY
+CTEST_SUBMIT_RETRY_DELAY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CVSCOMMAND
+CVSCOMMAND-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CVS_UPDATE_OPTIONS
+CVS_UPDATE_OPTIONS-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: DART_TESTING_TIMEOUT
+DART_TESTING_TIMEOUT-ADVANCED:INTERNAL=1
 //Have include dinput.h
 DINPUT_H_FOUND:INTERNAL=
 //Details about finding GLEW
@@ -708,6 +805,8 @@ FIND_PACKAGE_MESSAGE_DETAILS_GLEW:INTERNAL=[D:/Code/Ray/library/glew-2.2.0/inclu
 FIND_PACKAGE_MESSAGE_DETAILS_OpenGL:INTERNAL=[opengl32][c ][v()]
 //Details about finding Threads
 FIND_PACKAGE_MESSAGE_DETAILS_Threads:INTERNAL=[TRUE][v()]
+//ADVANCED property for variable: GITCOMMAND
+GITCOMMAND-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: GLEW_INCLUDE_DIR
 GLEW_INCLUDE_DIR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: GLEW_SHARED_LIBRARY_DEBUG
@@ -718,10 +817,28 @@ GLEW_SHARED_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
 GLEW_STATIC_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: GLEW_STATIC_LIBRARY_RELEASE
 GLEW_STATIC_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: HGCOMMAND
+HGCOMMAND-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: MAKECOMMAND
+MAKECOMMAND-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: MEMORYCHECK_COMMAND
+MEMORYCHECK_COMMAND-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: MEMORYCHECK_SUPPRESSIONS_FILE
+MEMORYCHECK_SUPPRESSIONS_FILE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: OPENGL_gl_LIBRARY
 OPENGL_gl_LIBRARY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: OPENGL_glu_LIBRARY
 OPENGL_glu_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: P4COMMAND
+P4COMMAND-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: SITE
+SITE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: SLURM_SBATCH_COMMAND
+SLURM_SBATCH_COMMAND-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: SLURM_SRUN_COMMAND
+SLURM_SRUN_COMMAND-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: SVNCOMMAND
+SVNCOMMAND-ADVANCED:INTERNAL=1
 //Result of TRY_COMPILE
 THREADS_HAVE_PTHREAD_ARG:INTERNAL=TRUE
 //Have include xinput.h

@@ -1,0 +1,10 @@
+^D:\CODE\RAY\LIBRARY\GLFW-3.3.2\SRC\CMAKELISTS.TXT
+setlocal
+"D:\Program Files\JetBrains\CLion 2019.2.4\bin\cmake\win\bin\cmake.exe" -SD:/Code/Ray -BD:/Code/Ray/build --check-stamp-file D:/Code/Ray/build/library/glfw-3.3.2/src/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
