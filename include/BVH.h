@@ -33,8 +33,9 @@ public:
         float dim = std::max(diff.x, std::max(diff.y, diff.z)) / 2;
         // technically, this is not true centroid, just use this for computational efficiency
         Coord centroid = (boundingBox.m_bounding[1] + boundingBox.m_bounding[0]) / 2.0f;
-        m_bound[0] = (centroid - (Velocity) {dim, dim, dim});
-        m_bound[1] = (centroid + (Velocity) {dim, dim, dim});
+        Velocity radius = {dim, dim, dim};
+        m_bound[0] = (centroid - radius);
+        m_bound[1] = (centroid + radius);
         m_root = new OctreeNode<T>;
     }
 
