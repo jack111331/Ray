@@ -3,8 +3,10 @@ project(Ray)
 
 #set(CMAKE_VERBOSE_MAKEFILE ON)
 
+set(GLEW_VERBOSE TRUE)
+
 set(GLEW_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/public/glew/include")
-set(GLEW_LIBRARY "${CMAKE_SOURCE_DIR}/public/glew/bin/Release/Win32")
+set(CMAKE_PREFIX_PATH ${CMAKE_PREFIX_PATH} "public/glew")
 find_package(GLEW REQUIRED)
 if (GLEW_FOUND)
     message("Found GLEW")

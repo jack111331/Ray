@@ -442,26 +442,20 @@ DART_TESTING_TIMEOUT:STRING=1500
 //Path to a program.
 GITCOMMAND:FILEPATH=C:/Program Files/Git/cmd/git.exe
 
-//The directory containing a CMake configuration file for GLEW::GLEW.
-"GLEW::GLEW_DIR":PATH=GLEW::GLEW_DIR-NOTFOUND
-
 //The directory containing a CMake configuration file for GLEW.
 GLEW_DIR:PATH=GLEW_DIR-NOTFOUND
-
-//Path to a file.
-GLEW_INCLUDE_DIR:PATH=GLEW_INCLUDE_DIR-NOTFOUND
 
 //Path to a library.
 GLEW_SHARED_LIBRARY_DEBUG:FILEPATH=GLEW_SHARED_LIBRARY_DEBUG-NOTFOUND
 
 //Path to a library.
-GLEW_SHARED_LIBRARY_RELEASE:FILEPATH=D:/libraries/glew32.lib
+GLEW_SHARED_LIBRARY_RELEASE:FILEPATH=D:/Code/Ray/public/glew/lib/Release/Win32/glew32.lib
 
 //Path to a library.
 GLEW_STATIC_LIBRARY_DEBUG:FILEPATH=GLEW_STATIC_LIBRARY_DEBUG-NOTFOUND
 
 //Path to a library.
-GLEW_STATIC_LIBRARY_RELEASE:FILEPATH=D:/libraries/glew32s.lib
+GLEW_STATIC_LIBRARY_RELEASE:FILEPATH=D:/Code/Ray/public/glew/lib/Release/Win32/glew32s.lib
 
 //Value Computed by CMake
 GLFW_BINARY_DIR:STATIC=D:/Code/Ray/cmake-build-debug/public/glfw
@@ -529,9 +523,6 @@ OPENGL_glu_LIBRARY:STRING=glu32
 //Path to a program.
 P4COMMAND:FILEPATH=P4COMMAND-NOTFOUND
 
-//Generate pc file for specified target as glew. libglew_static|libglewmx_static|libglew_shared|libglewmx_shared
-PKG_CONFIG_REPRESENTATIVE_TARGET:BOOL=OFF
-
 //Value Computed by CMake
 Ray_BINARY_DIR:STATIC=D:/Code/Ray/cmake-build-debug
 
@@ -579,24 +570,6 @@ assimp:FILEPATH=D:/Code/Ray/cmake-build-debug/library/assimp/assimp.dll
 
 //The directory containing a CMake configuration file for assimp.
 assimp_DIR:PATH=assimp_DIR-NOTFOUND
-
-//Build the shared glew library
-glew-cmake_BUILD_SHARED:BOOL=ON
-
-//Build the static glew library
-glew-cmake_BUILD_STATIC:BOOL=ON
-
-//Value Computed by CMake
-glew_BINARY_DIR:STATIC=D:/Code/Ray/cmake-build-debug/public/glew
-
-//Value Computed by CMake
-glew_SOURCE_DIR:STATIC=D:/Code/Ray/public/glew
-
-//Dependencies for the target
-libglew_shared_LIB_DEPENDS:STATIC=general;opengl32;
-
-//Dependencies for the target
-libglew_static_LIB_DEPENDS:STATIC=general;opengl32;
 
 
 ########################
@@ -824,15 +797,13 @@ DART_TESTING_TIMEOUT-ADVANCED:INTERNAL=1
 //Have include dinput.h
 DINPUT_H_FOUND:INTERNAL=
 //Details about finding GLEW
-FIND_PACKAGE_MESSAGE_DETAILS_GLEW:INTERNAL=[D:/Code/Ray/public/glew/include][D:/libraries/glew32.lib][v2.2.0()]
+FIND_PACKAGE_MESSAGE_DETAILS_GLEW:INTERNAL=[D:/Code/Ray/public/glew/include][D:/Code/Ray/public/glew/lib/Release/Win32/glew32.lib][v2.2.0()]
 //Details about finding OpenGL
 FIND_PACKAGE_MESSAGE_DETAILS_OpenGL:INTERNAL=[opengl32][c ][v()]
 //Details about finding Threads
 FIND_PACKAGE_MESSAGE_DETAILS_Threads:INTERNAL=[TRUE][v()]
 //ADVANCED property for variable: GITCOMMAND
 GITCOMMAND-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: GLEW_INCLUDE_DIR
-GLEW_INCLUDE_DIR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: GLEW_SHARED_LIBRARY_DEBUG
 GLEW_SHARED_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: GLEW_SHARED_LIBRARY_RELEASE
