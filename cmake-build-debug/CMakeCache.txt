@@ -517,6 +517,9 @@ MEMORYCHECK_COMMAND:FILEPATH=MEMORYCHECK_COMMAND-NOTFOUND
 //File that contains suppressions for the memory checker
 MEMORYCHECK_SUPPRESSIONS_FILE:FILEPATH=
 
+//Do not build executables
+ONLY_LIBS:BOOL=OFF
+
 //OpenGL library for win32
 OPENGL_gl_LIBRARY:STRING=opengl32
 
@@ -525,6 +528,9 @@ OPENGL_glu_LIBRARY:STRING=glu32
 
 //Path to a program.
 P4COMMAND:FILEPATH=P4COMMAND-NOTFOUND
+
+//Generate pc file for specified target as glew. libglew_static|libglewmx_static|libglew_shared|libglewmx_shared
+PKG_CONFIG_REPRESENTATIVE_TARGET:BOOL=OFF
 
 //Value Computed by CMake
 Ray_BINARY_DIR:STATIC=D:/Code/Ray/cmake-build-debug
@@ -546,6 +552,9 @@ SVNCOMMAND:FILEPATH=D:/Program Files/SlikSvn/bin/svn.exe
 
 //Use system installed Irrlicht/IrrXML library.
 SYSTEM_IRRXML:BOOL=OFF
+
+//Use GLU
+USE_GLU:BOOL=OFF
 
 //Build yaml-cpp shared library
 YAML_BUILD_SHARED_LIBS:BOOL=ON
@@ -571,8 +580,26 @@ assimp:FILEPATH=D:/Code/Ray/cmake-build-debug/library/assimp/assimp.dll
 //The directory containing a CMake configuration file for assimp.
 assimp_DIR:PATH=assimp_DIR-NOTFOUND
 
+//Build the shared glew library
+glew-cmake_BUILD_SHARED:BOOL=ON
+
+//Build the static glew library
+glew-cmake_BUILD_STATIC:BOOL=ON
+
+//Value Computed by CMake
+glew_BINARY_DIR:STATIC=D:/Code/Ray/cmake-build-debug/public/glew
+
+//Value Computed by CMake
+glew_SOURCE_DIR:STATIC=D:/Code/Ray/public/glew
+
 //Dependencies for the target
 glfw_LIB_DEPENDS:STATIC=general;-static-libgcc;
+
+//Dependencies for the target
+libglew_shared_LIB_DEPENDS:STATIC=general;opengl32;
+
+//Dependencies for the target
+libglew_static_LIB_DEPENDS:STATIC=general;opengl32;
 
 
 ########################
@@ -799,6 +826,8 @@ CVS_UPDATE_OPTIONS-ADVANCED:INTERNAL=1
 DART_TESTING_TIMEOUT-ADVANCED:INTERNAL=1
 //Have include dinput.h
 DINPUT_H_FOUND:INTERNAL=
+//Details about finding GLEW
+FIND_PACKAGE_MESSAGE_DETAILS_GLEW:INTERNAL=[D:/Code/Ray/public/glew/include][D:/libraries/glew32.lib][v2.2.0()]
 //Details about finding OpenGL
 FIND_PACKAGE_MESSAGE_DETAILS_OpenGL:INTERNAL=[opengl32][c ][v()]
 //Details about finding Threads

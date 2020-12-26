@@ -495,6 +495,7 @@ Ray.exe: CMakeFiles/Ray.dir/GLUtil.cpp.obj
 Ray.exe: CMakeFiles/Ray.dir/TriangleGroup.cpp.obj
 Ray.exe: CMakeFiles/Ray.dir/PipelineFactory.cpp.obj
 Ray.exe: CMakeFiles/Ray.dir/build.make
+Ray.exe: D:/libraries/glew32.lib
 Ray.exe: library/glfw-3.3.2/src/libglfw3dll.a
 Ray.exe: public/yaml-cpp/libyaml-cppd.dll.a
 Ray.exe: CMakeFiles/Ray.dir/linklibs.rsp

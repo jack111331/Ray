@@ -1,5 +1,5 @@
 "D:\Program Files\JetBrains\CLion 2019.2.4\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=D:/MinGW/bin/make.exe -DCMAKE_C_COMPILER=D:/MinGW/bin/gcc.exe -DCMAKE_CXX_COMPILER=D:/MinGW/bin/c++.exe -G "CodeBlocks - MinGW Makefiles" D:\Code\Ray
--- Could NOT find GLEW (missing: GLEW_INCLUDE_DIRS) 
+Found GLEW
 -- Using Win32 for window creation
 -- Configuring done
 -- Generating done

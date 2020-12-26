@@ -5,3 +5,7 @@
 [submodule "public/glew"]
 	path = public/glew
 	url = https://github.com/Perlmint/glew-cmake
+
+[submodule "public/glfw"]
+	path = public/glfw
+	url = https://github.com/glfw/glfw
