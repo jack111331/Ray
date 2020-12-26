@@ -1,9 +1,0 @@
-﻿  Building Custom Rule D:/Code/FluidDynamic/library/glfw-3.3.2/tests/CMakeLists.txt
-  monitors.c
-D:\Code\FluidDynamic\library\glfw-3.3.2\deps\getopt.h : warning C4819: 檔案含有無法在目前字碼頁 (950) 中表示的字元。請以 Unicode 格式儲存檔案以防止資料遺失
-  getopt.c
-D:\Code\FluidDynamic\library\glfw-3.3.2\deps\getopt.c : warning C4819: 檔案含有無法在目前字碼頁 (950) 中表示的字元。請以 Unicode 格式儲存檔案以防止資料遺失
-d:\code\fluiddynamic\library\glfw-3.3.2\deps\getopt.h : warning C4819: 檔案含有無法在目前字碼頁 (950) 中表示的字元。請以 Unicode 格式儲存檔案以防止資料遺失
-  glad_gl.c
-  正在產生程式碼...
-  monitors.vcxproj -> D:\Code\FluidDynamic\library\glfw-3.3.2\build\tests\Debug\monitors.exe

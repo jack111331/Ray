@@ -43,13 +43,13 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../public/yaml-cpp/include"
   ".././include"
-  "../library/glfw-3.3.2/include"
+  "../public/glfw/include"
   "../public/glew/include"
   )
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "D:/Code/Ray/cmake-build-debug/library/glfw-3.3.2/src/CMakeFiles/glfw.dir/DependInfo.cmake"
+  "D:/Code/Ray/cmake-build-debug/public/glfw/src/CMakeFiles/glfw.dir/DependInfo.cmake"
   "D:/Code/Ray/cmake-build-debug/public/yaml-cpp/CMakeFiles/yaml-cpp.dir/DependInfo.cmake"
   )
 

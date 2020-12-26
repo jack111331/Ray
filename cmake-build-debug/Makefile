@@ -179,7 +179,7 @@ uninstall: cmake_check_build_system
 
 # fast build rule for target.
 uninstall/fast:
-	$(MAKE) -f library\glfw-3.3.2\CMakeFiles\uninstall.dir\build.make library/glfw-3.3.2/CMakeFiles/uninstall.dir/build
+	$(MAKE) -f public\glfw\CMakeFiles\uninstall.dir\build.make public/glfw/CMakeFiles/uninstall.dir/build
 .PHONY : uninstall/fast
 
 #=============================================================================
@@ -192,7 +192,7 @@ glfw: cmake_check_build_system
 
 # fast build rule for target.
 glfw/fast:
-	$(MAKE) -f library\glfw-3.3.2\src\CMakeFiles\glfw.dir\build.make library/glfw-3.3.2/src/CMakeFiles/glfw.dir/build
+	$(MAKE) -f public\glfw\src\CMakeFiles\glfw.dir\build.make public/glfw/src/CMakeFiles/glfw.dir/build
 .PHONY : glfw/fast
 
 #=============================================================================

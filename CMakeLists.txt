@@ -15,9 +15,8 @@ find_package(OpenGL REQUIRED)
 set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
-set(BUILD_SHARED_LIBS ON CACHE BOOL "" FORCE)
 set(GLFW_USE_HYBRID_HPG ON CACHE BOOL "" FORCE)
-add_subdirectory("./library/glfw-3.3.2")
+add_subdirectory("public/glfw")
 
 
 #set(CMAKE_MODULE_PATH {CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/modules")

@@ -14,12 +14,13 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/3.16.5/CMakeSystem.cmake"
   "CMakeFiles/VerifyGlobs.cmake"
   "CMakeFiles/cmake.verify_globs"
-  "../library/glfw-3.3.2/CMakeLists.txt"
-  "../library/glfw-3.3.2/cmake_uninstall.cmake.in"
-  "../library/glfw-3.3.2/src/CMakeLists.txt"
-  "../library/glfw-3.3.2/src/glfw3.pc.in"
-  "../library/glfw-3.3.2/src/glfw3Config.cmake.in"
-  "../library/glfw-3.3.2/src/glfw_config.h.in"
+  "../public/glfw/CMake/cmake_uninstall.cmake.in"
+  "../public/glfw/CMake/glfw3.pc.in"
+  "../public/glfw/CMake/glfw3Config.cmake.in"
+  "../public/glfw/CMakeLists.txt"
+  "../public/glfw/src/CMakeLists.txt"
+  "../public/glfw/src/glfw.rc.in"
+  "../public/glfw/src/glfw_config.h.in"
   "../public/yaml-cpp/CMakeLists.txt"
   "../public/yaml-cpp/util/CMakeLists.txt"
   "../public/yaml-cpp/yaml-cpp-config.cmake.in"
@@ -83,8 +84,8 @@ set(CMAKE_MAKEFILE_OUTPUTS
 # Byproducts of CMake generate step:
 set(CMAKE_MAKEFILE_PRODUCTS
   "CMakeFiles/CMakeDirectoryInformation.cmake"
-  "library/glfw-3.3.2/CMakeFiles/CMakeDirectoryInformation.cmake"
-  "library/glfw-3.3.2/src/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "public/glfw/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "public/glfw/src/CMakeFiles/CMakeDirectoryInformation.cmake"
   "public/yaml-cpp/CMakeFiles/CMakeDirectoryInformation.cmake"
   "public/yaml-cpp/util/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
@@ -92,8 +93,8 @@ set(CMAKE_MAKEFILE_PRODUCTS
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/Ray.dir/DependInfo.cmake"
-  "library/glfw-3.3.2/CMakeFiles/uninstall.dir/DependInfo.cmake"
-  "library/glfw-3.3.2/src/CMakeFiles/glfw.dir/DependInfo.cmake"
+  "public/glfw/CMakeFiles/uninstall.dir/DependInfo.cmake"
+  "public/glfw/src/CMakeFiles/glfw.dir/DependInfo.cmake"
   "public/yaml-cpp/CMakeFiles/NightlyMemoryCheck.dir/DependInfo.cmake"
   "public/yaml-cpp/CMakeFiles/Experimental.dir/DependInfo.cmake"
   "public/yaml-cpp/CMakeFiles/NightlySubmit.dir/DependInfo.cmake"

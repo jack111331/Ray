@@ -53,60 +53,60 @@ CMAKE_BINARY_DIR = D:\Code\Ray\cmake-build-debug
 
 # The main recursive "all" target.
 all: CMakeFiles/Ray.dir/all
-all: library/glfw-3.3.2/all
+all: public/glfw/all
 all: public/yaml-cpp/all
 
 .PHONY : all
 
 # The main recursive "preinstall" target.
-preinstall: library/glfw-3.3.2/preinstall
+preinstall: public/glfw/preinstall
 preinstall: public/yaml-cpp/preinstall
 
 .PHONY : preinstall
 
 # The main recursive "clean" target.
 clean: CMakeFiles/Ray.dir/clean
-clean: library/glfw-3.3.2/clean
+clean: public/glfw/clean
 clean: public/yaml-cpp/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Directory level rules for directory library/glfw-3.3.2
+# Directory level rules for directory public/glfw
 
 # Recursive "all" directory target.
-library/glfw-3.3.2/all: library/glfw-3.3.2/src/all
+public/glfw/all: public/glfw/src/all
 
-.PHONY : library/glfw-3.3.2/all
+.PHONY : public/glfw/all
 
 # Recursive "preinstall" directory target.
-library/glfw-3.3.2/preinstall: library/glfw-3.3.2/src/preinstall
+public/glfw/preinstall: public/glfw/src/preinstall
 
-.PHONY : library/glfw-3.3.2/preinstall
+.PHONY : public/glfw/preinstall
 
 # Recursive "clean" directory target.
-library/glfw-3.3.2/clean: library/glfw-3.3.2/CMakeFiles/uninstall.dir/clean
-library/glfw-3.3.2/clean: library/glfw-3.3.2/src/clean
+public/glfw/clean: public/glfw/CMakeFiles/uninstall.dir/clean
+public/glfw/clean: public/glfw/src/clean
 
-.PHONY : library/glfw-3.3.2/clean
+.PHONY : public/glfw/clean
 
 #=============================================================================
-# Directory level rules for directory library/glfw-3.3.2/src
+# Directory level rules for directory public/glfw/src
 
 # Recursive "all" directory target.
-library/glfw-3.3.2/src/all: library/glfw-3.3.2/src/CMakeFiles/glfw.dir/all
+public/glfw/src/all: public/glfw/src/CMakeFiles/glfw.dir/all
 
-.PHONY : library/glfw-3.3.2/src/all
+.PHONY : public/glfw/src/all
 
 # Recursive "preinstall" directory target.
-library/glfw-3.3.2/src/preinstall:
+public/glfw/src/preinstall:
 
-.PHONY : library/glfw-3.3.2/src/preinstall
+.PHONY : public/glfw/src/preinstall
 
 # Recursive "clean" directory target.
-library/glfw-3.3.2/src/clean: library/glfw-3.3.2/src/CMakeFiles/glfw.dir/clean
+public/glfw/src/clean: public/glfw/src/CMakeFiles/glfw.dir/clean
 
-.PHONY : library/glfw-3.3.2/src/clean
+.PHONY : public/glfw/src/clean
 
 #=============================================================================
 # Directory level rules for directory public/yaml-cpp
@@ -183,7 +183,7 @@ public/yaml-cpp/util/clean: public/yaml-cpp/util/CMakeFiles/yaml-cpp-read.dir/cl
 # Target rules for target CMakeFiles/Ray.dir
 
 # All Build rule for target.
-CMakeFiles/Ray.dir/all: library/glfw-3.3.2/src/CMakeFiles/glfw.dir/all
+CMakeFiles/Ray.dir/all: public/glfw/src/CMakeFiles/glfw.dir/all
 CMakeFiles/Ray.dir/all: public/yaml-cpp/CMakeFiles/yaml-cpp.dir/all
 	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/depend
 	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/build
@@ -192,7 +192,7 @@ CMakeFiles/Ray.dir/all: public/yaml-cpp/CMakeFiles/yaml-cpp.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/Ray.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\Code\Ray\cmake-build-debug\CMakeFiles 76
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\Code\Ray\cmake-build-debug\CMakeFiles 77
 	$(MAKE) -f CMakeFiles\Makefile2 CMakeFiles/Ray.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start D:\Code\Ray\cmake-build-debug\CMakeFiles 0
 .PHONY : CMakeFiles/Ray.dir/rule
@@ -208,58 +208,58 @@ CMakeFiles/Ray.dir/clean:
 .PHONY : CMakeFiles/Ray.dir/clean
 
 #=============================================================================
-# Target rules for target library/glfw-3.3.2/CMakeFiles/uninstall.dir
+# Target rules for target public/glfw/CMakeFiles/uninstall.dir
 
 # All Build rule for target.
-library/glfw-3.3.2/CMakeFiles/uninstall.dir/all:
-	$(MAKE) -f library\glfw-3.3.2\CMakeFiles\uninstall.dir\build.make library/glfw-3.3.2/CMakeFiles/uninstall.dir/depend
-	$(MAKE) -f library\glfw-3.3.2\CMakeFiles\uninstall.dir\build.make library/glfw-3.3.2/CMakeFiles/uninstall.dir/build
+public/glfw/CMakeFiles/uninstall.dir/all:
+	$(MAKE) -f public\glfw\CMakeFiles\uninstall.dir\build.make public/glfw/CMakeFiles/uninstall.dir/depend
+	$(MAKE) -f public\glfw\CMakeFiles\uninstall.dir\build.make public/glfw/CMakeFiles/uninstall.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\Code\Ray\cmake-build-debug\CMakeFiles --progress-num= "Built target uninstall"
-.PHONY : library/glfw-3.3.2/CMakeFiles/uninstall.dir/all
+.PHONY : public/glfw/CMakeFiles/uninstall.dir/all
 
 # Build rule for subdir invocation for target.
-library/glfw-3.3.2/CMakeFiles/uninstall.dir/rule: cmake_check_build_system
+public/glfw/CMakeFiles/uninstall.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start D:\Code\Ray\cmake-build-debug\CMakeFiles 0
-	$(MAKE) -f CMakeFiles\Makefile2 library/glfw-3.3.2/CMakeFiles/uninstall.dir/all
+	$(MAKE) -f CMakeFiles\Makefile2 public/glfw/CMakeFiles/uninstall.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start D:\Code\Ray\cmake-build-debug\CMakeFiles 0
-.PHONY : library/glfw-3.3.2/CMakeFiles/uninstall.dir/rule
+.PHONY : public/glfw/CMakeFiles/uninstall.dir/rule
 
 # Convenience name for target.
-uninstall: library/glfw-3.3.2/CMakeFiles/uninstall.dir/rule
+uninstall: public/glfw/CMakeFiles/uninstall.dir/rule
 
 .PHONY : uninstall
 
 # clean rule for target.
-library/glfw-3.3.2/CMakeFiles/uninstall.dir/clean:
-	$(MAKE) -f library\glfw-3.3.2\CMakeFiles\uninstall.dir\build.make library/glfw-3.3.2/CMakeFiles/uninstall.dir/clean
-.PHONY : library/glfw-3.3.2/CMakeFiles/uninstall.dir/clean
+public/glfw/CMakeFiles/uninstall.dir/clean:
+	$(MAKE) -f public\glfw\CMakeFiles\uninstall.dir\build.make public/glfw/CMakeFiles/uninstall.dir/clean
+.PHONY : public/glfw/CMakeFiles/uninstall.dir/clean
 
 #=============================================================================
-# Target rules for target library/glfw-3.3.2/src/CMakeFiles/glfw.dir
+# Target rules for target public/glfw/src/CMakeFiles/glfw.dir
 
 # All Build rule for target.
-library/glfw-3.3.2/src/CMakeFiles/glfw.dir/all:
-	$(MAKE) -f library\glfw-3.3.2\src\CMakeFiles\glfw.dir\build.make library/glfw-3.3.2/src/CMakeFiles/glfw.dir/depend
-	$(MAKE) -f library\glfw-3.3.2\src\CMakeFiles\glfw.dir\build.make library/glfw-3.3.2/src/CMakeFiles/glfw.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\Code\Ray\cmake-build-debug\CMakeFiles --progress-num=30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45 "Built target glfw"
-.PHONY : library/glfw-3.3.2/src/CMakeFiles/glfw.dir/all
+public/glfw/src/CMakeFiles/glfw.dir/all:
+	$(MAKE) -f public\glfw\src\CMakeFiles\glfw.dir\build.make public/glfw/src/CMakeFiles/glfw.dir/depend
+	$(MAKE) -f public\glfw\src\CMakeFiles\glfw.dir\build.make public/glfw/src/CMakeFiles/glfw.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\Code\Ray\cmake-build-debug\CMakeFiles --progress-num=30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46 "Built target glfw"
+.PHONY : public/glfw/src/CMakeFiles/glfw.dir/all
 
 # Build rule for subdir invocation for target.
-library/glfw-3.3.2/src/CMakeFiles/glfw.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\Code\Ray\cmake-build-debug\CMakeFiles 16
-	$(MAKE) -f CMakeFiles\Makefile2 library/glfw-3.3.2/src/CMakeFiles/glfw.dir/all
+public/glfw/src/CMakeFiles/glfw.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\Code\Ray\cmake-build-debug\CMakeFiles 17
+	$(MAKE) -f CMakeFiles\Makefile2 public/glfw/src/CMakeFiles/glfw.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start D:\Code\Ray\cmake-build-debug\CMakeFiles 0
-.PHONY : library/glfw-3.3.2/src/CMakeFiles/glfw.dir/rule
+.PHONY : public/glfw/src/CMakeFiles/glfw.dir/rule
 
 # Convenience name for target.
-glfw: library/glfw-3.3.2/src/CMakeFiles/glfw.dir/rule
+glfw: public/glfw/src/CMakeFiles/glfw.dir/rule
 
 .PHONY : glfw
 
 # clean rule for target.
-library/glfw-3.3.2/src/CMakeFiles/glfw.dir/clean:
-	$(MAKE) -f library\glfw-3.3.2\src\CMakeFiles\glfw.dir\build.make library/glfw-3.3.2/src/CMakeFiles/glfw.dir/clean
-.PHONY : library/glfw-3.3.2/src/CMakeFiles/glfw.dir/clean
+public/glfw/src/CMakeFiles/glfw.dir/clean:
+	$(MAKE) -f public\glfw\src\CMakeFiles\glfw.dir\build.make public/glfw/src/CMakeFiles/glfw.dir/clean
+.PHONY : public/glfw/src/CMakeFiles/glfw.dir/clean
 
 #=============================================================================
 # Target rules for target public/yaml-cpp/CMakeFiles/NightlyMemoryCheck.dir
@@ -1051,7 +1051,7 @@ public/yaml-cpp/CMakeFiles/ContinuousCoverage.dir/clean:
 public/yaml-cpp/CMakeFiles/yaml-cpp.dir/all:
 	$(MAKE) -f public\yaml-cpp\CMakeFiles\yaml-cpp.dir\build.make public/yaml-cpp/CMakeFiles/yaml-cpp.dir/depend
 	$(MAKE) -f public\yaml-cpp\CMakeFiles\yaml-cpp.dir\build.make public/yaml-cpp/CMakeFiles/yaml-cpp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\Code\Ray\cmake-build-debug\CMakeFiles --progress-num=46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77 "Built target yaml-cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\Code\Ray\cmake-build-debug\CMakeFiles --progress-num=47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78 "Built target yaml-cpp"
 .PHONY : public/yaml-cpp/CMakeFiles/yaml-cpp.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1078,7 +1078,7 @@ public/yaml-cpp/CMakeFiles/yaml-cpp.dir/clean:
 public/yaml-cpp/util/CMakeFiles/yaml-cpp-parse.dir/all: public/yaml-cpp/CMakeFiles/yaml-cpp.dir/all
 	$(MAKE) -f public\yaml-cpp\util\CMakeFiles\yaml-cpp-parse.dir\build.make public/yaml-cpp/util/CMakeFiles/yaml-cpp-parse.dir/depend
 	$(MAKE) -f public\yaml-cpp\util\CMakeFiles\yaml-cpp-parse.dir\build.make public/yaml-cpp/util/CMakeFiles/yaml-cpp-parse.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\Code\Ray\cmake-build-debug\CMakeFiles --progress-num=78,79 "Built target yaml-cpp-parse"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\Code\Ray\cmake-build-debug\CMakeFiles --progress-num=79,80 "Built target yaml-cpp-parse"
 .PHONY : public/yaml-cpp/util/CMakeFiles/yaml-cpp-parse.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1105,7 +1105,7 @@ public/yaml-cpp/util/CMakeFiles/yaml-cpp-parse.dir/clean:
 public/yaml-cpp/util/CMakeFiles/yaml-cpp-sandbox.dir/all: public/yaml-cpp/CMakeFiles/yaml-cpp.dir/all
 	$(MAKE) -f public\yaml-cpp\util\CMakeFiles\yaml-cpp-sandbox.dir\build.make public/yaml-cpp/util/CMakeFiles/yaml-cpp-sandbox.dir/depend
 	$(MAKE) -f public\yaml-cpp\util\CMakeFiles\yaml-cpp-sandbox.dir\build.make public/yaml-cpp/util/CMakeFiles/yaml-cpp-sandbox.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\Code\Ray\cmake-build-debug\CMakeFiles --progress-num=82,83 "Built target yaml-cpp-sandbox"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\Code\Ray\cmake-build-debug\CMakeFiles --progress-num=83,84 "Built target yaml-cpp-sandbox"
 .PHONY : public/yaml-cpp/util/CMakeFiles/yaml-cpp-sandbox.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1132,7 +1132,7 @@ public/yaml-cpp/util/CMakeFiles/yaml-cpp-sandbox.dir/clean:
 public/yaml-cpp/util/CMakeFiles/yaml-cpp-read.dir/all: public/yaml-cpp/CMakeFiles/yaml-cpp.dir/all
 	$(MAKE) -f public\yaml-cpp\util\CMakeFiles\yaml-cpp-read.dir\build.make public/yaml-cpp/util/CMakeFiles/yaml-cpp-read.dir/depend
 	$(MAKE) -f public\yaml-cpp\util\CMakeFiles\yaml-cpp-read.dir\build.make public/yaml-cpp/util/CMakeFiles/yaml-cpp-read.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\Code\Ray\cmake-build-debug\CMakeFiles --progress-num=80,81 "Built target yaml-cpp-read"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\Code\Ray\cmake-build-debug\CMakeFiles --progress-num=81,82 "Built target yaml-cpp-read"
 .PHONY : public/yaml-cpp/util/CMakeFiles/yaml-cpp-read.dir/all
 
 # Build rule for subdir invocation for target.

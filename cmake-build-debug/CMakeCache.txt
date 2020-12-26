@@ -464,7 +464,7 @@ GLEW_STATIC_LIBRARY_DEBUG:FILEPATH=GLEW_STATIC_LIBRARY_DEBUG-NOTFOUND
 GLEW_STATIC_LIBRARY_RELEASE:FILEPATH=D:/libraries/glew32s.lib
 
 //Value Computed by CMake
-GLFW_BINARY_DIR:STATIC=D:/Code/Ray/cmake-build-debug/library/glfw-3.3.2
+GLFW_BINARY_DIR:STATIC=D:/Code/Ray/cmake-build-debug/public/glfw
 
 //Build the GLFW documentation
 GLFW_BUILD_DOCS:BOOL=OFF
@@ -479,7 +479,7 @@ GLFW_BUILD_TESTS:BOOL=OFF
 GLFW_INSTALL:BOOL=ON
 
 //Value Computed by CMake
-GLFW_SOURCE_DIR:STATIC=D:/Code/Ray/library/glfw-3.3.2
+GLFW_SOURCE_DIR:STATIC=D:/Code/Ray/public/glfw
 
 //Force use of high-performance GPU on hybrid systems
 GLFW_USE_HYBRID_HPG:BOOL=ON
@@ -591,9 +591,6 @@ glew_BINARY_DIR:STATIC=D:/Code/Ray/cmake-build-debug/public/glew
 
 //Value Computed by CMake
 glew_SOURCE_DIR:STATIC=D:/Code/Ray/public/glew
-
-//Dependencies for the target
-glfw_LIB_DEPENDS:STATIC=general;-static-libgcc;
 
 //Dependencies for the target
 libglew_shared_LIB_DEPENDS:STATIC=general;opengl32;

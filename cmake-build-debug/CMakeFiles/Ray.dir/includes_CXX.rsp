@@ -1,1 +1,1 @@
--ID:/Code/Ray/public/yaml-cpp/include -ID:/Code/Ray/./include -ID:/Code/Ray/library/glfw-3.3.2/include -isystem D:/Code/Ray/public/glew/include 
+-ID:/Code/Ray/public/yaml-cpp/include -ID:/Code/Ray/./include -ID:/Code/Ray/public/glfw/include -isystem D:/Code/Ray/public/glew/include 
