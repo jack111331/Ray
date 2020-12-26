@@ -20,7 +20,7 @@ environment:
       CMAKE_PLATFORM: x64
 
 install:
-   - git submodule update --init --recurserve
+   - git submodule update --init --recursive
 
 before_build:
   # Build dependencies
