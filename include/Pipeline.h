@@ -13,11 +13,6 @@
 
 class Shader;
 
-struct ShadeObject {
-    ObjectInfo m_objectInfo;
-    Material *m_material;
-};
-
 class PassSetting {
 public:
     // TODO can switch to UBO to pass
@@ -29,32 +24,30 @@ public:
 // Pass Tree
 class Pass {
 public:
-    Pass() : m_shader(nullptr), m_setting(nullptr) {
+    Pass(PassSetting *passSetting) : m_shader(nullptr), m_passSetting(passSetting) {
 
     }
 
     void setupPassSetting(PassSetting *setting) {
-        m_setting = setting;
+        m_passSetting = setting;
     }
 
     virtual void renderPass(const std::vector<ShadeObject *> &shadingList) {
         for (auto pass: m_requirePass) {
-            // TODO filter
+            // TODO filter flag to filter what shadingList should be seperate to shade
             // Assume each pass is configured beforehand
             pass->renderPass(shadingList);
         }
     };
 
-    std::vector<uint32_t> getOutputFrameBuffer() {
-        return m_outputFrameBuffer;
-    }
+    virtual uint32_t getOutputFrameBuffer(size_t frameId) = 0;
 
     virtual std::string getType() = 0;
 
 protected:
     Shader *m_shader;
     std::vector<uint32_t> m_outputFrameBuffer;
-    PassSetting *m_setting;
+    PassSetting *m_passSetting;
     std::vector<Pass *> m_requirePass;
 };
 
@@ -67,7 +60,7 @@ public:
 
 class PhongShadingPass : public Pass {
 public:
-    PhongShadingPass();
+    explicit PhongShadingPass(PassSetting *passSetting);
 
     virtual void renderPass(const std::vector<ShadeObject *> &shadingList);
 
@@ -75,9 +68,30 @@ public:
         return "PhongShadingPass";
     }
 
+    virtual uint32_t getOutputFrameBuffer(size_t frameId) {
+        switch(frameId) {
+            case (size_t)PhongShadingOutput::IMAGE : return m_outputFrameBufferId;
+            default: {
+                std::cerr << "Wrong output frame Id" << std::endl;
+                exit(1);
+            }
+        }
+        return 0;
+    }
+
+    enum class PhongShadingUBOInput {
+        LIGHT=1
+    };
+
+    enum class PhongShadingOutput {
+        IMAGE=0
+    };
+
 
 private:
-
+    uint32_t m_outputFrameBufferId;
+    uint32_t m_outputFrameTextureId;
+    uint32_t m_outputFrameDepthStencilBufferId;
 };
 
 class Pipeline {
@@ -169,6 +183,8 @@ public:
 protected:
     virtual void renderAllPass() = 0;
 
+    virtual void blitFrameBuffer() {};
+
     Pass *m_shadingPass;
 
     std::vector<ShadeObject *> m_objectList;
@@ -180,6 +196,7 @@ class PhongShadingPipeline : public LocalRenderingPipeline {
 public:
     virtual void setupPipeline();
 
+    virtual void blitFrameBuffer();
 
 protected:
     virtual void renderAllPass();

@@ -42,6 +42,8 @@ public:
 
     void uniform1i(const char* uniformName, int val) const;
 
+    void uniformBlockBind(const char* uniformName, int bindPoint);
+
     uint32_t getProgramId();
 
 private:

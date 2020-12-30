@@ -13,6 +13,12 @@ struct ObjectInfo {
     int m_indicesAmount;
 };
 
+struct ShadeObject {
+    ShadeObject(ObjectInfo objectInfo, Material *material): m_objectInfo(objectInfo), m_material(material) {}
+    ObjectInfo m_objectInfo;
+    Material *m_material;
+};
+
 class ObjectBoundingBox {
 public:
     ObjectBoundingBox() : m_bounding{{1e9,  1e9,  1e9},
@@ -46,9 +52,9 @@ public:
     virtual bool isHit(double tmin, const Ray &ray, HitRecord &record) = 0;
 
     // For local shading
-    virtual std::vector<ObjectInfo> createVAO(const Material *material) {
-        std::vector<ObjectInfo> result;
-        result.push_back({0, 0});
+    virtual std::vector<ShadeObject *> createVAO() {
+        std::vector<ShadeObject *> result;
+        result.push_back(new ShadeObject({0, 0}, nullptr));
         return result;
     };
 

@@ -1,7 +1,7 @@
-prefix=C:/Program Files (x86)/Advanced_Computer_Graph
+prefix=C:/Program Files (x86)/Ray
 exec_prefix=${prefix}
-includedir=C:/Program Files (x86)/Advanced_Computer_Graph/include
-libdir=C:/Program Files (x86)/Advanced_Computer_Graph/lib
+includedir=C:/Program Files (x86)/Ray/include
+libdir=C:/Program Files (x86)/Ray/lib
 
 Name: GLFW
 Description: A multi-platform library for OpenGL, window and input

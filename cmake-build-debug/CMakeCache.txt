@@ -98,12 +98,6 @@ ASSIMP_UBSAN:BOOL=OFF
 ASSIMP_WERROR:BOOL=OFF
 
 //Value Computed by CMake
-Advanced_Computer_Graph_BINARY_DIR:STATIC=D:/Code/Ray/cmake-build-debug
-
-//Value Computed by CMake
-Advanced_Computer_Graph_SOURCE_DIR:STATIC=D:/Code/Ray
-
-//Value Computed by CMake
 Assimp_BINARY_DIR:STATIC=D:/Code/Ray/cmake-build-debug/library/assimp-5.0.1
 
 //Value Computed by CMake
@@ -264,7 +258,7 @@ CMAKE_INSTALL_MANDIR:PATH=
 CMAKE_INSTALL_OLDINCLUDEDIR:PATH=/usr/include
 
 //Install path prefix, prepended onto install directories.
-CMAKE_INSTALL_PREFIX:PATH=C:/Program Files (x86)/Advanced_Computer_Graph
+CMAKE_INSTALL_PREFIX:PATH=C:/Program Files (x86)/Ray
 
 //Run-time variable data (LOCALSTATEDIR/run)
 CMAKE_INSTALL_RUNSTATEDIR:PATH=
@@ -571,6 +565,15 @@ assimp:FILEPATH=D:/Code/Ray/cmake-build-debug/library/assimp/assimp.dll
 //The directory containing a CMake configuration file for assimp.
 assimp_DIR:PATH=assimp_DIR-NOTFOUND
 
+//Value Computed by CMake
+glm_BINARY_DIR:STATIC=D:/Code/Ray/cmake-build-debug/public/glm
+
+//The directory containing a CMake configuration file for glm.
+glm_DIR:PATH=glm_DIR-NOTFOUND
+
+//Value Computed by CMake
+glm_SOURCE_DIR:STATIC=D:/Code/Ray/public/glm
+
 
 ########################
 # INTERNAL cache entries
@@ -845,5 +848,5 @@ _GLFW_HAS_ASLR:INTERNAL=1
 //Test _GLFW_HAS_DEP
 _GLFW_HAS_DEP:INTERNAL=1
 //CMAKE_INSTALL_PREFIX during last run
-_GNUInstallDirs_LAST_CMAKE_INSTALL_PREFIX:INTERNAL=C:/Program Files (x86)/Advanced_Computer_Graph
+_GNUInstallDirs_LAST_CMAKE_INSTALL_PREFIX:INTERNAL=C:/Program Files (x86)/Ray
 

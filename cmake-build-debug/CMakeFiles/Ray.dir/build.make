@@ -56,444 +56,444 @@ include CMakeFiles/Ray.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/Ray.dir/flags.make
 
-CMakeFiles/Ray.dir/main.cpp.obj: CMakeFiles/Ray.dir/flags.make
-CMakeFiles/Ray.dir/main.cpp.obj: CMakeFiles/Ray.dir/includes_CXX.rsp
-CMakeFiles/Ray.dir/main.cpp.obj: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Code\Ray\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Ray.dir/main.cpp.obj"
-	D:\MinGW\bin\c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Ray.dir\main.cpp.obj -c D:\Code\Ray\main.cpp
-
-CMakeFiles/Ray.dir/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Ray.dir/main.cpp.i"
-	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Code\Ray\main.cpp > CMakeFiles\Ray.dir\main.cpp.i
-
-CMakeFiles/Ray.dir/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Ray.dir/main.cpp.s"
-	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Code\Ray\main.cpp -o CMakeFiles\Ray.dir\main.cpp.s
-
-CMakeFiles/Ray.dir/Utility.cpp.obj: CMakeFiles/Ray.dir/flags.make
-CMakeFiles/Ray.dir/Utility.cpp.obj: CMakeFiles/Ray.dir/includes_CXX.rsp
-CMakeFiles/Ray.dir/Utility.cpp.obj: ../Utility.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Code\Ray\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Ray.dir/Utility.cpp.obj"
-	D:\MinGW\bin\c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Ray.dir\Utility.cpp.obj -c D:\Code\Ray\Utility.cpp
-
-CMakeFiles/Ray.dir/Utility.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Ray.dir/Utility.cpp.i"
-	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Code\Ray\Utility.cpp > CMakeFiles\Ray.dir\Utility.cpp.i
-
-CMakeFiles/Ray.dir/Utility.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Ray.dir/Utility.cpp.s"
-	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Code\Ray\Utility.cpp -o CMakeFiles\Ray.dir\Utility.cpp.s
-
-CMakeFiles/Ray.dir/Ray.cpp.obj: CMakeFiles/Ray.dir/flags.make
-CMakeFiles/Ray.dir/Ray.cpp.obj: CMakeFiles/Ray.dir/includes_CXX.rsp
-CMakeFiles/Ray.dir/Ray.cpp.obj: ../Ray.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Code\Ray\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Ray.dir/Ray.cpp.obj"
-	D:\MinGW\bin\c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Ray.dir\Ray.cpp.obj -c D:\Code\Ray\Ray.cpp
-
-CMakeFiles/Ray.dir/Ray.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Ray.dir/Ray.cpp.i"
-	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Code\Ray\Ray.cpp > CMakeFiles\Ray.dir\Ray.cpp.i
-
-CMakeFiles/Ray.dir/Ray.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Ray.dir/Ray.cpp.s"
-	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Code\Ray\Ray.cpp -o CMakeFiles\Ray.dir\Ray.cpp.s
-
-CMakeFiles/Ray.dir/Sphere.cpp.obj: CMakeFiles/Ray.dir/flags.make
-CMakeFiles/Ray.dir/Sphere.cpp.obj: CMakeFiles/Ray.dir/includes_CXX.rsp
-CMakeFiles/Ray.dir/Sphere.cpp.obj: ../Sphere.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Code\Ray\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Ray.dir/Sphere.cpp.obj"
-	D:\MinGW\bin\c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Ray.dir\Sphere.cpp.obj -c D:\Code\Ray\Sphere.cpp
-
-CMakeFiles/Ray.dir/Sphere.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Ray.dir/Sphere.cpp.i"
-	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Code\Ray\Sphere.cpp > CMakeFiles\Ray.dir\Sphere.cpp.i
-
-CMakeFiles/Ray.dir/Sphere.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Ray.dir/Sphere.cpp.s"
-	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Code\Ray\Sphere.cpp -o CMakeFiles\Ray.dir\Sphere.cpp.s
-
-CMakeFiles/Ray.dir/Hittable.cpp.obj: CMakeFiles/Ray.dir/flags.make
-CMakeFiles/Ray.dir/Hittable.cpp.obj: CMakeFiles/Ray.dir/includes_CXX.rsp
-CMakeFiles/Ray.dir/Hittable.cpp.obj: ../Hittable.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Code\Ray\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Ray.dir/Hittable.cpp.obj"
-	D:\MinGW\bin\c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Ray.dir\Hittable.cpp.obj -c D:\Code\Ray\Hittable.cpp
-
-CMakeFiles/Ray.dir/Hittable.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Ray.dir/Hittable.cpp.i"
-	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Code\Ray\Hittable.cpp > CMakeFiles\Ray.dir\Hittable.cpp.i
-
-CMakeFiles/Ray.dir/Hittable.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Ray.dir/Hittable.cpp.s"
-	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Code\Ray\Hittable.cpp -o CMakeFiles\Ray.dir\Hittable.cpp.s
-
-CMakeFiles/Ray.dir/Camera.cpp.obj: CMakeFiles/Ray.dir/flags.make
-CMakeFiles/Ray.dir/Camera.cpp.obj: CMakeFiles/Ray.dir/includes_CXX.rsp
-CMakeFiles/Ray.dir/Camera.cpp.obj: ../Camera.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Code\Ray\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Ray.dir/Camera.cpp.obj"
-	D:\MinGW\bin\c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Ray.dir\Camera.cpp.obj -c D:\Code\Ray\Camera.cpp
-
-CMakeFiles/Ray.dir/Camera.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Ray.dir/Camera.cpp.i"
-	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Code\Ray\Camera.cpp > CMakeFiles\Ray.dir\Camera.cpp.i
-
-CMakeFiles/Ray.dir/Camera.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Ray.dir/Camera.cpp.s"
-	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Code\Ray\Camera.cpp -o CMakeFiles\Ray.dir\Camera.cpp.s
-
-CMakeFiles/Ray.dir/Scene.cpp.obj: CMakeFiles/Ray.dir/flags.make
-CMakeFiles/Ray.dir/Scene.cpp.obj: CMakeFiles/Ray.dir/includes_CXX.rsp
-CMakeFiles/Ray.dir/Scene.cpp.obj: ../Scene.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Code\Ray\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/Ray.dir/Scene.cpp.obj"
-	D:\MinGW\bin\c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Ray.dir\Scene.cpp.obj -c D:\Code\Ray\Scene.cpp
-
-CMakeFiles/Ray.dir/Scene.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Ray.dir/Scene.cpp.i"
-	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Code\Ray\Scene.cpp > CMakeFiles\Ray.dir\Scene.cpp.i
-
-CMakeFiles/Ray.dir/Scene.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Ray.dir/Scene.cpp.s"
-	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Code\Ray\Scene.cpp -o CMakeFiles\Ray.dir\Scene.cpp.s
-
-CMakeFiles/Ray.dir/Config.cpp.obj: CMakeFiles/Ray.dir/flags.make
-CMakeFiles/Ray.dir/Config.cpp.obj: CMakeFiles/Ray.dir/includes_CXX.rsp
-CMakeFiles/Ray.dir/Config.cpp.obj: ../Config.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Code\Ray\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/Ray.dir/Config.cpp.obj"
-	D:\MinGW\bin\c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Ray.dir\Config.cpp.obj -c D:\Code\Ray\Config.cpp
-
-CMakeFiles/Ray.dir/Config.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Ray.dir/Config.cpp.i"
-	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Code\Ray\Config.cpp > CMakeFiles\Ray.dir\Config.cpp.i
-
-CMakeFiles/Ray.dir/Config.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Ray.dir/Config.cpp.s"
-	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Code\Ray\Config.cpp -o CMakeFiles\Ray.dir\Config.cpp.s
-
-CMakeFiles/Ray.dir/Triangle.cpp.obj: CMakeFiles/Ray.dir/flags.make
-CMakeFiles/Ray.dir/Triangle.cpp.obj: CMakeFiles/Ray.dir/includes_CXX.rsp
-CMakeFiles/Ray.dir/Triangle.cpp.obj: ../Triangle.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Code\Ray\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/Ray.dir/Triangle.cpp.obj"
-	D:\MinGW\bin\c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Ray.dir\Triangle.cpp.obj -c D:\Code\Ray\Triangle.cpp
-
-CMakeFiles/Ray.dir/Triangle.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Ray.dir/Triangle.cpp.i"
-	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Code\Ray\Triangle.cpp > CMakeFiles\Ray.dir\Triangle.cpp.i
-
-CMakeFiles/Ray.dir/Triangle.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Ray.dir/Triangle.cpp.s"
-	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Code\Ray\Triangle.cpp -o CMakeFiles\Ray.dir\Triangle.cpp.s
-
-CMakeFiles/Ray.dir/Material.cpp.obj: CMakeFiles/Ray.dir/flags.make
-CMakeFiles/Ray.dir/Material.cpp.obj: CMakeFiles/Ray.dir/includes_CXX.rsp
-CMakeFiles/Ray.dir/Material.cpp.obj: ../Material.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Code\Ray\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/Ray.dir/Material.cpp.obj"
-	D:\MinGW\bin\c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Ray.dir\Material.cpp.obj -c D:\Code\Ray\Material.cpp
-
-CMakeFiles/Ray.dir/Material.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Ray.dir/Material.cpp.i"
-	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Code\Ray\Material.cpp > CMakeFiles\Ray.dir\Material.cpp.i
-
-CMakeFiles/Ray.dir/Material.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Ray.dir/Material.cpp.s"
-	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Code\Ray\Material.cpp -o CMakeFiles\Ray.dir\Material.cpp.s
-
-CMakeFiles/Ray.dir/Light.cpp.obj: CMakeFiles/Ray.dir/flags.make
-CMakeFiles/Ray.dir/Light.cpp.obj: CMakeFiles/Ray.dir/includes_CXX.rsp
-CMakeFiles/Ray.dir/Light.cpp.obj: ../Light.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Code\Ray\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/Ray.dir/Light.cpp.obj"
-	D:\MinGW\bin\c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Ray.dir\Light.cpp.obj -c D:\Code\Ray\Light.cpp
-
-CMakeFiles/Ray.dir/Light.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Ray.dir/Light.cpp.i"
-	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Code\Ray\Light.cpp > CMakeFiles\Ray.dir\Light.cpp.i
-
-CMakeFiles/Ray.dir/Light.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Ray.dir/Light.cpp.s"
-	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Code\Ray\Light.cpp -o CMakeFiles\Ray.dir\Light.cpp.s
-
-CMakeFiles/Ray.dir/HittableList.cpp.obj: CMakeFiles/Ray.dir/flags.make
-CMakeFiles/Ray.dir/HittableList.cpp.obj: CMakeFiles/Ray.dir/includes_CXX.rsp
-CMakeFiles/Ray.dir/HittableList.cpp.obj: ../HittableList.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Code\Ray\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/Ray.dir/HittableList.cpp.obj"
-	D:\MinGW\bin\c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Ray.dir\HittableList.cpp.obj -c D:\Code\Ray\HittableList.cpp
-
-CMakeFiles/Ray.dir/HittableList.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Ray.dir/HittableList.cpp.i"
-	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Code\Ray\HittableList.cpp > CMakeFiles\Ray.dir\HittableList.cpp.i
-
-CMakeFiles/Ray.dir/HittableList.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Ray.dir/HittableList.cpp.s"
-	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Code\Ray\HittableList.cpp -o CMakeFiles\Ray.dir\HittableList.cpp.s
-
-CMakeFiles/Ray.dir/Shader.cpp.obj: CMakeFiles/Ray.dir/flags.make
-CMakeFiles/Ray.dir/Shader.cpp.obj: CMakeFiles/Ray.dir/includes_CXX.rsp
-CMakeFiles/Ray.dir/Shader.cpp.obj: ../Shader.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Code\Ray\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/Ray.dir/Shader.cpp.obj"
-	D:\MinGW\bin\c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Ray.dir\Shader.cpp.obj -c D:\Code\Ray\Shader.cpp
-
-CMakeFiles/Ray.dir/Shader.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Ray.dir/Shader.cpp.i"
-	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Code\Ray\Shader.cpp > CMakeFiles\Ray.dir\Shader.cpp.i
-
-CMakeFiles/Ray.dir/Shader.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Ray.dir/Shader.cpp.s"
-	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Code\Ray\Shader.cpp -o CMakeFiles\Ray.dir\Shader.cpp.s
-
-CMakeFiles/Ray.dir/IllumModelFactory.cpp.obj: CMakeFiles/Ray.dir/flags.make
-CMakeFiles/Ray.dir/IllumModelFactory.cpp.obj: CMakeFiles/Ray.dir/includes_CXX.rsp
-CMakeFiles/Ray.dir/IllumModelFactory.cpp.obj: ../IllumModelFactory.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Code\Ray\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/Ray.dir/IllumModelFactory.cpp.obj"
-	D:\MinGW\bin\c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Ray.dir\IllumModelFactory.cpp.obj -c D:\Code\Ray\IllumModelFactory.cpp
-
-CMakeFiles/Ray.dir/IllumModelFactory.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Ray.dir/IllumModelFactory.cpp.i"
-	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Code\Ray\IllumModelFactory.cpp > CMakeFiles\Ray.dir\IllumModelFactory.cpp.i
-
-CMakeFiles/Ray.dir/IllumModelFactory.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Ray.dir/IllumModelFactory.cpp.s"
-	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Code\Ray\IllumModelFactory.cpp -o CMakeFiles\Ray.dir\IllumModelFactory.cpp.s
-
-CMakeFiles/Ray.dir/Whitted.cpp.obj: CMakeFiles/Ray.dir/flags.make
-CMakeFiles/Ray.dir/Whitted.cpp.obj: CMakeFiles/Ray.dir/includes_CXX.rsp
-CMakeFiles/Ray.dir/Whitted.cpp.obj: ../Whitted.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Code\Ray\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/Ray.dir/Whitted.cpp.obj"
-	D:\MinGW\bin\c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Ray.dir\Whitted.cpp.obj -c D:\Code\Ray\Whitted.cpp
-
-CMakeFiles/Ray.dir/Whitted.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Ray.dir/Whitted.cpp.i"
-	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Code\Ray\Whitted.cpp > CMakeFiles\Ray.dir\Whitted.cpp.i
-
-CMakeFiles/Ray.dir/Whitted.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Ray.dir/Whitted.cpp.s"
-	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Code\Ray\Whitted.cpp -o CMakeFiles\Ray.dir\Whitted.cpp.s
-
-CMakeFiles/Ray.dir/Dielectric.cpp.obj: CMakeFiles/Ray.dir/flags.make
-CMakeFiles/Ray.dir/Dielectric.cpp.obj: CMakeFiles/Ray.dir/includes_CXX.rsp
-CMakeFiles/Ray.dir/Dielectric.cpp.obj: ../Dielectric.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Code\Ray\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/Ray.dir/Dielectric.cpp.obj"
-	D:\MinGW\bin\c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Ray.dir\Dielectric.cpp.obj -c D:\Code\Ray\Dielectric.cpp
-
-CMakeFiles/Ray.dir/Dielectric.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Ray.dir/Dielectric.cpp.i"
-	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Code\Ray\Dielectric.cpp > CMakeFiles\Ray.dir\Dielectric.cpp.i
-
-CMakeFiles/Ray.dir/Dielectric.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Ray.dir/Dielectric.cpp.s"
-	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Code\Ray\Dielectric.cpp -o CMakeFiles\Ray.dir\Dielectric.cpp.s
-
-CMakeFiles/Ray.dir/BVH.cpp.obj: CMakeFiles/Ray.dir/flags.make
-CMakeFiles/Ray.dir/BVH.cpp.obj: CMakeFiles/Ray.dir/includes_CXX.rsp
-CMakeFiles/Ray.dir/BVH.cpp.obj: ../BVH.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Code\Ray\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/Ray.dir/BVH.cpp.obj"
-	D:\MinGW\bin\c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Ray.dir\BVH.cpp.obj -c D:\Code\Ray\BVH.cpp
-
-CMakeFiles/Ray.dir/BVH.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Ray.dir/BVH.cpp.i"
-	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Code\Ray\BVH.cpp > CMakeFiles\Ray.dir\BVH.cpp.i
-
-CMakeFiles/Ray.dir/BVH.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Ray.dir/BVH.cpp.s"
-	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Code\Ray\BVH.cpp -o CMakeFiles\Ray.dir\BVH.cpp.s
-
-CMakeFiles/Ray.dir/Photon.cpp.obj: CMakeFiles/Ray.dir/flags.make
-CMakeFiles/Ray.dir/Photon.cpp.obj: CMakeFiles/Ray.dir/includes_CXX.rsp
-CMakeFiles/Ray.dir/Photon.cpp.obj: ../Photon.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Code\Ray\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/Ray.dir/Photon.cpp.obj"
-	D:\MinGW\bin\c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Ray.dir\Photon.cpp.obj -c D:\Code\Ray\Photon.cpp
-
-CMakeFiles/Ray.dir/Photon.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Ray.dir/Photon.cpp.i"
-	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Code\Ray\Photon.cpp > CMakeFiles\Ray.dir\Photon.cpp.i
-
-CMakeFiles/Ray.dir/Photon.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Ray.dir/Photon.cpp.s"
-	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Code\Ray\Photon.cpp -o CMakeFiles\Ray.dir\Photon.cpp.s
-
-CMakeFiles/Ray.dir/AreaLight.cpp.obj: CMakeFiles/Ray.dir/flags.make
-CMakeFiles/Ray.dir/AreaLight.cpp.obj: CMakeFiles/Ray.dir/includes_CXX.rsp
-CMakeFiles/Ray.dir/AreaLight.cpp.obj: ../AreaLight.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Code\Ray\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/Ray.dir/AreaLight.cpp.obj"
-	D:\MinGW\bin\c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Ray.dir\AreaLight.cpp.obj -c D:\Code\Ray\AreaLight.cpp
-
-CMakeFiles/Ray.dir/AreaLight.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Ray.dir/AreaLight.cpp.i"
-	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Code\Ray\AreaLight.cpp > CMakeFiles\Ray.dir\AreaLight.cpp.i
-
-CMakeFiles/Ray.dir/AreaLight.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Ray.dir/AreaLight.cpp.s"
-	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Code\Ray\AreaLight.cpp -o CMakeFiles\Ray.dir\AreaLight.cpp.s
-
-CMakeFiles/Ray.dir/Lambertian.cpp.obj: CMakeFiles/Ray.dir/flags.make
-CMakeFiles/Ray.dir/Lambertian.cpp.obj: CMakeFiles/Ray.dir/includes_CXX.rsp
-CMakeFiles/Ray.dir/Lambertian.cpp.obj: ../Lambertian.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Code\Ray\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/Ray.dir/Lambertian.cpp.obj"
-	D:\MinGW\bin\c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Ray.dir\Lambertian.cpp.obj -c D:\Code\Ray\Lambertian.cpp
-
-CMakeFiles/Ray.dir/Lambertian.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Ray.dir/Lambertian.cpp.i"
-	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Code\Ray\Lambertian.cpp > CMakeFiles\Ray.dir\Lambertian.cpp.i
-
-CMakeFiles/Ray.dir/Lambertian.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Ray.dir/Lambertian.cpp.s"
-	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Code\Ray\Lambertian.cpp -o CMakeFiles\Ray.dir\Lambertian.cpp.s
-
-CMakeFiles/Ray.dir/Texture.cpp.obj: CMakeFiles/Ray.dir/flags.make
-CMakeFiles/Ray.dir/Texture.cpp.obj: CMakeFiles/Ray.dir/includes_CXX.rsp
-CMakeFiles/Ray.dir/Texture.cpp.obj: ../Texture.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Code\Ray\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object CMakeFiles/Ray.dir/Texture.cpp.obj"
-	D:\MinGW\bin\c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Ray.dir\Texture.cpp.obj -c D:\Code\Ray\Texture.cpp
-
-CMakeFiles/Ray.dir/Texture.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Ray.dir/Texture.cpp.i"
-	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Code\Ray\Texture.cpp > CMakeFiles\Ray.dir\Texture.cpp.i
-
-CMakeFiles/Ray.dir/Texture.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Ray.dir/Texture.cpp.s"
-	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Code\Ray\Texture.cpp -o CMakeFiles\Ray.dir\Texture.cpp.s
-
-CMakeFiles/Ray.dir/InstantRadiosity.cpp.obj: CMakeFiles/Ray.dir/flags.make
-CMakeFiles/Ray.dir/InstantRadiosity.cpp.obj: CMakeFiles/Ray.dir/includes_CXX.rsp
-CMakeFiles/Ray.dir/InstantRadiosity.cpp.obj: ../InstantRadiosity.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Code\Ray\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object CMakeFiles/Ray.dir/InstantRadiosity.cpp.obj"
-	D:\MinGW\bin\c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Ray.dir\InstantRadiosity.cpp.obj -c D:\Code\Ray\InstantRadiosity.cpp
-
-CMakeFiles/Ray.dir/InstantRadiosity.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Ray.dir/InstantRadiosity.cpp.i"
-	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Code\Ray\InstantRadiosity.cpp > CMakeFiles\Ray.dir\InstantRadiosity.cpp.i
-
-CMakeFiles/Ray.dir/InstantRadiosity.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Ray.dir/InstantRadiosity.cpp.s"
-	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Code\Ray\InstantRadiosity.cpp -o CMakeFiles\Ray.dir\InstantRadiosity.cpp.s
-
-CMakeFiles/Ray.dir/KDTree.cpp.obj: CMakeFiles/Ray.dir/flags.make
-CMakeFiles/Ray.dir/KDTree.cpp.obj: CMakeFiles/Ray.dir/includes_CXX.rsp
-CMakeFiles/Ray.dir/KDTree.cpp.obj: ../KDTree.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Code\Ray\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object CMakeFiles/Ray.dir/KDTree.cpp.obj"
-	D:\MinGW\bin\c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Ray.dir\KDTree.cpp.obj -c D:\Code\Ray\KDTree.cpp
-
-CMakeFiles/Ray.dir/KDTree.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Ray.dir/KDTree.cpp.i"
-	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Code\Ray\KDTree.cpp > CMakeFiles\Ray.dir\KDTree.cpp.i
-
-CMakeFiles/Ray.dir/KDTree.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Ray.dir/KDTree.cpp.s"
-	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Code\Ray\KDTree.cpp -o CMakeFiles\Ray.dir\KDTree.cpp.s
-
-CMakeFiles/Ray.dir/Pipeline.cpp.obj: CMakeFiles/Ray.dir/flags.make
-CMakeFiles/Ray.dir/Pipeline.cpp.obj: CMakeFiles/Ray.dir/includes_CXX.rsp
-CMakeFiles/Ray.dir/Pipeline.cpp.obj: ../Pipeline.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Code\Ray\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object CMakeFiles/Ray.dir/Pipeline.cpp.obj"
-	D:\MinGW\bin\c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Ray.dir\Pipeline.cpp.obj -c D:\Code\Ray\Pipeline.cpp
-
-CMakeFiles/Ray.dir/Pipeline.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Ray.dir/Pipeline.cpp.i"
-	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Code\Ray\Pipeline.cpp > CMakeFiles\Ray.dir\Pipeline.cpp.i
-
-CMakeFiles/Ray.dir/Pipeline.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Ray.dir/Pipeline.cpp.s"
-	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Code\Ray\Pipeline.cpp -o CMakeFiles\Ray.dir\Pipeline.cpp.s
-
-CMakeFiles/Ray.dir/GLUtil.cpp.obj: CMakeFiles/Ray.dir/flags.make
-CMakeFiles/Ray.dir/GLUtil.cpp.obj: CMakeFiles/Ray.dir/includes_CXX.rsp
-CMakeFiles/Ray.dir/GLUtil.cpp.obj: ../GLUtil.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Code\Ray\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object CMakeFiles/Ray.dir/GLUtil.cpp.obj"
-	D:\MinGW\bin\c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Ray.dir\GLUtil.cpp.obj -c D:\Code\Ray\GLUtil.cpp
-
-CMakeFiles/Ray.dir/GLUtil.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Ray.dir/GLUtil.cpp.i"
-	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Code\Ray\GLUtil.cpp > CMakeFiles\Ray.dir\GLUtil.cpp.i
-
-CMakeFiles/Ray.dir/GLUtil.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Ray.dir/GLUtil.cpp.s"
-	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Code\Ray\GLUtil.cpp -o CMakeFiles\Ray.dir\GLUtil.cpp.s
-
-CMakeFiles/Ray.dir/TriangleGroup.cpp.obj: CMakeFiles/Ray.dir/flags.make
-CMakeFiles/Ray.dir/TriangleGroup.cpp.obj: CMakeFiles/Ray.dir/includes_CXX.rsp
-CMakeFiles/Ray.dir/TriangleGroup.cpp.obj: ../TriangleGroup.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Code\Ray\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building CXX object CMakeFiles/Ray.dir/TriangleGroup.cpp.obj"
-	D:\MinGW\bin\c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Ray.dir\TriangleGroup.cpp.obj -c D:\Code\Ray\TriangleGroup.cpp
-
-CMakeFiles/Ray.dir/TriangleGroup.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Ray.dir/TriangleGroup.cpp.i"
-	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Code\Ray\TriangleGroup.cpp > CMakeFiles\Ray.dir\TriangleGroup.cpp.i
-
-CMakeFiles/Ray.dir/TriangleGroup.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Ray.dir/TriangleGroup.cpp.s"
-	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Code\Ray\TriangleGroup.cpp -o CMakeFiles\Ray.dir\TriangleGroup.cpp.s
-
-CMakeFiles/Ray.dir/PipelineFactory.cpp.obj: CMakeFiles/Ray.dir/flags.make
-CMakeFiles/Ray.dir/PipelineFactory.cpp.obj: CMakeFiles/Ray.dir/includes_CXX.rsp
-CMakeFiles/Ray.dir/PipelineFactory.cpp.obj: ../PipelineFactory.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Code\Ray\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building CXX object CMakeFiles/Ray.dir/PipelineFactory.cpp.obj"
-	D:\MinGW\bin\c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Ray.dir\PipelineFactory.cpp.obj -c D:\Code\Ray\PipelineFactory.cpp
-
-CMakeFiles/Ray.dir/PipelineFactory.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Ray.dir/PipelineFactory.cpp.i"
-	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Code\Ray\PipelineFactory.cpp > CMakeFiles\Ray.dir\PipelineFactory.cpp.i
-
-CMakeFiles/Ray.dir/PipelineFactory.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Ray.dir/PipelineFactory.cpp.s"
-	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Code\Ray\PipelineFactory.cpp -o CMakeFiles\Ray.dir\PipelineFactory.cpp.s
+CMakeFiles/Ray.dir/src/main.cpp.obj: CMakeFiles/Ray.dir/flags.make
+CMakeFiles/Ray.dir/src/main.cpp.obj: CMakeFiles/Ray.dir/includes_CXX.rsp
+CMakeFiles/Ray.dir/src/main.cpp.obj: ../src/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Code\Ray\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Ray.dir/src/main.cpp.obj"
+	D:\MinGW\bin\c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Ray.dir\src\main.cpp.obj -c D:\Code\Ray\src\main.cpp
+
+CMakeFiles/Ray.dir/src/main.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Ray.dir/src/main.cpp.i"
+	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Code\Ray\src\main.cpp > CMakeFiles\Ray.dir\src\main.cpp.i
+
+CMakeFiles/Ray.dir/src/main.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Ray.dir/src/main.cpp.s"
+	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Code\Ray\src\main.cpp -o CMakeFiles\Ray.dir\src\main.cpp.s
+
+CMakeFiles/Ray.dir/src/Utility.cpp.obj: CMakeFiles/Ray.dir/flags.make
+CMakeFiles/Ray.dir/src/Utility.cpp.obj: CMakeFiles/Ray.dir/includes_CXX.rsp
+CMakeFiles/Ray.dir/src/Utility.cpp.obj: ../src/Utility.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Code\Ray\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Ray.dir/src/Utility.cpp.obj"
+	D:\MinGW\bin\c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Ray.dir\src\Utility.cpp.obj -c D:\Code\Ray\src\Utility.cpp
+
+CMakeFiles/Ray.dir/src/Utility.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Ray.dir/src/Utility.cpp.i"
+	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Code\Ray\src\Utility.cpp > CMakeFiles\Ray.dir\src\Utility.cpp.i
+
+CMakeFiles/Ray.dir/src/Utility.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Ray.dir/src/Utility.cpp.s"
+	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Code\Ray\src\Utility.cpp -o CMakeFiles\Ray.dir\src\Utility.cpp.s
+
+CMakeFiles/Ray.dir/src/Ray.cpp.obj: CMakeFiles/Ray.dir/flags.make
+CMakeFiles/Ray.dir/src/Ray.cpp.obj: CMakeFiles/Ray.dir/includes_CXX.rsp
+CMakeFiles/Ray.dir/src/Ray.cpp.obj: ../src/Ray.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Code\Ray\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Ray.dir/src/Ray.cpp.obj"
+	D:\MinGW\bin\c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Ray.dir\src\Ray.cpp.obj -c D:\Code\Ray\src\Ray.cpp
+
+CMakeFiles/Ray.dir/src/Ray.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Ray.dir/src/Ray.cpp.i"
+	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Code\Ray\src\Ray.cpp > CMakeFiles\Ray.dir\src\Ray.cpp.i
+
+CMakeFiles/Ray.dir/src/Ray.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Ray.dir/src/Ray.cpp.s"
+	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Code\Ray\src\Ray.cpp -o CMakeFiles\Ray.dir\src\Ray.cpp.s
+
+CMakeFiles/Ray.dir/src/Sphere.cpp.obj: CMakeFiles/Ray.dir/flags.make
+CMakeFiles/Ray.dir/src/Sphere.cpp.obj: CMakeFiles/Ray.dir/includes_CXX.rsp
+CMakeFiles/Ray.dir/src/Sphere.cpp.obj: ../src/Sphere.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Code\Ray\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Ray.dir/src/Sphere.cpp.obj"
+	D:\MinGW\bin\c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Ray.dir\src\Sphere.cpp.obj -c D:\Code\Ray\src\Sphere.cpp
+
+CMakeFiles/Ray.dir/src/Sphere.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Ray.dir/src/Sphere.cpp.i"
+	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Code\Ray\src\Sphere.cpp > CMakeFiles\Ray.dir\src\Sphere.cpp.i
+
+CMakeFiles/Ray.dir/src/Sphere.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Ray.dir/src/Sphere.cpp.s"
+	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Code\Ray\src\Sphere.cpp -o CMakeFiles\Ray.dir\src\Sphere.cpp.s
+
+CMakeFiles/Ray.dir/src/Hittable.cpp.obj: CMakeFiles/Ray.dir/flags.make
+CMakeFiles/Ray.dir/src/Hittable.cpp.obj: CMakeFiles/Ray.dir/includes_CXX.rsp
+CMakeFiles/Ray.dir/src/Hittable.cpp.obj: ../src/Hittable.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Code\Ray\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Ray.dir/src/Hittable.cpp.obj"
+	D:\MinGW\bin\c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Ray.dir\src\Hittable.cpp.obj -c D:\Code\Ray\src\Hittable.cpp
+
+CMakeFiles/Ray.dir/src/Hittable.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Ray.dir/src/Hittable.cpp.i"
+	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Code\Ray\src\Hittable.cpp > CMakeFiles\Ray.dir\src\Hittable.cpp.i
+
+CMakeFiles/Ray.dir/src/Hittable.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Ray.dir/src/Hittable.cpp.s"
+	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Code\Ray\src\Hittable.cpp -o CMakeFiles\Ray.dir\src\Hittable.cpp.s
+
+CMakeFiles/Ray.dir/src/Camera.cpp.obj: CMakeFiles/Ray.dir/flags.make
+CMakeFiles/Ray.dir/src/Camera.cpp.obj: CMakeFiles/Ray.dir/includes_CXX.rsp
+CMakeFiles/Ray.dir/src/Camera.cpp.obj: ../src/Camera.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Code\Ray\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Ray.dir/src/Camera.cpp.obj"
+	D:\MinGW\bin\c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Ray.dir\src\Camera.cpp.obj -c D:\Code\Ray\src\Camera.cpp
+
+CMakeFiles/Ray.dir/src/Camera.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Ray.dir/src/Camera.cpp.i"
+	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Code\Ray\src\Camera.cpp > CMakeFiles\Ray.dir\src\Camera.cpp.i
+
+CMakeFiles/Ray.dir/src/Camera.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Ray.dir/src/Camera.cpp.s"
+	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Code\Ray\src\Camera.cpp -o CMakeFiles\Ray.dir\src\Camera.cpp.s
+
+CMakeFiles/Ray.dir/src/Scene.cpp.obj: CMakeFiles/Ray.dir/flags.make
+CMakeFiles/Ray.dir/src/Scene.cpp.obj: CMakeFiles/Ray.dir/includes_CXX.rsp
+CMakeFiles/Ray.dir/src/Scene.cpp.obj: ../src/Scene.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Code\Ray\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/Ray.dir/src/Scene.cpp.obj"
+	D:\MinGW\bin\c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Ray.dir\src\Scene.cpp.obj -c D:\Code\Ray\src\Scene.cpp
+
+CMakeFiles/Ray.dir/src/Scene.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Ray.dir/src/Scene.cpp.i"
+	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Code\Ray\src\Scene.cpp > CMakeFiles\Ray.dir\src\Scene.cpp.i
+
+CMakeFiles/Ray.dir/src/Scene.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Ray.dir/src/Scene.cpp.s"
+	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Code\Ray\src\Scene.cpp -o CMakeFiles\Ray.dir\src\Scene.cpp.s
+
+CMakeFiles/Ray.dir/src/Config.cpp.obj: CMakeFiles/Ray.dir/flags.make
+CMakeFiles/Ray.dir/src/Config.cpp.obj: CMakeFiles/Ray.dir/includes_CXX.rsp
+CMakeFiles/Ray.dir/src/Config.cpp.obj: ../src/Config.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Code\Ray\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/Ray.dir/src/Config.cpp.obj"
+	D:\MinGW\bin\c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Ray.dir\src\Config.cpp.obj -c D:\Code\Ray\src\Config.cpp
+
+CMakeFiles/Ray.dir/src/Config.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Ray.dir/src/Config.cpp.i"
+	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Code\Ray\src\Config.cpp > CMakeFiles\Ray.dir\src\Config.cpp.i
+
+CMakeFiles/Ray.dir/src/Config.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Ray.dir/src/Config.cpp.s"
+	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Code\Ray\src\Config.cpp -o CMakeFiles\Ray.dir\src\Config.cpp.s
+
+CMakeFiles/Ray.dir/src/Triangle.cpp.obj: CMakeFiles/Ray.dir/flags.make
+CMakeFiles/Ray.dir/src/Triangle.cpp.obj: CMakeFiles/Ray.dir/includes_CXX.rsp
+CMakeFiles/Ray.dir/src/Triangle.cpp.obj: ../src/Triangle.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Code\Ray\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/Ray.dir/src/Triangle.cpp.obj"
+	D:\MinGW\bin\c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Ray.dir\src\Triangle.cpp.obj -c D:\Code\Ray\src\Triangle.cpp
+
+CMakeFiles/Ray.dir/src/Triangle.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Ray.dir/src/Triangle.cpp.i"
+	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Code\Ray\src\Triangle.cpp > CMakeFiles\Ray.dir\src\Triangle.cpp.i
+
+CMakeFiles/Ray.dir/src/Triangle.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Ray.dir/src/Triangle.cpp.s"
+	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Code\Ray\src\Triangle.cpp -o CMakeFiles\Ray.dir\src\Triangle.cpp.s
+
+CMakeFiles/Ray.dir/src/Material.cpp.obj: CMakeFiles/Ray.dir/flags.make
+CMakeFiles/Ray.dir/src/Material.cpp.obj: CMakeFiles/Ray.dir/includes_CXX.rsp
+CMakeFiles/Ray.dir/src/Material.cpp.obj: ../src/Material.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Code\Ray\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/Ray.dir/src/Material.cpp.obj"
+	D:\MinGW\bin\c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Ray.dir\src\Material.cpp.obj -c D:\Code\Ray\src\Material.cpp
+
+CMakeFiles/Ray.dir/src/Material.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Ray.dir/src/Material.cpp.i"
+	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Code\Ray\src\Material.cpp > CMakeFiles\Ray.dir\src\Material.cpp.i
+
+CMakeFiles/Ray.dir/src/Material.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Ray.dir/src/Material.cpp.s"
+	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Code\Ray\src\Material.cpp -o CMakeFiles\Ray.dir\src\Material.cpp.s
+
+CMakeFiles/Ray.dir/src/Light.cpp.obj: CMakeFiles/Ray.dir/flags.make
+CMakeFiles/Ray.dir/src/Light.cpp.obj: CMakeFiles/Ray.dir/includes_CXX.rsp
+CMakeFiles/Ray.dir/src/Light.cpp.obj: ../src/Light.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Code\Ray\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/Ray.dir/src/Light.cpp.obj"
+	D:\MinGW\bin\c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Ray.dir\src\Light.cpp.obj -c D:\Code\Ray\src\Light.cpp
+
+CMakeFiles/Ray.dir/src/Light.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Ray.dir/src/Light.cpp.i"
+	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Code\Ray\src\Light.cpp > CMakeFiles\Ray.dir\src\Light.cpp.i
+
+CMakeFiles/Ray.dir/src/Light.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Ray.dir/src/Light.cpp.s"
+	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Code\Ray\src\Light.cpp -o CMakeFiles\Ray.dir\src\Light.cpp.s
+
+CMakeFiles/Ray.dir/src/HittableList.cpp.obj: CMakeFiles/Ray.dir/flags.make
+CMakeFiles/Ray.dir/src/HittableList.cpp.obj: CMakeFiles/Ray.dir/includes_CXX.rsp
+CMakeFiles/Ray.dir/src/HittableList.cpp.obj: ../src/HittableList.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Code\Ray\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/Ray.dir/src/HittableList.cpp.obj"
+	D:\MinGW\bin\c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Ray.dir\src\HittableList.cpp.obj -c D:\Code\Ray\src\HittableList.cpp
+
+CMakeFiles/Ray.dir/src/HittableList.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Ray.dir/src/HittableList.cpp.i"
+	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Code\Ray\src\HittableList.cpp > CMakeFiles\Ray.dir\src\HittableList.cpp.i
+
+CMakeFiles/Ray.dir/src/HittableList.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Ray.dir/src/HittableList.cpp.s"
+	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Code\Ray\src\HittableList.cpp -o CMakeFiles\Ray.dir\src\HittableList.cpp.s
+
+CMakeFiles/Ray.dir/src/Shader.cpp.obj: CMakeFiles/Ray.dir/flags.make
+CMakeFiles/Ray.dir/src/Shader.cpp.obj: CMakeFiles/Ray.dir/includes_CXX.rsp
+CMakeFiles/Ray.dir/src/Shader.cpp.obj: ../src/Shader.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Code\Ray\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/Ray.dir/src/Shader.cpp.obj"
+	D:\MinGW\bin\c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Ray.dir\src\Shader.cpp.obj -c D:\Code\Ray\src\Shader.cpp
+
+CMakeFiles/Ray.dir/src/Shader.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Ray.dir/src/Shader.cpp.i"
+	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Code\Ray\src\Shader.cpp > CMakeFiles\Ray.dir\src\Shader.cpp.i
+
+CMakeFiles/Ray.dir/src/Shader.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Ray.dir/src/Shader.cpp.s"
+	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Code\Ray\src\Shader.cpp -o CMakeFiles\Ray.dir\src\Shader.cpp.s
+
+CMakeFiles/Ray.dir/src/IllumModelFactory.cpp.obj: CMakeFiles/Ray.dir/flags.make
+CMakeFiles/Ray.dir/src/IllumModelFactory.cpp.obj: CMakeFiles/Ray.dir/includes_CXX.rsp
+CMakeFiles/Ray.dir/src/IllumModelFactory.cpp.obj: ../src/IllumModelFactory.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Code\Ray\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/Ray.dir/src/IllumModelFactory.cpp.obj"
+	D:\MinGW\bin\c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Ray.dir\src\IllumModelFactory.cpp.obj -c D:\Code\Ray\src\IllumModelFactory.cpp
+
+CMakeFiles/Ray.dir/src/IllumModelFactory.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Ray.dir/src/IllumModelFactory.cpp.i"
+	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Code\Ray\src\IllumModelFactory.cpp > CMakeFiles\Ray.dir\src\IllumModelFactory.cpp.i
+
+CMakeFiles/Ray.dir/src/IllumModelFactory.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Ray.dir/src/IllumModelFactory.cpp.s"
+	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Code\Ray\src\IllumModelFactory.cpp -o CMakeFiles\Ray.dir\src\IllumModelFactory.cpp.s
+
+CMakeFiles/Ray.dir/src/Whitted.cpp.obj: CMakeFiles/Ray.dir/flags.make
+CMakeFiles/Ray.dir/src/Whitted.cpp.obj: CMakeFiles/Ray.dir/includes_CXX.rsp
+CMakeFiles/Ray.dir/src/Whitted.cpp.obj: ../src/Whitted.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Code\Ray\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/Ray.dir/src/Whitted.cpp.obj"
+	D:\MinGW\bin\c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Ray.dir\src\Whitted.cpp.obj -c D:\Code\Ray\src\Whitted.cpp
+
+CMakeFiles/Ray.dir/src/Whitted.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Ray.dir/src/Whitted.cpp.i"
+	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Code\Ray\src\Whitted.cpp > CMakeFiles\Ray.dir\src\Whitted.cpp.i
+
+CMakeFiles/Ray.dir/src/Whitted.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Ray.dir/src/Whitted.cpp.s"
+	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Code\Ray\src\Whitted.cpp -o CMakeFiles\Ray.dir\src\Whitted.cpp.s
+
+CMakeFiles/Ray.dir/src/Dielectric.cpp.obj: CMakeFiles/Ray.dir/flags.make
+CMakeFiles/Ray.dir/src/Dielectric.cpp.obj: CMakeFiles/Ray.dir/includes_CXX.rsp
+CMakeFiles/Ray.dir/src/Dielectric.cpp.obj: ../src/Dielectric.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Code\Ray\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/Ray.dir/src/Dielectric.cpp.obj"
+	D:\MinGW\bin\c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Ray.dir\src\Dielectric.cpp.obj -c D:\Code\Ray\src\Dielectric.cpp
+
+CMakeFiles/Ray.dir/src/Dielectric.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Ray.dir/src/Dielectric.cpp.i"
+	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Code\Ray\src\Dielectric.cpp > CMakeFiles\Ray.dir\src\Dielectric.cpp.i
+
+CMakeFiles/Ray.dir/src/Dielectric.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Ray.dir/src/Dielectric.cpp.s"
+	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Code\Ray\src\Dielectric.cpp -o CMakeFiles\Ray.dir\src\Dielectric.cpp.s
+
+CMakeFiles/Ray.dir/src/BVH.cpp.obj: CMakeFiles/Ray.dir/flags.make
+CMakeFiles/Ray.dir/src/BVH.cpp.obj: CMakeFiles/Ray.dir/includes_CXX.rsp
+CMakeFiles/Ray.dir/src/BVH.cpp.obj: ../src/BVH.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Code\Ray\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/Ray.dir/src/BVH.cpp.obj"
+	D:\MinGW\bin\c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Ray.dir\src\BVH.cpp.obj -c D:\Code\Ray\src\BVH.cpp
+
+CMakeFiles/Ray.dir/src/BVH.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Ray.dir/src/BVH.cpp.i"
+	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Code\Ray\src\BVH.cpp > CMakeFiles\Ray.dir\src\BVH.cpp.i
+
+CMakeFiles/Ray.dir/src/BVH.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Ray.dir/src/BVH.cpp.s"
+	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Code\Ray\src\BVH.cpp -o CMakeFiles\Ray.dir\src\BVH.cpp.s
+
+CMakeFiles/Ray.dir/src/Photon.cpp.obj: CMakeFiles/Ray.dir/flags.make
+CMakeFiles/Ray.dir/src/Photon.cpp.obj: CMakeFiles/Ray.dir/includes_CXX.rsp
+CMakeFiles/Ray.dir/src/Photon.cpp.obj: ../src/Photon.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Code\Ray\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/Ray.dir/src/Photon.cpp.obj"
+	D:\MinGW\bin\c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Ray.dir\src\Photon.cpp.obj -c D:\Code\Ray\src\Photon.cpp
+
+CMakeFiles/Ray.dir/src/Photon.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Ray.dir/src/Photon.cpp.i"
+	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Code\Ray\src\Photon.cpp > CMakeFiles\Ray.dir\src\Photon.cpp.i
+
+CMakeFiles/Ray.dir/src/Photon.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Ray.dir/src/Photon.cpp.s"
+	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Code\Ray\src\Photon.cpp -o CMakeFiles\Ray.dir\src\Photon.cpp.s
+
+CMakeFiles/Ray.dir/src/AreaLight.cpp.obj: CMakeFiles/Ray.dir/flags.make
+CMakeFiles/Ray.dir/src/AreaLight.cpp.obj: CMakeFiles/Ray.dir/includes_CXX.rsp
+CMakeFiles/Ray.dir/src/AreaLight.cpp.obj: ../src/AreaLight.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Code\Ray\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/Ray.dir/src/AreaLight.cpp.obj"
+	D:\MinGW\bin\c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Ray.dir\src\AreaLight.cpp.obj -c D:\Code\Ray\src\AreaLight.cpp
+
+CMakeFiles/Ray.dir/src/AreaLight.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Ray.dir/src/AreaLight.cpp.i"
+	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Code\Ray\src\AreaLight.cpp > CMakeFiles\Ray.dir\src\AreaLight.cpp.i
+
+CMakeFiles/Ray.dir/src/AreaLight.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Ray.dir/src/AreaLight.cpp.s"
+	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Code\Ray\src\AreaLight.cpp -o CMakeFiles\Ray.dir\src\AreaLight.cpp.s
+
+CMakeFiles/Ray.dir/src/Lambertian.cpp.obj: CMakeFiles/Ray.dir/flags.make
+CMakeFiles/Ray.dir/src/Lambertian.cpp.obj: CMakeFiles/Ray.dir/includes_CXX.rsp
+CMakeFiles/Ray.dir/src/Lambertian.cpp.obj: ../src/Lambertian.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Code\Ray\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/Ray.dir/src/Lambertian.cpp.obj"
+	D:\MinGW\bin\c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Ray.dir\src\Lambertian.cpp.obj -c D:\Code\Ray\src\Lambertian.cpp
+
+CMakeFiles/Ray.dir/src/Lambertian.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Ray.dir/src/Lambertian.cpp.i"
+	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Code\Ray\src\Lambertian.cpp > CMakeFiles\Ray.dir\src\Lambertian.cpp.i
+
+CMakeFiles/Ray.dir/src/Lambertian.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Ray.dir/src/Lambertian.cpp.s"
+	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Code\Ray\src\Lambertian.cpp -o CMakeFiles\Ray.dir\src\Lambertian.cpp.s
+
+CMakeFiles/Ray.dir/src/Texture.cpp.obj: CMakeFiles/Ray.dir/flags.make
+CMakeFiles/Ray.dir/src/Texture.cpp.obj: CMakeFiles/Ray.dir/includes_CXX.rsp
+CMakeFiles/Ray.dir/src/Texture.cpp.obj: ../src/Texture.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Code\Ray\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object CMakeFiles/Ray.dir/src/Texture.cpp.obj"
+	D:\MinGW\bin\c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Ray.dir\src\Texture.cpp.obj -c D:\Code\Ray\src\Texture.cpp
+
+CMakeFiles/Ray.dir/src/Texture.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Ray.dir/src/Texture.cpp.i"
+	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Code\Ray\src\Texture.cpp > CMakeFiles\Ray.dir\src\Texture.cpp.i
+
+CMakeFiles/Ray.dir/src/Texture.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Ray.dir/src/Texture.cpp.s"
+	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Code\Ray\src\Texture.cpp -o CMakeFiles\Ray.dir\src\Texture.cpp.s
+
+CMakeFiles/Ray.dir/src/InstantRadiosity.cpp.obj: CMakeFiles/Ray.dir/flags.make
+CMakeFiles/Ray.dir/src/InstantRadiosity.cpp.obj: CMakeFiles/Ray.dir/includes_CXX.rsp
+CMakeFiles/Ray.dir/src/InstantRadiosity.cpp.obj: ../src/InstantRadiosity.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Code\Ray\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object CMakeFiles/Ray.dir/src/InstantRadiosity.cpp.obj"
+	D:\MinGW\bin\c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Ray.dir\src\InstantRadiosity.cpp.obj -c D:\Code\Ray\src\InstantRadiosity.cpp
+
+CMakeFiles/Ray.dir/src/InstantRadiosity.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Ray.dir/src/InstantRadiosity.cpp.i"
+	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Code\Ray\src\InstantRadiosity.cpp > CMakeFiles\Ray.dir\src\InstantRadiosity.cpp.i
+
+CMakeFiles/Ray.dir/src/InstantRadiosity.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Ray.dir/src/InstantRadiosity.cpp.s"
+	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Code\Ray\src\InstantRadiosity.cpp -o CMakeFiles\Ray.dir\src\InstantRadiosity.cpp.s
+
+CMakeFiles/Ray.dir/src/KDTree.cpp.obj: CMakeFiles/Ray.dir/flags.make
+CMakeFiles/Ray.dir/src/KDTree.cpp.obj: CMakeFiles/Ray.dir/includes_CXX.rsp
+CMakeFiles/Ray.dir/src/KDTree.cpp.obj: ../src/KDTree.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Code\Ray\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object CMakeFiles/Ray.dir/src/KDTree.cpp.obj"
+	D:\MinGW\bin\c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Ray.dir\src\KDTree.cpp.obj -c D:\Code\Ray\src\KDTree.cpp
+
+CMakeFiles/Ray.dir/src/KDTree.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Ray.dir/src/KDTree.cpp.i"
+	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Code\Ray\src\KDTree.cpp > CMakeFiles\Ray.dir\src\KDTree.cpp.i
+
+CMakeFiles/Ray.dir/src/KDTree.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Ray.dir/src/KDTree.cpp.s"
+	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Code\Ray\src\KDTree.cpp -o CMakeFiles\Ray.dir\src\KDTree.cpp.s
+
+CMakeFiles/Ray.dir/src/Pipeline.cpp.obj: CMakeFiles/Ray.dir/flags.make
+CMakeFiles/Ray.dir/src/Pipeline.cpp.obj: CMakeFiles/Ray.dir/includes_CXX.rsp
+CMakeFiles/Ray.dir/src/Pipeline.cpp.obj: ../src/Pipeline.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Code\Ray\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object CMakeFiles/Ray.dir/src/Pipeline.cpp.obj"
+	D:\MinGW\bin\c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Ray.dir\src\Pipeline.cpp.obj -c D:\Code\Ray\src\Pipeline.cpp
+
+CMakeFiles/Ray.dir/src/Pipeline.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Ray.dir/src/Pipeline.cpp.i"
+	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Code\Ray\src\Pipeline.cpp > CMakeFiles\Ray.dir\src\Pipeline.cpp.i
+
+CMakeFiles/Ray.dir/src/Pipeline.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Ray.dir/src/Pipeline.cpp.s"
+	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Code\Ray\src\Pipeline.cpp -o CMakeFiles\Ray.dir\src\Pipeline.cpp.s
+
+CMakeFiles/Ray.dir/src/GLUtil.cpp.obj: CMakeFiles/Ray.dir/flags.make
+CMakeFiles/Ray.dir/src/GLUtil.cpp.obj: CMakeFiles/Ray.dir/includes_CXX.rsp
+CMakeFiles/Ray.dir/src/GLUtil.cpp.obj: ../src/GLUtil.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Code\Ray\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object CMakeFiles/Ray.dir/src/GLUtil.cpp.obj"
+	D:\MinGW\bin\c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Ray.dir\src\GLUtil.cpp.obj -c D:\Code\Ray\src\GLUtil.cpp
+
+CMakeFiles/Ray.dir/src/GLUtil.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Ray.dir/src/GLUtil.cpp.i"
+	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Code\Ray\src\GLUtil.cpp > CMakeFiles\Ray.dir\src\GLUtil.cpp.i
+
+CMakeFiles/Ray.dir/src/GLUtil.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Ray.dir/src/GLUtil.cpp.s"
+	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Code\Ray\src\GLUtil.cpp -o CMakeFiles\Ray.dir\src\GLUtil.cpp.s
+
+CMakeFiles/Ray.dir/src/TriangleGroup.cpp.obj: CMakeFiles/Ray.dir/flags.make
+CMakeFiles/Ray.dir/src/TriangleGroup.cpp.obj: CMakeFiles/Ray.dir/includes_CXX.rsp
+CMakeFiles/Ray.dir/src/TriangleGroup.cpp.obj: ../src/TriangleGroup.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Code\Ray\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building CXX object CMakeFiles/Ray.dir/src/TriangleGroup.cpp.obj"
+	D:\MinGW\bin\c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Ray.dir\src\TriangleGroup.cpp.obj -c D:\Code\Ray\src\TriangleGroup.cpp
+
+CMakeFiles/Ray.dir/src/TriangleGroup.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Ray.dir/src/TriangleGroup.cpp.i"
+	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Code\Ray\src\TriangleGroup.cpp > CMakeFiles\Ray.dir\src\TriangleGroup.cpp.i
+
+CMakeFiles/Ray.dir/src/TriangleGroup.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Ray.dir/src/TriangleGroup.cpp.s"
+	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Code\Ray\src\TriangleGroup.cpp -o CMakeFiles\Ray.dir\src\TriangleGroup.cpp.s
+
+CMakeFiles/Ray.dir/src/PipelineFactory.cpp.obj: CMakeFiles/Ray.dir/flags.make
+CMakeFiles/Ray.dir/src/PipelineFactory.cpp.obj: CMakeFiles/Ray.dir/includes_CXX.rsp
+CMakeFiles/Ray.dir/src/PipelineFactory.cpp.obj: ../src/PipelineFactory.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Code\Ray\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building CXX object CMakeFiles/Ray.dir/src/PipelineFactory.cpp.obj"
+	D:\MinGW\bin\c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Ray.dir\src\PipelineFactory.cpp.obj -c D:\Code\Ray\src\PipelineFactory.cpp
+
+CMakeFiles/Ray.dir/src/PipelineFactory.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Ray.dir/src/PipelineFactory.cpp.i"
+	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Code\Ray\src\PipelineFactory.cpp > CMakeFiles\Ray.dir\src\PipelineFactory.cpp.i
+
+CMakeFiles/Ray.dir/src/PipelineFactory.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Ray.dir/src/PipelineFactory.cpp.s"
+	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Code\Ray\src\PipelineFactory.cpp -o CMakeFiles\Ray.dir\src\PipelineFactory.cpp.s
 
 # Object files for target Ray
 Ray_OBJECTS = \
-"CMakeFiles/Ray.dir/main.cpp.obj" \
-"CMakeFiles/Ray.dir/Utility.cpp.obj" \
-"CMakeFiles/Ray.dir/Ray.cpp.obj" \
-"CMakeFiles/Ray.dir/Sphere.cpp.obj" \
-"CMakeFiles/Ray.dir/Hittable.cpp.obj" \
-"CMakeFiles/Ray.dir/Camera.cpp.obj" \
-"CMakeFiles/Ray.dir/Scene.cpp.obj" \
-"CMakeFiles/Ray.dir/Config.cpp.obj" \
-"CMakeFiles/Ray.dir/Triangle.cpp.obj" \
-"CMakeFiles/Ray.dir/Material.cpp.obj" \
-"CMakeFiles/Ray.dir/Light.cpp.obj" \
-"CMakeFiles/Ray.dir/HittableList.cpp.obj" \
-"CMakeFiles/Ray.dir/Shader.cpp.obj" \
-"CMakeFiles/Ray.dir/IllumModelFactory.cpp.obj" \
-"CMakeFiles/Ray.dir/Whitted.cpp.obj" \
-"CMakeFiles/Ray.dir/Dielectric.cpp.obj" \
-"CMakeFiles/Ray.dir/BVH.cpp.obj" \
-"CMakeFiles/Ray.dir/Photon.cpp.obj" \
-"CMakeFiles/Ray.dir/AreaLight.cpp.obj" \
-"CMakeFiles/Ray.dir/Lambertian.cpp.obj" \
-"CMakeFiles/Ray.dir/Texture.cpp.obj" \
-"CMakeFiles/Ray.dir/InstantRadiosity.cpp.obj" \
-"CMakeFiles/Ray.dir/KDTree.cpp.obj" \
-"CMakeFiles/Ray.dir/Pipeline.cpp.obj" \
-"CMakeFiles/Ray.dir/GLUtil.cpp.obj" \
-"CMakeFiles/Ray.dir/TriangleGroup.cpp.obj" \
-"CMakeFiles/Ray.dir/PipelineFactory.cpp.obj"
+"CMakeFiles/Ray.dir/src/main.cpp.obj" \
+"CMakeFiles/Ray.dir/src/Utility.cpp.obj" \
+"CMakeFiles/Ray.dir/src/Ray.cpp.obj" \
+"CMakeFiles/Ray.dir/src/Sphere.cpp.obj" \
+"CMakeFiles/Ray.dir/src/Hittable.cpp.obj" \
+"CMakeFiles/Ray.dir/src/Camera.cpp.obj" \
+"CMakeFiles/Ray.dir/src/Scene.cpp.obj" \
+"CMakeFiles/Ray.dir/src/Config.cpp.obj" \
+"CMakeFiles/Ray.dir/src/Triangle.cpp.obj" \
+"CMakeFiles/Ray.dir/src/Material.cpp.obj" \
+"CMakeFiles/Ray.dir/src/Light.cpp.obj" \
+"CMakeFiles/Ray.dir/src/HittableList.cpp.obj" \
+"CMakeFiles/Ray.dir/src/Shader.cpp.obj" \
+"CMakeFiles/Ray.dir/src/IllumModelFactory.cpp.obj" \
+"CMakeFiles/Ray.dir/src/Whitted.cpp.obj" \
+"CMakeFiles/Ray.dir/src/Dielectric.cpp.obj" \
+"CMakeFiles/Ray.dir/src/BVH.cpp.obj" \
+"CMakeFiles/Ray.dir/src/Photon.cpp.obj" \
+"CMakeFiles/Ray.dir/src/AreaLight.cpp.obj" \
+"CMakeFiles/Ray.dir/src/Lambertian.cpp.obj" \
+"CMakeFiles/Ray.dir/src/Texture.cpp.obj" \
+"CMakeFiles/Ray.dir/src/InstantRadiosity.cpp.obj" \
+"CMakeFiles/Ray.dir/src/KDTree.cpp.obj" \
+"CMakeFiles/Ray.dir/src/Pipeline.cpp.obj" \
+"CMakeFiles/Ray.dir/src/GLUtil.cpp.obj" \
+"CMakeFiles/Ray.dir/src/TriangleGroup.cpp.obj" \
+"CMakeFiles/Ray.dir/src/PipelineFactory.cpp.obj"
 
 # External object files for target Ray
 Ray_EXTERNAL_OBJECTS =
 
-Ray.exe: CMakeFiles/Ray.dir/main.cpp.obj
-Ray.exe: CMakeFiles/Ray.dir/Utility.cpp.obj
-Ray.exe: CMakeFiles/Ray.dir/Ray.cpp.obj
-Ray.exe: CMakeFiles/Ray.dir/Sphere.cpp.obj
-Ray.exe: CMakeFiles/Ray.dir/Hittable.cpp.obj
-Ray.exe: CMakeFiles/Ray.dir/Camera.cpp.obj
-Ray.exe: CMakeFiles/Ray.dir/Scene.cpp.obj
-Ray.exe: CMakeFiles/Ray.dir/Config.cpp.obj
-Ray.exe: CMakeFiles/Ray.dir/Triangle.cpp.obj
-Ray.exe: CMakeFiles/Ray.dir/Material.cpp.obj
-Ray.exe: CMakeFiles/Ray.dir/Light.cpp.obj
-Ray.exe: CMakeFiles/Ray.dir/HittableList.cpp.obj
-Ray.exe: CMakeFiles/Ray.dir/Shader.cpp.obj
-Ray.exe: CMakeFiles/Ray.dir/IllumModelFactory.cpp.obj
-Ray.exe: CMakeFiles/Ray.dir/Whitted.cpp.obj
-Ray.exe: CMakeFiles/Ray.dir/Dielectric.cpp.obj
-Ray.exe: CMakeFiles/Ray.dir/BVH.cpp.obj
-Ray.exe: CMakeFiles/Ray.dir/Photon.cpp.obj
-Ray.exe: CMakeFiles/Ray.dir/AreaLight.cpp.obj
-Ray.exe: CMakeFiles/Ray.dir/Lambertian.cpp.obj
-Ray.exe: CMakeFiles/Ray.dir/Texture.cpp.obj
-Ray.exe: CMakeFiles/Ray.dir/InstantRadiosity.cpp.obj
-Ray.exe: CMakeFiles/Ray.dir/KDTree.cpp.obj
-Ray.exe: CMakeFiles/Ray.dir/Pipeline.cpp.obj
-Ray.exe: CMakeFiles/Ray.dir/GLUtil.cpp.obj
-Ray.exe: CMakeFiles/Ray.dir/TriangleGroup.cpp.obj
-Ray.exe: CMakeFiles/Ray.dir/PipelineFactory.cpp.obj
+Ray.exe: CMakeFiles/Ray.dir/src/main.cpp.obj
+Ray.exe: CMakeFiles/Ray.dir/src/Utility.cpp.obj
+Ray.exe: CMakeFiles/Ray.dir/src/Ray.cpp.obj
+Ray.exe: CMakeFiles/Ray.dir/src/Sphere.cpp.obj
+Ray.exe: CMakeFiles/Ray.dir/src/Hittable.cpp.obj
+Ray.exe: CMakeFiles/Ray.dir/src/Camera.cpp.obj
+Ray.exe: CMakeFiles/Ray.dir/src/Scene.cpp.obj
+Ray.exe: CMakeFiles/Ray.dir/src/Config.cpp.obj
+Ray.exe: CMakeFiles/Ray.dir/src/Triangle.cpp.obj
+Ray.exe: CMakeFiles/Ray.dir/src/Material.cpp.obj
+Ray.exe: CMakeFiles/Ray.dir/src/Light.cpp.obj
+Ray.exe: CMakeFiles/Ray.dir/src/HittableList.cpp.obj
+Ray.exe: CMakeFiles/Ray.dir/src/Shader.cpp.obj
+Ray.exe: CMakeFiles/Ray.dir/src/IllumModelFactory.cpp.obj
+Ray.exe: CMakeFiles/Ray.dir/src/Whitted.cpp.obj
+Ray.exe: CMakeFiles/Ray.dir/src/Dielectric.cpp.obj
+Ray.exe: CMakeFiles/Ray.dir/src/BVH.cpp.obj
+Ray.exe: CMakeFiles/Ray.dir/src/Photon.cpp.obj
+Ray.exe: CMakeFiles/Ray.dir/src/AreaLight.cpp.obj
+Ray.exe: CMakeFiles/Ray.dir/src/Lambertian.cpp.obj
+Ray.exe: CMakeFiles/Ray.dir/src/Texture.cpp.obj
+Ray.exe: CMakeFiles/Ray.dir/src/InstantRadiosity.cpp.obj
+Ray.exe: CMakeFiles/Ray.dir/src/KDTree.cpp.obj
+Ray.exe: CMakeFiles/Ray.dir/src/Pipeline.cpp.obj
+Ray.exe: CMakeFiles/Ray.dir/src/GLUtil.cpp.obj
+Ray.exe: CMakeFiles/Ray.dir/src/TriangleGroup.cpp.obj
+Ray.exe: CMakeFiles/Ray.dir/src/PipelineFactory.cpp.obj
 Ray.exe: CMakeFiles/Ray.dir/build.make
 Ray.exe: ../public/glew/lib/Release/Win32/glew32.lib
 Ray.exe: public/glfw/src/libglfw3dll.a

@@ -25,6 +25,7 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add option="-DGLFW_DLL"/>
+					<Add directory="D:/Code/Ray/public/glm"/>
 					<Add directory="D:/Code/Ray/public/yaml-cpp/include"/>
 					<Add directory="D:/Code/Ray/./include"/>
 					<Add directory="D:/Code/Ray/public/glfw/include"/>
@@ -51,6 +52,7 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add option="-DGLFW_DLL"/>
+					<Add directory="D:/Code/Ray/public/glm"/>
 					<Add directory="D:/Code/Ray/public/yaml-cpp/include"/>
 					<Add directory="D:/Code/Ray/./include"/>
 					<Add directory="D:/Code/Ray/public/glfw/include"/>
@@ -245,6 +247,7 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add option="-DYAML_CPP_DLL"/>
+					<Add directory="D:/Code/Ray/public/glm"/>
 					<Add directory="D:/Code/Ray/public/yaml-cpp/include"/>
 					<Add directory="D:/Code/Ray/public/yaml-cpp/src"/>
 					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++"/>
@@ -269,6 +272,7 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add option="-DYAML_CPP_DLL"/>
+					<Add directory="D:/Code/Ray/public/glm"/>
 					<Add directory="D:/Code/Ray/public/yaml-cpp/include"/>
 					<Add directory="D:/Code/Ray/public/yaml-cpp/src"/>
 					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++"/>
@@ -292,6 +296,7 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="D:/Code/Ray/public/glm"/>
 					<Add directory="D:/Code/Ray/public/yaml-cpp/include"/>
 					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++"/>
 					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/mingw32"/>
@@ -314,6 +319,7 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="D:/Code/Ray/public/glm"/>
 					<Add directory="D:/Code/Ray/public/yaml-cpp/include"/>
 					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++"/>
 					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/mingw32"/>
@@ -336,6 +342,7 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="D:/Code/Ray/public/glm"/>
 					<Add directory="D:/Code/Ray/public/yaml-cpp/include"/>
 					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++"/>
 					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/mingw32"/>
@@ -358,6 +365,7 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="D:/Code/Ray/public/glm"/>
 					<Add directory="D:/Code/Ray/public/yaml-cpp/include"/>
 					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++"/>
 					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/mingw32"/>
@@ -380,6 +388,7 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="D:/Code/Ray/public/glm"/>
 					<Add directory="D:/Code/Ray/public/yaml-cpp/include"/>
 					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++"/>
 					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/mingw32"/>
@@ -402,6 +411,7 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="D:/Code/Ray/public/glm"/>
 					<Add directory="D:/Code/Ray/public/yaml-cpp/include"/>
 					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++"/>
 					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/mingw32"/>
@@ -418,87 +428,6 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="D:/Code/Ray/AreaLight.cpp">
-			<Option target="Ray"/>
-		</Unit>
-		<Unit filename="D:/Code/Ray/BVH.cpp">
-			<Option target="Ray"/>
-		</Unit>
-		<Unit filename="D:/Code/Ray/Camera.cpp">
-			<Option target="Ray"/>
-		</Unit>
-		<Unit filename="D:/Code/Ray/Config.cpp">
-			<Option target="Ray"/>
-		</Unit>
-		<Unit filename="D:/Code/Ray/Dielectric.cpp">
-			<Option target="Ray"/>
-		</Unit>
-		<Unit filename="D:/Code/Ray/GLUtil.cpp">
-			<Option target="Ray"/>
-		</Unit>
-		<Unit filename="D:/Code/Ray/Hittable.cpp">
-			<Option target="Ray"/>
-		</Unit>
-		<Unit filename="D:/Code/Ray/HittableList.cpp">
-			<Option target="Ray"/>
-		</Unit>
-		<Unit filename="D:/Code/Ray/HittableList.h">
-			<Option target="Ray"/>
-		</Unit>
-		<Unit filename="D:/Code/Ray/IllumModelFactory.cpp">
-			<Option target="Ray"/>
-		</Unit>
-		<Unit filename="D:/Code/Ray/InstantRadiosity.cpp">
-			<Option target="Ray"/>
-		</Unit>
-		<Unit filename="D:/Code/Ray/KDTree.cpp">
-			<Option target="Ray"/>
-		</Unit>
-		<Unit filename="D:/Code/Ray/Lambertian.cpp">
-			<Option target="Ray"/>
-		</Unit>
-		<Unit filename="D:/Code/Ray/Light.cpp">
-			<Option target="Ray"/>
-		</Unit>
-		<Unit filename="D:/Code/Ray/Material.cpp">
-			<Option target="Ray"/>
-		</Unit>
-		<Unit filename="D:/Code/Ray/Photon.cpp">
-			<Option target="Ray"/>
-		</Unit>
-		<Unit filename="D:/Code/Ray/Pipeline.cpp">
-			<Option target="Ray"/>
-		</Unit>
-		<Unit filename="D:/Code/Ray/PipelineFactory.cpp">
-			<Option target="Ray"/>
-		</Unit>
-		<Unit filename="D:/Code/Ray/Ray.cpp">
-			<Option target="Ray"/>
-		</Unit>
-		<Unit filename="D:/Code/Ray/Scene.cpp">
-			<Option target="Ray"/>
-		</Unit>
-		<Unit filename="D:/Code/Ray/Shader.cpp">
-			<Option target="Ray"/>
-		</Unit>
-		<Unit filename="D:/Code/Ray/Sphere.cpp">
-			<Option target="Ray"/>
-		</Unit>
-		<Unit filename="D:/Code/Ray/Texture.cpp">
-			<Option target="Ray"/>
-		</Unit>
-		<Unit filename="D:/Code/Ray/Triangle.cpp">
-			<Option target="Ray"/>
-		</Unit>
-		<Unit filename="D:/Code/Ray/TriangleGroup.cpp">
-			<Option target="Ray"/>
-		</Unit>
-		<Unit filename="D:/Code/Ray/Utility.cpp">
-			<Option target="Ray"/>
-		</Unit>
-		<Unit filename="D:/Code/Ray/Whitted.cpp">
-			<Option target="Ray"/>
-		</Unit>
 		<Unit filename="D:/Code/Ray/cmake-build-debug/public/glfw/src/glfw.rc">
 			<Option target="glfw"/>
 		</Unit>
@@ -524,6 +453,9 @@
 			<Option target="Ray"/>
 		</Unit>
 		<Unit filename="D:/Code/Ray/include/Hittable.h">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/include/HittableList.h">
 			<Option target="Ray"/>
 		</Unit>
 		<Unit filename="D:/Code/Ray/include/IllumModel.h">
@@ -584,9 +516,6 @@
 			<Option target="Ray"/>
 		</Unit>
 		<Unit filename="D:/Code/Ray/include/stb_image.h">
-			<Option target="Ray"/>
-		</Unit>
-		<Unit filename="D:/Code/Ray/main.cpp">
 			<Option target="Ray"/>
 		</Unit>
 		<Unit filename="D:/Code/Ray/public/glfw/include/GLFW/glfw3.h">
@@ -804,6 +733,87 @@
 		</Unit>
 		<Unit filename="D:/Code/Ray/public/yaml-cpp/util/sandbox.cpp">
 			<Option target="yaml-cpp-sandbox"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/src/AreaLight.cpp">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/src/BVH.cpp">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/src/Camera.cpp">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/src/Config.cpp">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/src/Dielectric.cpp">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/src/GLUtil.cpp">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/src/Hittable.cpp">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/src/HittableList.cpp">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/src/IllumModelFactory.cpp">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/src/InstantRadiosity.cpp">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/src/KDTree.cpp">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/src/Lambertian.cpp">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/src/Light.cpp">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/src/Material.cpp">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/src/Photon.cpp">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/src/Pipeline.cpp">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/src/PipelineFactory.cpp">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/src/Ray.cpp">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/src/Scene.cpp">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/src/Shader.cpp">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/src/Sphere.cpp">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/src/Texture.cpp">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/src/Triangle.cpp">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/src/TriangleGroup.cpp">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/src/Utility.cpp">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/src/Whitted.cpp">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/src/main.cpp">
+			<Option target="Ray"/>
 		</Unit>
 		<Unit filename="D:/Code/Ray/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>

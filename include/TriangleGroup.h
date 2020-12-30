@@ -29,7 +29,7 @@ public:
 
 class TriangleGroup : public Hittable {
 public:
-    TriangleGroup() : Hittable(), m_accel(nullptr) {}
+    TriangleGroup() : Hittable(), m_accel(nullptr), m_individualTriangle(false) {}
 
     static std::vector<Hittable *> fromObj(const YAML::Node &node, const Scene *scene);
 
@@ -40,13 +40,15 @@ public:
     virtual bool isHit(double tmin, const Ray &ray, HitRecord &record);
 
     // For local shading
-    virtual std::vector<ObjectInfo> createVAO(const Material *material);
+    virtual std::vector<ShadeObject *> createVAO();
 
     virtual ObjectBoundingBox getBoundingBox();
 
 public:
     std::vector<Triangle *> m_triangles;
     ObjectBoundingBox m_boundingBox;
+
+    bool m_individualTriangle;
 
     BVH *m_accel;
 };

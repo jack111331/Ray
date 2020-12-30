@@ -43,7 +43,7 @@ public:
 
     virtual bool isHit(double tmin, const Ray &ray, HitRecord &record);
 
-    virtual std::vector<ObjectInfo> createVAO(const Material *material);
+    virtual std::vector<ShadeObject *> createVAO();
 
     virtual bool readObjectInfo(const YAML::Node &node, const Scene *scene);
 

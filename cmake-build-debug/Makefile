@@ -624,734 +624,734 @@ yaml-cpp-read/fast:
 	$(MAKE) -f public\yaml-cpp\util\CMakeFiles\yaml-cpp-read.dir\build.make public/yaml-cpp/util/CMakeFiles/yaml-cpp-read.dir/build
 .PHONY : yaml-cpp-read/fast
 
-AreaLight.obj: AreaLight.cpp.obj
+src/AreaLight.obj: src/AreaLight.cpp.obj
 
-.PHONY : AreaLight.obj
-
-# target to build an object file
-AreaLight.cpp.obj:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/AreaLight.cpp.obj
-.PHONY : AreaLight.cpp.obj
-
-AreaLight.i: AreaLight.cpp.i
-
-.PHONY : AreaLight.i
-
-# target to preprocess a source file
-AreaLight.cpp.i:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/AreaLight.cpp.i
-.PHONY : AreaLight.cpp.i
-
-AreaLight.s: AreaLight.cpp.s
-
-.PHONY : AreaLight.s
-
-# target to generate assembly for a file
-AreaLight.cpp.s:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/AreaLight.cpp.s
-.PHONY : AreaLight.cpp.s
-
-BVH.obj: BVH.cpp.obj
-
-.PHONY : BVH.obj
+.PHONY : src/AreaLight.obj
 
 # target to build an object file
-BVH.cpp.obj:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/BVH.cpp.obj
-.PHONY : BVH.cpp.obj
+src/AreaLight.cpp.obj:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/AreaLight.cpp.obj
+.PHONY : src/AreaLight.cpp.obj
 
-BVH.i: BVH.cpp.i
+src/AreaLight.i: src/AreaLight.cpp.i
 
-.PHONY : BVH.i
+.PHONY : src/AreaLight.i
 
 # target to preprocess a source file
-BVH.cpp.i:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/BVH.cpp.i
-.PHONY : BVH.cpp.i
+src/AreaLight.cpp.i:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/AreaLight.cpp.i
+.PHONY : src/AreaLight.cpp.i
 
-BVH.s: BVH.cpp.s
+src/AreaLight.s: src/AreaLight.cpp.s
 
-.PHONY : BVH.s
+.PHONY : src/AreaLight.s
 
 # target to generate assembly for a file
-BVH.cpp.s:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/BVH.cpp.s
-.PHONY : BVH.cpp.s
+src/AreaLight.cpp.s:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/AreaLight.cpp.s
+.PHONY : src/AreaLight.cpp.s
 
-Camera.obj: Camera.cpp.obj
+src/BVH.obj: src/BVH.cpp.obj
 
-.PHONY : Camera.obj
+.PHONY : src/BVH.obj
 
 # target to build an object file
-Camera.cpp.obj:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/Camera.cpp.obj
-.PHONY : Camera.cpp.obj
+src/BVH.cpp.obj:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/BVH.cpp.obj
+.PHONY : src/BVH.cpp.obj
 
-Camera.i: Camera.cpp.i
+src/BVH.i: src/BVH.cpp.i
 
-.PHONY : Camera.i
+.PHONY : src/BVH.i
 
 # target to preprocess a source file
-Camera.cpp.i:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/Camera.cpp.i
-.PHONY : Camera.cpp.i
+src/BVH.cpp.i:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/BVH.cpp.i
+.PHONY : src/BVH.cpp.i
 
-Camera.s: Camera.cpp.s
+src/BVH.s: src/BVH.cpp.s
 
-.PHONY : Camera.s
+.PHONY : src/BVH.s
 
 # target to generate assembly for a file
-Camera.cpp.s:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/Camera.cpp.s
-.PHONY : Camera.cpp.s
+src/BVH.cpp.s:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/BVH.cpp.s
+.PHONY : src/BVH.cpp.s
 
-Config.obj: Config.cpp.obj
+src/Camera.obj: src/Camera.cpp.obj
 
-.PHONY : Config.obj
+.PHONY : src/Camera.obj
 
 # target to build an object file
-Config.cpp.obj:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/Config.cpp.obj
-.PHONY : Config.cpp.obj
+src/Camera.cpp.obj:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/Camera.cpp.obj
+.PHONY : src/Camera.cpp.obj
 
-Config.i: Config.cpp.i
+src/Camera.i: src/Camera.cpp.i
 
-.PHONY : Config.i
+.PHONY : src/Camera.i
 
 # target to preprocess a source file
-Config.cpp.i:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/Config.cpp.i
-.PHONY : Config.cpp.i
+src/Camera.cpp.i:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/Camera.cpp.i
+.PHONY : src/Camera.cpp.i
 
-Config.s: Config.cpp.s
+src/Camera.s: src/Camera.cpp.s
 
-.PHONY : Config.s
+.PHONY : src/Camera.s
 
 # target to generate assembly for a file
-Config.cpp.s:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/Config.cpp.s
-.PHONY : Config.cpp.s
+src/Camera.cpp.s:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/Camera.cpp.s
+.PHONY : src/Camera.cpp.s
 
-Dielectric.obj: Dielectric.cpp.obj
+src/Config.obj: src/Config.cpp.obj
 
-.PHONY : Dielectric.obj
+.PHONY : src/Config.obj
 
 # target to build an object file
-Dielectric.cpp.obj:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/Dielectric.cpp.obj
-.PHONY : Dielectric.cpp.obj
+src/Config.cpp.obj:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/Config.cpp.obj
+.PHONY : src/Config.cpp.obj
 
-Dielectric.i: Dielectric.cpp.i
+src/Config.i: src/Config.cpp.i
 
-.PHONY : Dielectric.i
+.PHONY : src/Config.i
 
 # target to preprocess a source file
-Dielectric.cpp.i:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/Dielectric.cpp.i
-.PHONY : Dielectric.cpp.i
+src/Config.cpp.i:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/Config.cpp.i
+.PHONY : src/Config.cpp.i
 
-Dielectric.s: Dielectric.cpp.s
+src/Config.s: src/Config.cpp.s
 
-.PHONY : Dielectric.s
+.PHONY : src/Config.s
 
 # target to generate assembly for a file
-Dielectric.cpp.s:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/Dielectric.cpp.s
-.PHONY : Dielectric.cpp.s
+src/Config.cpp.s:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/Config.cpp.s
+.PHONY : src/Config.cpp.s
 
-GLUtil.obj: GLUtil.cpp.obj
+src/Dielectric.obj: src/Dielectric.cpp.obj
 
-.PHONY : GLUtil.obj
+.PHONY : src/Dielectric.obj
 
 # target to build an object file
-GLUtil.cpp.obj:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/GLUtil.cpp.obj
-.PHONY : GLUtil.cpp.obj
+src/Dielectric.cpp.obj:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/Dielectric.cpp.obj
+.PHONY : src/Dielectric.cpp.obj
 
-GLUtil.i: GLUtil.cpp.i
+src/Dielectric.i: src/Dielectric.cpp.i
 
-.PHONY : GLUtil.i
+.PHONY : src/Dielectric.i
 
 # target to preprocess a source file
-GLUtil.cpp.i:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/GLUtil.cpp.i
-.PHONY : GLUtil.cpp.i
+src/Dielectric.cpp.i:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/Dielectric.cpp.i
+.PHONY : src/Dielectric.cpp.i
 
-GLUtil.s: GLUtil.cpp.s
+src/Dielectric.s: src/Dielectric.cpp.s
 
-.PHONY : GLUtil.s
+.PHONY : src/Dielectric.s
 
 # target to generate assembly for a file
-GLUtil.cpp.s:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/GLUtil.cpp.s
-.PHONY : GLUtil.cpp.s
+src/Dielectric.cpp.s:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/Dielectric.cpp.s
+.PHONY : src/Dielectric.cpp.s
 
-Hittable.obj: Hittable.cpp.obj
+src/GLUtil.obj: src/GLUtil.cpp.obj
 
-.PHONY : Hittable.obj
+.PHONY : src/GLUtil.obj
 
 # target to build an object file
-Hittable.cpp.obj:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/Hittable.cpp.obj
-.PHONY : Hittable.cpp.obj
+src/GLUtil.cpp.obj:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/GLUtil.cpp.obj
+.PHONY : src/GLUtil.cpp.obj
 
-Hittable.i: Hittable.cpp.i
+src/GLUtil.i: src/GLUtil.cpp.i
 
-.PHONY : Hittable.i
+.PHONY : src/GLUtil.i
 
 # target to preprocess a source file
-Hittable.cpp.i:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/Hittable.cpp.i
-.PHONY : Hittable.cpp.i
+src/GLUtil.cpp.i:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/GLUtil.cpp.i
+.PHONY : src/GLUtil.cpp.i
 
-Hittable.s: Hittable.cpp.s
+src/GLUtil.s: src/GLUtil.cpp.s
 
-.PHONY : Hittable.s
+.PHONY : src/GLUtil.s
 
 # target to generate assembly for a file
-Hittable.cpp.s:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/Hittable.cpp.s
-.PHONY : Hittable.cpp.s
+src/GLUtil.cpp.s:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/GLUtil.cpp.s
+.PHONY : src/GLUtil.cpp.s
 
-HittableList.obj: HittableList.cpp.obj
+src/Hittable.obj: src/Hittable.cpp.obj
 
-.PHONY : HittableList.obj
+.PHONY : src/Hittable.obj
 
 # target to build an object file
-HittableList.cpp.obj:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/HittableList.cpp.obj
-.PHONY : HittableList.cpp.obj
+src/Hittable.cpp.obj:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/Hittable.cpp.obj
+.PHONY : src/Hittable.cpp.obj
 
-HittableList.i: HittableList.cpp.i
+src/Hittable.i: src/Hittable.cpp.i
 
-.PHONY : HittableList.i
+.PHONY : src/Hittable.i
 
 # target to preprocess a source file
-HittableList.cpp.i:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/HittableList.cpp.i
-.PHONY : HittableList.cpp.i
+src/Hittable.cpp.i:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/Hittable.cpp.i
+.PHONY : src/Hittable.cpp.i
 
-HittableList.s: HittableList.cpp.s
+src/Hittable.s: src/Hittable.cpp.s
 
-.PHONY : HittableList.s
+.PHONY : src/Hittable.s
 
 # target to generate assembly for a file
-HittableList.cpp.s:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/HittableList.cpp.s
-.PHONY : HittableList.cpp.s
+src/Hittable.cpp.s:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/Hittable.cpp.s
+.PHONY : src/Hittable.cpp.s
 
-IllumModelFactory.obj: IllumModelFactory.cpp.obj
+src/HittableList.obj: src/HittableList.cpp.obj
 
-.PHONY : IllumModelFactory.obj
+.PHONY : src/HittableList.obj
 
 # target to build an object file
-IllumModelFactory.cpp.obj:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/IllumModelFactory.cpp.obj
-.PHONY : IllumModelFactory.cpp.obj
+src/HittableList.cpp.obj:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/HittableList.cpp.obj
+.PHONY : src/HittableList.cpp.obj
 
-IllumModelFactory.i: IllumModelFactory.cpp.i
+src/HittableList.i: src/HittableList.cpp.i
 
-.PHONY : IllumModelFactory.i
+.PHONY : src/HittableList.i
 
 # target to preprocess a source file
-IllumModelFactory.cpp.i:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/IllumModelFactory.cpp.i
-.PHONY : IllumModelFactory.cpp.i
+src/HittableList.cpp.i:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/HittableList.cpp.i
+.PHONY : src/HittableList.cpp.i
 
-IllumModelFactory.s: IllumModelFactory.cpp.s
+src/HittableList.s: src/HittableList.cpp.s
 
-.PHONY : IllumModelFactory.s
+.PHONY : src/HittableList.s
 
 # target to generate assembly for a file
-IllumModelFactory.cpp.s:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/IllumModelFactory.cpp.s
-.PHONY : IllumModelFactory.cpp.s
+src/HittableList.cpp.s:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/HittableList.cpp.s
+.PHONY : src/HittableList.cpp.s
 
-InstantRadiosity.obj: InstantRadiosity.cpp.obj
+src/IllumModelFactory.obj: src/IllumModelFactory.cpp.obj
 
-.PHONY : InstantRadiosity.obj
+.PHONY : src/IllumModelFactory.obj
 
 # target to build an object file
-InstantRadiosity.cpp.obj:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/InstantRadiosity.cpp.obj
-.PHONY : InstantRadiosity.cpp.obj
+src/IllumModelFactory.cpp.obj:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/IllumModelFactory.cpp.obj
+.PHONY : src/IllumModelFactory.cpp.obj
 
-InstantRadiosity.i: InstantRadiosity.cpp.i
+src/IllumModelFactory.i: src/IllumModelFactory.cpp.i
 
-.PHONY : InstantRadiosity.i
+.PHONY : src/IllumModelFactory.i
 
 # target to preprocess a source file
-InstantRadiosity.cpp.i:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/InstantRadiosity.cpp.i
-.PHONY : InstantRadiosity.cpp.i
+src/IllumModelFactory.cpp.i:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/IllumModelFactory.cpp.i
+.PHONY : src/IllumModelFactory.cpp.i
 
-InstantRadiosity.s: InstantRadiosity.cpp.s
+src/IllumModelFactory.s: src/IllumModelFactory.cpp.s
 
-.PHONY : InstantRadiosity.s
+.PHONY : src/IllumModelFactory.s
 
 # target to generate assembly for a file
-InstantRadiosity.cpp.s:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/InstantRadiosity.cpp.s
-.PHONY : InstantRadiosity.cpp.s
+src/IllumModelFactory.cpp.s:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/IllumModelFactory.cpp.s
+.PHONY : src/IllumModelFactory.cpp.s
 
-KDTree.obj: KDTree.cpp.obj
+src/InstantRadiosity.obj: src/InstantRadiosity.cpp.obj
 
-.PHONY : KDTree.obj
+.PHONY : src/InstantRadiosity.obj
 
 # target to build an object file
-KDTree.cpp.obj:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/KDTree.cpp.obj
-.PHONY : KDTree.cpp.obj
+src/InstantRadiosity.cpp.obj:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/InstantRadiosity.cpp.obj
+.PHONY : src/InstantRadiosity.cpp.obj
 
-KDTree.i: KDTree.cpp.i
+src/InstantRadiosity.i: src/InstantRadiosity.cpp.i
 
-.PHONY : KDTree.i
+.PHONY : src/InstantRadiosity.i
 
 # target to preprocess a source file
-KDTree.cpp.i:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/KDTree.cpp.i
-.PHONY : KDTree.cpp.i
+src/InstantRadiosity.cpp.i:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/InstantRadiosity.cpp.i
+.PHONY : src/InstantRadiosity.cpp.i
 
-KDTree.s: KDTree.cpp.s
+src/InstantRadiosity.s: src/InstantRadiosity.cpp.s
 
-.PHONY : KDTree.s
+.PHONY : src/InstantRadiosity.s
 
 # target to generate assembly for a file
-KDTree.cpp.s:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/KDTree.cpp.s
-.PHONY : KDTree.cpp.s
+src/InstantRadiosity.cpp.s:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/InstantRadiosity.cpp.s
+.PHONY : src/InstantRadiosity.cpp.s
 
-Lambertian.obj: Lambertian.cpp.obj
+src/KDTree.obj: src/KDTree.cpp.obj
 
-.PHONY : Lambertian.obj
+.PHONY : src/KDTree.obj
 
 # target to build an object file
-Lambertian.cpp.obj:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/Lambertian.cpp.obj
-.PHONY : Lambertian.cpp.obj
+src/KDTree.cpp.obj:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/KDTree.cpp.obj
+.PHONY : src/KDTree.cpp.obj
 
-Lambertian.i: Lambertian.cpp.i
+src/KDTree.i: src/KDTree.cpp.i
 
-.PHONY : Lambertian.i
+.PHONY : src/KDTree.i
 
 # target to preprocess a source file
-Lambertian.cpp.i:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/Lambertian.cpp.i
-.PHONY : Lambertian.cpp.i
+src/KDTree.cpp.i:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/KDTree.cpp.i
+.PHONY : src/KDTree.cpp.i
 
-Lambertian.s: Lambertian.cpp.s
+src/KDTree.s: src/KDTree.cpp.s
 
-.PHONY : Lambertian.s
+.PHONY : src/KDTree.s
 
 # target to generate assembly for a file
-Lambertian.cpp.s:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/Lambertian.cpp.s
-.PHONY : Lambertian.cpp.s
+src/KDTree.cpp.s:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/KDTree.cpp.s
+.PHONY : src/KDTree.cpp.s
 
-Light.obj: Light.cpp.obj
+src/Lambertian.obj: src/Lambertian.cpp.obj
 
-.PHONY : Light.obj
+.PHONY : src/Lambertian.obj
 
 # target to build an object file
-Light.cpp.obj:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/Light.cpp.obj
-.PHONY : Light.cpp.obj
+src/Lambertian.cpp.obj:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/Lambertian.cpp.obj
+.PHONY : src/Lambertian.cpp.obj
 
-Light.i: Light.cpp.i
+src/Lambertian.i: src/Lambertian.cpp.i
 
-.PHONY : Light.i
+.PHONY : src/Lambertian.i
 
 # target to preprocess a source file
-Light.cpp.i:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/Light.cpp.i
-.PHONY : Light.cpp.i
+src/Lambertian.cpp.i:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/Lambertian.cpp.i
+.PHONY : src/Lambertian.cpp.i
 
-Light.s: Light.cpp.s
+src/Lambertian.s: src/Lambertian.cpp.s
 
-.PHONY : Light.s
+.PHONY : src/Lambertian.s
 
 # target to generate assembly for a file
-Light.cpp.s:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/Light.cpp.s
-.PHONY : Light.cpp.s
+src/Lambertian.cpp.s:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/Lambertian.cpp.s
+.PHONY : src/Lambertian.cpp.s
 
-Material.obj: Material.cpp.obj
+src/Light.obj: src/Light.cpp.obj
 
-.PHONY : Material.obj
+.PHONY : src/Light.obj
 
 # target to build an object file
-Material.cpp.obj:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/Material.cpp.obj
-.PHONY : Material.cpp.obj
+src/Light.cpp.obj:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/Light.cpp.obj
+.PHONY : src/Light.cpp.obj
 
-Material.i: Material.cpp.i
+src/Light.i: src/Light.cpp.i
 
-.PHONY : Material.i
+.PHONY : src/Light.i
 
 # target to preprocess a source file
-Material.cpp.i:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/Material.cpp.i
-.PHONY : Material.cpp.i
+src/Light.cpp.i:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/Light.cpp.i
+.PHONY : src/Light.cpp.i
 
-Material.s: Material.cpp.s
+src/Light.s: src/Light.cpp.s
 
-.PHONY : Material.s
+.PHONY : src/Light.s
 
 # target to generate assembly for a file
-Material.cpp.s:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/Material.cpp.s
-.PHONY : Material.cpp.s
+src/Light.cpp.s:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/Light.cpp.s
+.PHONY : src/Light.cpp.s
 
-Photon.obj: Photon.cpp.obj
+src/Material.obj: src/Material.cpp.obj
 
-.PHONY : Photon.obj
+.PHONY : src/Material.obj
 
 # target to build an object file
-Photon.cpp.obj:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/Photon.cpp.obj
-.PHONY : Photon.cpp.obj
+src/Material.cpp.obj:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/Material.cpp.obj
+.PHONY : src/Material.cpp.obj
 
-Photon.i: Photon.cpp.i
+src/Material.i: src/Material.cpp.i
 
-.PHONY : Photon.i
+.PHONY : src/Material.i
 
 # target to preprocess a source file
-Photon.cpp.i:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/Photon.cpp.i
-.PHONY : Photon.cpp.i
+src/Material.cpp.i:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/Material.cpp.i
+.PHONY : src/Material.cpp.i
 
-Photon.s: Photon.cpp.s
+src/Material.s: src/Material.cpp.s
 
-.PHONY : Photon.s
+.PHONY : src/Material.s
 
 # target to generate assembly for a file
-Photon.cpp.s:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/Photon.cpp.s
-.PHONY : Photon.cpp.s
+src/Material.cpp.s:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/Material.cpp.s
+.PHONY : src/Material.cpp.s
 
-Pipeline.obj: Pipeline.cpp.obj
+src/Photon.obj: src/Photon.cpp.obj
 
-.PHONY : Pipeline.obj
+.PHONY : src/Photon.obj
 
 # target to build an object file
-Pipeline.cpp.obj:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/Pipeline.cpp.obj
-.PHONY : Pipeline.cpp.obj
+src/Photon.cpp.obj:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/Photon.cpp.obj
+.PHONY : src/Photon.cpp.obj
 
-Pipeline.i: Pipeline.cpp.i
+src/Photon.i: src/Photon.cpp.i
 
-.PHONY : Pipeline.i
+.PHONY : src/Photon.i
 
 # target to preprocess a source file
-Pipeline.cpp.i:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/Pipeline.cpp.i
-.PHONY : Pipeline.cpp.i
+src/Photon.cpp.i:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/Photon.cpp.i
+.PHONY : src/Photon.cpp.i
 
-Pipeline.s: Pipeline.cpp.s
+src/Photon.s: src/Photon.cpp.s
 
-.PHONY : Pipeline.s
+.PHONY : src/Photon.s
 
 # target to generate assembly for a file
-Pipeline.cpp.s:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/Pipeline.cpp.s
-.PHONY : Pipeline.cpp.s
+src/Photon.cpp.s:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/Photon.cpp.s
+.PHONY : src/Photon.cpp.s
 
-PipelineFactory.obj: PipelineFactory.cpp.obj
+src/Pipeline.obj: src/Pipeline.cpp.obj
 
-.PHONY : PipelineFactory.obj
+.PHONY : src/Pipeline.obj
 
 # target to build an object file
-PipelineFactory.cpp.obj:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/PipelineFactory.cpp.obj
-.PHONY : PipelineFactory.cpp.obj
+src/Pipeline.cpp.obj:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/Pipeline.cpp.obj
+.PHONY : src/Pipeline.cpp.obj
 
-PipelineFactory.i: PipelineFactory.cpp.i
+src/Pipeline.i: src/Pipeline.cpp.i
 
-.PHONY : PipelineFactory.i
+.PHONY : src/Pipeline.i
 
 # target to preprocess a source file
-PipelineFactory.cpp.i:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/PipelineFactory.cpp.i
-.PHONY : PipelineFactory.cpp.i
+src/Pipeline.cpp.i:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/Pipeline.cpp.i
+.PHONY : src/Pipeline.cpp.i
 
-PipelineFactory.s: PipelineFactory.cpp.s
+src/Pipeline.s: src/Pipeline.cpp.s
 
-.PHONY : PipelineFactory.s
+.PHONY : src/Pipeline.s
 
 # target to generate assembly for a file
-PipelineFactory.cpp.s:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/PipelineFactory.cpp.s
-.PHONY : PipelineFactory.cpp.s
+src/Pipeline.cpp.s:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/Pipeline.cpp.s
+.PHONY : src/Pipeline.cpp.s
 
-Ray.obj: Ray.cpp.obj
+src/PipelineFactory.obj: src/PipelineFactory.cpp.obj
 
-.PHONY : Ray.obj
+.PHONY : src/PipelineFactory.obj
 
 # target to build an object file
-Ray.cpp.obj:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/Ray.cpp.obj
-.PHONY : Ray.cpp.obj
+src/PipelineFactory.cpp.obj:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/PipelineFactory.cpp.obj
+.PHONY : src/PipelineFactory.cpp.obj
 
-Ray.i: Ray.cpp.i
+src/PipelineFactory.i: src/PipelineFactory.cpp.i
 
-.PHONY : Ray.i
+.PHONY : src/PipelineFactory.i
 
 # target to preprocess a source file
-Ray.cpp.i:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/Ray.cpp.i
-.PHONY : Ray.cpp.i
+src/PipelineFactory.cpp.i:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/PipelineFactory.cpp.i
+.PHONY : src/PipelineFactory.cpp.i
 
-Ray.s: Ray.cpp.s
+src/PipelineFactory.s: src/PipelineFactory.cpp.s
 
-.PHONY : Ray.s
+.PHONY : src/PipelineFactory.s
 
 # target to generate assembly for a file
-Ray.cpp.s:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/Ray.cpp.s
-.PHONY : Ray.cpp.s
+src/PipelineFactory.cpp.s:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/PipelineFactory.cpp.s
+.PHONY : src/PipelineFactory.cpp.s
 
-Scene.obj: Scene.cpp.obj
+src/Ray.obj: src/Ray.cpp.obj
 
-.PHONY : Scene.obj
+.PHONY : src/Ray.obj
 
 # target to build an object file
-Scene.cpp.obj:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/Scene.cpp.obj
-.PHONY : Scene.cpp.obj
+src/Ray.cpp.obj:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/Ray.cpp.obj
+.PHONY : src/Ray.cpp.obj
 
-Scene.i: Scene.cpp.i
+src/Ray.i: src/Ray.cpp.i
 
-.PHONY : Scene.i
+.PHONY : src/Ray.i
 
 # target to preprocess a source file
-Scene.cpp.i:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/Scene.cpp.i
-.PHONY : Scene.cpp.i
+src/Ray.cpp.i:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/Ray.cpp.i
+.PHONY : src/Ray.cpp.i
 
-Scene.s: Scene.cpp.s
+src/Ray.s: src/Ray.cpp.s
 
-.PHONY : Scene.s
+.PHONY : src/Ray.s
 
 # target to generate assembly for a file
-Scene.cpp.s:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/Scene.cpp.s
-.PHONY : Scene.cpp.s
+src/Ray.cpp.s:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/Ray.cpp.s
+.PHONY : src/Ray.cpp.s
 
-Shader.obj: Shader.cpp.obj
+src/Scene.obj: src/Scene.cpp.obj
 
-.PHONY : Shader.obj
+.PHONY : src/Scene.obj
 
 # target to build an object file
-Shader.cpp.obj:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/Shader.cpp.obj
-.PHONY : Shader.cpp.obj
+src/Scene.cpp.obj:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/Scene.cpp.obj
+.PHONY : src/Scene.cpp.obj
 
-Shader.i: Shader.cpp.i
+src/Scene.i: src/Scene.cpp.i
 
-.PHONY : Shader.i
+.PHONY : src/Scene.i
 
 # target to preprocess a source file
-Shader.cpp.i:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/Shader.cpp.i
-.PHONY : Shader.cpp.i
+src/Scene.cpp.i:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/Scene.cpp.i
+.PHONY : src/Scene.cpp.i
 
-Shader.s: Shader.cpp.s
+src/Scene.s: src/Scene.cpp.s
 
-.PHONY : Shader.s
+.PHONY : src/Scene.s
 
 # target to generate assembly for a file
-Shader.cpp.s:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/Shader.cpp.s
-.PHONY : Shader.cpp.s
+src/Scene.cpp.s:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/Scene.cpp.s
+.PHONY : src/Scene.cpp.s
 
-Sphere.obj: Sphere.cpp.obj
+src/Shader.obj: src/Shader.cpp.obj
 
-.PHONY : Sphere.obj
+.PHONY : src/Shader.obj
 
 # target to build an object file
-Sphere.cpp.obj:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/Sphere.cpp.obj
-.PHONY : Sphere.cpp.obj
+src/Shader.cpp.obj:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/Shader.cpp.obj
+.PHONY : src/Shader.cpp.obj
 
-Sphere.i: Sphere.cpp.i
+src/Shader.i: src/Shader.cpp.i
 
-.PHONY : Sphere.i
+.PHONY : src/Shader.i
 
 # target to preprocess a source file
-Sphere.cpp.i:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/Sphere.cpp.i
-.PHONY : Sphere.cpp.i
+src/Shader.cpp.i:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/Shader.cpp.i
+.PHONY : src/Shader.cpp.i
 
-Sphere.s: Sphere.cpp.s
+src/Shader.s: src/Shader.cpp.s
 
-.PHONY : Sphere.s
+.PHONY : src/Shader.s
 
 # target to generate assembly for a file
-Sphere.cpp.s:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/Sphere.cpp.s
-.PHONY : Sphere.cpp.s
+src/Shader.cpp.s:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/Shader.cpp.s
+.PHONY : src/Shader.cpp.s
 
-Texture.obj: Texture.cpp.obj
+src/Sphere.obj: src/Sphere.cpp.obj
 
-.PHONY : Texture.obj
+.PHONY : src/Sphere.obj
 
 # target to build an object file
-Texture.cpp.obj:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/Texture.cpp.obj
-.PHONY : Texture.cpp.obj
+src/Sphere.cpp.obj:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/Sphere.cpp.obj
+.PHONY : src/Sphere.cpp.obj
 
-Texture.i: Texture.cpp.i
+src/Sphere.i: src/Sphere.cpp.i
 
-.PHONY : Texture.i
+.PHONY : src/Sphere.i
 
 # target to preprocess a source file
-Texture.cpp.i:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/Texture.cpp.i
-.PHONY : Texture.cpp.i
+src/Sphere.cpp.i:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/Sphere.cpp.i
+.PHONY : src/Sphere.cpp.i
 
-Texture.s: Texture.cpp.s
+src/Sphere.s: src/Sphere.cpp.s
 
-.PHONY : Texture.s
+.PHONY : src/Sphere.s
 
 # target to generate assembly for a file
-Texture.cpp.s:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/Texture.cpp.s
-.PHONY : Texture.cpp.s
+src/Sphere.cpp.s:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/Sphere.cpp.s
+.PHONY : src/Sphere.cpp.s
 
-Triangle.obj: Triangle.cpp.obj
+src/Texture.obj: src/Texture.cpp.obj
 
-.PHONY : Triangle.obj
+.PHONY : src/Texture.obj
 
 # target to build an object file
-Triangle.cpp.obj:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/Triangle.cpp.obj
-.PHONY : Triangle.cpp.obj
+src/Texture.cpp.obj:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/Texture.cpp.obj
+.PHONY : src/Texture.cpp.obj
 
-Triangle.i: Triangle.cpp.i
+src/Texture.i: src/Texture.cpp.i
 
-.PHONY : Triangle.i
+.PHONY : src/Texture.i
 
 # target to preprocess a source file
-Triangle.cpp.i:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/Triangle.cpp.i
-.PHONY : Triangle.cpp.i
+src/Texture.cpp.i:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/Texture.cpp.i
+.PHONY : src/Texture.cpp.i
 
-Triangle.s: Triangle.cpp.s
+src/Texture.s: src/Texture.cpp.s
 
-.PHONY : Triangle.s
+.PHONY : src/Texture.s
 
 # target to generate assembly for a file
-Triangle.cpp.s:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/Triangle.cpp.s
-.PHONY : Triangle.cpp.s
+src/Texture.cpp.s:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/Texture.cpp.s
+.PHONY : src/Texture.cpp.s
 
-TriangleGroup.obj: TriangleGroup.cpp.obj
+src/Triangle.obj: src/Triangle.cpp.obj
 
-.PHONY : TriangleGroup.obj
+.PHONY : src/Triangle.obj
 
 # target to build an object file
-TriangleGroup.cpp.obj:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/TriangleGroup.cpp.obj
-.PHONY : TriangleGroup.cpp.obj
+src/Triangle.cpp.obj:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/Triangle.cpp.obj
+.PHONY : src/Triangle.cpp.obj
 
-TriangleGroup.i: TriangleGroup.cpp.i
+src/Triangle.i: src/Triangle.cpp.i
 
-.PHONY : TriangleGroup.i
+.PHONY : src/Triangle.i
 
 # target to preprocess a source file
-TriangleGroup.cpp.i:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/TriangleGroup.cpp.i
-.PHONY : TriangleGroup.cpp.i
+src/Triangle.cpp.i:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/Triangle.cpp.i
+.PHONY : src/Triangle.cpp.i
 
-TriangleGroup.s: TriangleGroup.cpp.s
+src/Triangle.s: src/Triangle.cpp.s
 
-.PHONY : TriangleGroup.s
+.PHONY : src/Triangle.s
 
 # target to generate assembly for a file
-TriangleGroup.cpp.s:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/TriangleGroup.cpp.s
-.PHONY : TriangleGroup.cpp.s
+src/Triangle.cpp.s:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/Triangle.cpp.s
+.PHONY : src/Triangle.cpp.s
 
-Utility.obj: Utility.cpp.obj
+src/TriangleGroup.obj: src/TriangleGroup.cpp.obj
 
-.PHONY : Utility.obj
+.PHONY : src/TriangleGroup.obj
 
 # target to build an object file
-Utility.cpp.obj:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/Utility.cpp.obj
-.PHONY : Utility.cpp.obj
+src/TriangleGroup.cpp.obj:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/TriangleGroup.cpp.obj
+.PHONY : src/TriangleGroup.cpp.obj
 
-Utility.i: Utility.cpp.i
+src/TriangleGroup.i: src/TriangleGroup.cpp.i
 
-.PHONY : Utility.i
+.PHONY : src/TriangleGroup.i
 
 # target to preprocess a source file
-Utility.cpp.i:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/Utility.cpp.i
-.PHONY : Utility.cpp.i
+src/TriangleGroup.cpp.i:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/TriangleGroup.cpp.i
+.PHONY : src/TriangleGroup.cpp.i
 
-Utility.s: Utility.cpp.s
+src/TriangleGroup.s: src/TriangleGroup.cpp.s
 
-.PHONY : Utility.s
+.PHONY : src/TriangleGroup.s
 
 # target to generate assembly for a file
-Utility.cpp.s:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/Utility.cpp.s
-.PHONY : Utility.cpp.s
+src/TriangleGroup.cpp.s:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/TriangleGroup.cpp.s
+.PHONY : src/TriangleGroup.cpp.s
 
-Whitted.obj: Whitted.cpp.obj
+src/Utility.obj: src/Utility.cpp.obj
 
-.PHONY : Whitted.obj
+.PHONY : src/Utility.obj
 
 # target to build an object file
-Whitted.cpp.obj:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/Whitted.cpp.obj
-.PHONY : Whitted.cpp.obj
+src/Utility.cpp.obj:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/Utility.cpp.obj
+.PHONY : src/Utility.cpp.obj
 
-Whitted.i: Whitted.cpp.i
+src/Utility.i: src/Utility.cpp.i
 
-.PHONY : Whitted.i
+.PHONY : src/Utility.i
 
 # target to preprocess a source file
-Whitted.cpp.i:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/Whitted.cpp.i
-.PHONY : Whitted.cpp.i
+src/Utility.cpp.i:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/Utility.cpp.i
+.PHONY : src/Utility.cpp.i
 
-Whitted.s: Whitted.cpp.s
+src/Utility.s: src/Utility.cpp.s
 
-.PHONY : Whitted.s
+.PHONY : src/Utility.s
 
 # target to generate assembly for a file
-Whitted.cpp.s:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/Whitted.cpp.s
-.PHONY : Whitted.cpp.s
+src/Utility.cpp.s:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/Utility.cpp.s
+.PHONY : src/Utility.cpp.s
 
-main.obj: main.cpp.obj
+src/Whitted.obj: src/Whitted.cpp.obj
 
-.PHONY : main.obj
+.PHONY : src/Whitted.obj
 
 # target to build an object file
-main.cpp.obj:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/main.cpp.obj
-.PHONY : main.cpp.obj
+src/Whitted.cpp.obj:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/Whitted.cpp.obj
+.PHONY : src/Whitted.cpp.obj
 
-main.i: main.cpp.i
+src/Whitted.i: src/Whitted.cpp.i
 
-.PHONY : main.i
+.PHONY : src/Whitted.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/main.cpp.i
-.PHONY : main.cpp.i
+src/Whitted.cpp.i:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/Whitted.cpp.i
+.PHONY : src/Whitted.cpp.i
 
-main.s: main.cpp.s
+src/Whitted.s: src/Whitted.cpp.s
 
-.PHONY : main.s
+.PHONY : src/Whitted.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/main.cpp.s
-.PHONY : main.cpp.s
+src/Whitted.cpp.s:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/Whitted.cpp.s
+.PHONY : src/Whitted.cpp.s
+
+src/main.obj: src/main.cpp.obj
+
+.PHONY : src/main.obj
+
+# target to build an object file
+src/main.cpp.obj:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/main.cpp.obj
+.PHONY : src/main.cpp.obj
+
+src/main.i: src/main.cpp.i
+
+.PHONY : src/main.i
+
+# target to preprocess a source file
+src/main.cpp.i:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/main.cpp.i
+.PHONY : src/main.cpp.i
+
+src/main.s: src/main.cpp.s
+
+.PHONY : src/main.s
+
+# target to generate assembly for a file
+src/main.cpp.s:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/main.cpp.s
+.PHONY : src/main.cpp.s
 
 # Help Target
 help:
@@ -1401,87 +1401,87 @@ help:
 	@echo ... yaml-cpp-parse
 	@echo ... yaml-cpp-sandbox
 	@echo ... yaml-cpp-read
-	@echo ... AreaLight.obj
-	@echo ... AreaLight.i
-	@echo ... AreaLight.s
-	@echo ... BVH.obj
-	@echo ... BVH.i
-	@echo ... BVH.s
-	@echo ... Camera.obj
-	@echo ... Camera.i
-	@echo ... Camera.s
-	@echo ... Config.obj
-	@echo ... Config.i
-	@echo ... Config.s
-	@echo ... Dielectric.obj
-	@echo ... Dielectric.i
-	@echo ... Dielectric.s
-	@echo ... GLUtil.obj
-	@echo ... GLUtil.i
-	@echo ... GLUtil.s
-	@echo ... Hittable.obj
-	@echo ... Hittable.i
-	@echo ... Hittable.s
-	@echo ... HittableList.obj
-	@echo ... HittableList.i
-	@echo ... HittableList.s
-	@echo ... IllumModelFactory.obj
-	@echo ... IllumModelFactory.i
-	@echo ... IllumModelFactory.s
-	@echo ... InstantRadiosity.obj
-	@echo ... InstantRadiosity.i
-	@echo ... InstantRadiosity.s
-	@echo ... KDTree.obj
-	@echo ... KDTree.i
-	@echo ... KDTree.s
-	@echo ... Lambertian.obj
-	@echo ... Lambertian.i
-	@echo ... Lambertian.s
-	@echo ... Light.obj
-	@echo ... Light.i
-	@echo ... Light.s
-	@echo ... Material.obj
-	@echo ... Material.i
-	@echo ... Material.s
-	@echo ... Photon.obj
-	@echo ... Photon.i
-	@echo ... Photon.s
-	@echo ... Pipeline.obj
-	@echo ... Pipeline.i
-	@echo ... Pipeline.s
-	@echo ... PipelineFactory.obj
-	@echo ... PipelineFactory.i
-	@echo ... PipelineFactory.s
-	@echo ... Ray.obj
-	@echo ... Ray.i
-	@echo ... Ray.s
-	@echo ... Scene.obj
-	@echo ... Scene.i
-	@echo ... Scene.s
-	@echo ... Shader.obj
-	@echo ... Shader.i
-	@echo ... Shader.s
-	@echo ... Sphere.obj
-	@echo ... Sphere.i
-	@echo ... Sphere.s
-	@echo ... Texture.obj
-	@echo ... Texture.i
-	@echo ... Texture.s
-	@echo ... Triangle.obj
-	@echo ... Triangle.i
-	@echo ... Triangle.s
-	@echo ... TriangleGroup.obj
-	@echo ... TriangleGroup.i
-	@echo ... TriangleGroup.s
-	@echo ... Utility.obj
-	@echo ... Utility.i
-	@echo ... Utility.s
-	@echo ... Whitted.obj
-	@echo ... Whitted.i
-	@echo ... Whitted.s
-	@echo ... main.obj
-	@echo ... main.i
-	@echo ... main.s
+	@echo ... src/AreaLight.obj
+	@echo ... src/AreaLight.i
+	@echo ... src/AreaLight.s
+	@echo ... src/BVH.obj
+	@echo ... src/BVH.i
+	@echo ... src/BVH.s
+	@echo ... src/Camera.obj
+	@echo ... src/Camera.i
+	@echo ... src/Camera.s
+	@echo ... src/Config.obj
+	@echo ... src/Config.i
+	@echo ... src/Config.s
+	@echo ... src/Dielectric.obj
+	@echo ... src/Dielectric.i
+	@echo ... src/Dielectric.s
+	@echo ... src/GLUtil.obj
+	@echo ... src/GLUtil.i
+	@echo ... src/GLUtil.s
+	@echo ... src/Hittable.obj
+	@echo ... src/Hittable.i
+	@echo ... src/Hittable.s
+	@echo ... src/HittableList.obj
+	@echo ... src/HittableList.i
+	@echo ... src/HittableList.s
+	@echo ... src/IllumModelFactory.obj
+	@echo ... src/IllumModelFactory.i
+	@echo ... src/IllumModelFactory.s
+	@echo ... src/InstantRadiosity.obj
+	@echo ... src/InstantRadiosity.i
+	@echo ... src/InstantRadiosity.s
+	@echo ... src/KDTree.obj
+	@echo ... src/KDTree.i
+	@echo ... src/KDTree.s
+	@echo ... src/Lambertian.obj
+	@echo ... src/Lambertian.i
+	@echo ... src/Lambertian.s
+	@echo ... src/Light.obj
+	@echo ... src/Light.i
+	@echo ... src/Light.s
+	@echo ... src/Material.obj
+	@echo ... src/Material.i
+	@echo ... src/Material.s
+	@echo ... src/Photon.obj
+	@echo ... src/Photon.i
+	@echo ... src/Photon.s
+	@echo ... src/Pipeline.obj
+	@echo ... src/Pipeline.i
+	@echo ... src/Pipeline.s
+	@echo ... src/PipelineFactory.obj
+	@echo ... src/PipelineFactory.i
+	@echo ... src/PipelineFactory.s
+	@echo ... src/Ray.obj
+	@echo ... src/Ray.i
+	@echo ... src/Ray.s
+	@echo ... src/Scene.obj
+	@echo ... src/Scene.i
+	@echo ... src/Scene.s
+	@echo ... src/Shader.obj
+	@echo ... src/Shader.i
+	@echo ... src/Shader.s
+	@echo ... src/Sphere.obj
+	@echo ... src/Sphere.i
+	@echo ... src/Sphere.s
+	@echo ... src/Texture.obj
+	@echo ... src/Texture.i
+	@echo ... src/Texture.s
+	@echo ... src/Triangle.obj
+	@echo ... src/Triangle.i
+	@echo ... src/Triangle.s
+	@echo ... src/TriangleGroup.obj
+	@echo ... src/TriangleGroup.i
+	@echo ... src/TriangleGroup.s
+	@echo ... src/Utility.obj
+	@echo ... src/Utility.i
+	@echo ... src/Utility.s
+	@echo ... src/Whitted.obj
+	@echo ... src/Whitted.i
+	@echo ... src/Whitted.s
+	@echo ... src/main.obj
+	@echo ... src/main.i
+	@echo ... src/main.s
 .PHONY : help
 
 
