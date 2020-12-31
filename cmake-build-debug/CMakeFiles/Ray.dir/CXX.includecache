@@ -92,6 +92,10 @@ Hittable.h
 Utility.h
 ../include/Utility.h
 
+../include/SSAODefferedShadingPipeline.h
+Pipeline.h
+../include/Pipeline.h
+
 ../include/Scene.h
 vector
 -
@@ -127,18 +131,6 @@ vector
 -
 stdlib.h
 -
-
-../include/Whitted.h
-vector
--
-Ray.h
-../include/Ray.h
-Light.h
-../include/Light.h
-Camera.h
-../include/Camera.h
-IllumModel.h
-../include/IllumModel.h
 
 ../public/glew/include/GL/glew.h
 cstddef
@@ -776,6 +768,8 @@ matrix_projection.inl
 matrix_transform.inl
 ../public/glm/glm/ext/matrix_transform.inl
 
+../public/glm/glm/ext/matrix_transform.inl
+
 ../public/glm/glm/ext/scalar_constants.hpp
 ../detail/setup.hpp
 ../public/glm/glm/detail/setup.hpp
@@ -1021,14 +1015,6 @@ constants.inl
 ../public/glm/glm/ext/matrix_transform.hpp
 matrix_transform.inl
 ../public/glm/glm/gtc/matrix_transform.inl
-
-../public/glm/glm/gtc/matrix_transform.inl
-../geometric.hpp
-../public/glm/glm/geometric.hpp
-../trigonometric.hpp
-../public/glm/glm/trigonometric.hpp
-../matrix.hpp
-../public/glm/glm/matrix.hpp
 
 ../public/glm/glm/integer.hpp
 detail/qualifier.hpp
@@ -1646,21 +1632,23 @@ yaml-cpp/node/parse.h
 yaml-cpp/node/emit.h
 ../public/yaml-cpp/include/yaml-cpp/yaml-cpp/node/emit.h
 
-D:/Code/Ray/src/Pipeline.cpp
-Shader.h
-D:/Code/Ray/src/Shader.h
+D:/Code/Ray/src/SSAODefferedShadingPipeline.cpp
 GL/glew.h
 -
-Pipeline.h
-D:/Code/Ray/src/Pipeline.h
 Lambertian.h
--
-glm/gtc/matrix_transform.hpp
 -
 GLUtil.h
 -
-Whitted.h
+glm/ext/matrix_transform.hpp
 -
+glm/gtc/matrix_transform.hpp
+-
+random
+-
+Shader.h
+D:/Code/Ray/src/Shader.h
 HittableList.h
 D:/Code/Ray/src/HittableList.h
+SSAODefferedShadingPipeline.h
+D:/Code/Ray/src/SSAODefferedShadingPipeline.h
 

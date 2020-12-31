@@ -446,6 +446,9 @@
 		<Unit filename="D:/Code/Ray/include/Config.h">
 			<Option target="Ray"/>
 		</Unit>
+		<Unit filename="D:/Code/Ray/include/DefferedShadingPipeline.h">
+			<Option target="Ray"/>
+		</Unit>
 		<Unit filename="D:/Code/Ray/include/Dielectric.h">
 			<Option target="Ray"/>
 		</Unit>
@@ -482,6 +485,9 @@
 		<Unit filename="D:/Code/Ray/include/OBJ_Loader.h">
 			<Option target="Ray"/>
 		</Unit>
+		<Unit filename="D:/Code/Ray/include/PhongShadingPipeline.h">
+			<Option target="Ray"/>
+		</Unit>
 		<Unit filename="D:/Code/Ray/include/Photon.h">
 			<Option target="Ray"/>
 		</Unit>
@@ -492,6 +498,9 @@
 			<Option target="Ray"/>
 		</Unit>
 		<Unit filename="D:/Code/Ray/include/Ray.h">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/include/SSAODefferedShadingPipeline.h">
 			<Option target="Ray"/>
 		</Unit>
 		<Unit filename="D:/Code/Ray/include/Scene.h">
@@ -746,6 +755,9 @@
 		<Unit filename="D:/Code/Ray/src/Config.cpp">
 			<Option target="Ray"/>
 		</Unit>
+		<Unit filename="D:/Code/Ray/src/DefferedShadingPipeline.cpp">
+			<Option target="Ray"/>
+		</Unit>
 		<Unit filename="D:/Code/Ray/src/Dielectric.cpp">
 			<Option target="Ray"/>
 		</Unit>
@@ -776,6 +788,9 @@
 		<Unit filename="D:/Code/Ray/src/Material.cpp">
 			<Option target="Ray"/>
 		</Unit>
+		<Unit filename="D:/Code/Ray/src/PhongShadingPipeline.cpp">
+			<Option target="Ray"/>
+		</Unit>
 		<Unit filename="D:/Code/Ray/src/Photon.cpp">
 			<Option target="Ray"/>
 		</Unit>
@@ -786,6 +801,9 @@
 			<Option target="Ray"/>
 		</Unit>
 		<Unit filename="D:/Code/Ray/src/Ray.cpp">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/src/SSAODefferedShadingPipeline.cpp">
 			<Option target="Ray"/>
 		</Unit>
 		<Unit filename="D:/Code/Ray/src/Scene.cpp">

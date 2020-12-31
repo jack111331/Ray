@@ -26,4 +26,8 @@ namespace RayUtil {
         return lightUbo;
     }
 
+    float lerp(float a, float b, float portion) {
+        return portion * a + (1.0 - portion) * b;
+    }
+
 }

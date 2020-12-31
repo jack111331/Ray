@@ -77,12 +77,16 @@ list(APPEND SOURCE_LIST
         src/GLUtil.cpp
         src/TriangleGroup.cpp
         src/PipelineFactory.cpp
+        src/DefferedShadingPipeline.cpp
+        src/PhongShadingPipeline.cpp
+        src/SSAODefferedShadingPipeline.cpp
         )
 list(APPEND HEADER_LIST
         include/AreaLight.h
         include/BVH.h
         include/Camera.h
         include/Config.h
+        include/DefferedShadingPipeline.h
         include/Dielectric.h
         include/GLUtil.h
         include/Hittable.h
@@ -94,6 +98,7 @@ list(APPEND HEADER_LIST
         include/Lambertian.h
         include/Light.h
         include/Material.h
+        include/PhongShadingPipeline.h
         include/Photon.h
         include/Pipeline.h
         include/PipelineFactory.h
@@ -101,6 +106,7 @@ list(APPEND HEADER_LIST
         include/Scene.h
         include/Shader.h
         include/Sphere.h
+        include/SSAODefferedShadingPipeline.h
         include/Texture.h
         include/Triangle.h
         include/TriangleGroup.h

@@ -434,6 +434,48 @@ CMakeFiles/Ray.dir/src/PipelineFactory.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Ray.dir/src/PipelineFactory.cpp.s"
 	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Code\Ray\src\PipelineFactory.cpp -o CMakeFiles\Ray.dir\src\PipelineFactory.cpp.s
 
+CMakeFiles/Ray.dir/src/DefferedShadingPipeline.cpp.obj: CMakeFiles/Ray.dir/flags.make
+CMakeFiles/Ray.dir/src/DefferedShadingPipeline.cpp.obj: CMakeFiles/Ray.dir/includes_CXX.rsp
+CMakeFiles/Ray.dir/src/DefferedShadingPipeline.cpp.obj: ../src/DefferedShadingPipeline.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Code\Ray\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building CXX object CMakeFiles/Ray.dir/src/DefferedShadingPipeline.cpp.obj"
+	D:\MinGW\bin\c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Ray.dir\src\DefferedShadingPipeline.cpp.obj -c D:\Code\Ray\src\DefferedShadingPipeline.cpp
+
+CMakeFiles/Ray.dir/src/DefferedShadingPipeline.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Ray.dir/src/DefferedShadingPipeline.cpp.i"
+	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Code\Ray\src\DefferedShadingPipeline.cpp > CMakeFiles\Ray.dir\src\DefferedShadingPipeline.cpp.i
+
+CMakeFiles/Ray.dir/src/DefferedShadingPipeline.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Ray.dir/src/DefferedShadingPipeline.cpp.s"
+	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Code\Ray\src\DefferedShadingPipeline.cpp -o CMakeFiles\Ray.dir\src\DefferedShadingPipeline.cpp.s
+
+CMakeFiles/Ray.dir/src/PhongShadingPipeline.cpp.obj: CMakeFiles/Ray.dir/flags.make
+CMakeFiles/Ray.dir/src/PhongShadingPipeline.cpp.obj: CMakeFiles/Ray.dir/includes_CXX.rsp
+CMakeFiles/Ray.dir/src/PhongShadingPipeline.cpp.obj: ../src/PhongShadingPipeline.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Code\Ray\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building CXX object CMakeFiles/Ray.dir/src/PhongShadingPipeline.cpp.obj"
+	D:\MinGW\bin\c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Ray.dir\src\PhongShadingPipeline.cpp.obj -c D:\Code\Ray\src\PhongShadingPipeline.cpp
+
+CMakeFiles/Ray.dir/src/PhongShadingPipeline.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Ray.dir/src/PhongShadingPipeline.cpp.i"
+	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Code\Ray\src\PhongShadingPipeline.cpp > CMakeFiles\Ray.dir\src\PhongShadingPipeline.cpp.i
+
+CMakeFiles/Ray.dir/src/PhongShadingPipeline.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Ray.dir/src/PhongShadingPipeline.cpp.s"
+	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Code\Ray\src\PhongShadingPipeline.cpp -o CMakeFiles\Ray.dir\src\PhongShadingPipeline.cpp.s
+
+CMakeFiles/Ray.dir/src/SSAODefferedShadingPipeline.cpp.obj: CMakeFiles/Ray.dir/flags.make
+CMakeFiles/Ray.dir/src/SSAODefferedShadingPipeline.cpp.obj: CMakeFiles/Ray.dir/includes_CXX.rsp
+CMakeFiles/Ray.dir/src/SSAODefferedShadingPipeline.cpp.obj: ../src/SSAODefferedShadingPipeline.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Code\Ray\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building CXX object CMakeFiles/Ray.dir/src/SSAODefferedShadingPipeline.cpp.obj"
+	D:\MinGW\bin\c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Ray.dir\src\SSAODefferedShadingPipeline.cpp.obj -c D:\Code\Ray\src\SSAODefferedShadingPipeline.cpp
+
+CMakeFiles/Ray.dir/src/SSAODefferedShadingPipeline.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Ray.dir/src/SSAODefferedShadingPipeline.cpp.i"
+	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Code\Ray\src\SSAODefferedShadingPipeline.cpp > CMakeFiles\Ray.dir\src\SSAODefferedShadingPipeline.cpp.i
+
+CMakeFiles/Ray.dir/src/SSAODefferedShadingPipeline.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Ray.dir/src/SSAODefferedShadingPipeline.cpp.s"
+	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Code\Ray\src\SSAODefferedShadingPipeline.cpp -o CMakeFiles\Ray.dir\src\SSAODefferedShadingPipeline.cpp.s
+
 # Object files for target Ray
 Ray_OBJECTS = \
 "CMakeFiles/Ray.dir/src/main.cpp.obj" \
@@ -462,7 +504,10 @@ Ray_OBJECTS = \
 "CMakeFiles/Ray.dir/src/Pipeline.cpp.obj" \
 "CMakeFiles/Ray.dir/src/GLUtil.cpp.obj" \
 "CMakeFiles/Ray.dir/src/TriangleGroup.cpp.obj" \
-"CMakeFiles/Ray.dir/src/PipelineFactory.cpp.obj"
+"CMakeFiles/Ray.dir/src/PipelineFactory.cpp.obj" \
+"CMakeFiles/Ray.dir/src/DefferedShadingPipeline.cpp.obj" \
+"CMakeFiles/Ray.dir/src/PhongShadingPipeline.cpp.obj" \
+"CMakeFiles/Ray.dir/src/SSAODefferedShadingPipeline.cpp.obj"
 
 # External object files for target Ray
 Ray_EXTERNAL_OBJECTS =
@@ -494,6 +539,9 @@ Ray.exe: CMakeFiles/Ray.dir/src/Pipeline.cpp.obj
 Ray.exe: CMakeFiles/Ray.dir/src/GLUtil.cpp.obj
 Ray.exe: CMakeFiles/Ray.dir/src/TriangleGroup.cpp.obj
 Ray.exe: CMakeFiles/Ray.dir/src/PipelineFactory.cpp.obj
+Ray.exe: CMakeFiles/Ray.dir/src/DefferedShadingPipeline.cpp.obj
+Ray.exe: CMakeFiles/Ray.dir/src/PhongShadingPipeline.cpp.obj
+Ray.exe: CMakeFiles/Ray.dir/src/SSAODefferedShadingPipeline.cpp.obj
 Ray.exe: CMakeFiles/Ray.dir/build.make
 Ray.exe: ../public/glew/lib/Release/Win32/glew32.lib
 Ray.exe: public/glfw/src/libglfw3dll.a
@@ -501,7 +549,7 @@ Ray.exe: public/yaml-cpp/libyaml-cppd.dll.a
 Ray.exe: CMakeFiles/Ray.dir/linklibs.rsp
 Ray.exe: CMakeFiles/Ray.dir/objects1.rsp
 Ray.exe: CMakeFiles/Ray.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=D:\Code\Ray\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Linking CXX executable Ray.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=D:\Code\Ray\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Linking CXX executable Ray.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\Ray.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

@@ -12,7 +12,7 @@ void InstantRadiosityPipeline::setupPipeline() {
         std::cerr << "No camera or scene specified" << std::endl;
         exit(1);
     }
-    shadingSetting = new PhongShadingPassSetting();
+    shadingSetting = new PhongShadingSetting();
     shadingSetting->m_projectionMatrix = glm::perspective(glm::radians(m_camera->m_fov * 2.0f),
                                                           (float) m_camera->m_width / (float) m_camera->m_height,
                                                           0.1f, 100.0f);

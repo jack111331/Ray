@@ -14,6 +14,9 @@ class Velocity {
 public:
     float x, y, z;
 
+    Velocity() : x(0.0f), y(0.0f), z(0.0f) {}
+    Velocity(float x, float y, float z) : x(x), y(y), z(z) {}
+
     friend std::istream &operator>>(std::istream &is, Velocity &velocity) {
         is >> velocity.x >> velocity.y >> velocity.z;
     }
@@ -99,16 +102,23 @@ public:
         return {rhs * x, rhs * y, rhs * z};
     }
 
+    Velocity &operator*=(float rhs) {
+        x *= rhs;
+        y *= rhs;
+        z *= rhs;
+        return *this;
+    }
+
     friend Velocity operator*(float lhs, const Velocity &rhs) {
         return {lhs * rhs.x, lhs * rhs.y, lhs * rhs.z};
     }
 
     static Velocity toVelocity(const std::vector<float> &floatList) {
-        if(floatList.size() == 3) {
+        if (floatList.size() == 3) {
             return {floatList[0], floatList[1], floatList[2]};
         } else {
             // TODO error handler
-            return {};
+            return Velocity(0, 0, 0);
         }
     }
 
@@ -117,6 +127,9 @@ public:
 class Coord {
 public:
     float x, y, z;
+
+    Coord() : x(0.0f), y(0.0f), z(0.0f) {}
+    Coord(float x, float y, float z) : x(x), y(y), z(z) {}
 
     friend std::istream &operator>>(std::istream &is, Coord &coord) {
         is >> coord.x >> coord.y >> coord.z;
@@ -175,11 +188,11 @@ public:
     }
 
     static Coord toCoord(const std::vector<float> &floatList) {
-        if(floatList.size() == 3) {
+        if (floatList.size() == 3) {
             return {floatList[0], floatList[1], floatList[2]};
         } else {
             // TODO error handler
-            return {};
+            return Coord(0.0f, 0.0f, 0.0f);
         }
     }
 
@@ -190,7 +203,7 @@ public:
     float x, y;
 
     friend Coord2D operator*(float lhs, const Coord2D &rhs) {
-        return {lhs * rhs.x , lhs * rhs.y};
+        return {lhs * rhs.x, lhs * rhs.y};
     }
 
     Coord2D operator-(const Coord2D &rhs) const {
@@ -264,7 +277,7 @@ public:
     }
 
     static Color toColor(const std::vector<float> &floatList) {
-        if(floatList.size() == 3) {
+        if (floatList.size() == 3) {
             return {floatList[0], floatList[1], floatList[2]};
         } else {
             // TODO error handler
@@ -302,6 +315,7 @@ class ShadeRecord {
 public:
     Color emit = {.0f, .0f, .0f};
     Color attenuation = {.0f, .0f, .0f};
+
     bool isHasAttenuation() const {
         return attenuation.r >= 1e-6 && attenuation.g >= 1e-6 && attenuation.b >= 1e-6;
     }

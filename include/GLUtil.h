@@ -18,6 +18,7 @@ namespace RayUtil {
     };
 
     uint32_t generateLightUBO(const std::vector<Light *> &lightList);
+    float lerp(float a, float b, float portion);
 }
 
 #endif //RAY_GLUTIL_H

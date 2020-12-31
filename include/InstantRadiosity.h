@@ -8,6 +8,7 @@
 #include "KDTree.h"
 #include "IllumModel.h"
 #include "Pipeline.h"
+#include "PhongShadingPipeline.h"
 
 class VPL {
 
@@ -20,7 +21,7 @@ public:
 
 protected:
     virtual void renderAllPass();
-    PhongShadingPassSetting *shadingSetting;
+    PhongShadingSetting *shadingSetting;
 };
 
 

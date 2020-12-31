@@ -732,6 +732,33 @@ src/Config.cpp.s:
 	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/Config.cpp.s
 .PHONY : src/Config.cpp.s
 
+src/DefferedShadingPipeline.obj: src/DefferedShadingPipeline.cpp.obj
+
+.PHONY : src/DefferedShadingPipeline.obj
+
+# target to build an object file
+src/DefferedShadingPipeline.cpp.obj:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/DefferedShadingPipeline.cpp.obj
+.PHONY : src/DefferedShadingPipeline.cpp.obj
+
+src/DefferedShadingPipeline.i: src/DefferedShadingPipeline.cpp.i
+
+.PHONY : src/DefferedShadingPipeline.i
+
+# target to preprocess a source file
+src/DefferedShadingPipeline.cpp.i:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/DefferedShadingPipeline.cpp.i
+.PHONY : src/DefferedShadingPipeline.cpp.i
+
+src/DefferedShadingPipeline.s: src/DefferedShadingPipeline.cpp.s
+
+.PHONY : src/DefferedShadingPipeline.s
+
+# target to generate assembly for a file
+src/DefferedShadingPipeline.cpp.s:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/DefferedShadingPipeline.cpp.s
+.PHONY : src/DefferedShadingPipeline.cpp.s
+
 src/Dielectric.obj: src/Dielectric.cpp.obj
 
 .PHONY : src/Dielectric.obj
@@ -1002,6 +1029,33 @@ src/Material.cpp.s:
 	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/Material.cpp.s
 .PHONY : src/Material.cpp.s
 
+src/PhongShadingPipeline.obj: src/PhongShadingPipeline.cpp.obj
+
+.PHONY : src/PhongShadingPipeline.obj
+
+# target to build an object file
+src/PhongShadingPipeline.cpp.obj:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/PhongShadingPipeline.cpp.obj
+.PHONY : src/PhongShadingPipeline.cpp.obj
+
+src/PhongShadingPipeline.i: src/PhongShadingPipeline.cpp.i
+
+.PHONY : src/PhongShadingPipeline.i
+
+# target to preprocess a source file
+src/PhongShadingPipeline.cpp.i:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/PhongShadingPipeline.cpp.i
+.PHONY : src/PhongShadingPipeline.cpp.i
+
+src/PhongShadingPipeline.s: src/PhongShadingPipeline.cpp.s
+
+.PHONY : src/PhongShadingPipeline.s
+
+# target to generate assembly for a file
+src/PhongShadingPipeline.cpp.s:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/PhongShadingPipeline.cpp.s
+.PHONY : src/PhongShadingPipeline.cpp.s
+
 src/Photon.obj: src/Photon.cpp.obj
 
 .PHONY : src/Photon.obj
@@ -1109,6 +1163,33 @@ src/Ray.s: src/Ray.cpp.s
 src/Ray.cpp.s:
 	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/Ray.cpp.s
 .PHONY : src/Ray.cpp.s
+
+src/SSAODefferedShadingPipeline.obj: src/SSAODefferedShadingPipeline.cpp.obj
+
+.PHONY : src/SSAODefferedShadingPipeline.obj
+
+# target to build an object file
+src/SSAODefferedShadingPipeline.cpp.obj:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/SSAODefferedShadingPipeline.cpp.obj
+.PHONY : src/SSAODefferedShadingPipeline.cpp.obj
+
+src/SSAODefferedShadingPipeline.i: src/SSAODefferedShadingPipeline.cpp.i
+
+.PHONY : src/SSAODefferedShadingPipeline.i
+
+# target to preprocess a source file
+src/SSAODefferedShadingPipeline.cpp.i:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/SSAODefferedShadingPipeline.cpp.i
+.PHONY : src/SSAODefferedShadingPipeline.cpp.i
+
+src/SSAODefferedShadingPipeline.s: src/SSAODefferedShadingPipeline.cpp.s
+
+.PHONY : src/SSAODefferedShadingPipeline.s
+
+# target to generate assembly for a file
+src/SSAODefferedShadingPipeline.cpp.s:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/SSAODefferedShadingPipeline.cpp.s
+.PHONY : src/SSAODefferedShadingPipeline.cpp.s
 
 src/Scene.obj: src/Scene.cpp.obj
 
@@ -1413,6 +1494,9 @@ help:
 	@echo ... src/Config.obj
 	@echo ... src/Config.i
 	@echo ... src/Config.s
+	@echo ... src/DefferedShadingPipeline.obj
+	@echo ... src/DefferedShadingPipeline.i
+	@echo ... src/DefferedShadingPipeline.s
 	@echo ... src/Dielectric.obj
 	@echo ... src/Dielectric.i
 	@echo ... src/Dielectric.s
@@ -1443,6 +1527,9 @@ help:
 	@echo ... src/Material.obj
 	@echo ... src/Material.i
 	@echo ... src/Material.s
+	@echo ... src/PhongShadingPipeline.obj
+	@echo ... src/PhongShadingPipeline.i
+	@echo ... src/PhongShadingPipeline.s
 	@echo ... src/Photon.obj
 	@echo ... src/Photon.i
 	@echo ... src/Photon.s
@@ -1455,6 +1542,9 @@ help:
 	@echo ... src/Ray.obj
 	@echo ... src/Ray.i
 	@echo ... src/Ray.s
+	@echo ... src/SSAODefferedShadingPipeline.obj
+	@echo ... src/SSAODefferedShadingPipeline.i
+	@echo ... src/SSAODefferedShadingPipeline.s
 	@echo ... src/Scene.obj
 	@echo ... src/Scene.i
 	@echo ... src/Scene.s

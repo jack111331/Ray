@@ -8,6 +8,8 @@
 
 #include "Pipeline.h"
 #include "InstantRadiosity.h"
+#include "DefferedShadingPipeline.h"
+#include "SSAODefferedShadingPipeline.h"
 
 class PipelineFactory {
 public:
@@ -25,6 +27,8 @@ public:
                 return new InstantRadiosityPipeline();
             } else if (pipelineName == "deffered-shading") {
                 return new DefferedShadingPipeline();
+            } else if (pipelineName == "ssao-deffered-shading") {
+                return new SSAODefferedShadingPipeline();
             }
         }
         return nullptr;
