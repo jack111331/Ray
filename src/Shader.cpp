@@ -142,7 +142,7 @@ void Shader::uniform1i(const char* uniformName, int val) const {
 }
 
 void Shader::uniformBlockBind(const char* uniformName, int bindPoint) {
-    glUniformBlockBinding(m_program, glGetUniformLocation(m_program, uniformName), bindPoint);
+    glUniformBlockBinding(m_program, glGetUniformBlockIndex(m_program, uniformName), bindPoint);
 }
 
 GLuint Shader::getProgramId() {

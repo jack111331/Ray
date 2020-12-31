@@ -20,7 +20,7 @@ public:
 
 protected:
     virtual void renderAllPass();
-    PhongPassSetting *shadingSetting;
+    PhongShadingPassSetting *shadingSetting;
 };
 
 

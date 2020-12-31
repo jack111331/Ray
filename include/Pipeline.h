@@ -24,7 +24,7 @@ public:
 // Pass Tree
 class Pass {
 public:
-    Pass(PassSetting *passSetting) : m_shader(nullptr), m_passSetting(passSetting) {
+    Pass(PassSetting *passSetting) : m_shader(nullptr), m_passSetting(passSetting), m_outputFrameBufferId(0) {
 
     }
 
@@ -40,18 +40,28 @@ public:
         }
     };
 
-    virtual uint32_t getOutputFrameBuffer(size_t frameId) = 0;
+    uint32_t getOutputFrameBuffer() {
+        return m_outputFrameBufferId;
+    }
+
+    void addRequirePass(Pass *pass) {
+        m_requirePass.push_back(pass);
+    }
+
+    virtual void specifyInput(size_t inputId, uint32_t textureId) {}
+
+    virtual uint32_t getOutputFrameTexture(size_t frameId) = 0;
 
     virtual std::string getType() = 0;
 
 protected:
     Shader *m_shader;
-    std::vector<uint32_t> m_outputFrameBuffer;
+    uint32_t m_outputFrameBufferId;
     PassSetting *m_passSetting;
     std::vector<Pass *> m_requirePass;
 };
 
-class PhongPassSetting : public PassSetting {
+class PhongShadingPassSetting : public PassSetting {
 public:
     std::vector<Light *> m_lightList;
     uint32_t m_lightUBO;
@@ -68,7 +78,7 @@ public:
         return "PhongShadingPass";
     }
 
-    virtual uint32_t getOutputFrameBuffer(size_t frameId) {
+    virtual uint32_t getOutputFrameTexture(size_t frameId) {
         switch(frameId) {
             case (size_t)PhongShadingOutput::IMAGE : return m_outputFrameBufferId;
             default: {
@@ -89,9 +99,104 @@ public:
 
 
 private:
-    uint32_t m_outputFrameBufferId;
     uint32_t m_outputFrameTextureId;
     uint32_t m_outputFrameDepthStencilBufferId;
+};
+
+class DefferedGBufferPass : public Pass {
+public:
+    explicit DefferedGBufferPass(PassSetting *passSetting);
+
+    virtual void renderPass(const std::vector<ShadeObject *> &shadingList);
+
+    virtual std::string getType() {
+        return "DefferedGBufferPass";
+    }
+
+    virtual uint32_t getOutputFrameTexture(size_t frameId) {
+        switch(frameId) {
+            case (size_t)DefferedGBufferOutput::POSITION : return m_outputFrameTextureId[0];
+            case (size_t)DefferedGBufferOutput::NORMAL: return m_outputFrameTextureId[1];
+            case (size_t)DefferedGBufferOutput::COLOR : return m_outputFrameTextureId[2];
+            default: {
+                std::cerr << "Wrong output frame Id" << std::endl;
+                exit(1);
+            }
+        }
+        return 0;
+    }
+
+    enum class DefferedGBufferOutput {
+        POSITION=0,
+        NORMAL=1,
+        COLOR=2
+    };
+
+private:
+    uint32_t m_outputFrameTextureId[3];
+    uint32_t m_outputFrameDepthStencilBufferId;
+};
+
+class DefferedShadingPassSetting : public PassSetting {
+public:
+    std::vector<Light *> m_lightList;
+    uint32_t m_lightUBO;
+};
+
+class DefferedShadingPass : public Pass {
+public:
+    explicit DefferedShadingPass(PassSetting *passSetting);
+
+    virtual void renderPass(const std::vector<ShadeObject *> &shadingList);
+
+    virtual std::string getType() {
+        return "DefferedShadingPass";
+    }
+
+    virtual uint32_t getOutputFrameTexture(size_t frameId) {
+        switch(frameId) {
+            case (size_t)DefferedShadingOutput::IMAGE : return m_outputFrameTextureId;
+            default: {
+                std::cerr << "Wrong output frame Id" << std::endl;
+                exit(1);
+            }
+        }
+        return 0;
+    }
+
+    virtual void specifyInput(size_t inputId, uint32_t textureId) {
+        switch(inputId) {
+            case (size_t)DefferedShadingInput::POSITION : m_inputFrameTextureId[0] = textureId; break;
+            case (size_t)DefferedShadingInput::NORMAL : m_inputFrameTextureId[1] = textureId; break;
+            case (size_t)DefferedShadingInput::COLOR : m_inputFrameTextureId[2] = textureId; break;
+            default: {
+                std::cerr << "Wrong input frame Id" << std::endl;
+                exit(1);
+            }
+        }
+    }
+
+    enum class DefferedShadingInput {
+        POSITION=0,
+        NORMAL=1,
+        COLOR=2 // currently not support ..
+    };
+
+    enum class DefferedShadingUBOInput {
+        LIGHT=1
+    };
+
+    enum class DefferedShadingOutput {
+        IMAGE=0
+    };
+
+
+private:
+    uint32_t m_inputFrameTextureId[3];
+    uint32_t m_outputFrameTextureId;
+    uint32_t m_outputFrameDepthStencilBufferId;
+
+    uint32_t m_quadVao;
 };
 
 class Pipeline {
@@ -202,7 +307,21 @@ protected:
     virtual void renderAllPass();
 
 private:
-    PhongPassSetting *shadingSetting;
+    PhongShadingPassSetting *shadingSetting;
+};
+
+
+class DefferedShadingPipeline : public LocalRenderingPipeline {
+public:
+    virtual void setupPipeline();
+
+    virtual void blitFrameBuffer();
+
+protected:
+    virtual void renderAllPass();
+
+private:
+    DefferedShadingPassSetting *shadingSetting;
 };
 
 
