@@ -22,7 +22,7 @@ Color WhittedModel::castRay(const Scene *scene, Ray &ray, int depth) {
         }
         ShadeRecord shadeRecord;
         record.material->calculatePhong(scene, ray, record, lightRecord, shadeRecord);
-        if(depth > 5 || !shadeRecord.isHasAttenuation()) {
+        if(depth > 0 || !shadeRecord.isHasAttenuation()) {
             return shadeRecord.emit + shadeRecord.attenuation;
         }
         return shadeRecord.emit + shadeRecord.attenuation * castRay(scene, ray, depth + 1);

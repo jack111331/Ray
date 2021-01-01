@@ -10,15 +10,15 @@
 
 class HittableList : public Hittable {
 public:
-    virtual bool isHit(double tmin, const Ray &ray, HitRecord &record);
+    virtual bool isHit(double tmin, const Ray &ray, HitRecord &record) const;
 
     bool isHitShadow(double tmin, const Ray &ray, HitRecord &record);
 
-    void addHittable(Hittable * hittable);
+    void addHittable(Hittable *hittable);
 
     void addHittable(std::vector<Hittable *> hittableList);
 
-    virtual ObjectBoundingBox getBoundingBox();
+    virtual ObjectBoundingBox getBoundingBox() const;
 
     std::vector<Hittable *> m_hittableList;
 

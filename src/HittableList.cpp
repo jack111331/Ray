@@ -38,7 +38,7 @@ bool ObjectBoundingBox::isHit(const Ray &ray) {
     return true;
 }
 
-bool HittableList::isHit(double tmin, const Ray &ray, HitRecord &record) {
+bool HittableList::isHit(double tmin, const Ray &ray, HitRecord &record) const {
     bool isHit = false;
     for (auto hittable: m_hittableList) {
         isHit = std::max(isHit, hittable->isHit(tmin, ray, record));
@@ -67,6 +67,6 @@ void HittableList::addHittable(std::vector<Hittable *> hittableList) {
     }
 }
 
-ObjectBoundingBox HittableList::getBoundingBox() {
+ObjectBoundingBox HittableList::getBoundingBox() const {
     return m_boundingBox;
 }

@@ -49,7 +49,7 @@ class Hittable {
 public:
     Hittable() : m_material(nullptr) {}
 
-    virtual bool isHit(double tmin, const Ray &ray, HitRecord &record) = 0;
+    virtual bool isHit(double tmin, const Ray &ray, HitRecord &record) const = 0;
 
     // For local shading
     virtual std::vector<ShadeObject *> createVAO() {
@@ -64,7 +64,7 @@ public:
 
     virtual bool readObjectInfo(const YAML::Node &node, const Scene *scene);
 
-    virtual ObjectBoundingBox getBoundingBox() = 0;
+    virtual ObjectBoundingBox getBoundingBox() const = 0;
 
     Material *m_material;
 

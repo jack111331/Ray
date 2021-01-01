@@ -15,13 +15,13 @@ public:
 
     Sphere(Coord origin, float radius) : m_origin(origin), m_radius(radius) {};
 
-    virtual bool isHit(double tmin, const Ray &ray, HitRecord &record);
+    virtual bool isHit(double tmin, const Ray &ray, HitRecord &record) const;
 
     virtual std::vector<ShadeObject *> createVAO();
 
     virtual bool readObjectInfo(const YAML::Node &node, const Scene *scene);
 
-    virtual ObjectBoundingBox getBoundingBox();
+    virtual ObjectBoundingBox getBoundingBox() const;
 
     Coord m_origin;
     float m_radius;

@@ -11,7 +11,7 @@
 template<typename T>
 struct OctreeNode {
     OctreeNode *m_child[8] = {};
-    std::vector<T *> m_data;
+    std::vector<const T *> m_data;
     ObjectBoundingBox m_nodeBoundingBox;
     bool m_isLeaf = true;
 
@@ -63,7 +63,7 @@ public:
     }
 
 private:
-    void insert(OctreeNode<T> *node, const T *object, const Coord &boundMin, const Coord &boundMax, int depth){
+    void insert(OctreeNode<T> *node, const T *object, const Coord &boundMin, const Coord &boundMax, int depth) {
         if (node->m_isLeaf) {
             // insert extent into node or reallocate node extents' to child node
             if (node->m_data.empty() || depth == 16) {
@@ -95,7 +95,7 @@ private:
     }
 
     void computeChildBound(uint32_t index, const Coord &nodeCentroid, const Coord &boundMin, const Coord &boundMax,
-                           Coord &pMin, Coord &pMax){
+                           Coord &pMin, Coord &pMax) {
         pMin.x = (index & 4) ? nodeCentroid.x : boundMin.x;
         pMin.y = (index & 2) ? nodeCentroid.y : boundMin.y;
         pMin.z = (index & 1) ? nodeCentroid.z : boundMin.z;
@@ -104,7 +104,7 @@ private:
         pMax.z = (index & 1) ? boundMax.z : nodeCentroid.z;
     }
 
-    void build(OctreeNode<T> *node, const Coord &boundMin, const Coord &boundMax){
+    void build(OctreeNode<T> *node, const Coord &boundMin, const Coord &boundMax) {
         if (node->m_isLeaf) {
             // update node bounding box
             for (auto object:node->m_data) {

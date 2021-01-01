@@ -46,9 +46,9 @@ void RayTracingPipeline::setupEnvironment() {
 }
 
 void RayTracingPipeline::pipelineLoop() {
+    // Ray tracing
+    generateImage();
     while (!glfwWindowShouldClose(m_window)) {
-        // Ray tracing
-        generateImage();
 
         // Setup GL
         glViewport(0, 0, m_camera->m_width, m_camera->m_height);
@@ -63,7 +63,6 @@ void RayTracingPipeline::pipelineLoop() {
         glLoadIdentity();
 
         m_camera->bufferToTexture(m_frameTextureId);
-//        glGenerateMipmap(GL_TEXTURE_2D);
 
         glBindTexture(GL_TEXTURE_2D, m_frameTextureId);
         glEnable(GL_TEXTURE_2D);
@@ -92,10 +91,9 @@ void RayTracingPipeline::generateImage() {
     if (!m_camera) {
         return;
     }
-    // Upper left start
-    // Lower right end
-    Velocity left = m_camera->m_direction.cross(m_camera->m_up);
+    // Upper left -> lower right
     const double PI = acos(-1);
+    Velocity left = m_camera->m_direction.cross(m_camera->m_up);
     Coord center = m_camera->m_eyeCoord + m_camera->m_direction.normalize();
     double widthFactor = tan(m_camera->m_fov / 180.0 * PI);
     double heightFactor = widthFactor * m_camera->m_height / m_camera->m_width;
@@ -121,6 +119,8 @@ void WhittedPipeline::setupPipeline() {
     WhittedModel *model = new WhittedModel();
     model->setupBackgroundColor(m_backgroundColor);
     setIlluminationModel(model);
+
+    m_camera->initializeScreen();
 }
 
 void PhotonMappingPipeline::setupPipeline() {

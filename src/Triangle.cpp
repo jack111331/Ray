@@ -9,7 +9,7 @@
 
 using namespace std;
 
-bool Triangle::isHit(double tmin, const Ray &ray, HitRecord &record) {
+bool Triangle::isHit(double tmin, const Ray &ray, HitRecord &record) const {
     const double EPSILON = 1e-7;
     Velocity planeVector[2] = {m_point[1]->m_coord - m_point[0]->m_coord, m_point[2]->m_coord - m_point[0]->m_coord};
     Velocity h = ray.velocity.cross(planeVector[1]);
@@ -95,6 +95,6 @@ bool Triangle::readObjectInfo(const YAML::Node &node, const Scene *scene) {
     return result;
 }
 
-ObjectBoundingBox Triangle::getBoundingBox() {
+ObjectBoundingBox Triangle::getBoundingBox() const {
     return m_boundingBox;
 }

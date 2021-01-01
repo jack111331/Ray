@@ -11,9 +11,10 @@
 
 class Camera {
 public:
-    Camera() : m_screen(nullptr) {}
+    Camera() : m_screen(nullptr), m_width(0), m_height(0) {}
     Camera(int width, int height, Coord eyeCoord, double fov, Velocity direction, Velocity up);
     void toPpm(const std::string &filename) const;
+    void initializeScreen();
     void bufferToTexture(uint32_t bufferId) const;
 
     // Need more abstraction, better use adapter to adapt different type of file

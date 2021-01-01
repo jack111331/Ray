@@ -41,13 +41,13 @@ public:
         m_point[2] = thirdNode;
     }
 
-    virtual bool isHit(double tmin, const Ray &ray, HitRecord &record);
+    virtual bool isHit(double tmin, const Ray &ray, HitRecord &record) const;
 
     virtual std::vector<ShadeObject *> createVAO();
 
     virtual bool readObjectInfo(const YAML::Node &node, const Scene *scene);
 
-    virtual ObjectBoundingBox getBoundingBox();
+    virtual ObjectBoundingBox getBoundingBox() const;
 
     TriangleNode *m_point[3];
 

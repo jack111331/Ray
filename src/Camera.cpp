@@ -40,6 +40,17 @@ void Camera::toPpm(const std::string &filename) const {
 
 }
 
+void Camera::initializeScreen() {
+    if(!m_width || !m_height) {
+        std::cerr << "No camera width or height provided" << std::endl;
+        exit(1);
+    }
+    m_screen = new Color *[m_height];
+    for (int i = 0; i < m_height; ++i) {
+        m_screen[i] = new Color[m_width];
+    }
+}
+
 void Camera::bufferToTexture(uint32_t bufferId) const {
     glBindTexture(GL_TEXTURE_2D, bufferId);
     uint8_t *buffer = new uint8_t[3 * m_height * m_width];

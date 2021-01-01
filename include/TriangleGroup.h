@@ -16,6 +16,7 @@ namespace objl {
     class Mesh;
 }
 
+// TODO template specialization
 class BVH {
 public:
     BVH(TriangleGroup *triangleGroup);
@@ -24,7 +25,7 @@ public:
 
     void updateBVH(TriangleGroup *triangleGroup);
 
-    Octree<TriangleGroup> *m_octree;
+    Octree<Triangle> *m_octree;
 };
 
 class TriangleGroup : public Hittable {
@@ -37,12 +38,12 @@ public:
 
     bool readObjectInfo(const YAML::Node &node, const Scene *scene);
 
-    virtual bool isHit(double tmin, const Ray &ray, HitRecord &record);
+    virtual bool isHit(double tmin, const Ray &ray, HitRecord &record) const;
 
     // For local shading
     virtual std::vector<ShadeObject *> createVAO();
 
-    virtual ObjectBoundingBox getBoundingBox();
+    virtual ObjectBoundingBox getBoundingBox() const;
 
 public:
     std::vector<Triangle *> m_triangles;

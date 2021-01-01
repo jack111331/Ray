@@ -7,7 +7,7 @@
 
 using namespace std;
 
-bool Sphere::isHit(double tmin, const Ray &ray, HitRecord &record) {
+bool Sphere::isHit(double tmin, const Ray &ray, HitRecord &record) const {
     double a = ray.velocity.dot(ray.velocity);
     double b = 2 * (ray.origin - m_origin).dot(ray.velocity);
     double c = (ray.origin - m_origin).dot(ray.origin - m_origin) - m_radius * m_radius;
@@ -133,7 +133,7 @@ bool Sphere::readObjectInfo(const YAML::Node &node, const Scene *scene) {
     return result;
 }
 
-ObjectBoundingBox Sphere::getBoundingBox() {
+ObjectBoundingBox Sphere::getBoundingBox() const {
     return ObjectBoundingBox(m_origin - Velocity{m_radius, m_radius, m_radius},
                              m_origin + Velocity{m_radius, m_radius, m_radius});
 }
