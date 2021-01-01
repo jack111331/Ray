@@ -118,9 +118,19 @@ void RayTracingPipeline::generateImage() {
 void WhittedPipeline::setupPipeline() {
     WhittedModel *model = new WhittedModel();
     model->setupBackgroundColor(m_backgroundColor);
+    model->setupMaxDepth(m_maxDepth);
     setIlluminationModel(model);
 
     m_camera->initializeScreen();
+}
+
+bool WhittedPipeline::readPipelineInfo(const YAML::Node &node) {
+    if(!node["max-depth"]) {
+        std::cerr << "No require whitted pipeline node" << std::endl;
+        return false;
+    }
+    m_maxDepth = node["max-depth"].as<int>();
+    return true;
 }
 
 void PhotonMappingPipeline::setupPipeline() {

@@ -117,19 +117,13 @@ vector<ShadeObject *> Sphere::createVAO() {
 
 bool Sphere::readObjectInfo(const YAML::Node &node, const Scene *scene) {
     bool result = Hittable::readObjectInfo(node, scene);
-    result = min(result, !node["position"] || !node["radius"] || !node["material"]);
+    result = min(result, node["position"] && node["radius"]);
     if (!result) {
+        std::cerr << "No require sphere node" << std::endl;
         return false;
     }
     m_origin = Coord::toCoord(node["position"].as<std::vector<float>>());
     m_radius = node["radius"].as<float>();
-    const std::string &materialName = node["material"].as<std::string>();
-    auto it = scene->m_materialTable.find(materialName);
-    if (it == scene->m_materialTable.end()) {
-        std::cerr << "No material found" << std::endl;
-        exit(1);
-    }
-    setMaterial(it->second);
     return result;
 }
 

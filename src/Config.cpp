@@ -34,6 +34,7 @@ Pipeline *Config::loadConfig(const string &configFilename) {
             exit(1);
         }
         pipeline = PipelineFactory::generatePipeline(modelNode["type"].as<std::string>(), modelNode["pipeline"].as<std::string>());
+
     }
     if(configNode["scene"]) {
         Scene *scene = new Scene();

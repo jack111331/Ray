@@ -36,7 +36,7 @@ public:
 
     bool photonTracing(const Scene *scene, Ray &ray, float power, int depth);
 
-    virtual Color castRay(const Scene *scene, Ray &ray, int depth);
+    virtual Color castRay(const Scene *scene, Ray &ray, int depth, bool debugFlag);
 
 
 

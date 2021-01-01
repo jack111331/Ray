@@ -18,11 +18,11 @@ bool BVH::isHit(double tmin, const Ray &ray, HitRecord &record) {
     if (!m_octree->m_root->m_nodeBoundingBox.isHit(ray)) {
         return false;
     }
-    priority_queue<Octree<Triangle>::QueueElement> pq;
-    pq.push({Octree<Triangle>::QueueElement(m_octree->m_root, 0)});
+    priority_queue<Octree::QueueElement> pq;
+    pq.push({Octree::QueueElement(m_octree->m_root, 0)});
     bool isHitted = false;
     while (!pq.empty() && (pq.top().t < record.t || record.t < 0)) {
-        const OctreeNode<Triangle> *node = pq.top().node;
+        const OctreeNode *node = pq.top().node;
         pq.pop();
         if (node->m_isLeaf) {
             for (uint32_t i = 0; i < node->m_data.size(); ++i) {
@@ -37,7 +37,7 @@ bool BVH::isHit(double tmin, const Ray &ray, HitRecord &record) {
                     float tNearChild = 0, tFarChild = 1e9;
                     if (node->m_child[i]->m_nodeBoundingBox.isHit(ray)) {
                         float t = (tNearChild < 0 && tFarChild >= 0) ? tFarChild : tNearChild;
-                        pq.push(Octree<Triangle>::QueueElement(node->m_child[i], t));
+                        pq.push(Octree::QueueElement(node->m_child[i], t));
                     }
                 }
             }
@@ -50,7 +50,7 @@ void BVH::updateBVH(TriangleGroup *triangleGroup) {
     if (m_octree) {
         delete m_octree;
     }
-    m_octree = new Octree<Triangle>(triangleGroup->m_boundingBox);
+    m_octree = new Octree(triangleGroup->m_boundingBox);
     for (auto triangle: triangleGroup->m_triangles) {
         m_octree->insert(triangle);
     }

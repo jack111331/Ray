@@ -12,7 +12,7 @@ class IlluminationModel {
 public:
     virtual void setup(Scene *scene) {};
 
-    virtual Color castRay(const Scene *scene, Ray &ray, int depth = 0) = 0;
+    virtual Color castRay(const Scene *scene, Ray &ray, int depth = 0, bool debugFlag = 0) = 0;
 
     void setupBackgroundColor(const Color &backgroundColor) {
         m_backgroundColor = backgroundColor;

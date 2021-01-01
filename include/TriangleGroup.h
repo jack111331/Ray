@@ -16,7 +16,6 @@ namespace objl {
     class Mesh;
 }
 
-// TODO template specialization
 class BVH {
 public:
     BVH(TriangleGroup *triangleGroup);
@@ -25,7 +24,7 @@ public:
 
     void updateBVH(TriangleGroup *triangleGroup);
 
-    Octree<Triangle> *m_octree;
+    Octree *m_octree;
 };
 
 class TriangleGroup : public Hittable {

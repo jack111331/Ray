@@ -56,9 +56,9 @@ void Camera::bufferToTexture(uint32_t bufferId) const {
     uint8_t *buffer = new uint8_t[3 * m_height * m_width];
     for (int i = 0; i < m_height; ++i) {
         for (int j = 0; j < m_width; ++j) {
-            buffer[3 * (i * m_width + j)] = (uint8_t) (255.99 * m_screen[i][j].r);
-            buffer[3 * (i * m_width + j) + 1] = (uint8_t) (255.99 * m_screen[i][j].g);
-            buffer[3 * (i * m_width + j) + 2] = (uint8_t) (255.99 * m_screen[i][j].b);
+            buffer[3 * (i * m_width + j)] = (uint8_t) (m_screen[i][j].r > 1.0 ? 255 : (255.99 * m_screen[i][j].r));
+            buffer[3 * (i * m_width + j) + 1] = (uint8_t) (m_screen[i][j].g > 1.0 ? 255 : (255.99 * m_screen[i][j].g));
+            buffer[3 * (i * m_width + j) + 2] = (uint8_t) (m_screen[i][j].b > 1.0 ? 255 : (255.99 * m_screen[i][j].b));
         }
     }
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, m_width, m_height, 0, GL_RGB, GL_UNSIGNED_BYTE, buffer);

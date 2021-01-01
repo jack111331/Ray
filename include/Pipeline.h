@@ -79,6 +79,8 @@ public:
 
     virtual void pipelineLoop() = 0;
 
+    virtual bool readPipelineInfo(const YAML::Node &node) {};
+
 protected:
     void printGraphicCardInfo() {
         const GLubyte *vendor = glGetString(GL_VENDOR); // Returns the vendor
@@ -109,9 +111,9 @@ public:
 protected:
     void generateImage();
 
-    Color traceRay(Ray &ray) {
+    Color traceRay(Ray &ray, bool debugFlag = false) {
         if (m_model) {
-            return m_model->castRay(m_scene, ray);
+            return m_model->castRay(m_scene, ray, 0, debugFlag);
         } else {
             return m_backgroundColor;
         }
@@ -130,6 +132,11 @@ private:
 class WhittedPipeline: public RayTracingPipeline {
 public:
     virtual void setupPipeline();
+
+    virtual bool readPipelineInfo(const YAML::Node &node);
+
+private:
+    int m_maxDepth;
 };
 
 class PhotonMappingPipeline: public RayTracingPipeline {

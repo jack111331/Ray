@@ -13,12 +13,17 @@
 
 class WhittedModel : public IlluminationModel {
 public:
-    virtual Color castRay(const Scene *scene, Ray &ray, int depth);
+    virtual Color castRay(const Scene *scene, Ray &ray, int depth, bool debugFlag);
+
     virtual std::string getModelName() const {
         return "Whitted";
     }
-};
 
+    void setupMaxDepth(int maxDepth) { m_maxDepth = maxDepth; }
+
+private:
+    int m_maxDepth;
+};
 
 
 #endif //RAY_WHITTED_H

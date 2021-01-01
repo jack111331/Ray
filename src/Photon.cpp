@@ -94,15 +94,15 @@ bool PhotonMappingModel::photonTracing(const Scene *scene, Ray &ray, float power
     return false;
 }
 
-Color PhotonMappingModel::castRay(const Scene *scene, Ray &ray, int depth) {
+Color PhotonMappingModel::castRay(const Scene *scene, Ray &ray, int depth, bool debugFlag) {
     HitRecord record;
     if (scene->m_hittableList->isHit(0.00001, ray, record)) {
         ShadeRecord shadeRecord;
         record.material->calculatePhotonMapping(scene, *this, ray, record, shadeRecord);
-        if(depth > 4 || !shadeRecord.isHasAttenuation()) {
+        if (depth > 4 || !shadeRecord.isHasAttenuation()) {
             return shadeRecord.emit + shadeRecord.attenuation;
         }
-        return shadeRecord.emit + shadeRecord.attenuation * castRay(scene, ray, depth + 1);
+        return shadeRecord.emit + shadeRecord.attenuation * castRay(scene, ray, depth + 1, debugFlag);
     }
     return m_backgroundColor;
 }

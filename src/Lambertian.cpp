@@ -10,12 +10,16 @@ using namespace std;
 Color LambertianMaterial::calculatePhong(const Scene *scene, Ray &ray, const HitRecord &record,
                                          const LightRecord &shadeLightRecord, ShadeRecord &shadeRecord) const {
     // calculate diffuse and specular
-    Velocity normal = record.normal;
+    Velocity normal = record.normal.normalize();
     if (ray.velocity.dot(normal) > .0f) {
         normal = -normal;
     }
     float diffuseIntensity = .0f;
     float specularIntensity = .0f;
+    if(shadeLightRecord.isShadedLightList.size() != scene->m_lightList.size()) {
+        std::cerr << "Shade light amount isn't consistent with scene light list" << std::endl;
+        exit(1);
+    }
     for (int i = 0; i < scene->m_lightList.size(); ++i) {
         if (shadeLightRecord.isShadedLightList[i]) {
             Velocity lightDirection = (scene->m_lightList[i]->getLightOrigin() - record.point).normalize();
