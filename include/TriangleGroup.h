@@ -20,7 +20,7 @@ class BVH {
 public:
     BVH(TriangleGroup *triangleGroup);
 
-    bool isHit(double tmin, const Ray &ray, HitRecord &record);
+    bool isHit(const Ray &ray, HitRecord &record, float tmin=0.0001f);
 
     void updateBVH(TriangleGroup *triangleGroup);
 
@@ -37,7 +37,7 @@ public:
 
     bool readObjectInfo(const YAML::Node &node, const Scene *scene);
 
-    virtual bool isHit(double tmin, const Ray &ray, HitRecord &record) const;
+    virtual bool isHit(const Ray &ray, HitRecord &record, float tmin=0.0001f) const;
 
     // For local shading
     virtual std::vector<ShadeObject *> createVAO();

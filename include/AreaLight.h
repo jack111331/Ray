@@ -6,12 +6,13 @@
 #define RAY_AREALIGHT_H
 
 #include "Material.h"
+#include "Light.h"
 
 class AreaLight : public Material, public Light {
 public:
     AreaLight() : Light(), m_uDirection{0, 0, 0}, m_vDirection{0, 0, 0} {}
 
-    virtual Color
+    virtual void
     calculatePhong(const Scene *scene, Ray &ray, const HitRecord &record, const LightRecord &shadeLightRecord,
                    ShadeRecord &shadeRecord) const;
 

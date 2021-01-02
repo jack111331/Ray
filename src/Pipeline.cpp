@@ -87,6 +87,13 @@ void RayTracingPipeline::pipelineLoop() {
 
 }
 
+bool RayTracingPipeline::readPipelineInfo(const YAML::Node &node) {
+    if(node["jitter-sample-amount"]) {
+        m_jitterSampleAmount = node["jitter-sample-amount"].as<int>();
+    }
+    return true;
+}
+
 void RayTracingPipeline::generateImage() {
     if (!m_camera) {
         return;
@@ -101,47 +108,23 @@ void RayTracingPipeline::generateImage() {
     Velocity unitHorizontalScreen = 1 / (float) (m_camera->m_width - 1) * 2.0 * widthFactor * left.normalize();
     Velocity unitVerticalScreen =
             1 / (float) (m_camera->m_height - 1) * 2.0 * heightFactor * m_camera->m_up.normalize();
-    const int sampleAmount = 2;//30
     for (int i = 0; i < m_camera->m_height; ++i) {
         for (int j = 0; j < m_camera->m_width; ++j) {
-            m_camera->m_screen[i][j] = Color{0.0f, 0.0f, 0.0f};
             Coord currentRayOnScreen = leftUpper - (float) j * unitHorizontalScreen - (float) i * unitVerticalScreen;
             Ray ray = {
                     m_camera->m_eyeCoord,
                     currentRayOnScreen - m_camera->m_eyeCoord
             };
             m_camera->m_screen[i][j] = traceRay(ray);
+            for(int k = 0;k < m_jitterSampleAmount;++k) {
+                Ray perturbatedRay = {ray.origin,
+                                      ray.velocity + Util::randomInUnit() * unitHorizontalScreen +
+                                      Util::randomInUnit() * unitVerticalScreen};
+                m_camera->m_screen[i][j] += traceRay(perturbatedRay);
+            }
+            m_camera->m_screen[i][j] /= (float)(1 + m_jitterSampleAmount);
         }
     }
-}
-
-void WhittedPipeline::setupPipeline() {
-    WhittedModel *model = new WhittedModel();
-    model->setupBackgroundColor(m_backgroundColor);
-    model->setupMaxDepth(m_maxDepth);
-    setIlluminationModel(model);
-
-    m_camera->initializeScreen();
-}
-
-bool WhittedPipeline::readPipelineInfo(const YAML::Node &node) {
-    if(!node["max-depth"]) {
-        std::cerr << "No require whitted pipeline node" << std::endl;
-        return false;
-    }
-    m_maxDepth = node["max-depth"].as<int>();
-    return true;
-}
-
-void PhotonMappingPipeline::setupPipeline() {
-    if (!m_photonAmount || m_photonPower < 1e-6) {
-        std::cerr << "photon amount or power not specified" << std::endl;
-        exit(1);
-    }
-    PhotonMappingModel *model = new PhotonMappingModel();
-    model->setup(m_scene, m_photonAmount, m_photonPower, m_photonTraceDepth);
-    model->setupBackgroundColor(m_backgroundColor);
-    setIlluminationModel(model);
 }
 
 void LocalRenderingPipeline::setupEnvironment() {

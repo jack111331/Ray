@@ -9,6 +9,7 @@
 #include "Utility.h"
 #include "IllumModel.h"
 #include "KDTree.h"
+#include "Pipeline.h"
 
 class Photon : public CoordData {
 public:
@@ -26,6 +27,15 @@ public:
 
 class HittableList;
 
+class PhotonMappingPipeline : public RayTracingPipeline {
+public:
+    virtual void setupPipeline();
+
+    int m_photonAmount;
+    float m_photonPower;
+    int m_photonTraceDepth;
+};
+
 class PhotonMappingModel : public IlluminationModel {
 public:
     PhotonMappingModel() : m_photonAmount(0), m_photonPower(0), m_photonTraceDepth(0) {
@@ -37,7 +47,6 @@ public:
     bool photonTracing(const Scene *scene, Ray &ray, float power, int depth);
 
     virtual Color castRay(const Scene *scene, Ray &ray, int depth, bool debugFlag);
-
 
 
     virtual std::string getModelName() const {

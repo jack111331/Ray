@@ -434,6 +434,9 @@
 		<Unit filename="D:/Code/Ray/cmake-build-debug/public/glfw/src/glfw_config.h">
 			<Option target="glfw"/>
 		</Unit>
+		<Unit filename="D:/Code/Ray/include/AmbientOcclusion.h">
+			<Option target="Ray"/>
+		</Unit>
 		<Unit filename="D:/Code/Ray/include/AreaLight.h">
 			<Option target="Ray"/>
 		</Unit>
@@ -742,6 +745,9 @@
 		</Unit>
 		<Unit filename="D:/Code/Ray/public/yaml-cpp/util/sandbox.cpp">
 			<Option target="yaml-cpp-sandbox"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/src/AmbientOcclusion.cpp">
+			<Option target="Ray"/>
 		</Unit>
 		<Unit filename="D:/Code/Ray/src/AreaLight.cpp">
 			<Option target="Ray"/>

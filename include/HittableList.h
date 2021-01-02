@@ -10,9 +10,9 @@
 
 class HittableList : public Hittable {
 public:
-    virtual bool isHit(double tmin, const Ray &ray, HitRecord &record) const;
+    virtual bool isHit(const Ray &ray, HitRecord &record, float tmin = 0.0001f) const;
 
-    bool isHitShadow(double tmin, const Ray &ray, HitRecord &record);
+    bool isHitShadow(const Ray &ray, HitRecord &record, float tmin = 0.0001f);
 
     void addHittable(Hittable *hittable);
 

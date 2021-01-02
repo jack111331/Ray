@@ -38,31 +38,31 @@ bool ObjectBoundingBox::isHit(const Ray &ray) {
     return true;
 }
 
-bool HittableList::isHit(double tmin, const Ray &ray, HitRecord &record) const {
+bool HittableList::isHit(const Ray &ray, HitRecord &record, float tmin) const {
     bool isHit = false;
     for (auto hittable: m_hittableList) {
-        isHit = std::max(isHit, hittable->isHit(tmin, ray, record));
+        isHit = std::max(isHit, hittable->isHit(ray, record, tmin));
     }
     return isHit;
 }
 
-bool HittableList::isHitShadow(double tmin, const Ray &ray, HitRecord &record) {
+bool HittableList::isHitShadow(const Ray &ray, HitRecord &record, float tmin) {
     bool isHit = false;
     for (auto hittable: m_hittableList) {
-        if(hittable->m_material->getType() != Material::MaterialType::LAMBERTIAN) {
-            isHit = std::max(isHit, hittable->isHit(tmin, ray, record));
+        if (hittable->m_material->getType() != Material::MaterialType::LAMBERTIAN) {
+            isHit = std::max(isHit, hittable->isHit(ray, record, tmin));
         }
     }
     return isHit;
 }
 
-void HittableList::addHittable(Hittable * hittable) {
+void HittableList::addHittable(Hittable *hittable) {
     m_hittableList.push_back(hittable);
     m_boundingBox.updateBoundingBox(hittable->getBoundingBox());
 }
 
 void HittableList::addHittable(std::vector<Hittable *> hittableList) {
-    for(auto hittable: hittableList) {
+    for (auto hittable: hittableList) {
         addHittable(hittable);
     }
 }

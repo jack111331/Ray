@@ -7,7 +7,7 @@
 
 using namespace std;
 
-Color LambertianMaterial::calculatePhong(const Scene *scene, Ray &ray, const HitRecord &record,
+void LambertianMaterial::calculatePhong(const Scene *scene, Ray &ray, const HitRecord &record,
                                          const LightRecord &shadeLightRecord, ShadeRecord &shadeRecord) const {
     // calculate diffuse and specular
     Velocity normal = record.normal.normalize();
@@ -35,7 +35,6 @@ Color LambertianMaterial::calculatePhong(const Scene *scene, Ray &ray, const Hit
     shadeRecord.attenuation =
             resultColor * (m_diffuseTexture ? m_diffuseTexture->getColor(record.texCoord) : Color{1.0f, 1.0f,
                                                                                                   1.0f});
-    return shadeRecord.attenuation;
 }
 
 void

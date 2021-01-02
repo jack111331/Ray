@@ -4,6 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "D:/Code/Ray/src/AmbientOcclusion.cpp" "D:/Code/Ray/cmake-build-debug/CMakeFiles/Ray.dir/src/AmbientOcclusion.cpp.obj"
   "D:/Code/Ray/src/AreaLight.cpp" "D:/Code/Ray/cmake-build-debug/CMakeFiles/Ray.dir/src/AreaLight.cpp.obj"
   "D:/Code/Ray/src/BVH.cpp" "D:/Code/Ray/cmake-build-debug/CMakeFiles/Ray.dir/src/BVH.cpp.obj"
   "D:/Code/Ray/src/Camera.cpp" "D:/Code/Ray/cmake-build-debug/CMakeFiles/Ray.dir/src/Camera.cpp.obj"

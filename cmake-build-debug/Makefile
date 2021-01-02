@@ -624,6 +624,33 @@ yaml-cpp-read/fast:
 	$(MAKE) -f public\yaml-cpp\util\CMakeFiles\yaml-cpp-read.dir\build.make public/yaml-cpp/util/CMakeFiles/yaml-cpp-read.dir/build
 .PHONY : yaml-cpp-read/fast
 
+src/AmbientOcclusion.obj: src/AmbientOcclusion.cpp.obj
+
+.PHONY : src/AmbientOcclusion.obj
+
+# target to build an object file
+src/AmbientOcclusion.cpp.obj:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/AmbientOcclusion.cpp.obj
+.PHONY : src/AmbientOcclusion.cpp.obj
+
+src/AmbientOcclusion.i: src/AmbientOcclusion.cpp.i
+
+.PHONY : src/AmbientOcclusion.i
+
+# target to preprocess a source file
+src/AmbientOcclusion.cpp.i:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/AmbientOcclusion.cpp.i
+.PHONY : src/AmbientOcclusion.cpp.i
+
+src/AmbientOcclusion.s: src/AmbientOcclusion.cpp.s
+
+.PHONY : src/AmbientOcclusion.s
+
+# target to generate assembly for a file
+src/AmbientOcclusion.cpp.s:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/AmbientOcclusion.cpp.s
+.PHONY : src/AmbientOcclusion.cpp.s
+
 src/AreaLight.obj: src/AreaLight.cpp.obj
 
 .PHONY : src/AreaLight.obj
@@ -1482,6 +1509,9 @@ help:
 	@echo ... yaml-cpp-parse
 	@echo ... yaml-cpp-sandbox
 	@echo ... yaml-cpp-read
+	@echo ... src/AmbientOcclusion.obj
+	@echo ... src/AmbientOcclusion.i
+	@echo ... src/AmbientOcclusion.s
 	@echo ... src/AreaLight.obj
 	@echo ... src/AreaLight.i
 	@echo ... src/AreaLight.s

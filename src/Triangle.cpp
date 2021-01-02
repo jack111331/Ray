@@ -9,7 +9,7 @@
 
 using namespace std;
 
-bool Triangle::isHit(double tmin, const Ray &ray, HitRecord &record) const {
+bool Triangle::isHit(const Ray &ray, HitRecord &record, float tmin) const {
     const double EPSILON = 1e-7;
     Velocity planeVector[2] = {m_point[1]->m_coord - m_point[0]->m_coord, m_point[2]->m_coord - m_point[0]->m_coord};
     Velocity h = ray.velocity.cross(planeVector[1]);

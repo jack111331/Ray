@@ -10,6 +10,8 @@
 #include <glm/glm.hpp>
 #include <GLFW/glfw3.h>
 #include "Hittable.h"
+#include "Camera.h"
+#include "IllumModel.h"
 
 class Shader;
 
@@ -79,7 +81,7 @@ public:
 
     virtual void pipelineLoop() = 0;
 
-    virtual bool readPipelineInfo(const YAML::Node &node) {};
+    virtual bool readPipelineInfo(const YAML::Node &node) {return true;};
 
 protected:
     void printGraphicCardInfo() {
@@ -98,11 +100,13 @@ protected:
 
 class RayTracingPipeline : public Pipeline {
 public:
-    RayTracingPipeline(): m_model(nullptr) {}
+    RayTracingPipeline(): m_model(nullptr), m_jitterSampleAmount(0) {}
 
     virtual void setupEnvironment();
 
     virtual void pipelineLoop();
+
+    virtual bool readPipelineInfo(const YAML::Node &node);
 
     void setIlluminationModel(IlluminationModel *model) {
         m_model = model;
@@ -126,26 +130,7 @@ protected:
 private:
     uint32_t m_frameTextureId;
 
-
-};
-
-class WhittedPipeline: public RayTracingPipeline {
-public:
-    virtual void setupPipeline();
-
-    virtual bool readPipelineInfo(const YAML::Node &node);
-
-private:
-    int m_maxDepth;
-};
-
-class PhotonMappingPipeline: public RayTracingPipeline {
-public:
-    virtual void setupPipeline();
-
-    int m_photonAmount;
-    float m_photonPower;
-    int m_photonTraceDepth;
+    int m_jitterSampleAmount;
 };
 
 class LocalRenderingPipeline : public Pipeline {

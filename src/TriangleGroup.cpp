@@ -14,7 +14,7 @@ BVH::BVH(TriangleGroup *triangleGroup) : m_octree(nullptr) {
     updateBVH(triangleGroup);
 }
 
-bool BVH::isHit(double tmin, const Ray &ray, HitRecord &record) {
+bool BVH::isHit(const Ray &ray, HitRecord &record, float tmin) {
     if (!m_octree->m_root->m_nodeBoundingBox.isHit(ray)) {
         return false;
     }
@@ -26,7 +26,7 @@ bool BVH::isHit(double tmin, const Ray &ray, HitRecord &record) {
         pq.pop();
         if (node->m_isLeaf) {
             for (uint32_t i = 0; i < node->m_data.size(); ++i) {
-                if (node->m_data[i]->isHit(tmin, ray, record)) {
+                if (node->m_data[i]->isHit(ray, record, tmin)) {
                     record.material = node->m_data[i]->m_material;
                     isHitted = true;
                 }
@@ -134,13 +134,13 @@ bool TriangleGroup::readObjectInfo(const YAML::Node &node, const Scene *scene) {
     return true;
 }
 
-bool TriangleGroup::isHit(double tmin, const Ray &ray, HitRecord &record) const {
+bool TriangleGroup::isHit(const Ray &ray, HitRecord &record, float tmin) const {
     if (m_accel) {
-        return m_accel->isHit(tmin, ray, record);
+        return m_accel->isHit(ray, record, tmin);
     }
     bool isHitted = false;
     for (auto triangle: m_triangles) {
-        isHitted = std::max(isHitted, triangle->isHit(tmin, ray, record));
+        isHitted = std::max(isHitted, triangle->isHit(ray, record, tmin));
     }
     return isHitted;
 }

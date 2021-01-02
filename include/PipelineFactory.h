@@ -8,8 +8,11 @@
 
 #include "Pipeline.h"
 #include "InstantRadiosity.h"
+#include "Whitted.h"
+#include "Photon.h"
 #include "DefferedShadingPipeline.h"
 #include "SSAODefferedShadingPipeline.h"
+#include "AmbientOcclusion.h"
 
 class PipelineFactory {
 public:
@@ -19,6 +22,8 @@ public:
                 return new WhittedPipeline();
             } else if (pipelineName == "photon-mapping") {
                 return new PhotonMappingPipeline();
+            } else if (pipelineName == "ambient-occlusion") {
+                return new AmbientOcclusionPipeline();
             }
         } else if (typeName == "local-rendering") {
             if (pipelineName == "phong-shading") {

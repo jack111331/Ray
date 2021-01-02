@@ -12,7 +12,7 @@
 class LambertianMaterial : public Material {
 public:
 
-    virtual Color calculatePhong(const Scene *scene, Ray &ray, const HitRecord &record, const LightRecord &shadeLightRecord, ShadeRecord &shadeRecord) const;
+    virtual void calculatePhong(const Scene *scene, Ray &ray, const HitRecord &record, const LightRecord &shadeLightRecord, ShadeRecord &shadeRecord) const;
     virtual void calculatePhotonMapping(const Scene *scene, const PhotonMappingModel &photonMappingModel, Ray &ray,
                                                const HitRecord &record, ShadeRecord &shadeRecord) const;
     virtual MaterialType getType() {return LAMBERTIAN;}

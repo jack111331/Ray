@@ -6,9 +6,25 @@
 
 #IncludeRegexTransform: 
 
+../include/AmbientOcclusion.h
+vector
+-
+Ray.h
+../include/Ray.h
+Light.h
+../include/Light.h
+Camera.h
+../include/Camera.h
+IllumModel.h
+../include/IllumModel.h
+Pipeline.h
+../include/Pipeline.h
+
 ../include/AreaLight.h
 Material.h
 ../include/Material.h
+Light.h
+../include/Light.h
 
 ../include/BVH.h
 Utility.h
@@ -105,10 +121,10 @@ yaml-cpp/yaml.h
 ../include/Material.h
 Utility.h
 ../include/Utility.h
-Photon.h
-../include/Photon.h
 iostream
 -
+yaml-cpp/yaml.h
+../include/yaml-cpp/yaml.h
 
 ../include/OBJ_Loader.h
 iostream
@@ -135,6 +151,8 @@ IllumModel.h
 ../include/IllumModel.h
 KDTree.h
 ../include/KDTree.h
+Pipeline.h
+../include/Pipeline.h
 
 ../include/Pipeline.h
 stdint.h
@@ -147,16 +165,26 @@ GLFW/glfw3.h
 -
 Hittable.h
 ../include/Hittable.h
+Camera.h
+../include/Camera.h
+IllumModel.h
+../include/IllumModel.h
 
 ../include/PipelineFactory.h
 Pipeline.h
 ../include/Pipeline.h
 InstantRadiosity.h
 ../include/InstantRadiosity.h
+Whitted.h
+../include/Whitted.h
+Photon.h
+../include/Photon.h
 DefferedShadingPipeline.h
 ../include/DefferedShadingPipeline.h
 SSAODefferedShadingPipeline.h
 ../include/SSAODefferedShadingPipeline.h
+AmbientOcclusion.h
+../include/AmbientOcclusion.h
 
 ../include/Ray.h
 Utility.h
@@ -207,6 +235,8 @@ Hittable.h
 ../include/Hittable.h
 Material.h
 ../include/Material.h
+Scene.h
+../include/Scene.h
 
 ../include/TriangleGroup.h
 Hittable.h
@@ -237,6 +267,8 @@ Camera.h
 ../include/Camera.h
 IllumModel.h
 ../include/IllumModel.h
+Pipeline.h
+../include/Pipeline.h
 
 ../public/glew/include/GL/glew.h
 cstddef
@@ -1746,9 +1778,21 @@ yaml-cpp/node/parse.h
 yaml-cpp/node/emit.h
 ../public/yaml-cpp/include/yaml-cpp/yaml-cpp/node/emit.h
 
+D:/Code/Ray/src/AmbientOcclusion.cpp
+Dielectric.h
+-
+Lambertian.h
+-
+AmbientOcclusion.h
+D:/Code/Ray/src/AmbientOcclusion.h
+HittableList.h
+D:/Code/Ray/src/HittableList.h
+
 D:/Code/Ray/src/AreaLight.cpp
 AreaLight.h
 D:/Code/Ray/src/AreaLight.h
+Photon.h
+D:/Code/Ray/src/Photon.h
 
 D:/Code/Ray/src/BVH.cpp
 BVH.h
@@ -1804,17 +1848,13 @@ D:/Code/Ray/src/HittableList.h
 DefferedShadingPipeline.h
 D:/Code/Ray/src/DefferedShadingPipeline.h
 
-D:/Code/Ray/src/Dielectric.cpp
-Dielectric.h
-D:/Code/Ray/src/Dielectric.h
-Scene.h
-D:/Code/Ray/src/Scene.h
-
 D:/Code/Ray/src/Hittable.cpp
 Hittable.h
 D:/Code/Ray/src/Hittable.h
 Utility.h
 D:/Code/Ray/src/Utility.h
+Scene.h
+D:/Code/Ray/src/Scene.h
 
 D:/Code/Ray/src/HittableList.cpp
 HittableList.h
@@ -1843,12 +1883,6 @@ Photon.h
 -
 Lambertian.h
 D:/Code/Ray/src/Lambertian.h
-
-D:/Code/Ray/src/Material.cpp
-Material.h
-D:/Code/Ray/src/Material.h
-Scene.h
-D:/Code/Ray/src/Scene.h
 
 D:/Code/Ray/src/PhongShadingPipeline.cpp
 GL/glew.h

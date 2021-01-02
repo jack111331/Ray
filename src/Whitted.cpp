@@ -6,15 +6,34 @@
 #include "Whitted.h"
 #include "HittableList.h"
 
+void WhittedPipeline::setupPipeline() {
+    WhittedModel *model = new WhittedModel();
+    model->setupBackgroundColor(m_backgroundColor);
+    model->setupMaxDepth(m_maxDepth);
+    setIlluminationModel(model);
+
+    m_camera->initializeScreen();
+}
+
+bool WhittedPipeline::readPipelineInfo(const YAML::Node &node) {
+    bool result = RayTracingPipeline::readPipelineInfo(node);
+    if(!result || !node["max-depth"]) {
+        std::cerr << "No require whitted pipeline node" << std::endl;
+        return false;
+    }
+    m_maxDepth = node["max-depth"].as<int>();
+    return true;
+}
+
 Color WhittedModel::castRay(const Scene *scene, Ray &ray, int depth, bool debugFlag) {
     HitRecord record;
-    if (scene->m_hittableList->isHit(0.001, ray, record)) {
+    if (scene->m_hittableList->isHit(ray, record)) {
         LightRecord lightRecord;
         for (auto light: scene->m_lightList) {
             HitRecord testRecord;
             Velocity lightDirection = record.point - light->m_origin;
             Ray testRay = {record.point, lightDirection};
-            bool isHit = scene->m_hittableList->isHit(0.001, testRay, testRecord);
+            bool isHit = scene->m_hittableList->isHit(testRay, testRecord);
             lightRecord.addShadedLight(
                     !isHit || lightDirection.length() < (testRecord.point - record.point).length());
         }

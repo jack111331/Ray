@@ -3,14 +3,15 @@
 //
 
 #include "AreaLight.h"
+#include "Photon.h"
 
 using namespace std;
 
-Color
+void
 AreaLight::calculatePhong(const Scene *scene, Ray &ray, const HitRecord &record, const LightRecord &shadeLightRecord,
                           ShadeRecord &shadeRecord) const {
     shadeRecord.emit = m_emitColor;
-    return shadeRecord.emit;
+    shadeRecord.attenuation = {0.0, .0, .0};
 }
 
 void AreaLight::calculatePhotonMapping(const Scene *scene, const PhotonMappingModel &photonMappingModel, Ray &ray,

@@ -8,6 +8,17 @@
 
 using namespace std;
 
+void PhotonMappingPipeline::setupPipeline() {
+    if (!m_photonAmount || m_photonPower < 1e-6) {
+        std::cerr << "photon amount or power not specified" << std::endl;
+        exit(1);
+    }
+    PhotonMappingModel *model = new PhotonMappingModel();
+    model->setup(m_scene, m_photonAmount, m_photonPower, m_photonTraceDepth);
+    model->setupBackgroundColor(m_backgroundColor);
+    setIlluminationModel(model);
+}
+
 void PhotonMappingModel::setup(Scene *scene, int photonAmount, float photonPower, int photonTraceDepth) {
     m_photonAmount = photonAmount;
     m_photonPower = photonPower;
@@ -36,7 +47,7 @@ bool PhotonMappingModel::photonTracing(const Scene *scene, Ray &ray, float power
     }
     // hit photon and store photon
     HitRecord record;
-    if (scene->m_hittableList->isHit(0.001, ray, record)) {
+    if (scene->m_hittableList->isHit(ray, record)) {
         // calculate refractivity and reflectivity
         float reflectivity = 0.0, refractivity = 0.0;
         Velocity refractedDirection;
@@ -96,7 +107,7 @@ bool PhotonMappingModel::photonTracing(const Scene *scene, Ray &ray, float power
 
 Color PhotonMappingModel::castRay(const Scene *scene, Ray &ray, int depth, bool debugFlag) {
     HitRecord record;
-    if (scene->m_hittableList->isHit(0.00001, ray, record)) {
+    if (scene->m_hittableList->isHit(ray, record)) {
         ShadeRecord shadeRecord;
         record.material->calculatePhotonMapping(scene, *this, ray, record, shadeRecord);
         if (depth > 4 || !shadeRecord.isHasAttenuation()) {

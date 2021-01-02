@@ -9,6 +9,7 @@
 #include "Utility.h"
 #include "Hittable.h"
 #include "Material.h"
+#include "Scene.h"
 
 class TriangleNode {
 public:
@@ -41,7 +42,7 @@ public:
         m_point[2] = thirdNode;
     }
 
-    virtual bool isHit(double tmin, const Ray &ray, HitRecord &record) const;
+    virtual bool isHit(const Ray &ray, HitRecord &record, float tmin = 0.0001f) const;
 
     virtual std::vector<ShadeObject *> createVAO();
 

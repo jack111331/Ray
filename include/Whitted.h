@@ -10,6 +10,18 @@
 #include "Light.h"
 #include "Camera.h"
 #include "IllumModel.h"
+#include "Pipeline.h"
+
+class WhittedPipeline: public RayTracingPipeline {
+public:
+    virtual void setupPipeline();
+
+    virtual bool readPipelineInfo(const YAML::Node &node);
+
+private:
+    int m_maxDepth;
+};
+
 
 class WhittedModel : public IlluminationModel {
 public:

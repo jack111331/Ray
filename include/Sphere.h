@@ -15,7 +15,7 @@ public:
 
     Sphere(Coord origin, float radius) : m_origin(origin), m_radius(radius) {};
 
-    virtual bool isHit(double tmin, const Ray &ray, HitRecord &record) const;
+    virtual bool isHit(const Ray &ray, HitRecord &record, float tmin=0.0001f) const;
 
     virtual std::vector<ShadeObject *> createVAO();
 

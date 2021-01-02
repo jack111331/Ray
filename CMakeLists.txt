@@ -80,8 +80,10 @@ list(APPEND SOURCE_LIST
         src/DefferedShadingPipeline.cpp
         src/PhongShadingPipeline.cpp
         src/SSAODefferedShadingPipeline.cpp
+        src/AmbientOcclusion.cpp
         )
 list(APPEND HEADER_LIST
+        include/AmbientOcclusion.h
         include/AreaLight.h
         include/BVH.h
         include/Camera.h

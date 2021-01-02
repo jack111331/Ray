@@ -1,4 +1,5 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/Ray.dir/src/AmbientOcclusion.cpp.obj"
   "CMakeFiles/Ray.dir/src/AreaLight.cpp.obj"
   "CMakeFiles/Ray.dir/src/BVH.cpp.obj"
   "CMakeFiles/Ray.dir/src/Camera.cpp.obj"

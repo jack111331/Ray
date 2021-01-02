@@ -7,7 +7,7 @@
 
 using namespace std;
 
-Color DielectricMaterial::calculatePhong(const Scene *scene, Ray &ray, const HitRecord &record,
+void DielectricMaterial::calculatePhong(const Scene *scene, Ray &ray, const HitRecord &record,
                                const LightRecord &shadeLightRecord, ShadeRecord &shadeRecord) const {
     Velocity outwardNormal;
     float cosine;
@@ -37,8 +37,6 @@ Color DielectricMaterial::calculatePhong(const Scene *scene, Ray &ray, const Hit
         ray = {record.point, refractedDirection};
     }
     shadeRecord.attenuation = {1.0f, 1.0f, 1.0f};
-    // FIXME in local shading color
-    return shadeRecord.attenuation;
 }
 
 void DielectricMaterial::calculatePhotonMapping(const Scene *scene, const PhotonMappingModel &model, Ray &ray, const HitRecord &record, ShadeRecord &shadeRecord) const {

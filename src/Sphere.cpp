@@ -7,7 +7,7 @@
 
 using namespace std;
 
-bool Sphere::isHit(double tmin, const Ray &ray, HitRecord &record) const {
+bool Sphere::isHit(const Ray &ray, HitRecord &record, float tmin) const {
     double a = ray.velocity.dot(ray.velocity);
     double b = 2 * (ray.origin - m_origin).dot(ray.velocity);
     double c = (ray.origin - m_origin).dot(ray.origin - m_origin) - m_radius * m_radius;

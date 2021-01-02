@@ -4,6 +4,7 @@
 
 #include "Hittable.h"
 #include "Utility.h"
+#include "Scene.h"
 
 bool Hittable::readObjectInfo(const YAML::Node &node, const Scene *scene) {
     if(!node["material"]) {
