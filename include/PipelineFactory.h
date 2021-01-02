@@ -13,6 +13,7 @@
 #include "DefferedShadingPipeline.h"
 #include "SSAODefferedShadingPipeline.h"
 #include "AmbientOcclusion.h"
+#include "SuggestedContourPipeline.h"
 
 class PipelineFactory {
 public:
@@ -34,6 +35,8 @@ public:
                 return new DefferedShadingPipeline();
             } else if (pipelineName == "ssao-deffered-shading") {
                 return new SSAODefferedShadingPipeline();
+            } else if(pipelineName == "suggested-contour") {
+                return new SuggestedContourShadingPipeline();
             }
         }
         return nullptr;

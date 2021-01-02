@@ -20,6 +20,7 @@
 -- FindGLEW: Creating GLEW::GLEW imported target.
 Found GLEW
 -- Using Win32 for window creation
+-- [libigl] Looking for Eigen3
 -- Configuring done
 -- Generating done
 -- Build files have been written to: D:/Code/Ray/cmake-build-debug

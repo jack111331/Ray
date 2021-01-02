@@ -572,3 +572,34 @@ make.exe[1]: Leaving directory `D:/Code/Ray/cmake-build-debug/CMakeFiles/CMakeTm
 
 Source file was:
 int main(void) { return 0; }
+Performing C++ SOURCE FILE Test COMPILER_HAS_DEPRECATED_ATTR succeeded with the following output:
+Change Dir: D:/Code/Ray/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:/MinGW/bin/make.exe cmTC_95ff5/fast && D:/MinGW/bin/make.exe -f CMakeFiles\cmTC_95ff5.dir\build.make CMakeFiles/cmTC_95ff5.dir/build
+make.exe[1]: Entering directory `D:/Code/Ray/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_95ff5.dir/src.cxx.obj
+D:\MinGW\bin\c++.exe    -DCOMPILER_HAS_DEPRECATED_ATTR   -o CMakeFiles\cmTC_95ff5.dir\src.cxx.obj -c D:\Code\Ray\cmake-build-debug\CMakeFiles\CMakeTmp\src.cxx
+D:\Code\Ray\cmake-build-debug\CMakeFiles\CMakeTmp\src.cxx: In function 'int main()':
+D:\Code\Ray\cmake-build-debug\CMakeFiles\CMakeTmp\src.cxx:2:25: warning: 'int somefunc()' is deprecated [-Wdeprecated-declarations]
+     int main() { return somefunc();}
+                         ^~~~~~~~
+D:\Code\Ray\cmake-build-debug\CMakeFiles\CMakeTmp\src.cxx:1:37: note: declared here
+ __attribute__((__deprecated__)) int somefunc() { return 0; }
+                                     ^~~~~~~~
+D:\Code\Ray\cmake-build-debug\CMakeFiles\CMakeTmp\src.cxx:2:34: warning: 'int somefunc()' is deprecated [-Wdeprecated-declarations]
+     int main() { return somefunc();}
+                                  ^
+D:\Code\Ray\cmake-build-debug\CMakeFiles\CMakeTmp\src.cxx:1:37: note: declared here
+ __attribute__((__deprecated__)) int somefunc() { return 0; }
+                                     ^~~~~~~~
+Linking CXX executable cmTC_95ff5.exe
+"D:\Program Files\JetBrains\CLion 2019.2.4\bin\cmake\win\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTC_95ff5.dir\link.txt --verbose=1
+"D:\Program Files\JetBrains\CLion 2019.2.4\bin\cmake\win\bin\cmake.exe" -E remove -f CMakeFiles\cmTC_95ff5.dir/objects.a
+D:\MinGW\bin\ar.exe cr CMakeFiles\cmTC_95ff5.dir/objects.a @CMakeFiles\cmTC_95ff5.dir\objects1.rsp
+D:\MinGW\bin\c++.exe  -DCOMPILER_HAS_DEPRECATED_ATTR    -Wl,--whole-archive CMakeFiles\cmTC_95ff5.dir/objects.a -Wl,--no-whole-archive  -o cmTC_95ff5.exe -Wl,--out-implib,libcmTC_95ff5.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_95ff5.dir\linklibs.rsp
+make.exe[1]: Leaving directory `D:/Code/Ray/cmake-build-debug/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+__attribute__((__deprecated__)) int somefunc() { return 0; }
+    int main() { return somefunc();}

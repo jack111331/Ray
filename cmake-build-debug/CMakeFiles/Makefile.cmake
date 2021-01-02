@@ -21,6 +21,8 @@ set(CMAKE_MAKEFILE_DEPENDS
   "../public/glfw/src/CMakeLists.txt"
   "../public/glfw/src/glfw.rc.in"
   "../public/glfw/src/glfw_config.h.in"
+  "../public/libigl/build/libigl-config.cmake"
+  "../public/libigl/build/libigl-export.cmake"
   "../public/yaml-cpp/CMakeLists.txt"
   "../public/yaml-cpp/util/CMakeLists.txt"
   "../public/yaml-cpp/yaml-cpp-config.cmake.in"

@@ -55,6 +55,28 @@ CMAKE_BINARY_DIR = D:\Code\Ray\cmake-build-debug
 #=============================================================================
 # Targets provided globally by CMake.
 
+# Special rule for the target package_source
+package_source:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool for source..."
+	cd /d D:\Code\Ray\cmake-build-debug && "D:\Program Files\JetBrains\CLion 2019.2.4\bin\cmake\win\bin\cpack.exe" --config ./CPackSourceConfig.cmake D:/Code/Ray/cmake-build-debug/CPackSourceConfig.cmake
+.PHONY : package_source
+
+# Special rule for the target package_source
+package_source/fast: package_source
+
+.PHONY : package_source/fast
+
+# Special rule for the target package
+package: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool..."
+	cd /d D:\Code\Ray\cmake-build-debug && "D:\Program Files\JetBrains\CLion 2019.2.4\bin\cmake\win\bin\cpack.exe" --config ./CPackConfig.cmake
+.PHONY : package
+
+# Special rule for the target package
+package/fast: package
+
+.PHONY : package/fast
+
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
@@ -1468,6 +1490,7 @@ help:
 	@echo ... ContinuousMemCheck
 	@echo ... ExperimentalConfigure
 	@echo ... ExperimentalTest
+	@echo ... package_source
 	@echo ... ExperimentalCoverage
 	@echo ... ExperimentalMemCheck
 	@echo ... ExperimentalSubmit
@@ -1479,6 +1502,7 @@ help:
 	@echo ... ContinuousTest
 	@echo ... ContinuousCoverage
 	@echo ... yaml-cpp
+	@echo ... package
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... list_install_components

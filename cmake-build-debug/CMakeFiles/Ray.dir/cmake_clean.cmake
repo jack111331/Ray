@@ -24,6 +24,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/Ray.dir/src/Scene.cpp.obj"
   "CMakeFiles/Ray.dir/src/Shader.cpp.obj"
   "CMakeFiles/Ray.dir/src/Sphere.cpp.obj"
+  "CMakeFiles/Ray.dir/src/SuggestedContourPipeline.cpp.obj"
   "CMakeFiles/Ray.dir/src/Texture.cpp.obj"
   "CMakeFiles/Ray.dir/src/Triangle.cpp.obj"
   "CMakeFiles/Ray.dir/src/TriangleGroup.cpp.obj"

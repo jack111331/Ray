@@ -29,6 +29,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "D:/Code/Ray/src/Scene.cpp" "D:/Code/Ray/cmake-build-debug/CMakeFiles/Ray.dir/src/Scene.cpp.obj"
   "D:/Code/Ray/src/Shader.cpp" "D:/Code/Ray/cmake-build-debug/CMakeFiles/Ray.dir/src/Shader.cpp.obj"
   "D:/Code/Ray/src/Sphere.cpp" "D:/Code/Ray/cmake-build-debug/CMakeFiles/Ray.dir/src/Sphere.cpp.obj"
+  "D:/Code/Ray/src/SuggestedContourPipeline.cpp" "D:/Code/Ray/cmake-build-debug/CMakeFiles/Ray.dir/src/SuggestedContourPipeline.cpp.obj"
   "D:/Code/Ray/src/Texture.cpp" "D:/Code/Ray/cmake-build-debug/CMakeFiles/Ray.dir/src/Texture.cpp.obj"
   "D:/Code/Ray/src/Triangle.cpp" "D:/Code/Ray/cmake-build-debug/CMakeFiles/Ray.dir/src/Triangle.cpp.obj"
   "D:/Code/Ray/src/TriangleGroup.cpp" "D:/Code/Ray/cmake-build-debug/CMakeFiles/Ray.dir/src/TriangleGroup.cpp.obj"

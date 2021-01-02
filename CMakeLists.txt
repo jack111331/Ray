@@ -2,7 +2,6 @@ cmake_minimum_required(VERSION 3.1.3)
 project(Ray)
 
 #set(CMAKE_VERBOSE_MAKEFILE ON)
-
 set(GLEW_VERBOSE TRUE)
 
 set(GLEW_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/public/glew/include")
@@ -24,6 +23,8 @@ include_directories("public/glm")
 
 add_subdirectory(public/yaml-cpp)
 include_directories("public/yaml-cpp/include")
+set(CMAKE_PREFIX_PATH ${CMAKE_PREFIX_PATH} "public/libigl")
+find_package(libigl REQUIRED)
 
 #set(CMAKE_MODULE_PATH {CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/modules")
 #message("${CMAKE_MODULE_PATH}")
@@ -81,6 +82,7 @@ list(APPEND SOURCE_LIST
         src/PhongShadingPipeline.cpp
         src/SSAODefferedShadingPipeline.cpp
         src/AmbientOcclusion.cpp
+        src/SuggestedContourPipeline.cpp
         )
 list(APPEND HEADER_LIST
         include/AmbientOcclusion.h
@@ -109,6 +111,7 @@ list(APPEND HEADER_LIST
         include/Shader.h
         include/Sphere.h
         include/SSAODefferedShadingPipeline.h
+        include/SuggestedContourPipeline.h
         include/Texture.h
         include/Triangle.h
         include/TriangleGroup.h
@@ -119,4 +122,4 @@ list(APPEND HEADER_LIST
         )
 
 add_executable(Ray src/main.cpp ${HEADER_LIST} ${SOURCE_LIST})
-target_link_libraries(Ray GLEW::GLEW glfw OpenGL::GL yaml-cpp)
+target_link_libraries(Ray GLEW::GLEW glfw OpenGL::GL yaml-cpp libigl)

@@ -142,6 +142,9 @@ CMAKE_CODEBLOCKS_MAKE_ARGUMENTS:STRING=
 //Enable/Disable color output during build.
 CMAKE_COLOR_MAKEFILE:BOOL=ON
 
+//List of generated configurations.
+CMAKE_CONFIGURATION_TYPES:STRING=Debug;Release;RelWithDebInfo
+
 //No help, variable specified on the command line.
 CMAKE_CXX_COMPILER:UNINITIALIZED=D:/MinGW/bin/c++.exe
 
@@ -418,6 +421,12 @@ COVERAGE_COMMAND:FILEPATH=D:/MinGW/bin/gcov.exe
 //Extra command line flags to pass to the coverage tool
 COVERAGE_EXTRA_FLAGS:STRING=-l
 
+//Enable to build 7-Zip source packages
+CPACK_SOURCE_7Z:BOOL=ON
+
+//Enable to build ZIP source packages
+CPACK_SOURCE_ZIP:BOOL=ON
+
 //How many times to retry timed-out CTest submissions.
 CTEST_SUBMIT_RETRY_COUNT:STRING=3
 
@@ -430,14 +439,143 @@ CVSCOMMAND:FILEPATH=CVSCOMMAND-NOTFOUND
 //Options passed to the cvs update command.
 CVS_UPDATE_OPTIONS:STRING=-d -A -P
 
+//Value Computed by CMake
+CoMISo_BINARY_DIR:STATIC=D:/Code/Ray/cmake-build-debug/public/libigl/CoMISo
+
+//Dependencies for the target
+CoMISo_LIB_DEPENDS:STATIC=general;CoMISo_blas;
+
+//Value Computed by CMake
+CoMISo_SOURCE_DIR:STATIC=D:/Code/Ray/public/libigl/external/CoMISo
+
 //Maximum time allowed before CTest will kill the test.
 DART_TESTING_TIMEOUT:STRING=1500
+
+//C++ namespace to put API symbols into.
+EMBREE_API_NAMESPACE:STRING=
+
+//Enables backface culling.
+EMBREE_BACKFACE_CULLING:BOOL=OFF
+
+//Enables double indexed poly layout.
+EMBREE_COMPACT_POLYS:BOOL=OFF
+
+//Self intersection avoidance factor for flat curves. Specify floating
+// point value in range 0 to inf.
+EMBREE_CURVE_SELF_INTERSECTION_AVOIDANCE_FACTOR:STRING=2.0
+
+//Enables filter functions.
+EMBREE_FILTER_FUNCTION:BOOL=ON
+
+//Enables support for curve geometries.
+EMBREE_GEOMETRY_CURVE:BOOL=ON
+
+//Enables support for grid geometries.
+EMBREE_GEOMETRY_GRID:BOOL=ON
+
+//Enables support for instances.
+EMBREE_GEOMETRY_INSTANCE:BOOL=ON
+
+//Enables support for point geometries.
+EMBREE_GEOMETRY_POINT:BOOL=ON
+
+//Enables support for quad geometries.
+EMBREE_GEOMETRY_QUAD:BOOL=ON
+
+//Enables support for subdiv geometries.
+EMBREE_GEOMETRY_SUBDIVISION:BOOL=ON
+
+//Enables support for triangle geometries.
+EMBREE_GEOMETRY_TRIANGLE:BOOL=ON
+
+//Enables support for user geometries.
+EMBREE_GEOMETRY_USER:BOOL=ON
+
+//Ignores invalid rays.
+EMBREE_IGNORE_INVALID_RAYS:BOOL=OFF
+
+//Install Embree dependencies in binary packages and install
+EMBREE_INSTALL_DEPENDENCIES:BOOL=OFF
+
+//Build Embree with support for ISPC applications.
+EMBREE_ISPC_SUPPORT:BOOL=OFF
+
+//Name of the embree library file (default is embree3)
+EMBREE_LIBRARY_NAME:STRING=embree3
+
+//Maximum number of instance levels.
+EMBREE_MAX_INSTANCE_LEVEL_COUNT:STRING=1
+
+//Selects highest ISA to support.
+EMBREE_MAX_ISA:STRING=DEFAULT
+
+//Enables min-width feature to enlarge curve and point thickness
+// to pixel width.
+EMBREE_MIN_WIDTH:BOOL=OFF
+
+//Enables ray mask support.
+EMBREE_RAY_MASK:BOOL=OFF
+
+//Enabled support for ray packets.
+EMBREE_RAY_PACKETS:BOOL=ON
+
+//When enabled Embree compiles with stack protection against return
+// address overrides.
+EMBREE_STACK_PROTECTOR:BOOL=OFF
+
+//Build Embree as a static library.
+EMBREE_STATIC_LIB:BOOL=ON
+
+//Use the static version of the C/C++ runtime library.
+EMBREE_STATIC_RUNTIME:BOOL=OFF
+
+//Enables statistic counters.
+EMBREE_STAT_COUNTERS:BOOL=OFF
+
+// 
+EMBREE_TASKING_SYSTEM:BOOL=INTERNAL
+
+//Turns benchmarking on.
+EMBREE_TESTING_BENCHMARK:BOOL=OFF
+
+//Path to database for benchmarking.
+EMBREE_TESTING_BENCHMARK_DATABASE:PATH=D:/Code/Ray/cmake-build-debug/public/libigl/embree
+
+EMBREE_TESTING_INTENSITY:STRING=0
+
+//Runs Kocwork as test.
+EMBREE_TESTING_KLOCWORK:BOOL=OFF
+
+//Turns on memory checking for some tests.
+EMBREE_TESTING_MEMCHECK:BOOL=OFF
+
+//Path to the folder containing the Embree models for regression
+// testing.
+EMBREE_TESTING_MODEL_DIR:PATH=EMBREE_TESTING_MODEL_DIR-NOTFOUND
+
+//Packages release as test.
+EMBREE_TESTING_PACKAGE:BOOL=OFF
+
+//Uses SDE to run tests for specified CPU.
+EMBREE_TESTING_SDE:STRING=OFF
+
+//Enable to build Embree tutorials
+EMBREE_TUTORIALS:BOOL=OFF
+
+//Create Embree ZIP package
+EMBREE_ZIP_MODE:BOOL=OFF
 
 //Path to a program.
 GITCOMMAND:FILEPATH=C:/Program Files/Git/cmd/git.exe
 
+//Git command line client
+GIT_EXECUTABLE:FILEPATH=C:/Program Files/Git/cmd/git.exe
+
 //The directory containing a CMake configuration file for GLEW.
 GLEW_DIR:PATH=GLEW_DIR-NOTFOUND
+
+//Path to a file.
+GLEW_INCLUDE_DIR:PATH=
 
 //Path to a library.
 GLEW_SHARED_LIBRARY_DEBUG:FILEPATH=GLEW_SHARED_LIBRARY_DEBUG-NOTFOUND
@@ -495,6 +633,72 @@ IGNORE_GIT_HASH:BOOL=OFF
 
 //Inject debug postfix in .a/.so/.dll lib names
 INJECT_DEBUG_POSTFIX:BOOL=ON
+
+//Build libigl unit test
+LIBIGL_BUILD_TESTS:BOOL=OFF
+
+//Build libigl tutorial
+LIBIGL_BUILD_TUTORIALS:BOOL=OFF
+
+//Default version of Eigen used by libigl.
+LIBIGL_EIGEN_VERSION:STRING=3.3.7
+
+//Export libigl CMake targets
+LIBIGL_EXPORT_TARGETS:BOOL=OFF
+
+//Skip downloading external libraries
+LIBIGL_SKIP_DOWNLOAD:BOOL=OFF
+
+//Use libigl as static library
+LIBIGL_USE_STATIC_LIBRARY:BOOL=ON
+
+//Disable Copyleft libraries
+LIBIGL_WITHOUT_COPYLEFT:BOOL=OFF
+
+//Use CGAL
+LIBIGL_WITH_CGAL:BOOL=OFF
+
+//Use CoMiso
+LIBIGL_WITH_COMISO:BOOL=ON
+
+//Use Cork
+LIBIGL_WITH_CORK:BOOL=OFF
+
+//Use Embree
+LIBIGL_WITH_EMBREE:BOOL=ON
+
+//Use Matlab
+LIBIGL_WITH_MATLAB:BOOL=OFF
+
+//Use MOSEK
+LIBIGL_WITH_MOSEK:BOOL=OFF
+
+//Use OpenGL
+LIBIGL_WITH_OPENGL:BOOL=ON
+
+//Use GLFW
+LIBIGL_WITH_OPENGL_GLFW:BOOL=ON
+
+//Use ImGui
+LIBIGL_WITH_OPENGL_GLFW_IMGUI:BOOL=ON
+
+//Use PNG
+LIBIGL_WITH_PNG:BOOL=ON
+
+//Use exact predicates
+LIBIGL_WITH_PREDICATES:BOOL=ON
+
+//Use Python
+LIBIGL_WITH_PYTHON:BOOL=OFF
+
+//Use Tetgen
+LIBIGL_WITH_TETGEN:BOOL=ON
+
+//Use Triangle
+LIBIGL_WITH_TRIANGLE:BOOL=ON
+
+//Use XML
+LIBIGL_WITH_XML:BOOL=ON
 
 //Command to build the project
 MAKECOMMAND:STRING=D:/Program\ Files/JetBrains/CLion\ 2019.2.4/bin/cmake/win/bin/cmake.exe --build . --config "${CTEST_CONFIGURATION_TYPE}"
@@ -566,6 +770,21 @@ assimp:FILEPATH=D:/Code/Ray/cmake-build-debug/library/assimp/assimp.dll
 assimp_DIR:PATH=assimp_DIR-NOTFOUND
 
 //Value Computed by CMake
+embree3_BINARY_DIR:STATIC=D:/Code/Ray/cmake-build-debug/public/libigl/embree
+
+//Value Computed by CMake
+embree3_SOURCE_DIR:STATIC=D:/Code/Ray/public/libigl/external/embree
+
+//Dependencies for the target
+embree_LIB_DEPENDS:STATIC=general;sys;general;math;general;simd;general;lexers;general;tasking;
+
+//Value Computed by CMake
+glad_BINARY_DIR:STATIC=D:/Code/Ray/cmake-build-debug/public/libigl/glad
+
+//Value Computed by CMake
+glad_SOURCE_DIR:STATIC=D:/Code/Ray/public/libigl/external/glad
+
+//Value Computed by CMake
 glm_BINARY_DIR:STATIC=D:/Code/Ray/cmake-build-debug/public/glm
 
 //The directory containing a CMake configuration file for glm.
@@ -574,11 +793,88 @@ glm_DIR:PATH=glm_DIR-NOTFOUND
 //Value Computed by CMake
 glm_SOURCE_DIR:STATIC=D:/Code/Ray/public/glm
 
+//Dependencies for the target
+igl_comiso_LIB_DEPENDS:STATIC=general;igl;general;CoMISo;
+
+//Dependencies for the target
+igl_embree_LIB_DEPENDS:STATIC=general;igl;general;embree;
+
+//Dependencies for the target
+igl_opengl_LIB_DEPENDS:STATIC=general;igl;general;glad;
+
+//Dependencies for the target
+igl_opengl_glfw_LIB_DEPENDS:STATIC=general;igl;general;igl_opengl;general;glfw;
+
+//Dependencies for the target
+igl_opengl_glfw_imgui_LIB_DEPENDS:STATIC=general;igl;general;igl_opengl_glfw;general;imgui;general;imguizmo;
+
+//Dependencies for the target
+igl_png_LIB_DEPENDS:STATIC=general;igl;general;igl_stb_image;general;igl_opengl;
+
+//Dependencies for the target
+igl_predicates_LIB_DEPENDS:STATIC=general;igl;general;predicates;
+
+//Value Computed by CMake
+igl_stb_image_BINARY_DIR:STATIC=D:/Code/Ray/cmake-build-debug/public/libigl/stb_image
+
+//Value Computed by CMake
+igl_stb_image_SOURCE_DIR:STATIC=D:/Code/Ray/public/libigl/external/stb
+
+//Dependencies for the target
+igl_tetgen_LIB_DEPENDS:STATIC=general;igl;general;tetgen;
+
+//Dependencies for the target
+igl_triangle_LIB_DEPENDS:STATIC=general;igl;general;triangle;
+
+//Dependencies for the target
+igl_xml_LIB_DEPENDS:STATIC=general;igl;general;tinyxml2;
+
+//Dependencies for the target
+imgui_LIB_DEPENDS:STATIC=general;glad;general;glfw;
+
+//Dependencies for the target
+imguizmo_LIB_DEPENDS:STATIC=general;imgui;
+
+//Dependencies for the target
+lexers_LIB_DEPENDS:STATIC=general;sys;general;math;
+
+//Value Computed by CMake
+libigl_BINARY_DIR:STATIC=D:/Code/Ray/cmake-build-debug/public/libigl
+
+//The directory containing a CMake configuration file for libigl.
+libigl_DIR:PATH=D:/Code/Ray/public/libigl/build
+
+//Value Computed by CMake
+libigl_SOURCE_DIR:STATIC=D:/Code/Ray/public/libigl
+
+//Value Computed by CMake
+predicates_BINARY_DIR:STATIC=D:/Code/Ray/cmake-build-debug/public/libigl/predicates
+
+//Value Computed by CMake
+predicates_SOURCE_DIR:STATIC=D:/Code/Ray/public/libigl/external/predicates
+
+//Dependencies for the target
+sys_LIB_DEPENDS:STATIC=general;-pthread;
+
+//Value Computed by CMake
+tetgen_BINARY_DIR:STATIC=D:/Code/Ray/cmake-build-debug/public/libigl/tetgen
+
+//Value Computed by CMake
+tetgen_SOURCE_DIR:STATIC=D:/Code/Ray/public/libigl/external/tetgen
+
+//Value Computed by CMake
+triangle_BINARY_DIR:STATIC=D:/Code/Ray/cmake-build-debug/public/libigl/triangle
+
+//Value Computed by CMake
+triangle_SOURCE_DIR:STATIC=D:/Code/Ray/public/libigl/external/triangle
+
 
 ########################
 # INTERNAL cache entries
 ########################
 
+//build documentation (internal only)
+BUILD_DOC:INTERNAL=OFF
 //ADVANCED property for variable: BZRCOMMAND
 BZRCOMMAND-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_ADDR2LINE
@@ -604,7 +900,7 @@ CMAKE_CTEST_COMMAND-ADVANCED:INTERNAL=1
 //Path to ctest program executable.
 CMAKE_CTEST_COMMAND:INTERNAL=D:/Program Files/JetBrains/CLion 2019.2.4/bin/cmake/win/bin/ctest.exe
 //ADVANCED property for variable: CMAKE_CXX_COMPILER
-CMAKE_CXX_COMPILER-ADVANCED:INTERNAL=1
+CMAKE_CXX_COMPILER-ADVANCED:INTERNAL=0
 //ADVANCED property for variable: CMAKE_CXX_COMPILER_AR
 CMAKE_CXX_COMPILER_AR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_CXX_COMPILER_RANLIB
@@ -783,10 +1079,18 @@ CMAKE_STATIC_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 CMAKE_STRIP-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
+//Compiler support for a deprecated attribute
+COMPILER_HAS_DEPRECATED:INTERNAL=1
+//Test COMPILER_HAS_DEPRECATED_ATTR
+COMPILER_HAS_DEPRECATED_ATTR:INTERNAL=1
 //ADVANCED property for variable: COVERAGE_COMMAND
 COVERAGE_COMMAND-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: COVERAGE_EXTRA_FLAGS
 COVERAGE_EXTRA_FLAGS-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CPACK_SOURCE_7Z
+CPACK_SOURCE_7Z-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CPACK_SOURCE_ZIP
+CPACK_SOURCE_ZIP-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CTEST_SUBMIT_RETRY_COUNT
 CTEST_SUBMIT_RETRY_COUNT-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CTEST_SUBMIT_RETRY_DELAY
@@ -797,16 +1101,38 @@ CVSCOMMAND-ADVANCED:INTERNAL=1
 CVS_UPDATE_OPTIONS-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: DART_TESTING_TIMEOUT
 DART_TESTING_TIMEOUT-ADVANCED:INTERNAL=1
+//Default CMake configuration types set.
+DEFAULT_CMAKE_CONFIGURATION_TYPES_SET:INTERNAL=ON
 //Have include dinput.h
 DINPUT_H_FOUND:INTERNAL=
+//ADVANCED property for variable: EMBREE_INSTALL_DEPENDENCIES
+EMBREE_INSTALL_DEPENDENCIES-ADVANCED:INTERNAL=1
+//STRINGS property for variable: EMBREE_MAX_ISA
+EMBREE_MAX_ISA-STRINGS:INTERNAL=NONE;SSE2;SSE4.2;AVX;AVX2;AVX512KNL;AVX512SKX;DEFAULT
+//ADVANCED property for variable: EMBREE_STATIC_LIB
+EMBREE_STATIC_LIB-ADVANCED:INTERNAL=0
+//STRINGS property for variable: EMBREE_TASKING_SYSTEM
+EMBREE_TASKING_SYSTEM-STRINGS:INTERNAL=TBB;INTERNAL;PPL
+//STRINGS property for variable: EMBREE_TESTING_INTENSITY
+EMBREE_TESTING_INTENSITY-STRINGS:INTERNAL=0;1;2;3
+//STRINGS property for variable: EMBREE_TESTING_SDE
+EMBREE_TESTING_SDE-STRINGS:INTERNAL=OFF;pnr;nhm;wsm;snb;ivb;hsw;bdw;knl;skl;skx;cnl
+//ADVANCED property for variable: EMBREE_ZIP_MODE
+EMBREE_ZIP_MODE-ADVANCED:INTERNAL=1
 //Details about finding GLEW
 FIND_PACKAGE_MESSAGE_DETAILS_GLEW:INTERNAL=[D:/Code/Ray/public/glew/include][D:/Code/Ray/public/glew/lib/Release/Win32/glew32.lib][v2.2.0()]
+//Details about finding Git
+FIND_PACKAGE_MESSAGE_DETAILS_Git:INTERNAL=[C:/Program Files/Git/cmd/git.exe][v2.22.0.windows.1()]
 //Details about finding OpenGL
 FIND_PACKAGE_MESSAGE_DETAILS_OpenGL:INTERNAL=[opengl32][c ][v()]
 //Details about finding Threads
 FIND_PACKAGE_MESSAGE_DETAILS_Threads:INTERNAL=[TRUE][v()]
 //ADVANCED property for variable: GITCOMMAND
 GITCOMMAND-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: GIT_EXECUTABLE
+GIT_EXECUTABLE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: GLEW_INCLUDE_DIR
+GLEW_INCLUDE_DIR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: GLEW_SHARED_LIBRARY_DEBUG
 GLEW_SHARED_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: GLEW_SHARED_LIBRARY_RELEASE
@@ -817,6 +1143,8 @@ GLEW_STATIC_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
 GLEW_STATIC_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: HGCOMMAND
 HGCOMMAND-ADVANCED:INTERNAL=1
+//Result of TRY_COMPILE
+ISA_DEFAULT_COMPILE:INTERNAL=TRUE
 //ADVANCED property for variable: MAKECOMMAND
 MAKECOMMAND-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: MEMORYCHECK_COMMAND

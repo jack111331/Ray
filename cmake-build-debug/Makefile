@@ -55,17 +55,27 @@ CMAKE_BINARY_DIR = D:\Code\Ray\cmake-build-debug
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target install/local
-install/local: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	"D:\Program Files\JetBrains\CLion 2019.2.4\bin\cmake\win\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local
+# Special rule for the target package
+package: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool..."
+	"D:\Program Files\JetBrains\CLion 2019.2.4\bin\cmake\win\bin\cpack.exe" --config ./CPackConfig.cmake
+.PHONY : package
 
-# Special rule for the target install/local
-install/local/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	"D:\Program Files\JetBrains\CLion 2019.2.4\bin\cmake\win\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local/fast
+# Special rule for the target package
+package/fast: package
+
+.PHONY : package/fast
+
+# Special rule for the target package_source
+package_source:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool for source..."
+	"D:\Program Files\JetBrains\CLion 2019.2.4\bin\cmake\win\bin\cpack.exe" --config ./CPackSourceConfig.cmake D:/Code/Ray/cmake-build-debug/CPackSourceConfig.cmake
+.PHONY : package_source
+
+# Special rule for the target package_source
+package_source/fast: package_source
+
+.PHONY : package_source/fast
 
 # Special rule for the target install
 install: preinstall
@@ -78,6 +88,18 @@ install/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
 	"D:\Program Files\JetBrains\CLion 2019.2.4\bin\cmake\win\bin\cmake.exe" -P cmake_install.cmake
 .PHONY : install/fast
+
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	"D:\Program Files\JetBrains\CLion 2019.2.4\bin\cmake\win\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
+
+# Special rule for the target install/local
+install/local/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	"D:\Program Files\JetBrains\CLion 2019.2.4\bin\cmake\win\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local/fast
 
 # Special rule for the target edit_cache
 edit_cache:
@@ -1299,6 +1321,33 @@ src/Sphere.cpp.s:
 	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/Sphere.cpp.s
 .PHONY : src/Sphere.cpp.s
 
+src/SuggestedContourPipeline.obj: src/SuggestedContourPipeline.cpp.obj
+
+.PHONY : src/SuggestedContourPipeline.obj
+
+# target to build an object file
+src/SuggestedContourPipeline.cpp.obj:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/SuggestedContourPipeline.cpp.obj
+.PHONY : src/SuggestedContourPipeline.cpp.obj
+
+src/SuggestedContourPipeline.i: src/SuggestedContourPipeline.cpp.i
+
+.PHONY : src/SuggestedContourPipeline.i
+
+# target to preprocess a source file
+src/SuggestedContourPipeline.cpp.i:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/SuggestedContourPipeline.cpp.i
+.PHONY : src/SuggestedContourPipeline.cpp.i
+
+src/SuggestedContourPipeline.s: src/SuggestedContourPipeline.cpp.s
+
+.PHONY : src/SuggestedContourPipeline.s
+
+# target to generate assembly for a file
+src/SuggestedContourPipeline.cpp.s:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/SuggestedContourPipeline.cpp.s
+.PHONY : src/SuggestedContourPipeline.cpp.s
+
 src/Texture.obj: src/Texture.cpp.obj
 
 .PHONY : src/Texture.obj
@@ -1468,8 +1517,10 @@ help:
 	@echo ... clean
 	@echo ... depend
 	@echo ... Ray
-	@echo ... install/local
+	@echo ... package
+	@echo ... package_source
 	@echo ... install
+	@echo ... install/local
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... list_install_components
@@ -1584,6 +1635,9 @@ help:
 	@echo ... src/Sphere.obj
 	@echo ... src/Sphere.i
 	@echo ... src/Sphere.s
+	@echo ... src/SuggestedContourPipeline.obj
+	@echo ... src/SuggestedContourPipeline.i
+	@echo ... src/SuggestedContourPipeline.s
 	@echo ... src/Texture.obj
 	@echo ... src/Texture.i
 	@echo ... src/Texture.s
