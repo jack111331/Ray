@@ -20,7 +20,7 @@ void Octree::insert(OctreeNode *node, const Hittable *object, const Coord &bound
     } else {
         // compute centroid and determine which child this extent should go
         const ObjectBoundingBox &objectBoundingBox = object->getBoundingBox();
-        Coord boundingBoxCentroid = (objectBoundingBox.m_bounding[0] + objectBoundingBox.m_bounding[1]) / 2.0;
+        Coord boundingBoxCentroid = (objectBoundingBox.m_bounding[0] + objectBoundingBox.m_bounding[1]) * 0.5f;
         Coord nodeCentroid = (boundMin + boundMax) * 0.5f;
         uint32_t childIndex = 0;
         if (boundingBoxCentroid.x > nodeCentroid.x) childIndex += 4;
@@ -51,7 +51,7 @@ void Octree::build(OctreeNode *node, const Coord &boundMin, const Coord &boundMa
             node->m_nodeBoundingBox.updateBoundingBox(object->getBoundingBox());
         }
     } else {
-        for (int i = 0; i < 8; ++i) {
+        for (uint32_t i = 0; i < 8; ++i) {
             if (node->m_child[i]) {
                 Coord nodeCentroid = (boundMin + boundMax) * 0.5f;
                 Coord childBoundMin, childBoundMax;

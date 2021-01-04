@@ -12,6 +12,8 @@ public:
 
     Shader(const char *vertexShaderSource, const char *fragmentShaderSource);
 
+    Shader(const char *vertexShaderSource, const char *geometryShaderSource, const char *fragmentShaderSource);
+
     explicit Shader(const char *computeShaderSource);
 
     Shader() = default;

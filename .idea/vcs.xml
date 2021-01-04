@@ -7,7 +7,20 @@
     <mapping directory="$PROJECT_DIR$/public/glfw" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/public/glm" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/public/libigl" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/public/libigl/external/CoMISo" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/public/libigl/external/catch2" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/public/libigl/external/eigen" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/public/libigl/external/embree" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/public/libigl/external/glad" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/public/libigl/external/glfw" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/public/libigl/external/imgui" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/public/libigl/external/imguizmo" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/public/libigl/external/libigl-imgui" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/public/libigl/external/predicates" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/public/libigl/external/stb" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/public/libigl/external/tetgen" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/public/libigl/external/tinyxml2" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/public/libigl/external/triangle" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/public/libigl/tests/data" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/public/libigl/tutorial/data" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/public/yaml-cpp" vcs="Git" />

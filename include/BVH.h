@@ -15,7 +15,7 @@ struct OctreeNode {
     bool m_isLeaf = true;
 
     ~OctreeNode() {
-        for (int i = 0; i < 8; ++i) {
+        for (uint32_t i = 0; i < 8; ++i) {
             if (m_child[i]) {
                 delete m_child[i];
             }
@@ -26,14 +26,12 @@ struct OctreeNode {
 class Octree {
 public:
     Octree(const ObjectBoundingBox &boundingBox) {
-        // constructor compute bound by first computing centroid and then add dimension to form bound
         Velocity diff = boundingBox.m_bounding[1] - boundingBox.m_bounding[0];
-        float dim = std::max(diff.x, std::max(diff.y, diff.z)) / 2;
-        // technically, this is not true centroid, just use this for computational efficiency
-        Coord centroid = (boundingBox.m_bounding[1] + boundingBox.m_bounding[0]) / 2.0f;
+        float dim = std::max(diff.x, std::max(diff.y, diff.z));
+        Coord centroid = (boundingBox.m_bounding[1] + boundingBox.m_bounding[0]);
         Velocity radius = {dim, dim, dim};
-        m_bound[0] = (centroid - radius);
-        m_bound[1] = (centroid + radius);
+        m_bound[0] = (centroid - radius) * 0.5f;
+        m_bound[1] = (centroid + radius) * 0.5f;
         m_root = new OctreeNode;
     }
 

@@ -673,6 +673,33 @@ src/AmbientOcclusion.cpp.s:
 	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/AmbientOcclusion.cpp.s
 .PHONY : src/AmbientOcclusion.cpp.s
 
+src/AmbientOcclusionVolumeShadingPipeline.obj: src/AmbientOcclusionVolumeShadingPipeline.cpp.obj
+
+.PHONY : src/AmbientOcclusionVolumeShadingPipeline.obj
+
+# target to build an object file
+src/AmbientOcclusionVolumeShadingPipeline.cpp.obj:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/AmbientOcclusionVolumeShadingPipeline.cpp.obj
+.PHONY : src/AmbientOcclusionVolumeShadingPipeline.cpp.obj
+
+src/AmbientOcclusionVolumeShadingPipeline.i: src/AmbientOcclusionVolumeShadingPipeline.cpp.i
+
+.PHONY : src/AmbientOcclusionVolumeShadingPipeline.i
+
+# target to preprocess a source file
+src/AmbientOcclusionVolumeShadingPipeline.cpp.i:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/AmbientOcclusionVolumeShadingPipeline.cpp.i
+.PHONY : src/AmbientOcclusionVolumeShadingPipeline.cpp.i
+
+src/AmbientOcclusionVolumeShadingPipeline.s: src/AmbientOcclusionVolumeShadingPipeline.cpp.s
+
+.PHONY : src/AmbientOcclusionVolumeShadingPipeline.s
+
+# target to generate assembly for a file
+src/AmbientOcclusionVolumeShadingPipeline.cpp.s:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/AmbientOcclusionVolumeShadingPipeline.cpp.s
+.PHONY : src/AmbientOcclusionVolumeShadingPipeline.cpp.s
+
 src/AreaLight.obj: src/AreaLight.cpp.obj
 
 .PHONY : src/AreaLight.obj
@@ -1563,6 +1590,9 @@ help:
 	@echo ... src/AmbientOcclusion.obj
 	@echo ... src/AmbientOcclusion.i
 	@echo ... src/AmbientOcclusion.s
+	@echo ... src/AmbientOcclusionVolumeShadingPipeline.obj
+	@echo ... src/AmbientOcclusionVolumeShadingPipeline.i
+	@echo ... src/AmbientOcclusionVolumeShadingPipeline.s
 	@echo ... src/AreaLight.obj
 	@echo ... src/AreaLight.i
 	@echo ... src/AreaLight.s

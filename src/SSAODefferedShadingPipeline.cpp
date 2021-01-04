@@ -388,7 +388,6 @@ void SSAODefferedShadingPass::renderPass(const std::vector<ShadeObject *> &shadi
         glBindTexture(GL_TEXTURE_2D, m_inputFrameTextureId[3]);
 
 
-        // FIXME bad value
         m_shader->uniformBlockBind("Lights", (int) SSAODefferedShadingUBOInput::LIGHT);
         glBindBufferBase(GL_UNIFORM_BUFFER, (int) SSAODefferedShadingUBOInput::LIGHT, setting->m_lightUBO);
 

@@ -40,7 +40,7 @@ public:
         }
     }
 
-    bool isHit(const Ray &ray);
+    bool isHit(const Ray &ray, float &tNear, float &tFar);
 
     Coord m_bounding[2];
 };

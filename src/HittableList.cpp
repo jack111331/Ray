@@ -6,7 +6,7 @@
 
 using namespace std;
 
-bool ObjectBoundingBox::isHit(const Ray &ray) {
+bool ObjectBoundingBox::isHit(const Ray &ray, float &tNear, float &tFar) {
     float tMin = (m_bounding[0].x - ray.origin.x) / ray.velocity.x;
     float tMax = (m_bounding[1].x - ray.origin.x) / ray.velocity.x;
 
@@ -34,6 +34,15 @@ bool ObjectBoundingBox::isHit(const Ray &ray) {
 
     if ((tMin > tzMax) || (tzMin > tMax))
         return false;
+
+    if (tzMin > tMin)
+        tMin = tzMin;
+
+    if (tzMax < tMax)
+        tMax = tzMax;
+
+    tNear = std::min(tNear, tMin);
+    tFar = std::max(tFar, tMax);
 
     return true;
 }

@@ -39,6 +39,8 @@ public:
 
     void setupOcclusionSampleAmount(float occlusionSampleAmount) { m_occlusionSampleAmount = occlusionSampleAmount; }
 
+    std::vector<Velocity> m_testDirectionList;
+
 private:
     int m_maxDepth;
     float m_occlusionRadius;

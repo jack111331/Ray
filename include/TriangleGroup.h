@@ -33,7 +33,7 @@ public:
 
     static std::vector<Hittable *> fromObj(const YAML::Node &node, const Scene *scene);
 
-    bool fromObj(const objl::Mesh &mesh, const Scene *scene);
+    bool fromObj(const objl::Mesh &mesh, const Scene *scene, const std::string &materialName = "");
 
     bool readObjectInfo(const YAML::Node &node, const Scene *scene);
 
@@ -51,6 +51,7 @@ public:
     bool m_individualTriangle;
 
     BVH *m_accel;
+    std::string m_objFilename;
 };
 
 

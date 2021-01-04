@@ -23,8 +23,14 @@ include_directories("public/glm")
 
 add_subdirectory(public/yaml-cpp)
 include_directories("public/yaml-cpp/include")
-set(CMAKE_PREFIX_PATH ${CMAKE_PREFIX_PATH} "public/libigl")
-find_package(libigl REQUIRED)
+
+#set(CMAKE_PREFIX_PATH ${CMAKE_PREFIX_PATH} "public/libigl")
+#option(LIBIGL_USE_STATIC_LIBRARY     "Use libigl as static library" OFF)
+#option(LIBIGL_WITH_OPENGL            "Use OpenGL"                   OFF)
+#option(LIBIGL_WITH_OPENGL_GLFW       "Use GLFW"                     OFF)
+#find_package(libigl REQUIRED)
+#include_directories("public/libigl/include")
+#include_directories("public/libigl/external/eigen")
 
 #set(CMAKE_MODULE_PATH {CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/modules")
 #message("${CMAKE_MODULE_PATH}")
@@ -43,6 +49,7 @@ find_package(libigl REQUIRED)
 #add_subdirectory(library/assimp-5.0.1)
 
 include_directories("./include")
+include_directories("./include/TriMesh")
 
 # TODO install dependency to dir
 
@@ -83,9 +90,11 @@ list(APPEND SOURCE_LIST
         src/SSAODefferedShadingPipeline.cpp
         src/AmbientOcclusion.cpp
         src/SuggestedContourPipeline.cpp
+        src/AmbientOcclusionVolumeShadingPipeline.cpp
         )
 list(APPEND HEADER_LIST
         include/AmbientOcclusion.h
+        include/AmbientOcclusionVolumeShadingPipeline.h
         include/AreaLight.h
         include/BVH.h
         include/Camera.h
@@ -121,5 +130,7 @@ list(APPEND HEADER_LIST
         include/stb_image.h
         )
 
+
+#link_directories("${CMAKE_SOURCE_DIR}/lib")
 add_executable(Ray src/main.cpp ${HEADER_LIST} ${SOURCE_LIST})
-target_link_libraries(Ray GLEW::GLEW glfw OpenGL::GL yaml-cpp libigl)
+target_link_libraries(Ray GLEW::GLEW glfw OpenGL::GL yaml-cpp ${CMAKE_SOURCE_DIR}/lib/libtrimesh.a)

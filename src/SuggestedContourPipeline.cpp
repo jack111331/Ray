@@ -11,72 +11,22 @@
 #include "HittableList.h"
 #include "SuggestedContourPipeline.h"
 
-SuggestedContourGBufferPass::SuggestedContourGBufferPass(PassSetting *passSetting) : Pass(passSetting), m_outputFrameTextureId{0},
+SuggestedContourShadingPass::SuggestedContourShadingPass(PassSetting *passSetting) : Pass(passSetting), m_outputFrameTextureId{0},
                                                                      m_outputFrameDepthStencilBufferId(0) {
-    m_shader = new Shader("resource/shader/suggested_contour_gbuffer.vs", "resource/shader/suggested_contour_gbuffer.fs");
+    m_shader = new Shader("resource/shader/suggested_contour.vs", "resource/shader/suggested_contour.fs");
     m_shader->buildShader();
 
     glGenFramebuffers(1, &m_outputFrameBufferId);
     glBindFramebuffer(GL_FRAMEBUFFER, m_outputFrameBufferId);
 
-    glGenTextures(7, m_outputFrameTextureId);
-    glBindTexture(GL_TEXTURE_2D, m_outputFrameTextureId[0]);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB16F, m_passSetting->m_camera->m_width, m_passSetting->m_camera->m_height,
-                 0,
-                 GL_RGB, GL_FLOAT, nullptr);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, m_outputFrameTextureId[0], 0);
-
-    glBindTexture(GL_TEXTURE_2D, m_outputFrameTextureId[1]);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB16F, m_passSetting->m_camera->m_width, m_passSetting->m_camera->m_height,
-                 0,
-                 GL_RGB, GL_FLOAT, nullptr);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0 + 1, GL_TEXTURE_2D, m_outputFrameTextureId[1], 0);
-
-    glBindTexture(GL_TEXTURE_2D, m_outputFrameTextureId[2]);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB16F, m_passSetting->m_camera->m_width, m_passSetting->m_camera->m_height,
-                 0,
-                 GL_RGB, GL_FLOAT, nullptr);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0 + 2, GL_TEXTURE_2D, m_outputFrameTextureId[2], 0);
-
-    glBindTexture(GL_TEXTURE_2D, m_outputFrameTextureId[3]);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB16F, m_passSetting->m_camera->m_width, m_passSetting->m_camera->m_height,
-                 0,
-                 GL_RGB, GL_FLOAT, nullptr);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0 + 3, GL_TEXTURE_2D, m_outputFrameTextureId[3], 0);
-
-    glBindTexture(GL_TEXTURE_2D, m_outputFrameTextureId[4]);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RED, m_passSetting->m_camera->m_width, m_passSetting->m_camera->m_height,
-                 0,
-                 GL_RGB, GL_FLOAT, nullptr);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0 + 4, GL_TEXTURE_2D, m_outputFrameTextureId[2], 0);
-
-    glBindTexture(GL_TEXTURE_2D, m_outputFrameTextureId[5]);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RED, m_passSetting->m_camera->m_width, m_passSetting->m_camera->m_height,
-                 0,
-                 GL_RGB, GL_FLOAT, nullptr);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0 + 5, GL_TEXTURE_2D, m_outputFrameTextureId[3], 0);
-
-    glBindTexture(GL_TEXTURE_2D, m_outputFrameTextureId[6]);
-    // FIXME GL_FLOAT
+    glGenTextures(1, &m_outputFrameTextureId);
+    glBindTexture(GL_TEXTURE_2D, m_outputFrameTextureId);
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, m_passSetting->m_camera->m_width, m_passSetting->m_camera->m_height,
                  0,
-                 GL_RGBA, GL_FLOAT, nullptr);
+                 GL_RGBA, GL_UNSIGNED_BYTE, nullptr);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0 + 6, GL_TEXTURE_2D, m_outputFrameTextureId[4], 0);
-
+    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, m_outputFrameTextureId, 0);
 
     glGenRenderbuffers(1, &m_outputFrameDepthStencilBufferId);
     glBindRenderbuffer(GL_RENDERBUFFER, m_outputFrameDepthStencilBufferId);
@@ -86,24 +36,23 @@ SuggestedContourGBufferPass::SuggestedContourGBufferPass(PassSetting *passSettin
                               m_outputFrameDepthStencilBufferId);
 
     if (glCheckFramebufferStatus(GL_FRAMEBUFFER) == GL_FRAMEBUFFER_COMPLETE) {
-        std::cout << "Suggested contour g-buffer pass frame buffer object successful setup" << std::endl;
+        std::cout << "Suggested contour pass frame buffer object successful setup" << std::endl;
     } else {
-        std::cout << "Suggested contour g-buffer pass frame buffer object failed setup" << std::endl;
+        std::cout << "Suggested contour pass frame buffer object failed setup" << std::endl;
         exit(1);
     }
 
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
 }
 
-void SuggestedContourGBufferPass::renderPass(const std::vector<ShadeObject *> &shadingList) {
+void SuggestedContourShadingPass::renderPass(const std::vector<ShadeObject *> &shadingList) {
     Pass::renderPass(shadingList);
 
     SuggestedContourShadingSetting *setting = (SuggestedContourShadingSetting *) m_passSetting;
 
     glBindFramebuffer(GL_FRAMEBUFFER, m_outputFrameBufferId);
 
-    GLuint attachments[7] = { GL_COLOR_ATTACHMENT0, GL_COLOR_ATTACHMENT1, GL_COLOR_ATTACHMENT2, GL_COLOR_ATTACHMENT3, GL_COLOR_ATTACHMENT4, GL_COLOR_ATTACHMENT5, GL_COLOR_ATTACHMENT6 };
-    glDrawBuffers(7, attachments);
+    glDrawBuffer(GL_COLOR_ATTACHMENT0);
 
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -114,86 +63,31 @@ void SuggestedContourGBufferPass::renderPass(const std::vector<ShadeObject *> &s
     if (setting) {
         int renderCount = 0;
         for (auto object: shadingList) {
-            if (object->m_material->getType() == Material::MaterialType::LAMBERTIAN) {
-                // object binding
-                glBindVertexArray(object->m_objectInfo.m_vao);
+            // object binding
+            glBindVertexArray(object->m_objectInfo.m_vao);
 
-                m_shader->uniformMat4f("projection", setting->m_projectionMatrix);
-                m_shader->uniformMat4f("view", setting->m_viewMatrix);
+            m_shader->uniformMat4f("projection", setting->m_projectionMatrix);
+            m_shader->uniformMat4f("view", setting->m_viewMatrix);
 
-                // world transformation
-                // TODO Bundle model matrix
-                glm::mat4 model = glm::mat4(1.0f);
-                m_shader->uniformMat4f("model", model);
+            // world transformation
+            // TODO Bundle model matrix
+            glm::mat4 model = glm::mat4(1.0f);
+            m_shader->uniformMat4f("model", model);
 
-                const LambertianMaterial *material = (LambertianMaterial *) object->m_material;
-                m_shader->uniform3f("objectColor", material->m_diffuseColor.r, material->m_diffuseColor.g,
-                                    material->m_diffuseColor.b);
+            const Coord &eyeCoord = setting->m_camera->m_eyeCoord;
+            m_shader->uniform3f("viewPos", eyeCoord.x, eyeCoord.y, eyeCoord.z);
 
-                // draw call
-                glDrawElements(GL_TRIANGLES, object->m_objectInfo.m_indicesAmount, GL_UNSIGNED_INT, 0);
-                renderCount++;
-            }
+            m_shader->uniform1f("fz", 0.0764);
+            m_shader->uniform1f("c_limit", 1);
+            m_shader->uniform1f("sc_limit", 1);
+            m_shader->uniform1f("dwkr_limit", 0.05);
+
+            // draw call
+            glDrawElements(GL_TRIANGLES, object->m_objectInfo.m_indicesAmount, GL_UNSIGNED_INT, 0);
+            renderCount++;
         }
     }
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
-}
-
-SuggestedContourShadingPass::SuggestedContourShadingPass(PassSetting *passSetting) : Pass(passSetting), m_outputFrameTextureId(0),
-                                                                     m_outputFrameDepthStencilBufferId(0) {
-    m_shader = new Shader("resource/shader/suggested_contour_shading.vs", "resource/shader/suggested_contour_shading.fs");
-    m_shader->buildShader();
-
-    SuggestedContourShadingSetting *defferedShadingPassSetting = (SuggestedContourShadingSetting *) passSetting;
-
-    glGenFramebuffers(1, &m_outputFrameBufferId);
-    glBindFramebuffer(GL_FRAMEBUFFER, m_outputFrameBufferId);
-
-    glGenTextures(1, &m_outputFrameTextureId);
-    glBindTexture(GL_TEXTURE_2D, m_outputFrameTextureId);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, defferedShadingPassSetting->m_camera->m_width, defferedShadingPassSetting->m_camera->m_height,
-                 0,
-                 GL_RGBA, GL_UNSIGNED_BYTE, nullptr);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, m_outputFrameTextureId, 0);
-
-    glGenRenderbuffers(1, &m_outputFrameDepthStencilBufferId);
-    glBindRenderbuffer(GL_RENDERBUFFER, m_outputFrameDepthStencilBufferId);
-    glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, defferedShadingPassSetting->m_camera->m_width,
-                          defferedShadingPassSetting->m_camera->m_height);
-    glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER,
-                              m_outputFrameDepthStencilBufferId);
-
-    if (glCheckFramebufferStatus(GL_FRAMEBUFFER) == GL_FRAMEBUFFER_COMPLETE) {
-        std::cout << "Suggested contour shading pass frame buffer object successful setup" << std::endl;
-    } else {
-        std::cout << "Suggested contour shading pass frame buffer object failed setup" << std::endl;
-        exit(1);
-    }
-
-    glBindFramebuffer(GL_FRAMEBUFFER, 0);
-
-    float quadVertices[] = {
-            // Positions        // Texture Coords
-            -1.0f, 1.0f, 0.0f, 0.0f, 1.0f,
-            -1.0f, -1.0f, 0.0f, 0.0f, 0.0f,
-            1.0f, 1.0f, 0.0f, 1.0f, 1.0f,
-            1.0f, -1.0f, 0.0f, 1.0f, 0.0f,
-    };
-
-    // Setup plane VAO
-    glGenVertexArrays(1, &m_quadVao);
-    uint32_t quadVbo;
-    glGenBuffers(1, &quadVbo);
-    glBindVertexArray(m_quadVao);
-    glBindBuffer(GL_ARRAY_BUFFER, quadVbo);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(quadVertices), quadVertices, GL_STATIC_DRAW);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), nullptr);
-    glEnableVertexAttribArray(0);
-    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void *)(3 * sizeof(float)));
-    glEnableVertexAttribArray(1);
-    glBindVertexArray(0);
 }
 
 void SuggestedContourShadingPipeline::setupPipeline() {
@@ -215,16 +109,8 @@ void SuggestedContourShadingPipeline::setupPipeline() {
     shadingSetting->m_lightList = m_scene->m_lightList;
     shadingSetting->m_lightUBO = RayUtil::generateLightUBO(shadingSetting->m_lightList);
 
-    SuggestedContourGBufferPass *gBufferPass = new SuggestedContourGBufferPass(shadingSetting);
+
     m_shadingPass = new SuggestedContourShadingPass(shadingSetting);
-    m_shadingPass->specifyInput((size_t)SuggestedContourShadingPass::SuggestedContourShadingInput::POSITION, gBufferPass->getOutputFrameTexture((size_t)SuggestedContourGBufferPass::SuggestedContourGBufferOutput::POSITION));
-    m_shadingPass->specifyInput((size_t)SuggestedContourShadingPass::SuggestedContourShadingInput::NORMAL, gBufferPass->getOutputFrameTexture((size_t)SuggestedContourGBufferPass::SuggestedContourGBufferOutput::NORMAL));
-    m_shadingPass->specifyInput((size_t)SuggestedContourShadingPass::SuggestedContourShadingInput::PDIR1, gBufferPass->getOutputFrameTexture((size_t)SuggestedContourGBufferPass::SuggestedContourGBufferOutput::PDIR1));
-    m_shadingPass->specifyInput((size_t)SuggestedContourShadingPass::SuggestedContourShadingInput::PDIR2, gBufferPass->getOutputFrameTexture((size_t)SuggestedContourGBufferPass::SuggestedContourGBufferOutput::PDIR2));
-    m_shadingPass->specifyInput((size_t)SuggestedContourShadingPass::SuggestedContourShadingInput::CURV1, gBufferPass->getOutputFrameTexture((size_t)SuggestedContourGBufferPass::SuggestedContourGBufferOutput::CURV1));
-    m_shadingPass->specifyInput((size_t)SuggestedContourShadingPass::SuggestedContourShadingInput::CURV2, gBufferPass->getOutputFrameTexture((size_t)SuggestedContourGBufferPass::SuggestedContourGBufferOutput::CURV2));
-    m_shadingPass->specifyInput((size_t)SuggestedContourShadingPass::SuggestedContourShadingInput::DCURV, gBufferPass->getOutputFrameTexture((size_t)SuggestedContourGBufferPass::SuggestedContourGBufferOutput::DCURV));
-    m_shadingPass->addRequirePass(gBufferPass);
 
     auto hittableList = m_scene->m_hittableList->m_hittableList;
     for (auto hittable : hittableList) {
@@ -233,62 +119,9 @@ void SuggestedContourShadingPipeline::setupPipeline() {
     }
 }
 
-
-void SuggestedContourShadingPass::renderPass(const std::vector<ShadeObject *> &shadingList) {
-    Pass::renderPass(shadingList);
-
-    SuggestedContourShadingSetting *setting = (SuggestedContourShadingSetting *) m_passSetting;
-
-    glBindFramebuffer(GL_FRAMEBUFFER, m_outputFrameBufferId);
-    glDrawBuffer(GL_COLOR_ATTACHMENT0);
-
-    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-    // shader binding
-    m_shader->bind();
-
-    if (setting) {
-        // object binding
-        glBindVertexArray(m_quadVao);
-
-        // uniform
-        m_shader->uniform1i("gPosition", 0);
-        m_shader->uniform1i("gNormal", 1);
-        m_shader->uniform1i("gPDir1", 2);
-        m_shader->uniform1i("gPDir2", 3);
-        m_shader->uniform1i("gCurv1", 4);
-        m_shader->uniform1i("gCurv2", 5);
-        m_shader->uniform1i("gDerivCurv", 6);
-        glActiveTexture(GL_TEXTURE0);
-        glBindTexture(GL_TEXTURE_2D, m_inputFrameTextureId[0]);
-        glActiveTexture(GL_TEXTURE0 + 1);
-        glBindTexture(GL_TEXTURE_2D, m_inputFrameTextureId[1]);
-        glActiveTexture(GL_TEXTURE0 + 2);
-        glBindTexture(GL_TEXTURE_2D, m_inputFrameTextureId[2]);
-        glActiveTexture(GL_TEXTURE0 + 3);
-        glBindTexture(GL_TEXTURE_2D, m_inputFrameTextureId[3]);
-        glActiveTexture(GL_TEXTURE0 + 4);
-        glBindTexture(GL_TEXTURE_2D, m_inputFrameTextureId[4]);
-        glActiveTexture(GL_TEXTURE0 + 5);
-        glBindTexture(GL_TEXTURE_2D, m_inputFrameTextureId[5]);
-        glActiveTexture(GL_TEXTURE0 + 6);
-        glBindTexture(GL_TEXTURE_2D, m_inputFrameTextureId[6]);
-
-        const Coord &eyeCoord = setting->m_camera->m_eyeCoord;
-        m_shader->uniform3f("viewPos", eyeCoord.x, eyeCoord.y, eyeCoord.z);
-
-        // draw call
-        glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
-
-    }
-    glBindFramebuffer(GL_FRAMEBUFFER, 0);
-}
-
 void SuggestedContourShadingPipeline::renderAllPass() {
     m_shadingPass->renderPass(m_objectList);
     blitFrameBuffer();
-
 }
 
 void SuggestedContourShadingPipeline::blitFrameBuffer() {

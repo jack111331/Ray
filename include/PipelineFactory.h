@@ -14,6 +14,7 @@
 #include "SSAODefferedShadingPipeline.h"
 #include "AmbientOcclusion.h"
 #include "SuggestedContourPipeline.h"
+#include "AmbientOcclusionVolumeShadingPipeline.h"
 
 class PipelineFactory {
 public:
@@ -37,6 +38,8 @@ public:
                 return new SSAODefferedShadingPipeline();
             } else if(pipelineName == "suggested-contour") {
                 return new SuggestedContourShadingPipeline();
+            } else if(pipelineName == "ambient-occlusion-volume") {
+                return new AmbientOcclusionVolumeShadingPipeline();
             }
         }
         return nullptr;

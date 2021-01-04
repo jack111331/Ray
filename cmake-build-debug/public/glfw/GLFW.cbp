@@ -5,7 +5,7 @@
 		<Option title="GLFW"/>
 		<Option makefile_is_custom="1"/>
 		<Option compiler="gcc"/>
-		<Option virtualFolders="CMake Files\;CMake Files\public\;CMake Files\public\glfw\;CMake Files\public\glfw\CMake\;CMake Files\public\glfw\src\;CMake Files\public\libigl\;CMake Files\public\libigl\build\;CMake Files\public\yaml-cpp\;CMake Files\public\yaml-cpp\util\;"/>
+		<Option virtualFolders="CMake Files\;CMake Files\public\;CMake Files\public\glfw\;CMake Files\public\glfw\CMake\;CMake Files\public\glfw\src\;CMake Files\public\yaml-cpp\;CMake Files\public\yaml-cpp\util\;"/>
 		<Build>
 			<Target title="all">
 				<Option working_dir="D:/Code/Ray/cmake-build-debug/public/glfw"/>
@@ -187,12 +187,6 @@
 		</Unit>
 		<Unit filename="D:/Code/Ray/public/glfw/src/glfw_config.h.in">
 			<Option virtualFolder="CMake Files\public\glfw\src\"/>
-		</Unit>
-		<Unit filename="D:/Code/Ray/public/libigl/build/libigl-config.cmake">
-			<Option virtualFolder="CMake Files\public\libigl\build\"/>
-		</Unit>
-		<Unit filename="D:/Code/Ray/public/libigl/build/libigl-export.cmake">
-			<Option virtualFolder="CMake Files\public\libigl\build\"/>
 		</Unit>
 		<Unit filename="D:/Code/Ray/public/yaml-cpp/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\public\yaml-cpp\"/>

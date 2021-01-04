@@ -226,7 +226,6 @@ void DefferedShadingPass::renderPass(const std::vector<ShadeObject *> &shadingLi
         glBindTexture(GL_TEXTURE_2D, m_inputFrameTextureId[2]);
 
 
-        // FIXME bad value
         m_shader->uniformBlockBind("Lights", (int) DefferedShadingUBOInput::LIGHT);
         glBindBufferBase(GL_UNIFORM_BUFFER, (int) DefferedShadingUBOInput::LIGHT, setting->m_lightUBO);
 

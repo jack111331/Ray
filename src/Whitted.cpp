@@ -31,7 +31,7 @@ Color WhittedModel::castRay(const Scene *scene, Ray &ray, int depth, bool debugF
         LightRecord lightRecord;
         for (auto light: scene->m_lightList) {
             HitRecord testRecord;
-            Velocity lightDirection = record.point - light->m_origin;
+            Velocity lightDirection = light->m_origin - record.point;
             Ray testRay = {record.point, lightDirection};
             bool isHit = scene->m_hittableList->isHit(testRay, testRecord);
             lightRecord.addShadedLight(

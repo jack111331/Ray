@@ -12,6 +12,13 @@ Shader::Shader(const char *vertexShaderSource, const char *fragmentShaderSource)
     m_isCompiled = false;
 }
 
+Shader::Shader(const char *vertexShaderSource, const char *geometryShaderSource, const char *fragmentShaderSource) {
+    addShader(GL_VERTEX_SHADER, vertexShaderSource);
+    addShader(GL_GEOMETRY_SHADER, geometryShaderSource);
+    addShader(GL_FRAGMENT_SHADER, fragmentShaderSource);
+    m_isCompiled = false;
+}
+
 Shader::Shader(const char *computeShaderSource) {
     addShader(GL_COMPUTE_SHADER, computeShaderSource);
     m_isCompiled = false;

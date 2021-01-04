@@ -110,20 +110,22 @@ void RayTracingPipeline::generateImage() {
             1 / (float) (m_camera->m_height - 1) * 2.0 * heightFactor * m_camera->m_up.normalize();
     for (int i = 0; i < m_camera->m_height; ++i) {
         for (int j = 0; j < m_camera->m_width; ++j) {
+            bool debugFlag = false;
             Coord currentRayOnScreen = leftUpper - (float) j * unitHorizontalScreen - (float) i * unitVerticalScreen;
             Ray ray = {
                     m_camera->m_eyeCoord,
                     currentRayOnScreen - m_camera->m_eyeCoord
             };
-            m_camera->m_screen[i][j] = traceRay(ray);
+            m_camera->m_screen[i][j] = traceRay(ray, debugFlag);
             for(int k = 0;k < m_jitterSampleAmount;++k) {
                 Ray perturbatedRay = {ray.origin,
                                       ray.velocity + Util::randomInUnit() * unitHorizontalScreen +
                                       Util::randomInUnit() * unitVerticalScreen};
-                m_camera->m_screen[i][j] += traceRay(perturbatedRay);
+                m_camera->m_screen[i][j] += traceRay(perturbatedRay, debugFlag);
             }
             m_camera->m_screen[i][j] /= (float)(1 + m_jitterSampleAmount);
         }
+        std::cout << i << std::endl;
     }
 }
 

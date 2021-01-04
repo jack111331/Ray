@@ -8,7 +8,6 @@
 
 namespace RayUtil {
     uint32_t generateLightUBO(const std::vector<Light *> &lightList) {
-        // FIXME
         std::vector<LightAttribute> lightAttributeList;
         for (auto light: lightList) {
             lightAttributeList.push_back({{light->m_origin.x,    light->m_origin.y,    light->m_origin.z,    1},

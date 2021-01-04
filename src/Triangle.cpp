@@ -13,26 +13,30 @@ bool Triangle::isHit(const Ray &ray, HitRecord &record, float tmin) const {
     const double EPSILON = 1e-7;
     Velocity planeVector[2] = {m_point[1]->m_coord - m_point[0]->m_coord, m_point[2]->m_coord - m_point[0]->m_coord};
     Velocity h = ray.velocity.cross(planeVector[1]);
-    double a = planeVector[0].dot(h);
+    float a = planeVector[0].dot(h);
     if (std::abs(a) < EPSILON)
         return false;
-    double f = 1.0 / a;
+    float f = 1.0 / a;
     Velocity s = ray.origin - m_point[0]->m_coord;
-    double u = f * s.dot(h);
+    float u = f * s.dot(h);
     if (u < 0.0 || u > 1.0)
         return false;
     Velocity q = s.cross(planeVector[0]);
-    double v = f * ray.velocity.dot(q);
+    float v = f * ray.velocity.dot(q);
     if (v < 0.0 || v + u > 1.0)
         return false;
 
-    double t = f * planeVector[1].dot(q);
+    float t = f * planeVector[1].dot(q);
     if (t > EPSILON && t > tmin) {
         if (record.t < 0.0f || record.t > t) {
             // ray.origin + t * ray.velocity is intersection point
             record.t = t;
             record.point = ray.pointAt(t);
-            record.normal = planeVector[0].cross(planeVector[1]).normalize();
+            if(m_point[0]->m_hasOther) {
+                record.normal = m_point[0]->m_normal + u * (m_point[1]->m_normal - m_point[0]->m_normal) + v * (m_point[2]->m_normal - m_point[0]->m_normal);
+            } else {
+                record.normal = planeVector[0].cross(planeVector[1]).normalize();
+            }
             record.material = m_material;
             return true;
         }
@@ -88,7 +92,7 @@ bool Triangle::readObjectInfo(const YAML::Node &node, const Scene *scene) {
     }
 
     for(int i = 0;i < 3;++i) {
-        TriangleNode *triangleNode = new TriangleNode{Coord::toCoord((*node.begin())["position"].as<std::vector<float>>()), {0, 0}, {0, 0, 0}};
+        TriangleNode *triangleNode = new TriangleNode(Coord::toCoord((*node.begin())["position"].as<std::vector<float>>()), {0, 0}, {0, 0, 0}, false);
         m_boundingBox.updateBoundingBox(triangleNode->m_coord);
         m_point[i] = triangleNode;
     }

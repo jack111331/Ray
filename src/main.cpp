@@ -22,7 +22,6 @@ int main(int argc, char **argv) {
 
     // Environment preparation
     pipeline->setupEnvironment();
-
     pipeline->setupPipeline();
 
     pipeline->pipelineLoop();
