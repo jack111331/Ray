@@ -4,6 +4,12 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "D:/Code/Ray/public/imgui/backends/imgui_impl_glfw.cpp" "D:/Code/Ray/cmake-build-debug/CMakeFiles/Ray.dir/public/imgui/backends/imgui_impl_glfw.cpp.obj"
+  "D:/Code/Ray/public/imgui/backends/imgui_impl_opengl3.cpp" "D:/Code/Ray/cmake-build-debug/CMakeFiles/Ray.dir/public/imgui/backends/imgui_impl_opengl3.cpp.obj"
+  "D:/Code/Ray/public/imgui/imgui.cpp" "D:/Code/Ray/cmake-build-debug/CMakeFiles/Ray.dir/public/imgui/imgui.cpp.obj"
+  "D:/Code/Ray/public/imgui/imgui_draw.cpp" "D:/Code/Ray/cmake-build-debug/CMakeFiles/Ray.dir/public/imgui/imgui_draw.cpp.obj"
+  "D:/Code/Ray/public/imgui/imgui_tables.cpp" "D:/Code/Ray/cmake-build-debug/CMakeFiles/Ray.dir/public/imgui/imgui_tables.cpp.obj"
+  "D:/Code/Ray/public/imgui/imgui_widgets.cpp" "D:/Code/Ray/cmake-build-debug/CMakeFiles/Ray.dir/public/imgui/imgui_widgets.cpp.obj"
   "D:/Code/Ray/src/AmbientOcclusion.cpp" "D:/Code/Ray/cmake-build-debug/CMakeFiles/Ray.dir/src/AmbientOcclusion.cpp.obj"
   "D:/Code/Ray/src/AmbientOcclusionVolumeShadingPipeline.cpp" "D:/Code/Ray/cmake-build-debug/CMakeFiles/Ray.dir/src/AmbientOcclusionVolumeShadingPipeline.cpp.obj"
   "D:/Code/Ray/src/AreaLight.cpp" "D:/Code/Ray/cmake-build-debug/CMakeFiles/Ray.dir/src/AreaLight.cpp.obj"
@@ -49,6 +55,9 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../public/glm"
   "../public/yaml-cpp/include"
+  "../public/imgui"
+  "../public/imgui/backends"
+  "../public/imgui/example/libs/gl3w"
   ".././include"
   ".././include/TriMesh"
   "../public/glfw/include"

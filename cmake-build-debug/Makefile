@@ -646,6 +646,168 @@ yaml-cpp-read/fast:
 	$(MAKE) -f public\yaml-cpp\util\CMakeFiles\yaml-cpp-read.dir\build.make public/yaml-cpp/util/CMakeFiles/yaml-cpp-read.dir/build
 .PHONY : yaml-cpp-read/fast
 
+public/imgui/backends/imgui_impl_glfw.obj: public/imgui/backends/imgui_impl_glfw.cpp.obj
+
+.PHONY : public/imgui/backends/imgui_impl_glfw.obj
+
+# target to build an object file
+public/imgui/backends/imgui_impl_glfw.cpp.obj:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/public/imgui/backends/imgui_impl_glfw.cpp.obj
+.PHONY : public/imgui/backends/imgui_impl_glfw.cpp.obj
+
+public/imgui/backends/imgui_impl_glfw.i: public/imgui/backends/imgui_impl_glfw.cpp.i
+
+.PHONY : public/imgui/backends/imgui_impl_glfw.i
+
+# target to preprocess a source file
+public/imgui/backends/imgui_impl_glfw.cpp.i:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/public/imgui/backends/imgui_impl_glfw.cpp.i
+.PHONY : public/imgui/backends/imgui_impl_glfw.cpp.i
+
+public/imgui/backends/imgui_impl_glfw.s: public/imgui/backends/imgui_impl_glfw.cpp.s
+
+.PHONY : public/imgui/backends/imgui_impl_glfw.s
+
+# target to generate assembly for a file
+public/imgui/backends/imgui_impl_glfw.cpp.s:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/public/imgui/backends/imgui_impl_glfw.cpp.s
+.PHONY : public/imgui/backends/imgui_impl_glfw.cpp.s
+
+public/imgui/backends/imgui_impl_opengl3.obj: public/imgui/backends/imgui_impl_opengl3.cpp.obj
+
+.PHONY : public/imgui/backends/imgui_impl_opengl3.obj
+
+# target to build an object file
+public/imgui/backends/imgui_impl_opengl3.cpp.obj:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/public/imgui/backends/imgui_impl_opengl3.cpp.obj
+.PHONY : public/imgui/backends/imgui_impl_opengl3.cpp.obj
+
+public/imgui/backends/imgui_impl_opengl3.i: public/imgui/backends/imgui_impl_opengl3.cpp.i
+
+.PHONY : public/imgui/backends/imgui_impl_opengl3.i
+
+# target to preprocess a source file
+public/imgui/backends/imgui_impl_opengl3.cpp.i:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/public/imgui/backends/imgui_impl_opengl3.cpp.i
+.PHONY : public/imgui/backends/imgui_impl_opengl3.cpp.i
+
+public/imgui/backends/imgui_impl_opengl3.s: public/imgui/backends/imgui_impl_opengl3.cpp.s
+
+.PHONY : public/imgui/backends/imgui_impl_opengl3.s
+
+# target to generate assembly for a file
+public/imgui/backends/imgui_impl_opengl3.cpp.s:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/public/imgui/backends/imgui_impl_opengl3.cpp.s
+.PHONY : public/imgui/backends/imgui_impl_opengl3.cpp.s
+
+public/imgui/imgui.obj: public/imgui/imgui.cpp.obj
+
+.PHONY : public/imgui/imgui.obj
+
+# target to build an object file
+public/imgui/imgui.cpp.obj:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/public/imgui/imgui.cpp.obj
+.PHONY : public/imgui/imgui.cpp.obj
+
+public/imgui/imgui.i: public/imgui/imgui.cpp.i
+
+.PHONY : public/imgui/imgui.i
+
+# target to preprocess a source file
+public/imgui/imgui.cpp.i:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/public/imgui/imgui.cpp.i
+.PHONY : public/imgui/imgui.cpp.i
+
+public/imgui/imgui.s: public/imgui/imgui.cpp.s
+
+.PHONY : public/imgui/imgui.s
+
+# target to generate assembly for a file
+public/imgui/imgui.cpp.s:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/public/imgui/imgui.cpp.s
+.PHONY : public/imgui/imgui.cpp.s
+
+public/imgui/imgui_draw.obj: public/imgui/imgui_draw.cpp.obj
+
+.PHONY : public/imgui/imgui_draw.obj
+
+# target to build an object file
+public/imgui/imgui_draw.cpp.obj:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/public/imgui/imgui_draw.cpp.obj
+.PHONY : public/imgui/imgui_draw.cpp.obj
+
+public/imgui/imgui_draw.i: public/imgui/imgui_draw.cpp.i
+
+.PHONY : public/imgui/imgui_draw.i
+
+# target to preprocess a source file
+public/imgui/imgui_draw.cpp.i:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/public/imgui/imgui_draw.cpp.i
+.PHONY : public/imgui/imgui_draw.cpp.i
+
+public/imgui/imgui_draw.s: public/imgui/imgui_draw.cpp.s
+
+.PHONY : public/imgui/imgui_draw.s
+
+# target to generate assembly for a file
+public/imgui/imgui_draw.cpp.s:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/public/imgui/imgui_draw.cpp.s
+.PHONY : public/imgui/imgui_draw.cpp.s
+
+public/imgui/imgui_tables.obj: public/imgui/imgui_tables.cpp.obj
+
+.PHONY : public/imgui/imgui_tables.obj
+
+# target to build an object file
+public/imgui/imgui_tables.cpp.obj:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/public/imgui/imgui_tables.cpp.obj
+.PHONY : public/imgui/imgui_tables.cpp.obj
+
+public/imgui/imgui_tables.i: public/imgui/imgui_tables.cpp.i
+
+.PHONY : public/imgui/imgui_tables.i
+
+# target to preprocess a source file
+public/imgui/imgui_tables.cpp.i:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/public/imgui/imgui_tables.cpp.i
+.PHONY : public/imgui/imgui_tables.cpp.i
+
+public/imgui/imgui_tables.s: public/imgui/imgui_tables.cpp.s
+
+.PHONY : public/imgui/imgui_tables.s
+
+# target to generate assembly for a file
+public/imgui/imgui_tables.cpp.s:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/public/imgui/imgui_tables.cpp.s
+.PHONY : public/imgui/imgui_tables.cpp.s
+
+public/imgui/imgui_widgets.obj: public/imgui/imgui_widgets.cpp.obj
+
+.PHONY : public/imgui/imgui_widgets.obj
+
+# target to build an object file
+public/imgui/imgui_widgets.cpp.obj:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/public/imgui/imgui_widgets.cpp.obj
+.PHONY : public/imgui/imgui_widgets.cpp.obj
+
+public/imgui/imgui_widgets.i: public/imgui/imgui_widgets.cpp.i
+
+.PHONY : public/imgui/imgui_widgets.i
+
+# target to preprocess a source file
+public/imgui/imgui_widgets.cpp.i:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/public/imgui/imgui_widgets.cpp.i
+.PHONY : public/imgui/imgui_widgets.cpp.i
+
+public/imgui/imgui_widgets.s: public/imgui/imgui_widgets.cpp.s
+
+.PHONY : public/imgui/imgui_widgets.s
+
+# target to generate assembly for a file
+public/imgui/imgui_widgets.cpp.s:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/public/imgui/imgui_widgets.cpp.s
+.PHONY : public/imgui/imgui_widgets.cpp.s
+
 src/AmbientOcclusion.obj: src/AmbientOcclusion.cpp.obj
 
 .PHONY : src/AmbientOcclusion.obj
@@ -1587,6 +1749,24 @@ help:
 	@echo ... yaml-cpp-parse
 	@echo ... yaml-cpp-sandbox
 	@echo ... yaml-cpp-read
+	@echo ... public/imgui/backends/imgui_impl_glfw.obj
+	@echo ... public/imgui/backends/imgui_impl_glfw.i
+	@echo ... public/imgui/backends/imgui_impl_glfw.s
+	@echo ... public/imgui/backends/imgui_impl_opengl3.obj
+	@echo ... public/imgui/backends/imgui_impl_opengl3.i
+	@echo ... public/imgui/backends/imgui_impl_opengl3.s
+	@echo ... public/imgui/imgui.obj
+	@echo ... public/imgui/imgui.i
+	@echo ... public/imgui/imgui.s
+	@echo ... public/imgui/imgui_draw.obj
+	@echo ... public/imgui/imgui_draw.i
+	@echo ... public/imgui/imgui_draw.s
+	@echo ... public/imgui/imgui_tables.obj
+	@echo ... public/imgui/imgui_tables.i
+	@echo ... public/imgui/imgui_tables.s
+	@echo ... public/imgui/imgui_widgets.obj
+	@echo ... public/imgui/imgui_widgets.i
+	@echo ... public/imgui/imgui_widgets.s
 	@echo ... src/AmbientOcclusion.obj
 	@echo ... src/AmbientOcclusion.i
 	@echo ... src/AmbientOcclusion.s

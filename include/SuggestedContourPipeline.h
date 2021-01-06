@@ -9,8 +9,10 @@
 
 class SuggestedContourShadingSetting : public PassSetting {
 public:
-    std::vector<Light *> m_lightList;
-    uint32_t m_lightUBO;
+    float m_fz;
+    float m_c_limit;
+    float m_sc_limit;
+    float m_dwkr_limit;
 };
 
 class SuggestedContourShadingPass : public Pass {
@@ -38,7 +40,6 @@ public:
         IMAGE=0
     };
 
-
 private:
     uint32_t m_outputFrameTextureId;
     uint32_t m_outputFrameDepthStencilBufferId;
@@ -54,8 +55,10 @@ public:
 protected:
     virtual void renderAllPass();
 
+    virtual void setupGUILayout();
+
 private:
-    SuggestedContourShadingSetting *shadingSetting;
+    SuggestedContourShadingSetting *m_shadingSetting;
 };
 
 

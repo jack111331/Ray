@@ -81,7 +81,8 @@ public:
 
     virtual void pipelineLoop() = 0;
 
-    virtual bool readPipelineInfo(const YAML::Node &node) {return true;};
+    virtual bool readPipelineInfo(const YAML::Node &node) { return true; };
+
 
 protected:
     void printGraphicCardInfo() {
@@ -91,6 +92,12 @@ protected:
         std::cout << "Current Renderer: " << (const char *) renderer << std::endl;
     }
 
+    void setupGUIEnvironment();
+
+    virtual void setupGUILayout() = 0;
+
+    static const char GLSL_VERSION[];
+
 
     GLFWwindow *m_window;
     Scene *m_scene;
@@ -98,9 +105,9 @@ protected:
 
 };
 
-class RayTracingPipeline : public Pipeline {
+class CPURayTracingPipeline : public Pipeline {
 public:
-    RayTracingPipeline(): m_model(nullptr), m_jitterSampleAmount(0) {}
+    CPURayTracingPipeline() : m_model(nullptr), m_jitterSampleAmount(0) {}
 
     virtual void setupEnvironment();
 
@@ -123,6 +130,8 @@ protected:
         }
     }
 
+    virtual void setupGUILayout();
+
     IlluminationModel *m_model;
 
     Color m_backgroundColor = {.0f, .0f, .0f};
@@ -141,6 +150,8 @@ public:
 
 protected:
     virtual void renderAllPass() = 0;
+
+    virtual void setupGUILayout();
 
     virtual void blitFrameBuffer() {};
 

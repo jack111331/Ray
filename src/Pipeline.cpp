@@ -6,10 +6,15 @@
 #include <GL/glew.h>
 #include "Pipeline.h"
 #include <Lambertian.h>
-#include <glm/gtc/matrix_transform.hpp>
-#include <GLUtil.h>
-#include <Whitted.h>
 #include "HittableList.h"
+#include "imgui.h"
+#include "imgui_impl_glfw.h"
+#include "imgui_impl_opengl3.h"
+
+const char Pipeline::GLSL_VERSION[] = "#version 450";
+
+// enable gui or not
+#define GUI_SUPPORT
 
 void Pipeline::setupEnvironment() {
     if (!glfwInit()) {
@@ -18,7 +23,23 @@ void Pipeline::setupEnvironment() {
     }
 }
 
-void RayTracingPipeline::setupEnvironment() {
+void Pipeline::setupGUIEnvironment() {
+    IMGUI_CHECKVERSION();
+    ImGui::CreateContext();
+    ImGuiIO& io = ImGui::GetIO(); (void)io;
+    //io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // Enable Keyboard Controls
+    //io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
+
+    // Setup Dear ImGui style
+    ImGui::StyleColorsDark();
+    //ImGui::StyleColorsClassic();
+
+    // Setup Platform/Renderer backends
+    ImGui_ImplGlfw_InitForOpenGL(m_window, true);
+    ImGui_ImplOpenGL3_Init(GLSL_VERSION);
+}
+
+void CPURayTracingPipeline::setupEnvironment() {
     Pipeline::setupEnvironment();
 
     m_window = glfwCreateWindow(m_camera->m_width, m_camera->m_height, "Ray", NULL,
@@ -43,12 +64,14 @@ void RayTracingPipeline::setupEnvironment() {
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
     glBindTexture(GL_TEXTURE_2D, 0);
 
+    Pipeline::setupGUIEnvironment();
 }
 
-void RayTracingPipeline::pipelineLoop() {
+void CPURayTracingPipeline::pipelineLoop() {
     // Ray tracing
     generateImage();
     while (!glfwWindowShouldClose(m_window)) {
+        glfwPollEvents();
 
         // Setup GL
         glViewport(0, 0, m_camera->m_width, m_camera->m_height);
@@ -80,21 +103,38 @@ void RayTracingPipeline::pipelineLoop() {
         glBindTexture(GL_TEXTURE_2D, 0);
         glFlush();
 
+#ifdef GUI_SUPPORT
+        setupGUILayout();
+#endif
+
+
         glfwSwapBuffers(m_window);
-        glfwPollEvents();
     }
     glfwTerminate();
 
 }
 
-bool RayTracingPipeline::readPipelineInfo(const YAML::Node &node) {
+void CPURayTracingPipeline::setupGUILayout() {
+    ImGui_ImplOpenGL3_NewFrame();
+    ImGui_ImplGlfw_NewFrame();
+    ImGui::NewFrame();
+
+    ImGui::Begin("Ray rendering Pipeline Window");   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
+    ImGui::Text("Hello from another window!");
+    ImGui::End();
+
+    ImGui::Render();
+    ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+}
+
+bool CPURayTracingPipeline::readPipelineInfo(const YAML::Node &node) {
     if(node["jitter-sample-amount"]) {
         m_jitterSampleAmount = node["jitter-sample-amount"].as<int>();
     }
     return true;
 }
 
-void RayTracingPipeline::generateImage() {
+void CPURayTracingPipeline::generateImage() {
     if (!m_camera) {
         return;
     }
@@ -125,7 +165,6 @@ void RayTracingPipeline::generateImage() {
             }
             m_camera->m_screen[i][j] /= (float)(1 + m_jitterSampleAmount);
         }
-        std::cout << i << std::endl;
     }
 }
 
@@ -153,17 +192,36 @@ void LocalRenderingPipeline::setupEnvironment() {
 
     printGraphicCardInfo();
 
+    Pipeline::setupGUIEnvironment();
+}
+
+void LocalRenderingPipeline::setupGUILayout() {
+    ImGui_ImplOpenGL3_NewFrame();
+    ImGui_ImplGlfw_NewFrame();
+    ImGui::NewFrame();
+
+    ImGui::Begin("Local rendering Pipeline Window");   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
+    ImGui::Text("Hello from another window!");
+    ImGui::End();
+
+    ImGui::Render();
+    ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+
 }
 
 void LocalRenderingPipeline::pipelineLoop() {
     while (!glfwWindowShouldClose(m_window)) {
+        glfwPollEvents();
         glEnable(GL_DEPTH_TEST);
-        glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+        glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         renderAllPass();
 
+#ifdef GUI_SUPPORT
+        setupGUILayout();
+#endif
+
         glfwSwapBuffers(m_window);
-        glfwPollEvents();
     }
 
     glfwTerminate();

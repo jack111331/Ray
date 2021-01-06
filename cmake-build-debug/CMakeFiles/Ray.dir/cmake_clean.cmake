@@ -1,4 +1,10 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/Ray.dir/public/imgui/backends/imgui_impl_glfw.cpp.obj"
+  "CMakeFiles/Ray.dir/public/imgui/backends/imgui_impl_opengl3.cpp.obj"
+  "CMakeFiles/Ray.dir/public/imgui/imgui.cpp.obj"
+  "CMakeFiles/Ray.dir/public/imgui/imgui_draw.cpp.obj"
+  "CMakeFiles/Ray.dir/public/imgui/imgui_tables.cpp.obj"
+  "CMakeFiles/Ray.dir/public/imgui/imgui_widgets.cpp.obj"
   "CMakeFiles/Ray.dir/src/AmbientOcclusion.cpp.obj"
   "CMakeFiles/Ray.dir/src/AmbientOcclusionVolumeShadingPipeline.cpp.obj"
   "CMakeFiles/Ray.dir/src/AreaLight.cpp.obj"

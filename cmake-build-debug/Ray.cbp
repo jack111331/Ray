@@ -27,6 +27,9 @@
 					<Add option="-DGLFW_DLL"/>
 					<Add directory="D:/Code/Ray/public/glm"/>
 					<Add directory="D:/Code/Ray/public/yaml-cpp/include"/>
+					<Add directory="D:/Code/Ray/public/imgui"/>
+					<Add directory="D:/Code/Ray/public/imgui/backends"/>
+					<Add directory="D:/Code/Ray/public/imgui/example/libs/gl3w"/>
 					<Add directory="D:/Code/Ray/./include"/>
 					<Add directory="D:/Code/Ray/./include/TriMesh"/>
 					<Add directory="D:/Code/Ray/public/glfw/include"/>
@@ -55,6 +58,9 @@
 					<Add option="-DGLFW_DLL"/>
 					<Add directory="D:/Code/Ray/public/glm"/>
 					<Add directory="D:/Code/Ray/public/yaml-cpp/include"/>
+					<Add directory="D:/Code/Ray/public/imgui"/>
+					<Add directory="D:/Code/Ray/public/imgui/backends"/>
+					<Add directory="D:/Code/Ray/public/imgui/example/libs/gl3w"/>
 					<Add directory="D:/Code/Ray/./include"/>
 					<Add directory="D:/Code/Ray/./include/TriMesh"/>
 					<Add directory="D:/Code/Ray/public/glfw/include"/>
@@ -629,6 +635,33 @@
 		</Unit>
 		<Unit filename="D:/Code/Ray/public/glfw/src/window.c">
 			<Option target="glfw"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/public/imgui/backends/imgui_impl_glfw.cpp">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/public/imgui/backends/imgui_impl_glfw.h">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/public/imgui/backends/imgui_impl_opengl3.cpp">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/public/imgui/backends/imgui_impl_opengl3.h">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/public/imgui/imgui.cpp">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/public/imgui/imgui.h">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/public/imgui/imgui_draw.cpp">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/public/imgui/imgui_tables.cpp">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/public/imgui/imgui_widgets.cpp">
+			<Option target="Ray"/>
 		</Unit>
 		<Unit filename="D:/Code/Ray/public/yaml-cpp/src/binary.cpp">
 			<Option target="yaml-cpp"/>

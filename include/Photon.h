@@ -27,7 +27,7 @@ public:
 
 class HittableList;
 
-class PhotonMappingPipeline : public RayTracingPipeline {
+class PhotonMappingPipeline : public CPURayTracingPipeline {
 public:
     virtual void setupPipeline();
 

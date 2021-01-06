@@ -7,6 +7,8 @@
 #include <GLUtil.h>
 #include <glm/ext/matrix_transform.hpp>
 #include <glm/gtc/matrix_transform.hpp>
+#include <backends/imgui_impl_opengl3.h>
+#include <backends/imgui_impl_glfw.h>
 #include "Shader.h"
 #include "HittableList.h"
 #include "SuggestedContourPipeline.h"
@@ -54,7 +56,7 @@ void SuggestedContourShadingPass::renderPass(const std::vector<ShadeObject *> &s
 
     glDrawBuffer(GL_COLOR_ATTACHMENT0);
 
-    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+    glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     // shader binding
@@ -77,10 +79,10 @@ void SuggestedContourShadingPass::renderPass(const std::vector<ShadeObject *> &s
             const Coord &eyeCoord = setting->m_camera->m_eyeCoord;
             m_shader->uniform3f("viewPos", eyeCoord.x, eyeCoord.y, eyeCoord.z);
 
-            m_shader->uniform1f("fz", 0.0764);
-            m_shader->uniform1f("c_limit", 1);
-            m_shader->uniform1f("sc_limit", 1);
-            m_shader->uniform1f("dwkr_limit", 0.05);
+            m_shader->uniform1f("fz", setting->m_fz);
+            m_shader->uniform1f("c_limit", setting->m_c_limit);
+            m_shader->uniform1f("sc_limit", setting->m_sc_limit);
+            m_shader->uniform1f("dwkr_limit", setting->m_dwkr_limit);
 
             // draw call
             glDrawElements(GL_TRIANGLES, object->m_objectInfo.m_indicesAmount, GL_UNSIGNED_INT, 0);
@@ -95,22 +97,20 @@ void SuggestedContourShadingPipeline::setupPipeline() {
         std::cerr << "No camera or scene specified" << std::endl;
         exit(1);
     }
-    shadingSetting = new SuggestedContourShadingSetting();
-    shadingSetting->m_projectionMatrix = glm::perspective(glm::radians(m_camera->m_fov * 2.0f),
+    m_shadingSetting = new SuggestedContourShadingSetting();
+    m_shadingSetting->m_projectionMatrix = glm::perspective(glm::radians(m_camera->m_fov * 2.0f),
                                                           (float) m_camera->m_width / (float) m_camera->m_height,
-                                                          0.1f, 100.0f);
-    shadingSetting->m_viewMatrix = glm::lookAt(
+                                                            0.1f, 100.0f);
+    m_shadingSetting->m_viewMatrix = glm::lookAt(
             glm::vec3(m_camera->m_eyeCoord.x, m_camera->m_eyeCoord.y, m_camera->m_eyeCoord.z),
             glm::vec3(m_camera->m_eyeCoord.x + m_camera->m_direction.x,
                       m_camera->m_eyeCoord.y + m_camera->m_direction.y,
                       m_camera->m_eyeCoord.z + m_camera->m_direction.z),
             glm::vec3(m_camera->m_up.x, m_camera->m_up.y, m_camera->m_up.z));
-    shadingSetting->m_camera = m_camera;
-    shadingSetting->m_lightList = m_scene->m_lightList;
-    shadingSetting->m_lightUBO = RayUtil::generateLightUBO(shadingSetting->m_lightList);
+    m_shadingSetting->m_camera = m_camera;
 
 
-    m_shadingPass = new SuggestedContourShadingPass(shadingSetting);
+    m_shadingPass = new SuggestedContourShadingPass(m_shadingSetting);
 
     auto hittableList = m_scene->m_hittableList->m_hittableList;
     for (auto hittable : hittableList) {
@@ -132,4 +132,21 @@ void SuggestedContourShadingPipeline::blitFrameBuffer() {
     glBindFramebuffer(GL_DRAW_FRAMEBUFFER, 0);
     glBlitFramebuffer(0, 0, m_camera->m_width, m_camera->m_width, 0, 0, m_camera->m_width, m_camera->m_height,
                       GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT, GL_NEAREST);
+}
+
+void SuggestedContourShadingPipeline::setupGUILayout() {
+    ImGui_ImplOpenGL3_NewFrame();
+    ImGui_ImplGlfw_NewFrame();
+    ImGui::NewFrame();
+
+    ImGui::Begin("Local rendering Pipeline Window");   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
+    ImGui::SliderFloat("feature size", &m_shadingSetting->m_fz, 0.0f, 1.0f);
+    ImGui::SliderFloat("contour limit", &m_shadingSetting->m_c_limit, 0.0f, 1.0f);
+    ImGui::SliderFloat("suggested contour limit", &m_shadingSetting->m_sc_limit, 0.0f, 1.0f);
+    ImGui::SliderFloat("derivative radiant curvater", &m_shadingSetting->m_dwkr_limit, 0.0f, 1.0f);
+    ImGui::End();
+
+    ImGui::Render();
+    ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+
 }

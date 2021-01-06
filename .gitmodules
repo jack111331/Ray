@@ -13,3 +13,7 @@
 [submodule "public/glm"]
 	path = public/glm
 	url = https://github.com/g-truc/glm
+
+[submodule "public/imgui"]
+	path = public/imgui
+	url = https://github.com/ocornut/imgui

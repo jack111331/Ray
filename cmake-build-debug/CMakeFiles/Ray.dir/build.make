@@ -518,6 +518,90 @@ CMakeFiles/Ray.dir/src/AmbientOcclusionVolumeShadingPipeline.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Ray.dir/src/AmbientOcclusionVolumeShadingPipeline.cpp.s"
 	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Code\Ray\src\AmbientOcclusionVolumeShadingPipeline.cpp -o CMakeFiles\Ray.dir\src\AmbientOcclusionVolumeShadingPipeline.cpp.s
 
+CMakeFiles/Ray.dir/public/imgui/backends/imgui_impl_glfw.cpp.obj: CMakeFiles/Ray.dir/flags.make
+CMakeFiles/Ray.dir/public/imgui/backends/imgui_impl_glfw.cpp.obj: CMakeFiles/Ray.dir/includes_CXX.rsp
+CMakeFiles/Ray.dir/public/imgui/backends/imgui_impl_glfw.cpp.obj: ../public/imgui/backends/imgui_impl_glfw.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Code\Ray\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building CXX object CMakeFiles/Ray.dir/public/imgui/backends/imgui_impl_glfw.cpp.obj"
+	D:\MinGW\bin\c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Ray.dir\public\imgui\backends\imgui_impl_glfw.cpp.obj -c D:\Code\Ray\public\imgui\backends\imgui_impl_glfw.cpp
+
+CMakeFiles/Ray.dir/public/imgui/backends/imgui_impl_glfw.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Ray.dir/public/imgui/backends/imgui_impl_glfw.cpp.i"
+	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Code\Ray\public\imgui\backends\imgui_impl_glfw.cpp > CMakeFiles\Ray.dir\public\imgui\backends\imgui_impl_glfw.cpp.i
+
+CMakeFiles/Ray.dir/public/imgui/backends/imgui_impl_glfw.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Ray.dir/public/imgui/backends/imgui_impl_glfw.cpp.s"
+	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Code\Ray\public\imgui\backends\imgui_impl_glfw.cpp -o CMakeFiles\Ray.dir\public\imgui\backends\imgui_impl_glfw.cpp.s
+
+CMakeFiles/Ray.dir/public/imgui/backends/imgui_impl_opengl3.cpp.obj: CMakeFiles/Ray.dir/flags.make
+CMakeFiles/Ray.dir/public/imgui/backends/imgui_impl_opengl3.cpp.obj: CMakeFiles/Ray.dir/includes_CXX.rsp
+CMakeFiles/Ray.dir/public/imgui/backends/imgui_impl_opengl3.cpp.obj: ../public/imgui/backends/imgui_impl_opengl3.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Code\Ray\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building CXX object CMakeFiles/Ray.dir/public/imgui/backends/imgui_impl_opengl3.cpp.obj"
+	D:\MinGW\bin\c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Ray.dir\public\imgui\backends\imgui_impl_opengl3.cpp.obj -c D:\Code\Ray\public\imgui\backends\imgui_impl_opengl3.cpp
+
+CMakeFiles/Ray.dir/public/imgui/backends/imgui_impl_opengl3.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Ray.dir/public/imgui/backends/imgui_impl_opengl3.cpp.i"
+	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Code\Ray\public\imgui\backends\imgui_impl_opengl3.cpp > CMakeFiles\Ray.dir\public\imgui\backends\imgui_impl_opengl3.cpp.i
+
+CMakeFiles/Ray.dir/public/imgui/backends/imgui_impl_opengl3.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Ray.dir/public/imgui/backends/imgui_impl_opengl3.cpp.s"
+	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Code\Ray\public\imgui\backends\imgui_impl_opengl3.cpp -o CMakeFiles\Ray.dir\public\imgui\backends\imgui_impl_opengl3.cpp.s
+
+CMakeFiles/Ray.dir/public/imgui/imgui.cpp.obj: CMakeFiles/Ray.dir/flags.make
+CMakeFiles/Ray.dir/public/imgui/imgui.cpp.obj: CMakeFiles/Ray.dir/includes_CXX.rsp
+CMakeFiles/Ray.dir/public/imgui/imgui.cpp.obj: ../public/imgui/imgui.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Code\Ray\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building CXX object CMakeFiles/Ray.dir/public/imgui/imgui.cpp.obj"
+	D:\MinGW\bin\c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Ray.dir\public\imgui\imgui.cpp.obj -c D:\Code\Ray\public\imgui\imgui.cpp
+
+CMakeFiles/Ray.dir/public/imgui/imgui.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Ray.dir/public/imgui/imgui.cpp.i"
+	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Code\Ray\public\imgui\imgui.cpp > CMakeFiles\Ray.dir\public\imgui\imgui.cpp.i
+
+CMakeFiles/Ray.dir/public/imgui/imgui.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Ray.dir/public/imgui/imgui.cpp.s"
+	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Code\Ray\public\imgui\imgui.cpp -o CMakeFiles\Ray.dir\public\imgui\imgui.cpp.s
+
+CMakeFiles/Ray.dir/public/imgui/imgui_draw.cpp.obj: CMakeFiles/Ray.dir/flags.make
+CMakeFiles/Ray.dir/public/imgui/imgui_draw.cpp.obj: CMakeFiles/Ray.dir/includes_CXX.rsp
+CMakeFiles/Ray.dir/public/imgui/imgui_draw.cpp.obj: ../public/imgui/imgui_draw.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Code\Ray\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building CXX object CMakeFiles/Ray.dir/public/imgui/imgui_draw.cpp.obj"
+	D:\MinGW\bin\c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Ray.dir\public\imgui\imgui_draw.cpp.obj -c D:\Code\Ray\public\imgui\imgui_draw.cpp
+
+CMakeFiles/Ray.dir/public/imgui/imgui_draw.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Ray.dir/public/imgui/imgui_draw.cpp.i"
+	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Code\Ray\public\imgui\imgui_draw.cpp > CMakeFiles\Ray.dir\public\imgui\imgui_draw.cpp.i
+
+CMakeFiles/Ray.dir/public/imgui/imgui_draw.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Ray.dir/public/imgui/imgui_draw.cpp.s"
+	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Code\Ray\public\imgui\imgui_draw.cpp -o CMakeFiles\Ray.dir\public\imgui\imgui_draw.cpp.s
+
+CMakeFiles/Ray.dir/public/imgui/imgui_tables.cpp.obj: CMakeFiles/Ray.dir/flags.make
+CMakeFiles/Ray.dir/public/imgui/imgui_tables.cpp.obj: CMakeFiles/Ray.dir/includes_CXX.rsp
+CMakeFiles/Ray.dir/public/imgui/imgui_tables.cpp.obj: ../public/imgui/imgui_tables.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Code\Ray\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building CXX object CMakeFiles/Ray.dir/public/imgui/imgui_tables.cpp.obj"
+	D:\MinGW\bin\c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Ray.dir\public\imgui\imgui_tables.cpp.obj -c D:\Code\Ray\public\imgui\imgui_tables.cpp
+
+CMakeFiles/Ray.dir/public/imgui/imgui_tables.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Ray.dir/public/imgui/imgui_tables.cpp.i"
+	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Code\Ray\public\imgui\imgui_tables.cpp > CMakeFiles\Ray.dir\public\imgui\imgui_tables.cpp.i
+
+CMakeFiles/Ray.dir/public/imgui/imgui_tables.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Ray.dir/public/imgui/imgui_tables.cpp.s"
+	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Code\Ray\public\imgui\imgui_tables.cpp -o CMakeFiles\Ray.dir\public\imgui\imgui_tables.cpp.s
+
+CMakeFiles/Ray.dir/public/imgui/imgui_widgets.cpp.obj: CMakeFiles/Ray.dir/flags.make
+CMakeFiles/Ray.dir/public/imgui/imgui_widgets.cpp.obj: CMakeFiles/Ray.dir/includes_CXX.rsp
+CMakeFiles/Ray.dir/public/imgui/imgui_widgets.cpp.obj: ../public/imgui/imgui_widgets.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Code\Ray\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building CXX object CMakeFiles/Ray.dir/public/imgui/imgui_widgets.cpp.obj"
+	D:\MinGW\bin\c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Ray.dir\public\imgui\imgui_widgets.cpp.obj -c D:\Code\Ray\public\imgui\imgui_widgets.cpp
+
+CMakeFiles/Ray.dir/public/imgui/imgui_widgets.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Ray.dir/public/imgui/imgui_widgets.cpp.i"
+	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Code\Ray\public\imgui\imgui_widgets.cpp > CMakeFiles\Ray.dir\public\imgui\imgui_widgets.cpp.i
+
+CMakeFiles/Ray.dir/public/imgui/imgui_widgets.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Ray.dir/public/imgui/imgui_widgets.cpp.s"
+	D:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Code\Ray\public\imgui\imgui_widgets.cpp -o CMakeFiles\Ray.dir\public\imgui\imgui_widgets.cpp.s
+
 # Object files for target Ray
 Ray_OBJECTS = \
 "CMakeFiles/Ray.dir/src/main.cpp.obj" \
@@ -552,7 +636,13 @@ Ray_OBJECTS = \
 "CMakeFiles/Ray.dir/src/SSAODefferedShadingPipeline.cpp.obj" \
 "CMakeFiles/Ray.dir/src/AmbientOcclusion.cpp.obj" \
 "CMakeFiles/Ray.dir/src/SuggestedContourPipeline.cpp.obj" \
-"CMakeFiles/Ray.dir/src/AmbientOcclusionVolumeShadingPipeline.cpp.obj"
+"CMakeFiles/Ray.dir/src/AmbientOcclusionVolumeShadingPipeline.cpp.obj" \
+"CMakeFiles/Ray.dir/public/imgui/backends/imgui_impl_glfw.cpp.obj" \
+"CMakeFiles/Ray.dir/public/imgui/backends/imgui_impl_opengl3.cpp.obj" \
+"CMakeFiles/Ray.dir/public/imgui/imgui.cpp.obj" \
+"CMakeFiles/Ray.dir/public/imgui/imgui_draw.cpp.obj" \
+"CMakeFiles/Ray.dir/public/imgui/imgui_tables.cpp.obj" \
+"CMakeFiles/Ray.dir/public/imgui/imgui_widgets.cpp.obj"
 
 # External object files for target Ray
 Ray_EXTERNAL_OBJECTS =
@@ -590,6 +680,12 @@ Ray.exe: CMakeFiles/Ray.dir/src/SSAODefferedShadingPipeline.cpp.obj
 Ray.exe: CMakeFiles/Ray.dir/src/AmbientOcclusion.cpp.obj
 Ray.exe: CMakeFiles/Ray.dir/src/SuggestedContourPipeline.cpp.obj
 Ray.exe: CMakeFiles/Ray.dir/src/AmbientOcclusionVolumeShadingPipeline.cpp.obj
+Ray.exe: CMakeFiles/Ray.dir/public/imgui/backends/imgui_impl_glfw.cpp.obj
+Ray.exe: CMakeFiles/Ray.dir/public/imgui/backends/imgui_impl_opengl3.cpp.obj
+Ray.exe: CMakeFiles/Ray.dir/public/imgui/imgui.cpp.obj
+Ray.exe: CMakeFiles/Ray.dir/public/imgui/imgui_draw.cpp.obj
+Ray.exe: CMakeFiles/Ray.dir/public/imgui/imgui_tables.cpp.obj
+Ray.exe: CMakeFiles/Ray.dir/public/imgui/imgui_widgets.cpp.obj
 Ray.exe: CMakeFiles/Ray.dir/build.make
 Ray.exe: ../public/glew/lib/Release/Win32/glew32.lib
 Ray.exe: public/glfw/src/libglfw3dll.a
@@ -598,7 +694,7 @@ Ray.exe: ../lib/libtrimesh.a
 Ray.exe: CMakeFiles/Ray.dir/linklibs.rsp
 Ray.exe: CMakeFiles/Ray.dir/objects1.rsp
 Ray.exe: CMakeFiles/Ray.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=D:\Code\Ray\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Linking CXX executable Ray.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=D:\Code\Ray\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Linking CXX executable Ray.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\Ray.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

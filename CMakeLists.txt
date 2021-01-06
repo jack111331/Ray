@@ -24,13 +24,18 @@ include_directories("public/glm")
 add_subdirectory(public/yaml-cpp)
 include_directories("public/yaml-cpp/include")
 
-#set(CMAKE_PREFIX_PATH ${CMAKE_PREFIX_PATH} "public/libigl")
-#option(LIBIGL_USE_STATIC_LIBRARY     "Use libigl as static library" OFF)
-#option(LIBIGL_WITH_OPENGL            "Use OpenGL"                   OFF)
-#option(LIBIGL_WITH_OPENGL_GLFW       "Use GLFW"                     OFF)
-#find_package(libigl REQUIRED)
-#include_directories("public/libigl/include")
-#include_directories("public/libigl/external/eigen")
+set(IMGUI_SOURCE_LIST)
+include_directories("public/imgui")
+include_directories("public/imgui/backends")
+include_directories("public/imgui/example/libs/gl3w")
+list(APPEND IMGUI_SOURCE_LIST
+        public/imgui/backends/imgui_impl_glfw.cpp
+        public/imgui/backends/imgui_impl_opengl3.cpp
+        public/imgui/imgui.cpp
+        public/imgui/imgui_draw.cpp
+        public/imgui/imgui_tables.cpp
+        public/imgui/imgui_widgets.cpp
+        )
 
 #set(CMAKE_MODULE_PATH {CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/modules")
 #message("${CMAKE_MODULE_PATH}")
@@ -91,6 +96,8 @@ list(APPEND SOURCE_LIST
         src/AmbientOcclusion.cpp
         src/SuggestedContourPipeline.cpp
         src/AmbientOcclusionVolumeShadingPipeline.cpp
+
+        ${IMGUI_SOURCE_LIST}
         )
 list(APPEND HEADER_LIST
         include/AmbientOcclusion.h

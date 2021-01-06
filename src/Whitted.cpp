@@ -16,7 +16,7 @@ void WhittedPipeline::setupPipeline() {
 }
 
 bool WhittedPipeline::readPipelineInfo(const YAML::Node &node) {
-    bool result = RayTracingPipeline::readPipelineInfo(node);
+    bool result = CPURayTracingPipeline::readPipelineInfo(node);
     if(!result || !node["max-depth"]) {
         std::cerr << "No require whitted pipeline node" << std::endl;
         return false;

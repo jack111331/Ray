@@ -12,7 +12,7 @@
 #include "IllumModel.h"
 #include "Pipeline.h"
 
-class AmbientOcclusionPipeline : public RayTracingPipeline {
+class AmbientOcclusionPipeline : public CPURayTracingPipeline {
 public:
     virtual void setupPipeline();
 

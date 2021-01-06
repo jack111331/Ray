@@ -24,7 +24,7 @@ void AmbientOcclusionPipeline::setupPipeline() {
 }
 
 bool AmbientOcclusionPipeline::readPipelineInfo(const YAML::Node &node) {
-    bool result = RayTracingPipeline::readPipelineInfo(node);
+    bool result = CPURayTracingPipeline::readPipelineInfo(node);
     if (!result || !node["max-depth"] || !node["occlusion-radius"] || !node["occlusion-sample-amount"]) {
         std::cerr << "No require ambient occlusion pipeline node" << std::endl;
         return false;
@@ -54,20 +54,23 @@ Color AmbientOcclusionModel::castRay(const Scene *scene, Ray &ray, int depth, bo
         if (record.material->getType() == Material::LAMBERTIAN) {
             LambertianMaterial *material = (LambertianMaterial *) record.material;
             originalAmbientColor = material->m_ambientColor;
-            float totalHitRay = 0;
+            int totalHitRay = 0;
             const int ambientOcclusionSampleRayAmount = m_occlusionSampleAmount;
 
             for (int i = 0; i < ambientOcclusionSampleRayAmount; ++i) {
                 HitRecord testRecord;
-                Ray testRay = {record.point, m_testDirectionList[i]};
-                bool isHitted = scene->m_hittableList->isHit(testRay, testRecord);
-                float hitRay = (testRecord.point - record.point).length() / m_occlusionRadius;
-                if (isHitted && hitRay <= 1.0f) {
-                    totalHitRay += hitRay;
+                Velocity testDirection = Util::randomSphere();
+                if(testDirection.dot(record.normal) < 0.0) {
+                    testDirection = -testDirection;
+                }
+                Ray testRay = {record.point, testDirection};
+                bool isHitted = scene->m_hittableList->isHit(testRay, testRecord, 0.00001f);
+                if (isHitted && (testRecord.point - record.point).length() <= m_occlusionRadius) {
+                    totalHitRay++;
                 }
             }
             float occlusion = 1.0f - ((float) totalHitRay / (float) ambientOcclusionSampleRayAmount);
-            material->m_ambientColor = occlusion * material->m_ambientColor;
+            material->m_ambientColor = occlusion * Color{1.0, 1.0, 1.0};
         }
         record.material->calculatePhong(scene, ray, record, lightRecord, shadeRecord);
         if (record.material->getType() == Material::LAMBERTIAN) {
