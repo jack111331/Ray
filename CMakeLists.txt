@@ -1,5 +1,9 @@
 cmake_minimum_required(VERSION 3.1.3)
 project(Ray)
+set(CMAKE_CXX_STANDARD 11)
+
+# Toggle GUI Support
+set(GUI_SUPPORT FALSE)
 
 #set(CMAKE_VERBOSE_MAKEFILE ON)
 set(GLEW_VERBOSE TRUE)
@@ -13,16 +17,23 @@ endif()
 
 find_package(OpenGL REQUIRED)
 
-set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
-set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
-set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
-set(GLFW_USE_HYBRID_HPG ON CACHE BOOL "" FORCE)
-add_subdirectory("public/glfw")
+#set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
+#set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
+#set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
+#set(GLFW_USE_HYBRID_HPG ON CACHE BOOL "" FORCE)
+#add_subdirectory("public/glfw")
+set(CMAKE_PREFIX_PATH ${CMAKE_PREFIX_PATH} "${CMAKE_SOURCE_DIR}/dependency")
+#set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/dependency/share/cmake/yaml-cpp")
+find_package(glfw3 REQUIRED)
+
+
 
 include_directories("public/glm")
 
 add_subdirectory(public/yaml-cpp)
 include_directories("public/yaml-cpp/include")
+#find_package(yaml-cpp REQUIRED)
+
 
 set(IMGUI_SOURCE_LIST)
 include_directories("public/imgui")
@@ -56,9 +67,9 @@ list(APPEND IMGUI_SOURCE_LIST
 include_directories("./include")
 include_directories("./include/TriMesh")
 
-# TODO install dependency to dir
-
-set(CMAKE_CXX_STANDARD 11)
+if (GUI_SUPPORT)
+    add_compile_definitions(GUI_SUPPORT)
+endif()
 
 set(SOURCE_LIST)
 set(HEADER_LIST)
@@ -75,7 +86,7 @@ list(APPEND SOURCE_LIST
         src/Material.cpp
         src/Light.cpp
         src/HittableList.cpp
-        src/Shader.cpp
+        src/ShaderProgram.cpp
         src/IllumModelFactory.cpp
         src/Whitted.cpp
         src/Dielectric.cpp
@@ -96,6 +107,7 @@ list(APPEND SOURCE_LIST
         src/AmbientOcclusion.cpp
         src/SuggestedContourPipeline.cpp
         src/AmbientOcclusionVolumeShadingPipeline.cpp
+        src/Shader.cpp
 
         ${IMGUI_SOURCE_LIST}
         )
@@ -125,6 +137,8 @@ list(APPEND HEADER_LIST
         include/Ray.h
         include/Scene.h
         include/Shader.h
+        include/ShaderProgram.h
+        include/ShaderInclude.h
         include/Sphere.h
         include/SSAODefferedShadingPipeline.h
         include/SuggestedContourPipeline.h

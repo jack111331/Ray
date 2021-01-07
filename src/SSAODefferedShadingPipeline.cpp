@@ -8,14 +8,13 @@
 #include <glm/ext/matrix_transform.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <random>
-#include "Shader.h"
+#include "ShaderProgram.h"
 #include "HittableList.h"
 #include "SSAODefferedShadingPipeline.h"
 
 SSAODefferedGBufferPass::SSAODefferedGBufferPass(PassSetting *passSetting) : Pass(passSetting), m_outputFrameTextureId{0},
                                                                      m_outputFrameDepthStencilBufferId(0) {
-    m_shader = new Shader("resource/shader/ssao_deffered_gbuffer.vs", "resource/shader/ssao_deffered_gbuffer.fs");
-    m_shader->buildShader();
+    m_shader = new ShaderProgram(ShaderInclude::load("resource/shader/local_shading/ssao_deffered_gbuffer.vs"), ShaderInclude::load("resource/shader/local_shading/ssao_deffered_gbuffer.fs"));
 
     glGenFramebuffers(1, &m_outputFrameBufferId);
     glBindFramebuffer(GL_FRAMEBUFFER, m_outputFrameBufferId);
@@ -110,8 +109,7 @@ void SSAODefferedGBufferPass::renderPass(const std::vector<ShadeObject *> &shadi
 
 SSAODefferedAmbientOcclusionPass::SSAODefferedAmbientOcclusionPass(PassSetting *passSetting) : Pass(passSetting), m_outputFrameTextureId(0),
                                                                              m_outputFrameDepthStencilBufferId(0) {
-    m_shader = new Shader("resource/shader/ssao_deffered_ao_shading.vs", "resource/shader/ssao_deffered_ao_shading.fs");
-    m_shader->buildShader();
+    m_shader = new ShaderProgram(ShaderInclude::load("resource/shader/local_shading/ssao_deffered_ao_shading.vs"), ShaderInclude::load("resource/shader/local_shading/ssao_deffered_ao_shading.fs"));
 
     SSAODefferedShadingSetting *ssaoDefferedShadingPassSetting = (SSAODefferedShadingSetting *) passSetting;
 
@@ -259,8 +257,7 @@ void SSAODefferedAmbientOcclusionPass::renderPass(const std::vector<ShadeObject 
 
 SSAODefferedShadingPass::SSAODefferedShadingPass(PassSetting *passSetting) : Pass(passSetting), m_outputFrameTextureId(0),
                                                                      m_outputFrameDepthStencilBufferId(0) {
-    m_shader = new Shader("resource/shader/ssao_deffered_shading.vs", "resource/shader/ssao_deffered_shading.fs");
-    m_shader->buildShader();
+    m_shader = new ShaderProgram(ShaderInclude::load("resource/shader/local_shading/ssao_deffered_shading.vs"), ShaderInclude::load("resource/shader/local_shading/ssao_deffered_shading.fs"));
 
     SSAODefferedShadingSetting *ssaoDefferedShadingPassSetting = (SSAODefferedShadingSetting *) passSetting;
 

@@ -5,7 +5,7 @@
 		<Option title="YAML_CPP"/>
 		<Option makefile_is_custom="1"/>
 		<Option compiler="gcc"/>
-		<Option virtualFolders="CMake Files\;CMake Files\public\;CMake Files\public\glfw\;CMake Files\public\glfw\CMake\;CMake Files\public\glfw\src\;CMake Files\public\yaml-cpp\;CMake Files\public\yaml-cpp\util\;"/>
+		<Option virtualFolders="CMake Files\;CMake Files\dependency\;CMake Files\dependency\lib\;CMake Files\dependency\lib\cmake\;CMake Files\dependency\lib\cmake\glfw3\;CMake Files\public\;CMake Files\public\yaml-cpp\;CMake Files\public\yaml-cpp\util\;"/>
 		<Build>
 			<Target title="all">
 				<Option working_dir="D:/Code/Ray/cmake-build-debug/public/yaml-cpp"/>
@@ -393,26 +393,17 @@
 		<Unit filename="D:/Code/Ray/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
-		<Unit filename="D:/Code/Ray/public/glfw/CMakeLists.txt">
-			<Option virtualFolder="CMake Files\public\glfw\"/>
+		<Unit filename="D:/Code/Ray/dependency/lib/cmake/glfw3/glfw3Config.cmake">
+			<Option virtualFolder="CMake Files\dependency\lib\cmake\glfw3\"/>
 		</Unit>
-		<Unit filename="D:/Code/Ray/public/glfw/CMake/cmake_uninstall.cmake.in">
-			<Option virtualFolder="CMake Files\public\glfw\CMake\"/>
+		<Unit filename="D:/Code/Ray/dependency/lib/cmake/glfw3/glfw3ConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\dependency\lib\cmake\glfw3\"/>
 		</Unit>
-		<Unit filename="D:/Code/Ray/public/glfw/CMake/glfw3.pc.in">
-			<Option virtualFolder="CMake Files\public\glfw\CMake\"/>
+		<Unit filename="D:/Code/Ray/dependency/lib/cmake/glfw3/glfw3Targets-noconfig.cmake">
+			<Option virtualFolder="CMake Files\dependency\lib\cmake\glfw3\"/>
 		</Unit>
-		<Unit filename="D:/Code/Ray/public/glfw/CMake/glfw3Config.cmake.in">
-			<Option virtualFolder="CMake Files\public\glfw\CMake\"/>
-		</Unit>
-		<Unit filename="D:/Code/Ray/public/glfw/src/CMakeLists.txt">
-			<Option virtualFolder="CMake Files\public\glfw\src\"/>
-		</Unit>
-		<Unit filename="D:/Code/Ray/public/glfw/src/glfw.rc.in">
-			<Option virtualFolder="CMake Files\public\glfw\src\"/>
-		</Unit>
-		<Unit filename="D:/Code/Ray/public/glfw/src/glfw_config.h.in">
-			<Option virtualFolder="CMake Files\public\glfw\src\"/>
+		<Unit filename="D:/Code/Ray/dependency/lib/cmake/glfw3/glfw3Targets.cmake">
+			<Option virtualFolder="CMake Files\dependency\lib\cmake\glfw3\"/>
 		</Unit>
 		<Unit filename="D:/Code/Ray/public/yaml-cpp/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\public\yaml-cpp\"/>

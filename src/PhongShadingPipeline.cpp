@@ -9,12 +9,11 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include "PhongShadingPipeline.h"
 #include "HittableList.h"
-#include "Shader.h"
+#include "ShaderProgram.h"
 
 PhongShadingPass::PhongShadingPass(PassSetting *passSetting) : Pass(passSetting), m_outputFrameTextureId(0),
                                                                m_outputFrameDepthStencilBufferId(0) {
-    m_shader = new Shader("resource/shader/mesh.vs", "resource/shader/mesh.fs");
-    m_shader->buildShader();
+    m_shader = new ShaderProgram(ShaderInclude::load("resource/shader/local_shading/mesh.vs"), ShaderInclude::load("resource/shader/local_shading/mesh.fs"));
 
     PhongShadingSetting *phongPassSetting = (PhongShadingSetting *) passSetting;
 

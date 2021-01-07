@@ -35,6 +35,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "D:/Code/Ray/src/SSAODefferedShadingPipeline.cpp" "D:/Code/Ray/cmake-build-debug/CMakeFiles/Ray.dir/src/SSAODefferedShadingPipeline.cpp.obj"
   "D:/Code/Ray/src/Scene.cpp" "D:/Code/Ray/cmake-build-debug/CMakeFiles/Ray.dir/src/Scene.cpp.obj"
   "D:/Code/Ray/src/Shader.cpp" "D:/Code/Ray/cmake-build-debug/CMakeFiles/Ray.dir/src/Shader.cpp.obj"
+  "D:/Code/Ray/src/ShaderProgram.cpp" "D:/Code/Ray/cmake-build-debug/CMakeFiles/Ray.dir/src/ShaderProgram.cpp.obj"
   "D:/Code/Ray/src/Sphere.cpp" "D:/Code/Ray/cmake-build-debug/CMakeFiles/Ray.dir/src/Sphere.cpp.obj"
   "D:/Code/Ray/src/SuggestedContourPipeline.cpp" "D:/Code/Ray/cmake-build-debug/CMakeFiles/Ray.dir/src/SuggestedContourPipeline.cpp.obj"
   "D:/Code/Ray/src/Texture.cpp" "D:/Code/Ray/cmake-build-debug/CMakeFiles/Ray.dir/src/Texture.cpp.obj"
@@ -60,13 +61,12 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../public/imgui/example/libs/gl3w"
   ".././include"
   ".././include/TriMesh"
-  "../public/glfw/include"
   "../public/glew/include"
+  "../dependency/include"
   )
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "D:/Code/Ray/cmake-build-debug/public/glfw/src/CMakeFiles/glfw.dir/DependInfo.cmake"
   "D:/Code/Ray/cmake-build-debug/public/yaml-cpp/CMakeFiles/yaml-cpp.dir/DependInfo.cmake"
   )
 

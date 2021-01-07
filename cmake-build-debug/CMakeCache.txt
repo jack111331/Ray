@@ -784,6 +784,12 @@ glad_BINARY_DIR:STATIC=D:/Code/Ray/cmake-build-debug/public/libigl/glad
 //Value Computed by CMake
 glad_SOURCE_DIR:STATIC=D:/Code/Ray/public/libigl/external/glad
 
+//The directory containing a CMake configuration file for glfw3.
+glfw3_DIR:PATH=D:/Code/Ray/dependency/lib/cmake/glfw3
+
+//The directory containing a CMake configuration file for glfw.
+glfw_DIR:PATH=glfw_DIR-NOTFOUND
+
 //Value Computed by CMake
 glm_BINARY_DIR:STATIC=D:/Code/Ray/cmake-build-debug/public/glm
 
@@ -867,6 +873,12 @@ triangle_BINARY_DIR:STATIC=D:/Code/Ray/cmake-build-debug/public/libigl/triangle
 
 //Value Computed by CMake
 triangle_SOURCE_DIR:STATIC=D:/Code/Ray/public/libigl/external/triangle
+
+//The directory containing a CMake configuration file for yaml-cppREQUIRED.
+yaml-cppREQUIRED_DIR:PATH=yaml-cppREQUIRED_DIR-NOTFOUND
+
+//The directory containing a CMake configuration file for yaml-cpp.
+yaml-cpp_DIR:PATH=D:/Code/Ray/dependency/share/cmake/yaml-cpp
 
 
 ########################
@@ -1025,7 +1037,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=5
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=3
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

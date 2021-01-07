@@ -77,30 +77,6 @@ package_source/fast: package_source
 
 .PHONY : package_source/fast
 
-# Special rule for the target install
-install: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	"D:\Program Files\JetBrains\CLion 2019.2.4\bin\cmake\win\bin\cmake.exe" -P cmake_install.cmake
-.PHONY : install
-
-# Special rule for the target install
-install/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	"D:\Program Files\JetBrains\CLion 2019.2.4\bin\cmake\win\bin\cmake.exe" -P cmake_install.cmake
-.PHONY : install/fast
-
-# Special rule for the target install/local
-install/local: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	"D:\Program Files\JetBrains\CLion 2019.2.4\bin\cmake\win\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local
-
-# Special rule for the target install/local
-install/local/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	"D:\Program Files\JetBrains\CLion 2019.2.4\bin\cmake\win\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local/fast
-
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
@@ -122,28 +98,6 @@ rebuild_cache:
 rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
-
-# Special rule for the target list_install_components
-list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
-.PHONY : list_install_components
-
-# Special rule for the target list_install_components
-list_install_components/fast: list_install_components
-
-.PHONY : list_install_components/fast
-
-# Special rule for the target install/strip
-install/strip: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	"D:\Program Files\JetBrains\CLion 2019.2.4\bin\cmake\win\bin\cmake.exe" -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip
-
-# Special rule for the target install/strip
-install/strip/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	"D:\Program Files\JetBrains\CLion 2019.2.4\bin\cmake\win\bin\cmake.exe" -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -190,32 +144,6 @@ Ray: cmake_check_build_system
 Ray/fast:
 	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/build
 .PHONY : Ray/fast
-
-#=============================================================================
-# Target rules for targets named uninstall
-
-# Build rule for target.
-uninstall: cmake_check_build_system
-	$(MAKE) -f CMakeFiles\Makefile2 uninstall
-.PHONY : uninstall
-
-# fast build rule for target.
-uninstall/fast:
-	$(MAKE) -f public\glfw\CMakeFiles\uninstall.dir\build.make public/glfw/CMakeFiles/uninstall.dir/build
-.PHONY : uninstall/fast
-
-#=============================================================================
-# Target rules for targets named glfw
-
-# Build rule for target.
-glfw: cmake_check_build_system
-	$(MAKE) -f CMakeFiles\Makefile2 glfw
-.PHONY : glfw
-
-# fast build rule for target.
-glfw/fast:
-	$(MAKE) -f public\glfw\src\CMakeFiles\glfw.dir\build.make public/glfw/src/CMakeFiles/glfw.dir/build
-.PHONY : glfw/fast
 
 #=============================================================================
 # Target rules for targets named NightlyMemoryCheck
@@ -1483,6 +1411,33 @@ src/Shader.cpp.s:
 	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/Shader.cpp.s
 .PHONY : src/Shader.cpp.s
 
+src/ShaderProgram.obj: src/ShaderProgram.cpp.obj
+
+.PHONY : src/ShaderProgram.obj
+
+# target to build an object file
+src/ShaderProgram.cpp.obj:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/ShaderProgram.cpp.obj
+.PHONY : src/ShaderProgram.cpp.obj
+
+src/ShaderProgram.i: src/ShaderProgram.cpp.i
+
+.PHONY : src/ShaderProgram.i
+
+# target to preprocess a source file
+src/ShaderProgram.cpp.i:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/ShaderProgram.cpp.i
+.PHONY : src/ShaderProgram.cpp.i
+
+src/ShaderProgram.s: src/ShaderProgram.cpp.s
+
+.PHONY : src/ShaderProgram.s
+
+# target to generate assembly for a file
+src/ShaderProgram.cpp.s:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/ShaderProgram.cpp.s
+.PHONY : src/ShaderProgram.cpp.s
+
 src/Sphere.obj: src/Sphere.cpp.obj
 
 .PHONY : src/Sphere.obj
@@ -1708,14 +1663,8 @@ help:
 	@echo ... Ray
 	@echo ... package
 	@echo ... package_source
-	@echo ... install
-	@echo ... install/local
 	@echo ... edit_cache
 	@echo ... rebuild_cache
-	@echo ... list_install_components
-	@echo ... install/strip
-	@echo ... uninstall
-	@echo ... glfw
 	@echo ... NightlyMemoryCheck
 	@echo ... Experimental
 	@echo ... NightlySubmit
@@ -1842,6 +1791,9 @@ help:
 	@echo ... src/Shader.obj
 	@echo ... src/Shader.i
 	@echo ... src/Shader.s
+	@echo ... src/ShaderProgram.obj
+	@echo ... src/ShaderProgram.i
+	@echo ... src/ShaderProgram.s
 	@echo ... src/Sphere.obj
 	@echo ... src/Sphere.i
 	@echo ... src/Sphere.s

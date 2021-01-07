@@ -7,14 +7,13 @@
 #include <GLUtil.h>
 #include <glm/ext/matrix_transform.hpp>
 #include <glm/gtc/matrix_transform.hpp>
-#include "Shader.h"
+#include "ShaderProgram.h"
 #include "HittableList.h"
 #include "DefferedShadingPipeline.h"
 
 DefferedGBufferPass::DefferedGBufferPass(PassSetting *passSetting) : Pass(passSetting), m_outputFrameTextureId{0},
                                                                      m_outputFrameDepthStencilBufferId(0) {
-    m_shader = new Shader("resource/shader/deffered_gbuffer.vs", "resource/shader/deffered_gbuffer.fs");
-    m_shader->buildShader();
+    m_shader = new ShaderProgram(ShaderInclude::load("resource/shader/local_shading/deffered_gbuffer.vs"), ShaderInclude::load("resource/shader/local_shading/deffered_gbuffer.fs"));
 
     glGenFramebuffers(1, &m_outputFrameBufferId);
     glBindFramebuffer(GL_FRAMEBUFFER, m_outputFrameBufferId);
@@ -107,8 +106,7 @@ void DefferedGBufferPass::renderPass(const std::vector<ShadeObject *> &shadingLi
 
 DefferedShadingPass::DefferedShadingPass(PassSetting *passSetting) : Pass(passSetting), m_outputFrameTextureId(0),
                                                                      m_outputFrameDepthStencilBufferId(0) {
-    m_shader = new Shader("resource/shader/deffered_shading.vs", "resource/shader/deffered_shading.fs");
-    m_shader->buildShader();
+    m_shader = new ShaderProgram(ShaderInclude::load("resource/shader/local_shading/deffered_shading.vs"), ShaderInclude::load("resource/shader/local_shading/deffered_shading.fs"));
 
     DefferedShadingSetting *defferedShadingPassSetting = (DefferedShadingSetting *) passSetting;
 

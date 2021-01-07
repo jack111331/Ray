@@ -34,7 +34,6 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("D:/Code/Ray/cmake-build-debug/public/glfw/cmake_install.cmake")
   include("D:/Code/Ray/cmake-build-debug/public/yaml-cpp/cmake_install.cmake")
 
 endif()

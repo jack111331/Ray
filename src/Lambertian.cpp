@@ -29,9 +29,8 @@ void LambertianMaterial::calculatePhong(const Scene *scene, Ray &ray, const HitR
         }
     }
     // FIXME result color bug
-//    Color resultColor = m_ambientColor + min(1.0f, diffuseIntensity) * m_diffuseColor +
-//                        min(1.0f, specularIntensity) * m_specularColor;
-    Color resultColor = m_ambientColor;
+    Color resultColor = m_ambientColor + min(1.0f, diffuseIntensity) * m_diffuseColor +
+                        min(1.0f, specularIntensity) * m_specularColor;
     shadeRecord.emit = {.0f, .0f, .0f};
     shadeRecord.attenuation =
             resultColor * (m_diffuseTexture ? m_diffuseTexture->getColor(record.texCoord) : Color{1.0f, 1.0f,

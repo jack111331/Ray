@@ -13,7 +13,7 @@
 #include "Camera.h"
 #include "IllumModel.h"
 
-class Shader;
+class ShaderProgram;
 
 class PassSetting {
 public:
@@ -57,7 +57,7 @@ public:
     virtual std::string getType() = 0;
 
 protected:
-    Shader *m_shader;
+    ShaderProgram *m_shader;
     uint32_t m_outputFrameBufferId;
     PassSetting *m_passSetting;
     std::vector<Pass *> m_requirePass;
@@ -139,13 +139,56 @@ protected:
 private:
     uint32_t m_frameTextureId;
 
+    uint32_t m_quadVao;
+
+    ShaderProgram *m_screenShader;
+
+    int m_jitterSampleAmount;
+};
+
+class GPURayTracingPipeline : public Pipeline {
+public:
+    GPURayTracingPipeline() : m_model(nullptr), m_jitterSampleAmount(0) {}
+
+    virtual void setupEnvironment();
+
+    virtual void pipelineLoop();
+
+    virtual bool readPipelineInfo(const YAML::Node &node);
+
+    void setIlluminationModel(IlluminationModel *model) {
+        m_model = model;
+    }
+
+protected:
+    void generateImage();
+
+    Color traceRay(Ray &ray, bool debugFlag = false) {
+        if (m_model) {
+            return m_model->castRay(m_scene, ray, 0, debugFlag);
+        } else {
+            return m_backgroundColor;
+        }
+    }
+
+    virtual void setupGUILayout();
+
+    IlluminationModel *m_model;
+
+    Color m_backgroundColor = {.0f, .0f, .0f};
+
+private:
+    uint32_t m_frameTextureId;
+
+    uint32_t m_quadVao;
+
+    ShaderProgram *m_screenShader;
+
     int m_jitterSampleAmount;
 };
 
 class LocalRenderingPipeline : public Pipeline {
 public:
-    virtual void setupEnvironment();
-
     virtual void pipelineLoop();
 
 protected:

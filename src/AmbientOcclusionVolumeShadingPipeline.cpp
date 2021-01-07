@@ -7,7 +7,7 @@
 #include <GLUtil.h>
 #include <glm/ext/matrix_transform.hpp>
 #include <glm/gtc/matrix_transform.hpp>
-#include "Shader.h"
+#include "ShaderProgram.h"
 #include "HittableList.h"
 #include "AmbientOcclusionVolumeShadingPipeline.h"
 
@@ -16,9 +16,8 @@ AmbientOcclusionVolumeGBufferPass::AmbientOcclusionVolumeGBufferPass(PassSetting
                                                                                                          0},
                                                                                                  m_outputFrameDepthStencilBufferId(
                                                                                                          0) {
-    m_shader = new Shader("resource/shader/ambient_occlusion_volume_deffered_gbuffer.vs",
-                          "resource/shader/ambient_occlusion_volume_deffered_gbuffer.fs");
-    m_shader->buildShader();
+    m_shader = new ShaderProgram(ShaderInclude::load("resource/shader/local_shading/ambient_occlusion_volume_deffered_gbuffer.vs"),
+                                 ShaderInclude::load("resource/shader/local_shading/ambient_occlusion_volume_deffered_gbuffer.fs"));
 
     glGenFramebuffers(1, &m_outputFrameBufferId);
     glBindFramebuffer(GL_FRAMEBUFFER, m_outputFrameBufferId);
@@ -116,10 +115,9 @@ AmbientOcclusionVolumeBoundingPass::AmbientOcclusionVolumeBoundingPass(PassSetti
                                                                                                            0},
                                                                                                    m_outputFrameDepthStencilBufferId(
                                                                                                            0) {
-    m_shader = new Shader("resource/shader/ambient_occlusion_volume_bounding.vs",
-                          "resource/shader/ambient_occlusion_volume_bounding.gs",
-                          "resource/shader/ambient_occlusion_volume_bounding.fs");
-    m_shader->buildShader();
+    m_shader = new ShaderProgram(ShaderInclude::load("resource/shader/local_shading/ambient_occlusion_volume_bounding.vs"),
+                                                     ShaderInclude::load("resource/shader/local_shading/ambient_occlusion_volume_bounding.gs"),
+                                                                         ShaderInclude::load("resource/shader/local_shading/ambient_occlusion_volume_bounding.fs"));
 
     glGenFramebuffers(1, &m_outputFrameBufferId);
     glBindFramebuffer(GL_FRAMEBUFFER, m_outputFrameBufferId);
@@ -208,9 +206,8 @@ AmbientOcclusionVolumeShadingPass::AmbientOcclusionVolumeShadingPass(PassSetting
                                                                                                          0),
                                                                                                  m_outputFrameDepthStencilBufferId(
                                                                                                          0) {
-    m_shader = new Shader("resource/shader/ambient_occlusion_volume_deffered_shading.vs",
-                          "resource/shader/ambient_occlusion_volume_deffered_shading.fs");
-    m_shader->buildShader();
+    m_shader = new ShaderProgram(ShaderInclude::load("resource/shader/local_shading/ambient_occlusion_volume_deffered_shading.vs"),
+                                                     ShaderInclude::load("resource/shader/local_shading/ambient_occlusion_volume_deffered_shading.fs"));
 
     AmbientOcclusionVolumeShadingSetting *setting = (AmbientOcclusionVolumeShadingSetting *) passSetting;
 

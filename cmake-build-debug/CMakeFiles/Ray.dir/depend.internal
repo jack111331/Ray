@@ -41,6 +41,7 @@ CMakeFiles/Ray.dir/public/imgui/imgui_widgets.cpp.obj
  D:/Code/Ray/public/imgui/imgui_widgets.cpp
  D:/Code/Ray/public/imgui/imstb_textedit.h
 CMakeFiles/Ray.dir/src/AmbientOcclusion.cpp.obj
+ ../dependency/include/GLFW/glfw3.h
  ../include/AmbientOcclusion.h
  ../include/Camera.h
  ../include/Dielectric.h
@@ -55,7 +56,6 @@ CMakeFiles/Ray.dir/src/AmbientOcclusion.cpp.obj
  ../include/Scene.h
  ../include/Texture.h
  ../include/Utility.h
- ../public/glfw/include/GLFW/glfw3.h
  ../public/glm/glm/common.hpp
  ../public/glm/glm/detail/_fixes.hpp
  ../public/glm/glm/detail/_swizzle.hpp
@@ -240,6 +240,7 @@ CMakeFiles/Ray.dir/src/AmbientOcclusion.cpp.obj
  ../public/yaml-cpp/include/yaml-cpp/yaml.h
  D:/Code/Ray/src/AmbientOcclusion.cpp
 CMakeFiles/Ray.dir/src/AmbientOcclusionVolumeShadingPipeline.cpp.obj
+ ../dependency/include/GLFW/glfw3.h
  ../include/AmbientOcclusionVolumeShadingPipeline.h
  ../include/Camera.h
  ../include/GLUtil.h
@@ -252,11 +253,11 @@ CMakeFiles/Ray.dir/src/AmbientOcclusionVolumeShadingPipeline.cpp.obj
  ../include/Pipeline.h
  ../include/Ray.h
  ../include/Scene.h
- ../include/Shader.h
+ ../include/ShaderInclude.h
+ ../include/ShaderProgram.h
  ../include/Texture.h
  ../include/Utility.h
  ../public/glew/include/GL/glew.h
- ../public/glfw/include/GLFW/glfw3.h
  ../public/glm/glm/common.hpp
  ../public/glm/glm/detail/_fixes.hpp
  ../public/glm/glm/detail/_swizzle.hpp
@@ -452,6 +453,7 @@ CMakeFiles/Ray.dir/src/AmbientOcclusionVolumeShadingPipeline.cpp.obj
  ../public/yaml-cpp/include/yaml-cpp/yaml.h
  D:/Code/Ray/src/AmbientOcclusionVolumeShadingPipeline.cpp
 CMakeFiles/Ray.dir/src/AreaLight.cpp.obj
+ ../dependency/include/GLFW/glfw3.h
  ../include/AreaLight.h
  ../include/Camera.h
  ../include/Hittable.h
@@ -464,7 +466,6 @@ CMakeFiles/Ray.dir/src/AreaLight.cpp.obj
  ../include/Ray.h
  ../include/Scene.h
  ../include/Utility.h
- ../public/glfw/include/GLFW/glfw3.h
  ../public/glm/glm/common.hpp
  ../public/glm/glm/detail/_fixes.hpp
  ../public/glm/glm/detail/_swizzle.hpp
@@ -723,6 +724,7 @@ CMakeFiles/Ray.dir/src/Camera.cpp.obj
  ../public/yaml-cpp/include/yaml-cpp/yaml.h
  D:/Code/Ray/src/Camera.cpp
 CMakeFiles/Ray.dir/src/Config.cpp.obj
+ ../dependency/include/GLFW/glfw3.h
  ../include/AmbientOcclusion.h
  ../include/AmbientOcclusionVolumeShadingPipeline.h
  ../include/AreaLight.h
@@ -753,7 +755,6 @@ CMakeFiles/Ray.dir/src/Config.cpp.obj
  ../include/Triangle.h
  ../include/Utility.h
  ../include/Whitted.h
- ../public/glfw/include/GLFW/glfw3.h
  ../public/glm/glm/common.hpp
  ../public/glm/glm/detail/_fixes.hpp
  ../public/glm/glm/detail/_swizzle.hpp
@@ -938,6 +939,7 @@ CMakeFiles/Ray.dir/src/Config.cpp.obj
  ../public/yaml-cpp/include/yaml-cpp/yaml.h
  D:/Code/Ray/src/Config.cpp
 CMakeFiles/Ray.dir/src/DefferedShadingPipeline.cpp.obj
+ ../dependency/include/GLFW/glfw3.h
  ../include/Camera.h
  ../include/DefferedShadingPipeline.h
  ../include/GLUtil.h
@@ -950,11 +952,11 @@ CMakeFiles/Ray.dir/src/DefferedShadingPipeline.cpp.obj
  ../include/Pipeline.h
  ../include/Ray.h
  ../include/Scene.h
- ../include/Shader.h
+ ../include/ShaderInclude.h
+ ../include/ShaderProgram.h
  ../include/Texture.h
  ../include/Utility.h
  ../public/glew/include/GL/glew.h
- ../public/glfw/include/GLFW/glfw3.h
  ../public/glm/glm/common.hpp
  ../public/glm/glm/detail/_fixes.hpp
  ../public/glm/glm/detail/_swizzle.hpp
@@ -1305,6 +1307,7 @@ CMakeFiles/Ray.dir/src/HittableList.cpp.obj
  ../public/yaml-cpp/include/yaml-cpp/yaml.h
  D:/Code/Ray/src/HittableList.cpp
 CMakeFiles/Ray.dir/src/IllumModelFactory.cpp.obj
+ ../dependency/include/GLFW/glfw3.h
  ../include/Camera.h
  ../include/Hittable.h
  ../include/IllumModel.h
@@ -1318,7 +1321,6 @@ CMakeFiles/Ray.dir/src/IllumModelFactory.cpp.obj
  ../include/Scene.h
  ../include/Utility.h
  ../include/Whitted.h
- ../public/glfw/include/GLFW/glfw3.h
  ../public/glm/glm/common.hpp
  ../public/glm/glm/detail/_fixes.hpp
  ../public/glm/glm/detail/_swizzle.hpp
@@ -1503,6 +1505,7 @@ CMakeFiles/Ray.dir/src/IllumModelFactory.cpp.obj
  ../public/yaml-cpp/include/yaml-cpp/yaml.h
  D:/Code/Ray/src/IllumModelFactory.cpp
 CMakeFiles/Ray.dir/src/InstantRadiosity.cpp.obj
+ ../dependency/include/GLFW/glfw3.h
  ../include/Camera.h
  ../include/GLUtil.h
  ../include/Hittable.h
@@ -1517,7 +1520,6 @@ CMakeFiles/Ray.dir/src/InstantRadiosity.cpp.obj
  ../include/Ray.h
  ../include/Scene.h
  ../include/Utility.h
- ../public/glfw/include/GLFW/glfw3.h
  ../public/glm/glm/common.hpp
  ../public/glm/glm/detail/_fixes.hpp
  ../public/glm/glm/detail/_swizzle.hpp
@@ -1717,6 +1719,7 @@ CMakeFiles/Ray.dir/src/KDTree.cpp.obj
  ../include/Utility.h
  D:/Code/Ray/src/KDTree.cpp
 CMakeFiles/Ray.dir/src/Lambertian.cpp.obj
+ ../dependency/include/GLFW/glfw3.h
  ../include/Camera.h
  ../include/Hittable.h
  ../include/IllumModel.h
@@ -1730,7 +1733,6 @@ CMakeFiles/Ray.dir/src/Lambertian.cpp.obj
  ../include/Scene.h
  ../include/Texture.h
  ../include/Utility.h
- ../public/glfw/include/GLFW/glfw3.h
  ../public/glm/glm/common.hpp
  ../public/glm/glm/detail/_fixes.hpp
  ../public/glm/glm/detail/_swizzle.hpp
@@ -1989,6 +1991,7 @@ CMakeFiles/Ray.dir/src/Material.cpp.obj
  ../public/yaml-cpp/include/yaml-cpp/yaml.h
  D:/Code/Ray/src/Material.cpp
 CMakeFiles/Ray.dir/src/PhongShadingPipeline.cpp.obj
+ ../dependency/include/GLFW/glfw3.h
  ../include/Camera.h
  ../include/GLUtil.h
  ../include/Hittable.h
@@ -2001,11 +2004,11 @@ CMakeFiles/Ray.dir/src/PhongShadingPipeline.cpp.obj
  ../include/Pipeline.h
  ../include/Ray.h
  ../include/Scene.h
- ../include/Shader.h
+ ../include/ShaderInclude.h
+ ../include/ShaderProgram.h
  ../include/Texture.h
  ../include/Utility.h
  ../public/glew/include/GL/glew.h
- ../public/glfw/include/GLFW/glfw3.h
  ../public/glm/glm/common.hpp
  ../public/glm/glm/detail/_fixes.hpp
  ../public/glm/glm/detail/_swizzle.hpp
@@ -2201,6 +2204,7 @@ CMakeFiles/Ray.dir/src/PhongShadingPipeline.cpp.obj
  ../public/yaml-cpp/include/yaml-cpp/yaml.h
  D:/Code/Ray/src/PhongShadingPipeline.cpp
 CMakeFiles/Ray.dir/src/Photon.cpp.obj
+ ../dependency/include/GLFW/glfw3.h
  ../include/Camera.h
  ../include/Dielectric.h
  ../include/Hittable.h
@@ -2214,7 +2218,6 @@ CMakeFiles/Ray.dir/src/Photon.cpp.obj
  ../include/Ray.h
  ../include/Scene.h
  ../include/Utility.h
- ../public/glfw/include/GLFW/glfw3.h
  ../public/glm/glm/common.hpp
  ../public/glm/glm/detail/_fixes.hpp
  ../public/glm/glm/detail/_swizzle.hpp
@@ -2399,6 +2402,7 @@ CMakeFiles/Ray.dir/src/Photon.cpp.obj
  ../public/yaml-cpp/include/yaml-cpp/yaml.h
  D:/Code/Ray/src/Photon.cpp
 CMakeFiles/Ray.dir/src/Pipeline.cpp.obj
+ ../dependency/include/GLFW/glfw3.h
  ../include/Camera.h
  ../include/Hittable.h
  ../include/HittableList.h
@@ -2409,11 +2413,11 @@ CMakeFiles/Ray.dir/src/Pipeline.cpp.obj
  ../include/Pipeline.h
  ../include/Ray.h
  ../include/Scene.h
- ../include/Shader.h
+ ../include/ShaderInclude.h
+ ../include/ShaderProgram.h
  ../include/Texture.h
  ../include/Utility.h
  ../public/glew/include/GL/glew.h
- ../public/glfw/include/GLFW/glfw3.h
  ../public/glm/glm/common.hpp
  ../public/glm/glm/detail/_fixes.hpp
  ../public/glm/glm/detail/_swizzle.hpp
@@ -2602,6 +2606,7 @@ CMakeFiles/Ray.dir/src/Pipeline.cpp.obj
  ../public/yaml-cpp/include/yaml-cpp/yaml.h
  D:/Code/Ray/src/Pipeline.cpp
 CMakeFiles/Ray.dir/src/PipelineFactory.cpp.obj
+ ../dependency/include/GLFW/glfw3.h
  ../include/AmbientOcclusion.h
  ../include/AmbientOcclusionVolumeShadingPipeline.h
  ../include/Camera.h
@@ -2622,7 +2627,6 @@ CMakeFiles/Ray.dir/src/PipelineFactory.cpp.obj
  ../include/SuggestedContourPipeline.h
  ../include/Utility.h
  ../include/Whitted.h
- ../public/glfw/include/GLFW/glfw3.h
  ../public/glm/glm/common.hpp
  ../public/glm/glm/detail/_fixes.hpp
  ../public/glm/glm/detail/_swizzle.hpp
@@ -2811,6 +2815,7 @@ CMakeFiles/Ray.dir/src/Ray.cpp.obj
  ../include/Utility.h
  D:/Code/Ray/src/Ray.cpp
 CMakeFiles/Ray.dir/src/SSAODefferedShadingPipeline.cpp.obj
+ ../dependency/include/GLFW/glfw3.h
  ../include/Camera.h
  ../include/GLUtil.h
  ../include/Hittable.h
@@ -2823,11 +2828,11 @@ CMakeFiles/Ray.dir/src/SSAODefferedShadingPipeline.cpp.obj
  ../include/Ray.h
  ../include/SSAODefferedShadingPipeline.h
  ../include/Scene.h
- ../include/Shader.h
+ ../include/ShaderInclude.h
+ ../include/ShaderProgram.h
  ../include/Texture.h
  ../include/Utility.h
  ../public/glew/include/GL/glew.h
- ../public/glfw/include/GLFW/glfw3.h
  ../public/glm/glm/common.hpp
  ../public/glm/glm/detail/_fixes.hpp
  ../public/glm/glm/detail/_swizzle.hpp
@@ -3023,6 +3028,7 @@ CMakeFiles/Ray.dir/src/SSAODefferedShadingPipeline.cpp.obj
  ../public/yaml-cpp/include/yaml-cpp/yaml.h
  D:/Code/Ray/src/SSAODefferedShadingPipeline.cpp
 CMakeFiles/Ray.dir/src/Scene.cpp.obj
+ ../dependency/include/GLFW/glfw3.h
  ../include/AreaLight.h
  ../include/BVH.h
  ../include/Camera.h
@@ -3043,7 +3049,6 @@ CMakeFiles/Ray.dir/src/Scene.cpp.obj
  ../include/Triangle.h
  ../include/TriangleGroup.h
  ../include/Utility.h
- ../public/glfw/include/GLFW/glfw3.h
  ../public/glm/glm/common.hpp
  ../public/glm/glm/detail/_fixes.hpp
  ../public/glm/glm/detail/_swizzle.hpp
@@ -3229,6 +3234,13 @@ CMakeFiles/Ray.dir/src/Scene.cpp.obj
  D:/Code/Ray/src/Scene.cpp
 CMakeFiles/Ray.dir/src/Shader.cpp.obj
  ../include/Shader.h
+ ../include/ShaderInclude.h
+ ../public/glew/include/GL/glew.h
+ D:/Code/Ray/src/Shader.cpp
+CMakeFiles/Ray.dir/src/ShaderProgram.cpp.obj
+ ../include/Shader.h
+ ../include/ShaderInclude.h
+ ../include/ShaderProgram.h
  ../public/glew/include/GL/glew.h
  ../public/glm/glm/common.hpp
  ../public/glm/glm/detail/_fixes.hpp
@@ -3381,7 +3393,7 @@ CMakeFiles/Ray.dir/src/Shader.cpp.obj
  ../public/glm/glm/vec3.hpp
  ../public/glm/glm/vec4.hpp
  ../public/glm/glm/vector_relational.hpp
- D:/Code/Ray/src/Shader.cpp
+ D:/Code/Ray/src/ShaderProgram.cpp
 CMakeFiles/Ray.dir/src/Sphere.cpp.obj
  ../include/Hittable.h
  ../include/Material.h
@@ -3422,6 +3434,7 @@ CMakeFiles/Ray.dir/src/Sphere.cpp.obj
  ../public/yaml-cpp/include/yaml-cpp/yaml.h
  D:/Code/Ray/src/Sphere.cpp
 CMakeFiles/Ray.dir/src/SuggestedContourPipeline.cpp.obj
+ ../dependency/include/GLFW/glfw3.h
  ../include/Camera.h
  ../include/GLUtil.h
  ../include/Hittable.h
@@ -3433,12 +3446,12 @@ CMakeFiles/Ray.dir/src/SuggestedContourPipeline.cpp.obj
  ../include/Pipeline.h
  ../include/Ray.h
  ../include/Scene.h
- ../include/Shader.h
+ ../include/ShaderInclude.h
+ ../include/ShaderProgram.h
  ../include/SuggestedContourPipeline.h
  ../include/Texture.h
  ../include/Utility.h
  ../public/glew/include/GL/glew.h
- ../public/glfw/include/GLFW/glfw3.h
  ../public/glm/glm/common.hpp
  ../public/glm/glm/detail/_fixes.hpp
  ../public/glm/glm/detail/_swizzle.hpp
@@ -3740,6 +3753,7 @@ CMakeFiles/Ray.dir/src/Utility.cpp.obj
  ../include/Utility.h
  D:/Code/Ray/src/Utility.cpp
 CMakeFiles/Ray.dir/src/Whitted.cpp.obj
+ ../dependency/include/GLFW/glfw3.h
  ../include/Camera.h
  ../include/Dielectric.h
  ../include/Hittable.h
@@ -3752,7 +3766,6 @@ CMakeFiles/Ray.dir/src/Whitted.cpp.obj
  ../include/Scene.h
  ../include/Utility.h
  ../include/Whitted.h
- ../public/glfw/include/GLFW/glfw3.h
  ../public/glm/glm/common.hpp
  ../public/glm/glm/detail/_fixes.hpp
  ../public/glm/glm/detail/_swizzle.hpp
@@ -3937,6 +3950,7 @@ CMakeFiles/Ray.dir/src/Whitted.cpp.obj
  ../public/yaml-cpp/include/yaml-cpp/yaml.h
  D:/Code/Ray/src/Whitted.cpp
 CMakeFiles/Ray.dir/src/main.cpp.obj
+ ../dependency/include/GLFW/glfw3.h
  ../include/Camera.h
  ../include/Config.h
  ../include/Hittable.h
@@ -3947,7 +3961,6 @@ CMakeFiles/Ray.dir/src/main.cpp.obj
  ../include/Ray.h
  ../include/Scene.h
  ../include/Utility.h
- ../public/glfw/include/GLFW/glfw3.h
  ../public/glm/glm/common.hpp
  ../public/glm/glm/detail/_fixes.hpp
  ../public/glm/glm/detail/_swizzle.hpp

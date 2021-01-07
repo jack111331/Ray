@@ -9,14 +9,13 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <backends/imgui_impl_opengl3.h>
 #include <backends/imgui_impl_glfw.h>
-#include "Shader.h"
+#include "ShaderProgram.h"
 #include "HittableList.h"
 #include "SuggestedContourPipeline.h"
 
 SuggestedContourShadingPass::SuggestedContourShadingPass(PassSetting *passSetting) : Pass(passSetting), m_outputFrameTextureId{0},
                                                                      m_outputFrameDepthStencilBufferId(0) {
-    m_shader = new Shader("resource/shader/suggested_contour.vs", "resource/shader/suggested_contour.fs");
-    m_shader->buildShader();
+    m_shader = new ShaderProgram(ShaderInclude::load("resource/shader/local_shading/suggested_contour.vs"), ShaderInclude::load("resource/shader/local_shading/suggested_contour.fs"));
 
     glGenFramebuffers(1, &m_outputFrameBufferId);
     glBindFramebuffer(GL_FRAMEBUFFER, m_outputFrameBufferId);

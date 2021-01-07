@@ -72,14 +72,6 @@ std::vector<Hittable *> TriangleGroup::fromObj(const YAML::Node &node, const Sce
     if (result) {
         for (int i = 0; i < Loader.LoadedMeshes.size(); i++) {
             TriangleGroup *triangleGroup = new TriangleGroup();
-//            if (!node["material"]) {
-//                std::cerr << "No require object node" << std::endl;
-//            }
-//            auto it = scene->m_materialTable.find(node["material"].as<std::string>());
-//            if (it == scene->m_materialTable.end()) {
-//                std::cerr << "Can't find material in material table" << std::endl;
-//            }
-//            triangleGroup->setMaterial(it->second);
 
             if (node["material"]) {
                 triangleGroup->fromObj(Loader.LoadedMeshes[i], scene, node["material"].as<std::string>());
@@ -122,6 +114,10 @@ bool TriangleGroup::fromObj(const objl::Mesh &mesh, const Scene *scene, const st
                                        nodeList[mesh.Indices[j + 2]]);
         }
         m_triangles.push_back(triangle);
+    }
+    auto it = scene->m_materialTable.find(materialName);
+    if (it != scene->m_materialTable.end()) {
+        setMaterial(it->second);
     }
     m_accel = new BVH(this);
     return true;
