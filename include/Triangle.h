@@ -13,23 +13,23 @@
 
 class TriangleNode {
 public:
-    TriangleNode() : m_coord(Coord(0, 0, 0)),
+    TriangleNode() : m_coord(Vec3f(0, 0, 0)),
                      m_texCoord(
-                             (Coord2D{0, 0})),
-                     m_normal(Velocity(0, 0, 0)),
+                             (Vec2f{0, 0})),
+                     m_normal(Vec3f(0, 0, 0)),
                      m_hasOther(
                              false) {}
 
-    TriangleNode(const Coord &coord, const Coord2D &texCoord, const Velocity &normal, bool hasOther) : m_coord(coord),
-                                                                                                       m_texCoord(
+    TriangleNode(const Vec3f &coord, const Vec2f &texCoord, const Vec3f &normal, bool hasOther) : m_coord(coord),
+                                                                                                  m_texCoord(
                                                                                                                texCoord),
-                                                                                                       m_normal(normal),
-                                                                                                       m_hasOther(
+                                                                                                  m_normal(normal),
+                                                                                                  m_hasOther(
                                                                                                                hasOther) {}
 
-    Coord m_coord;
-    Coord2D m_texCoord;
-    Velocity m_normal;
+    Vec3f m_coord;
+    Vec2f m_texCoord;
+    Vec3f m_normal;
     bool m_hasOther = false;
 };
 
@@ -37,7 +37,7 @@ class Triangle : public Hittable {
 public:
     Triangle() : m_point{} {}
 
-    Triangle(Coord (*coord)[3]) : m_point{} {
+    Triangle(Vec3f (*coord)[3]) : m_point{} {
         for (int i = 0; i < 3; ++i) {
             m_point[i] = new TriangleNode;
             m_point[i]->m_coord = (*coord)[i];
@@ -45,26 +45,21 @@ public:
         }
     }
 
-    void fromTriangleNode(const std::string &materialName, const Scene *scene, TriangleNode *firstNode,
+    void fromTriangleNode(Material *material, const Scene *scene, TriangleNode *firstNode,
                           TriangleNode *secondNode, TriangleNode *thirdNode) {
         m_point[0] = firstNode;
         m_point[1] = secondNode;
         m_point[2] = thirdNode;
-        auto it = scene->m_materialTable.find(materialName);
-        if (it == scene->m_materialTable.end()) {
-            // TODO better handler require
-            return;
-//            exit(1);
-        }
-        setMaterial(it->second);
+
+        setMaterial(material);
         m_boundingBox.updateBoundingBox(m_point[0]->m_coord);
         m_boundingBox.updateBoundingBox(m_point[1]->m_coord);
         m_boundingBox.updateBoundingBox(m_point[2]->m_coord);
     }
 
-    virtual bool isHit(const Ray &ray, HitRecord &record, float tmin = 0.0001f) const;
+    virtual bool isHit(const Ray &ray, IntersectionRecord &record, float tmin = 0.0001f, const glm::mat4 &transformMat = glm::mat4(1.0)) const;
 
-    virtual std::vector<ShadeObject *> createVAO();
+    virtual  void createVAO(std::vector<ShadeObject *> &shadeObjectList);
 
     virtual bool readObjectInfo(const YAML::Node &node, const Scene *scene);
 

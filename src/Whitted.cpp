@@ -4,7 +4,7 @@
 
 #include <Dielectric.h>
 #include "Whitted.h"
-#include "HittableList.h"
+#include "GeometryGroupObj.h"
 
 void WhittedPipeline::setupPipeline() {
     WhittedModel *model = new WhittedModel();
@@ -25,23 +25,23 @@ bool WhittedPipeline::readPipelineInfo(const YAML::Node &node) {
     return true;
 }
 
-Color WhittedModel::castRay(const Scene *scene, Ray &ray, int depth, bool debugFlag) {
-    HitRecord record;
-    if (scene->m_hittableList->isHit(ray, record)) {
+Vec3f WhittedModel::castRay(const Scene *scene, Ray &ray, int depth, bool debugFlag) {
+    IntersectionRecord record;
+    if (scene->m_group->isHit(ray, record)) {
         LightRecord lightRecord;
         for (auto light: scene->m_lightList) {
-            HitRecord testRecord;
-            Velocity lightDirection = light->m_origin - record.point;
+            IntersectionRecord testRecord;
+            Vec3f lightDirection = light->m_origin - record.point;
             Ray testRay = {record.point, lightDirection};
-            bool isHit = scene->m_hittableList->isHit(testRay, testRecord);
+            bool isHit = scene->m_group->isHit(testRay, testRecord);
             lightRecord.addShadedLight(
                     !isHit || lightDirection.length() < (testRecord.point - record.point).length());
         }
         ShadeRecord shadeRecord;
         record.material->calculatePhong(scene, ray, record, lightRecord, shadeRecord);
         if(debugFlag) {
-            std::cout << shadeRecord.emit.r << shadeRecord.emit.g << shadeRecord.emit.b << std::endl;
-            std::cout << shadeRecord.attenuation.r << shadeRecord.attenuation.g << shadeRecord.attenuation.b << std::endl;
+            std::cout << shadeRecord.emit << std::endl;
+            std::cout << shadeRecord.attenuation << std::endl;
         }
         if(depth > m_maxDepth || !shadeRecord.isHasAttenuation()) {
             return shadeRecord.emit + shadeRecord.attenuation;

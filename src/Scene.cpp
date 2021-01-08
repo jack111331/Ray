@@ -5,7 +5,7 @@
 #include <Photon.h>
 #include <Dielectric.h>
 #include "Scene.h"
-#include "HittableList.h"
+#include "GroupObj.h"
 #include "IllumModel.h"
 #include <Lambertian.h>
 #include "AreaLight.h"
@@ -13,7 +13,7 @@
 #include <TriangleGroup.h>
 
 bool Scene::readSceneInfo(const YAML::Node &node) {
-    m_hittableList = new HittableList();
+    m_group = new GroupObj();
 
     if (node["light"]) {
         auto lightNode = node["light"];
@@ -44,19 +44,11 @@ bool Scene::readSceneInfo(const YAML::Node &node) {
         }
     }
     if(node["object"]) {
-        auto objectNode = node["object"];
-        for (uint32_t i = 0; i < objectNode.size(); ++i) {
-            if (objectNode[i]["type"].as<std::string>() == "sphere") {
-                Sphere *object = new Sphere();
-                object->readObjectInfo(objectNode[i], this);
-                m_hittableList->addHittable(object);
-            } else if (objectNode[i]["type"].as<std::string>() == "triangle-group") {
-                TriangleGroup *object = new TriangleGroup();
-                object->readObjectInfo(objectNode[i], this);
-                m_hittableList->addHittable(object);
-            } else if(objectNode[i]["type"].as<std::string>() == "obj") {
-                m_hittableList->addHittable(TriangleGroup::fromObj(objectNode[i], this));
-            }
+        if(node["object"][0]) {
+            m_group->readObjectInfo(node["object"][0], this);
+        } else {
+            std::cerr << "No main group" << std::endl;
+            exit(1);
         }
     }
     return true;

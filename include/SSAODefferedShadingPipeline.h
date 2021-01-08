@@ -91,14 +91,14 @@ public:
 
 private:
     void generateSampleList();
-    std::vector<Velocity> generateNoiseList();
+    std::vector<Vec3f> generateNoiseList();
 
     uint32_t m_inputFrameTextureId[2];
     uint32_t m_outputFrameTextureId;
     uint32_t m_outputFrameDepthStencilBufferId;
 
     uint32_t m_quadVao;
-    std::vector<Velocity> m_ssaoKernel;
+    std::vector<Vec3f> m_ssaoKernel;
     uint32_t m_noiseTextureId;
 };
 

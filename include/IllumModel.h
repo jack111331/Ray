@@ -12,16 +12,16 @@ class IlluminationModel {
 public:
     virtual void setup(Scene *scene) {};
 
-    virtual Color castRay(const Scene *scene, Ray &ray, int depth = 0, bool debugFlag = 0) = 0;
+    virtual Vec3f castRay(const Scene *scene, Ray &ray, int depth = 0, bool debugFlag = 0) = 0;
 
-    void setupBackgroundColor(const Color &backgroundColor) {
+    void setupBackgroundColor(const Vec3f &backgroundColor) {
         m_backgroundColor = backgroundColor;
     }
 
     virtual std::string getModelName() const = 0;
 
 protected:
-    Color m_backgroundColor;
+    Vec3f m_backgroundColor;
 };
 
 

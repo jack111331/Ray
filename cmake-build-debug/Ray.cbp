@@ -375,10 +375,13 @@
 		<Unit filename="D:/Code/Ray/include/GLUtil.h">
 			<Option target="Ray"/>
 		</Unit>
-		<Unit filename="D:/Code/Ray/include/Hittable.h">
+		<Unit filename="D:/Code/Ray/include/GeometryGroupObj.h">
 			<Option target="Ray"/>
 		</Unit>
-		<Unit filename="D:/Code/Ray/include/HittableList.h">
+		<Unit filename="D:/Code/Ray/include/GroupObj.h">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/include/Hittable.h">
 			<Option target="Ray"/>
 		</Unit>
 		<Unit filename="D:/Code/Ray/include/IllumModel.h">
@@ -426,6 +429,9 @@
 		<Unit filename="D:/Code/Ray/include/Scene.h">
 			<Option target="Ray"/>
 		</Unit>
+		<Unit filename="D:/Code/Ray/include/SelectorObj.h">
+			<Option target="Ray"/>
+		</Unit>
 		<Unit filename="D:/Code/Ray/include/Shader.h">
 			<Option target="Ray"/>
 		</Unit>
@@ -442,6 +448,9 @@
 			<Option target="Ray"/>
 		</Unit>
 		<Unit filename="D:/Code/Ray/include/Texture.h">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/include/TransformObj.h">
 			<Option target="Ray"/>
 		</Unit>
 		<Unit filename="D:/Code/Ray/include/Triangle.h">
@@ -654,10 +663,13 @@
 		<Unit filename="D:/Code/Ray/src/GLUtil.cpp">
 			<Option target="Ray"/>
 		</Unit>
-		<Unit filename="D:/Code/Ray/src/Hittable.cpp">
+		<Unit filename="D:/Code/Ray/src/GeometryGroupObj.cpp">
 			<Option target="Ray"/>
 		</Unit>
-		<Unit filename="D:/Code/Ray/src/HittableList.cpp">
+		<Unit filename="D:/Code/Ray/src/GroupObj.cpp">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/src/Hittable.cpp">
 			<Option target="Ray"/>
 		</Unit>
 		<Unit filename="D:/Code/Ray/src/IllumModelFactory.cpp">
@@ -699,6 +711,9 @@
 		<Unit filename="D:/Code/Ray/src/Scene.cpp">
 			<Option target="Ray"/>
 		</Unit>
+		<Unit filename="D:/Code/Ray/src/SelectorObj.cpp">
+			<Option target="Ray"/>
+		</Unit>
 		<Unit filename="D:/Code/Ray/src/Shader.cpp">
 			<Option target="Ray"/>
 		</Unit>
@@ -712,6 +727,9 @@
 			<Option target="Ray"/>
 		</Unit>
 		<Unit filename="D:/Code/Ray/src/Texture.cpp">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/src/TransformObj.cpp">
 			<Option target="Ray"/>
 		</Unit>
 		<Unit filename="D:/Code/Ray/src/Triangle.cpp">

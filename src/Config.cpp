@@ -13,7 +13,7 @@
 #include "Sphere.h"
 #include "Triangle.h"
 #include "Light.h"
-#include "HittableList.h"
+#include "GeometryGroupObj.h"
 #include "AreaLight.h"
 #include <yaml-cpp/yaml.h>
 #include <PipelineFactory.h>

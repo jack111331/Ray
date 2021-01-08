@@ -13,19 +13,19 @@ public:
     AreaLight() : Light(), m_uDirection{0, 0, 0}, m_vDirection{0, 0, 0} {}
 
     virtual void
-    calculatePhong(const Scene *scene, Ray &ray, const HitRecord &record, const LightRecord &shadeLightRecord,
+    calculatePhong(const Scene *scene, Ray &ray, const IntersectionRecord &record, const LightRecord &shadeLightRecord,
                    ShadeRecord &shadeRecord) const;
 
     virtual void calculatePhotonMapping(const Scene *scene, const PhotonMappingModel &photonMappingModel, Ray &ray,
-                                        const HitRecord &record, ShadeRecord &shadeRecord) const;
+                                        const IntersectionRecord &record, ShadeRecord &shadeRecord) const;
 
     virtual MaterialType getType() { return AREALIGHT; }
 
     virtual bool readLightInfo(const YAML::Node &node);
 
-    virtual Coord getLightOrigin() const;
+    virtual Vec3f getLightOrigin() const;
 
-    Velocity m_uDirection, m_vDirection;
+    Vec3f m_uDirection, m_vDirection;
 
 };
 

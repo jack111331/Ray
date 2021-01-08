@@ -12,14 +12,14 @@
 class Light {
 public:
     Light() : m_origin{0, 0, 0}, m_emitColor{0, 0, 0} {}
-    Light(Coord origin, Color color) : m_origin(origin), m_emitColor(color) {}
+    Light(Vec3f origin, Vec3f color) : m_origin(origin), m_emitColor(color) {}
 
     virtual bool readLightInfo(const YAML::Node &node);
 
-    virtual Coord getLightOrigin() const;
+    virtual Vec3f getLightOrigin() const;
 
-    Coord m_origin;
-    Color m_emitColor;
+    Vec3f m_origin;
+    Vec3f m_emitColor;
 };
 
 #endif //RAY_LIGHT_H

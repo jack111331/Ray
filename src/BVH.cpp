@@ -3,7 +3,7 @@
 //
 #include "BVH.h"
 
-void Octree::insert(OctreeNode *node, const Hittable *object, const Coord &boundMin, const Coord &boundMax, int depth) {
+void Octree::insert(OctreeNode *node, const Hittable *object, const Vec3f &boundMin, const Vec3f &boundMax, int depth) {
     if (node->m_isLeaf) {
         // insert extent into node or reallocate node extents' to child node
         if (node->m_data.empty() || depth == 16) {
@@ -20,13 +20,13 @@ void Octree::insert(OctreeNode *node, const Hittable *object, const Coord &bound
     } else {
         // compute centroid and determine which child this extent should go
         const ObjectBoundingBox &objectBoundingBox = object->getBoundingBox();
-        Coord boundingBoxCentroid = (objectBoundingBox.m_bounding[0] + objectBoundingBox.m_bounding[1]) * 0.5f;
-        Coord nodeCentroid = (boundMin + boundMax) * 0.5f;
+        Vec3f boundingBoxCentroid = (objectBoundingBox.m_bounding[0] + objectBoundingBox.m_bounding[1]) * 0.5f;
+        Vec3f nodeCentroid = (boundMin + boundMax) * 0.5f;
         uint32_t childIndex = 0;
         if (boundingBoxCentroid.x > nodeCentroid.x) childIndex += 4;
         if (boundingBoxCentroid.y > nodeCentroid.y) childIndex += 2;
         if (boundingBoxCentroid.z > nodeCentroid.z) childIndex += 1;
-        Coord childBoundMin, childBoundMax;
+        Vec3f childBoundMin, childBoundMax;
         // compute child bound and pass down
         computeChildBound(childIndex, nodeCentroid, boundMin, boundMax, childBoundMin, childBoundMax);
         if (node->m_child[childIndex] == nullptr) node->m_child[childIndex] = new OctreeNode;
@@ -34,8 +34,8 @@ void Octree::insert(OctreeNode *node, const Hittable *object, const Coord &bound
     }
 }
 
-void Octree::computeChildBound(uint32_t index, const Coord &nodeCentroid, const Coord &boundMin, const Coord &boundMax,
-                               Coord &pMin, Coord &pMax) {
+void Octree::computeChildBound(uint32_t index, const Vec3f &nodeCentroid, const Vec3f &boundMin, const Vec3f &boundMax,
+                               Vec3f &pMin, Vec3f &pMax) {
     pMin.x = (index & 4) ? nodeCentroid.x : boundMin.x;
     pMin.y = (index & 2) ? nodeCentroid.y : boundMin.y;
     pMin.z = (index & 1) ? nodeCentroid.z : boundMin.z;
@@ -44,7 +44,7 @@ void Octree::computeChildBound(uint32_t index, const Coord &nodeCentroid, const 
     pMax.z = (index & 1) ? boundMax.z : nodeCentroid.z;
 }
 
-void Octree::build(OctreeNode *node, const Coord &boundMin, const Coord &boundMax) {
+void Octree::build(OctreeNode *node, const Vec3f &boundMin, const Vec3f &boundMax) {
     if (node->m_isLeaf) {
         // update node bounding box
         for (auto object: node->m_data) {
@@ -53,8 +53,8 @@ void Octree::build(OctreeNode *node, const Coord &boundMin, const Coord &boundMa
     } else {
         for (uint32_t i = 0; i < 8; ++i) {
             if (node->m_child[i]) {
-                Coord nodeCentroid = (boundMin + boundMax) * 0.5f;
-                Coord childBoundMin, childBoundMax;
+                Vec3f nodeCentroid = (boundMin + boundMax) * 0.5f;
+                Vec3f childBoundMin, childBoundMax;
                 // compute child bound and pass down
                 computeChildBound(i, nodeCentroid, boundMin, boundMax, childBoundMin, childBoundMax);
                 build(node->m_child[i], childBoundMin, childBoundMax);

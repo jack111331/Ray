@@ -13,19 +13,19 @@
 
 class Photon : public CoordData {
 public:
-    Photon(const Coord &origin, float power, const Velocity &incident, short flag) : CoordData(origin), m_power(power),
-                                                                                     m_incident(incident),
-                                                                                     m_flag(flag) {}
+    Photon(const Vec3f &origin, float power, const Vec3f &incident, short flag) : CoordData(origin), m_power(power),
+                                                                                  m_incident(incident),
+                                                                                  m_flag(flag) {}
 
     enum Flag {
         NORMAL, CAUSTIC
     };
     float m_power;
-    Velocity m_incident;
+    Vec3f m_incident;
     short m_flag;
 };
 
-class HittableList;
+class GeometryGroupObj;
 
 class PhotonMappingPipeline : public CPURayTracingPipeline {
 public:
@@ -46,7 +46,7 @@ public:
 
     bool photonTracing(const Scene *scene, Ray &ray, float power, int depth);
 
-    virtual Color castRay(const Scene *scene, Ray &ray, int depth, bool debugFlag);
+    virtual Vec3f castRay(const Scene *scene, Ray &ray, int depth, bool debugFlag);
 
 
     virtual std::string getModelName() const {

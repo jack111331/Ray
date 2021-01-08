@@ -14,8 +14,8 @@ namespace Util {
         return rand() / (RAND_MAX+1.0f);
     }
 
-    Velocity randomSphere() {
-        Velocity result = {2.0f * randomInUnit() - 1.0f, 2.0f * randomInUnit() - 1.0f, 2.0f * randomInUnit() - 1.0f};
+    Vec3f randomSphere() {
+        Vec3f result = {2.0f * randomInUnit() - 1.0f, 2.0f * randomInUnit() - 1.0f, 2.0f * randomInUnit() - 1.0f};
         result.normalize();
         return result;
     }

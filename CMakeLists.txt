@@ -85,7 +85,7 @@ list(APPEND SOURCE_LIST
         src/Triangle.cpp
         src/Material.cpp
         src/Light.cpp
-        src/HittableList.cpp
+        src/GeometryGroupObj.cpp
         src/ShaderProgram.cpp
         src/IllumModelFactory.cpp
         src/Whitted.cpp
@@ -108,6 +108,9 @@ list(APPEND SOURCE_LIST
         src/SuggestedContourPipeline.cpp
         src/AmbientOcclusionVolumeShadingPipeline.cpp
         src/Shader.cpp
+        src/TransformObj.cpp
+        src/GroupObj.cpp
+        src/SelectorObj.cpp
 
         ${IMGUI_SOURCE_LIST}
         )
@@ -121,8 +124,9 @@ list(APPEND HEADER_LIST
         include/DefferedShadingPipeline.h
         include/Dielectric.h
         include/GLUtil.h
+        include/GroupObj.h
         include/Hittable.h
-        include/HittableList.h
+        include/GeometryGroupObj.h
         include/IllumModel.h
         include/IllumModelFactory.h
         include/InstantRadiosity.h
@@ -136,6 +140,7 @@ list(APPEND HEADER_LIST
         include/PipelineFactory.h
         include/Ray.h
         include/Scene.h
+        include/SelectorObj.h
         include/Shader.h
         include/ShaderProgram.h
         include/ShaderInclude.h
@@ -143,6 +148,7 @@ list(APPEND HEADER_LIST
         include/SSAODefferedShadingPipeline.h
         include/SuggestedContourPipeline.h
         include/Texture.h
+        include/TransformObj.h
         include/Triangle.h
         include/TriangleGroup.h
         include/Whitted.h

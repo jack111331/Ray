@@ -5,7 +5,7 @@
 #include <Dielectric.h>
 #include <Lambertian.h>
 #include "AmbientOcclusion.h"
-#include "HittableList.h"
+#include "GeometryGroupObj.h"
 
 void AmbientOcclusionPipeline::setupPipeline() {
     AmbientOcclusionModel *model = new AmbientOcclusionModel();
@@ -16,7 +16,7 @@ void AmbientOcclusionPipeline::setupPipeline() {
     setIlluminationModel(model);
 
     for (int i = 0; i < m_occlusionSampleAmount; ++i) {
-        Velocity testDirection = Util::randomSphere();
+        Vec3f testDirection = Util::randomSphere();
         model->m_testDirectionList.push_back(testDirection);
     }
 
@@ -36,21 +36,21 @@ bool AmbientOcclusionPipeline::readPipelineInfo(const YAML::Node &node) {
     return true;
 }
 
-Color AmbientOcclusionModel::castRay(const Scene *scene, Ray &ray, int depth, bool debugFlag) {
-    HitRecord record;
-    if (scene->m_hittableList->isHit(ray, record)) {
+Vec3f AmbientOcclusionModel::castRay(const Scene *scene, Ray &ray, int depth, bool debugFlag) {
+    IntersectionRecord record;
+    if (scene->m_group->isHit(ray, record)) {
         LightRecord lightRecord;
         for (auto light: scene->m_lightList) {
-            HitRecord testRecord;
-            Velocity lightDirection = light->m_origin - record.point;
+            IntersectionRecord testRecord;
+            Vec3f lightDirection = light->m_origin - record.point;
             Ray testRay = {record.point, lightDirection};
-            bool isHit = scene->m_hittableList->isHit(testRay, testRecord);
+            bool isHit = scene->m_group->isHit(testRay, testRecord);
             lightRecord.addShadedLight(
                     !isHit || lightDirection.length() < (testRecord.point - record.point).length());
         }
         ShadeRecord shadeRecord;
         // temporary change material ambient color
-        Color originalAmbientColor;
+        Vec3f originalAmbientColor;
         if (record.material->getType() == Material::LAMBERTIAN) {
             LambertianMaterial *material = (LambertianMaterial *) record.material;
             originalAmbientColor = material->m_ambientColor;
@@ -58,19 +58,19 @@ Color AmbientOcclusionModel::castRay(const Scene *scene, Ray &ray, int depth, bo
             const int ambientOcclusionSampleRayAmount = m_occlusionSampleAmount;
 
             for (int i = 0; i < ambientOcclusionSampleRayAmount; ++i) {
-                HitRecord testRecord;
-                Velocity testDirection = Util::randomSphere();
+                IntersectionRecord testRecord;
+                Vec3f testDirection = Util::randomSphere();
                 if(testDirection.dot(record.normal) < 0.0) {
                     testDirection = -testDirection;
                 }
                 Ray testRay = {record.point, testDirection};
-                bool isHitted = scene->m_hittableList->isHit(testRay, testRecord, 0.00001f);
+                bool isHitted = scene->m_group->isHit(testRay, testRecord, 0.00001f);
                 if (isHitted && (testRecord.point - record.point).length() <= m_occlusionRadius) {
                     totalHitRay++;
                 }
             }
             float occlusion = 1.0f - ((float) totalHitRay / (float) ambientOcclusionSampleRayAmount);
-            material->m_ambientColor = occlusion * Color{1.0, 1.0, 1.0};
+            material->m_ambientColor = occlusion * Vec3f{1.0, 1.0, 1.0};
         }
         record.material->calculatePhong(scene, ray, record, lightRecord, shadeRecord);
         if (record.material->getType() == Material::LAMBERTIAN) {
@@ -78,9 +78,8 @@ Color AmbientOcclusionModel::castRay(const Scene *scene, Ray &ray, int depth, bo
             material->m_ambientColor = originalAmbientColor;
         }
         if (debugFlag) {
-            std::cout << shadeRecord.emit.r << " " << shadeRecord.emit.g << " " << shadeRecord.emit.b << std::endl;
-            std::cout << shadeRecord.attenuation.r << " " << shadeRecord.attenuation.g << " "
-                      << shadeRecord.attenuation.b << std::endl;
+            std::cout << shadeRecord.emit << std::endl;
+            std::cout << shadeRecord.attenuation << std::endl;
         }
         if (depth > m_maxDepth || !shadeRecord.isHasAttenuation()) {
             return shadeRecord.emit + shadeRecord.attenuation;

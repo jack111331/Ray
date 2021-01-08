@@ -16,15 +16,28 @@ namespace objl {
     class Mesh;
 }
 
+class GroupObj;
+class GeometryGroupObj;
+
 class BVH {
 public:
     BVH(TriangleGroup *triangleGroup);
 
-    bool isHit(const Ray &ray, HitRecord &record, float tmin=0.0001f);
-
     void updateBVH(TriangleGroup *triangleGroup);
 
+    // TODO we need refactor
+    BVH(GroupObj *group);
+
+    void updateBVH(GroupObj *group);
+
+    BVH(GeometryGroupObj *group);
+
+    void updateBVH(GeometryGroupObj *group);
+
+    bool isHit(const Ray &ray, IntersectionRecord &record, float tmin=0.0001f, const glm::mat4 &transformMat = glm::mat4(1.0));
+
     Octree *m_octree;
+
 };
 
 class TriangleGroup : public Hittable {
@@ -37,10 +50,10 @@ public:
 
     bool readObjectInfo(const YAML::Node &node, const Scene *scene);
 
-    virtual bool isHit(const Ray &ray, HitRecord &record, float tmin=0.0001f) const;
+    virtual bool isHit(const Ray &ray, IntersectionRecord &record, float tmin = 0.0001f, const glm::mat4 &transformMat = glm::mat4(1.0)) const;
 
     // For local shading
-    virtual std::vector<ShadeObject *> createVAO();
+    virtual  void createVAO(std::vector<ShadeObject *> &shadeObjectList);
 
     virtual ObjectBoundingBox getBoundingBox() const;
 

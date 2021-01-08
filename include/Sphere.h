@@ -13,17 +13,17 @@ class Sphere : public Hittable {
 public:
     Sphere() : m_origin{0, 0, 0}, m_radius(0) {};
 
-    Sphere(Coord origin, float radius) : m_origin(origin), m_radius(radius) {};
+    Sphere(Vec3f origin, float radius) : m_origin(origin), m_radius(radius) {};
 
-    virtual bool isHit(const Ray &ray, HitRecord &record, float tmin=0.0001f) const;
+    virtual bool isHit(const Ray &ray, IntersectionRecord &record, float tmin=0.0001f, const glm::mat4 &transformMat = glm::mat4(1.0)) const;
 
-    virtual std::vector<ShadeObject *> createVAO();
+    virtual  void createVAO(std::vector<ShadeObject *> &shadeObjectList);
 
     virtual bool readObjectInfo(const YAML::Node &node, const Scene *scene);
 
     virtual ObjectBoundingBox getBoundingBox() const;
 
-    Coord m_origin;
+    Vec3f m_origin;
     float m_radius;
 };
 

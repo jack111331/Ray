@@ -10,7 +10,7 @@
 #include <backends/imgui_impl_opengl3.h>
 #include <backends/imgui_impl_glfw.h>
 #include "ShaderProgram.h"
-#include "HittableList.h"
+#include "GeometryGroupObj.h"
 #include "SuggestedContourPipeline.h"
 
 SuggestedContourShadingPass::SuggestedContourShadingPass(PassSetting *passSetting) : Pass(passSetting), m_outputFrameTextureId{0},
@@ -75,7 +75,7 @@ void SuggestedContourShadingPass::renderPass(const std::vector<ShadeObject *> &s
             glm::mat4 model = glm::mat4(1.0f);
             m_shader->uniformMat4f("model", model);
 
-            const Coord &eyeCoord = setting->m_camera->m_eyeCoord;
+            const Vec3f &eyeCoord = setting->m_camera->m_eyeCoord;
             m_shader->uniform3f("viewPos", eyeCoord.x, eyeCoord.y, eyeCoord.z);
 
             m_shader->uniform1f("fz", setting->m_fz);
@@ -111,11 +111,7 @@ void SuggestedContourShadingPipeline::setupPipeline() {
 
     m_shadingPass = new SuggestedContourShadingPass(m_shadingSetting);
 
-    auto hittableList = m_scene->m_hittableList->m_hittableList;
-    for (auto hittable : hittableList) {
-        std::vector<ShadeObject *> shadeObjectList = hittable->createVAO();
-        m_objectList.insert(m_objectList.end(), shadeObjectList.begin(), shadeObjectList.end());
-    }
+    m_scene->m_group->createVAO(m_objectList);
 }
 
 void SuggestedContourShadingPipeline::renderAllPass() {

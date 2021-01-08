@@ -12,7 +12,7 @@
 class Camera {
 public:
     Camera() : m_screen(nullptr), m_width(0), m_height(0) {}
-    Camera(int width, int height, Coord eyeCoord, double fov, Velocity direction, Velocity up);
+    Camera(int width, int height, Vec3f eyeCoord, double fov, Vec3f direction, Vec3f up);
     void toPpm(const std::string &filename) const;
     void initializeScreen();
     void bufferToTexture(uint32_t bufferId) const;
@@ -21,11 +21,12 @@ public:
     bool readCameraInfo(const YAML::Node &node);
 
     int m_width, m_height;
-    Color **m_screen;
+    Vec3f **m_screen;
 
-    Coord m_eyeCoord;
+    Vec3f m_eyeCoord;
     float m_fov;
-    Velocity m_direction, m_up;
+    Vec3f m_direction, m_up;
+
 };
 
 

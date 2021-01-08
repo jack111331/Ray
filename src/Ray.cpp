@@ -4,6 +4,6 @@
 
 #include "Ray.h"
 
-Coord Ray::pointAt(double t) const {
+Vec3f Ray::pointAt(double t) const {
     return origin + t * velocity;
 }

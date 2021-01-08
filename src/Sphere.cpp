@@ -7,7 +7,7 @@
 
 using namespace std;
 
-bool Sphere::isHit(const Ray &ray, HitRecord &record, float tmin) const {
+bool Sphere::isHit(const Ray &ray, IntersectionRecord &record, float tmin, const glm::mat4 &transformMat) const {
     double a = ray.velocity.dot(ray.velocity);
     double b = 2 * (ray.origin - m_origin).dot(ray.velocity);
     double c = (ray.origin - m_origin).dot(ray.origin - m_origin) - m_radius * m_radius;
@@ -19,7 +19,9 @@ bool Sphere::isHit(const Ray &ray, HitRecord &record, float tmin) const {
                 if (record.t < 0.0 || record.t > i) {
                     record.t = i;
                     record.point = ray.pointAt(i);
-                    record.normal = (record.point - m_origin).normalize();
+                    record.point = transformMat * record.point;
+                    Vec3f transformedOrigin = transformMat * m_origin;
+                    record.normal = (record.point - transformedOrigin).normalize();
                     record.material = m_material;
                     return true;
                 }
@@ -29,7 +31,7 @@ bool Sphere::isHit(const Ray &ray, HitRecord &record, float tmin) const {
     return false;
 }
 
-vector<ShadeObject *> Sphere::createVAO() {
+void Sphere::createVAO(std::vector<ShadeObject *> &shadeObjectList) {
     int stacks = 20;
     int slices = 20;
     const float PI = 3.14f;
@@ -109,10 +111,7 @@ vector<ShadeObject *> Sphere::createVAO() {
 
     glBindVertexArray(0);
 
-    vector<ShadeObject *> result;
-    result.push_back(new ShadeObject({vao, 6 * (slices * stacks + slices)}, m_material));
-
-    return result;
+    shadeObjectList.push_back(new ShadeObject({vao, 6 * (slices * stacks + slices)}, m_material));
 }
 
 bool Sphere::readObjectInfo(const YAML::Node &node, const Scene *scene) {
@@ -122,12 +121,12 @@ bool Sphere::readObjectInfo(const YAML::Node &node, const Scene *scene) {
         std::cerr << "No require sphere node" << std::endl;
         return false;
     }
-    m_origin = Coord::toCoord(node["position"].as<std::vector<float>>());
+    m_origin = Vec3f::toVec3f(node["position"].as<std::vector<float>>());
     m_radius = node["radius"].as<float>();
     return result;
 }
 
 ObjectBoundingBox Sphere::getBoundingBox() const {
-    return ObjectBoundingBox(m_origin - Velocity{m_radius, m_radius, m_radius},
-                             m_origin + Velocity{m_radius, m_radius, m_radius});
+    return ObjectBoundingBox(m_origin - Vec3f{m_radius, m_radius, m_radius},
+                             m_origin + Vec3f{m_radius, m_radius, m_radius});
 }

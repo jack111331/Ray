@@ -12,7 +12,7 @@
 #include <yaml-cpp/yaml.h>
 //#include "AreaLight.h"
 //
-class HittableList;
+class GroupObj;
 
 class IlluminationModel;
 
@@ -25,7 +25,7 @@ public:
     // Need more abstraction, better use adapter to adapt different type of file
     bool readSceneInfo(const YAML::Node &node);
 
-    HittableList *m_hittableList;
+    GroupObj *m_group;
     std::vector<Light *> m_lightList;
     std::map<std::string, Material *> m_materialTable;
 

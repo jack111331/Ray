@@ -11,7 +11,7 @@ namespace RayUtil {
         std::vector<LightAttribute> lightAttributeList;
         for (auto light: lightList) {
             lightAttributeList.push_back({{light->m_origin.x,    light->m_origin.y,    light->m_origin.z,    1},
-                                          {light->m_emitColor.r, light->m_emitColor.g, light->m_emitColor.b, 1}});
+                                          {light->m_emitColor.x, light->m_emitColor.y, light->m_emitColor.z, 1}});
         }
         size_t MAX_LIGHT_AMOUNT = 100;
 

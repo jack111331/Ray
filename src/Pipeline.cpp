@@ -6,7 +6,7 @@
 #include <GL/glew.h>
 #include "Pipeline.h"
 #include <Lambertian.h>
-#include "HittableList.h"
+#include "GeometryGroupObj.h"
 #include "imgui.h"
 #include "imgui_impl_glfw.h"
 #include "imgui_impl_opengl3.h"
@@ -149,18 +149,18 @@ void CPURayTracingPipeline::generateImage() {
     }
     // Upper left -> lower right
     const double PI = acos(-1);
-    Velocity left = m_camera->m_direction.cross(m_camera->m_up);
-    Coord center = m_camera->m_eyeCoord + m_camera->m_direction.normalize();
+    Vec3f left = m_camera->m_direction.cross(m_camera->m_up);
+    Vec3f center = m_camera->m_eyeCoord + m_camera->m_direction.normalize();
     double widthFactor = tan(m_camera->m_fov / 180.0 * PI);
     double heightFactor = widthFactor * m_camera->m_height / m_camera->m_width;
-    Coord leftUpper = center + widthFactor * left.normalize() + heightFactor * m_camera->m_up.normalize();
-    Velocity unitHorizontalScreen = 1 / (float) (m_camera->m_width - 1) * 2.0 * widthFactor * left.normalize();
-    Velocity unitVerticalScreen =
+    Vec3f leftUpper = center + widthFactor * left.normalize() + heightFactor * m_camera->m_up.normalize();
+    Vec3f unitHorizontalScreen = 1 / (float) (m_camera->m_width - 1) * 2.0 * widthFactor * left.normalize();
+    Vec3f unitVerticalScreen =
             1 / (float) (m_camera->m_height - 1) * 2.0 * heightFactor * m_camera->m_up.normalize();
     for (int i = 0; i < m_camera->m_height; ++i) {
         for (int j = 0; j < m_camera->m_width; ++j) {
             bool debugFlag = false;
-            Coord currentRayOnScreen = leftUpper - (float) j * unitHorizontalScreen - (float) i * unitVerticalScreen;
+            Vec3f currentRayOnScreen = leftUpper - (float) j * unitHorizontalScreen - (float) i * unitVerticalScreen;
             Ray ray = {
                     m_camera->m_eyeCoord,
                     currentRayOnScreen - m_camera->m_eyeCoord
@@ -266,18 +266,18 @@ void GPURayTracingPipeline::generateImage() {
     }
     // Upper left -> lower right
     const double PI = acos(-1);
-    Velocity left = m_camera->m_direction.cross(m_camera->m_up);
-    Coord center = m_camera->m_eyeCoord + m_camera->m_direction.normalize();
+    Vec3f left = m_camera->m_direction.cross(m_camera->m_up);
+    Vec3f center = m_camera->m_eyeCoord + m_camera->m_direction.normalize();
     double widthFactor = tan(m_camera->m_fov / 180.0 * PI);
     double heightFactor = widthFactor * m_camera->m_height / m_camera->m_width;
-    Coord leftUpper = center + widthFactor * left.normalize() + heightFactor * m_camera->m_up.normalize();
-    Velocity unitHorizontalScreen = 1 / (float) (m_camera->m_width - 1) * 2.0 * widthFactor * left.normalize();
-    Velocity unitVerticalScreen =
+    Vec3f leftUpper = center + widthFactor * left.normalize() + heightFactor * m_camera->m_up.normalize();
+    Vec3f unitHorizontalScreen = 1 / (float) (m_camera->m_width - 1) * 2.0 * widthFactor * left.normalize();
+    Vec3f unitVerticalScreen =
             1 / (float) (m_camera->m_height - 1) * 2.0 * heightFactor * m_camera->m_up.normalize();
     for (int i = 0; i < m_camera->m_height; ++i) {
         for (int j = 0; j < m_camera->m_width; ++j) {
             bool debugFlag = false;
-            Coord currentRayOnScreen = leftUpper - (float) j * unitHorizontalScreen - (float) i * unitVerticalScreen;
+            Vec3f currentRayOnScreen = leftUpper - (float) j * unitHorizontalScreen - (float) i * unitVerticalScreen;
             Ray ray = {
                     m_camera->m_eyeCoord,
                     currentRayOnScreen - m_camera->m_eyeCoord

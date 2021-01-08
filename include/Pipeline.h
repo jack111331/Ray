@@ -122,7 +122,7 @@ public:
 protected:
     void generateImage();
 
-    Color traceRay(Ray &ray, bool debugFlag = false) {
+    Vec3f traceRay(Ray &ray, bool debugFlag = false) {
         if (m_model) {
             return m_model->castRay(m_scene, ray, 0, debugFlag);
         } else {
@@ -134,7 +134,7 @@ protected:
 
     IlluminationModel *m_model;
 
-    Color m_backgroundColor = {.0f, .0f, .0f};
+    Vec3f m_backgroundColor = {.0f, .0f, .0f};
 
 private:
     uint32_t m_frameTextureId;
@@ -163,7 +163,7 @@ public:
 protected:
     void generateImage();
 
-    Color traceRay(Ray &ray, bool debugFlag = false) {
+    Vec3f traceRay(Ray &ray, bool debugFlag = false) {
         if (m_model) {
             return m_model->castRay(m_scene, ray, 0, debugFlag);
         } else {
@@ -175,7 +175,7 @@ protected:
 
     IlluminationModel *m_model;
 
-    Color m_backgroundColor = {.0f, .0f, .0f};
+    Vec3f m_backgroundColor = {.0f, .0f, .0f};
 
 private:
     uint32_t m_frameTextureId;

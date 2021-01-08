@@ -13,9 +13,9 @@
 
 class DielectricMaterial : public Material {
 public:
-    virtual void calculatePhong(const Scene *scene, Ray &ray, const HitRecord &record, const LightRecord &shadeLightRecord, ShadeRecord &shadeRecord) const;
+    virtual void calculatePhong(const Scene *scene, Ray &ray, const IntersectionRecord &record, const LightRecord &shadeLightRecord, ShadeRecord &shadeRecord) const;
 
-    virtual void calculatePhotonMapping(const Scene *scene, const PhotonMappingModel &model, Ray &ray, const HitRecord &record, ShadeRecord &shadeRecord) const;
+    virtual void calculatePhotonMapping(const Scene *scene, const PhotonMappingModel &model, Ray &ray, const IntersectionRecord &record, ShadeRecord &shadeRecord) const;
 
     virtual MaterialType getType() {return DIELECTRIC;}
 

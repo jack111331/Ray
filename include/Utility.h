@@ -9,38 +9,107 @@
 #include <iostream>
 #include <vector>
 #include <stdlib.h>
+#include <glm/ext/matrix_float4x4.hpp>
 
-class Velocity {
+class Vec3f {
 public:
     float x, y, z;
 
-    Velocity() : x(0.0f), y(0.0f), z(0.0f) {}
-    Velocity(float x, float y, float z) : x(x), y(y), z(z) {}
+    Vec3f() : x(0.0f), y(0.0f), z(0.0f) {}
+    Vec3f(float x, float y, float z) : x(x), y(y), z(z) {}
 
-    friend std::istream &operator>>(std::istream &is, Velocity &velocity) {
+    friend std::istream &operator>>(std::istream &is, Vec3f &velocity) {
         is >> velocity.x >> velocity.y >> velocity.z;
     }
 
-    friend std::ostream &operator<<(std::ostream &os, const Velocity &velocity) {
+    friend std::ostream &operator<<(std::ostream &os, const Vec3f &velocity) {
         os << "(" << velocity.x << ", " << velocity.y << ", " << velocity.z << ")";
     }
 
+    Vec3f &operator+=(const Vec3f &rhs) {
+        x += rhs.x;
+        y += rhs.y;
+        z += rhs.z;
+        return *this;
+    }
 
-    Velocity &operator-=(const Velocity &rhs) {
+    Vec3f operator+(const Vec3f &rhs) const {
+        return {x + rhs.x, y + rhs.y, z + rhs.z};
+    }
+
+    Vec3f &operator-=(const Vec3f &rhs) {
         x -= rhs.x;
         y -= rhs.y;
         z -= rhs.z;
         return *this;
     }
 
-    Velocity operator-() const {
+    Vec3f operator-(const Vec3f &rhs) const {
+        Vec3f copy(*this);
+        copy -= rhs;
+        return copy;
+    }
+
+    Vec3f operator-() const {
         return {-x, -y, -z};
     }
 
-    Velocity operator-(const Velocity &rhs) const {
-        Velocity copy(*this);
-        copy -= rhs;
-        return copy;
+    float operator[](int dim) const {
+        return dim == 0 ? x : dim == 1 ? y : z;
+    };
+
+    float &operator[](int dim) {
+        return dim == 0 ? x : dim == 1 ? y : z;
+    };
+
+    Vec3f &operator*=(float rhs) {
+        x *= rhs;
+        y *= rhs;
+        z *= rhs;
+        return *this;
+    }
+
+    Vec3f operator*(float rhs) const {
+        return {x * rhs, y * rhs, z * rhs};
+    }
+
+    Vec3f operator*(const Vec3f &rhs) const {
+        return {x * rhs.x, y * rhs.y, z * rhs.z};
+    }
+
+    friend Vec3f operator*(const glm::mat3 &lhs, const Vec3f &vec) {
+        glm::vec3 tmp(vec.x, vec.y, vec.z);
+        tmp = lhs * tmp;
+        return {tmp.x, tmp.y, tmp.z};
+    }
+
+    friend Vec3f operator*(const glm::mat4 &lhs, const Vec3f &vec) {
+        glm::vec4 tmp(vec.x, vec.y, vec.z, 1.0f);
+        tmp = lhs * tmp;
+        return {tmp.x, tmp.y, tmp.z};
+    }
+
+    Vec3f operator/=(float rhs) {
+        x /= rhs;
+        y /= rhs;
+        z /= rhs;
+        return *this;
+    }
+
+    Vec3f operator/(const Vec3f &rhs) const {
+        return {x / rhs.x, y / rhs.y, z / rhs.z};
+    }
+
+    Vec3f operator/(float rhs) const {
+        return {x / rhs, y / rhs, z / rhs};
+    }
+
+    bool operator>=(const Vec3f &rhs) const {
+        return x >= rhs.x && y >= rhs.y && z >= rhs.z;
+    }
+
+    bool operator<=(const Vec3f &rhs) const {
+        return x <= rhs.x && y <= rhs.y && z <= rhs.z;
     }
 
     float length() const {
@@ -51,16 +120,16 @@ public:
         return x * x + y * y + z * z;
     }
 
-    float dot(const Velocity &rhs) const {
+    float dot(const Vec3f &rhs) const {
         return x * rhs.x + y * rhs.y + z * rhs.z;
     }
 
-    Velocity cross(const Velocity &rhs) const {
+    Vec3f cross(const Vec3f &rhs) const {
         return {y * rhs.z - z * rhs.y, z * rhs.x - x * rhs.z, x * rhs.y - y * rhs.x};
     }
 
-    Velocity reflect(const Velocity &normal) const {
-        Velocity reflectedVelocity(*this);
+    Vec3f reflect(const Vec3f &normal) const {
+        Vec3f reflectedVelocity(*this);
         float dot = reflectedVelocity.dot(normal);
         if (dot > 0.0) {
             return reflectedVelocity + 2.0 * dot * normal;
@@ -68,8 +137,8 @@ public:
         return reflectedVelocity - 2.0 * dot * normal;
     }
 
-    bool refract(const Velocity &normal, float niOverNt, Velocity &refracted) const {
-        Velocity unitVector = (*this);
+    bool refract(const Vec3f &normal, float niOverNt, Vec3f &refracted) const {
+        Vec3f unitVector = (*this);
         unitVector = unitVector.normalize();
         float dt = unitVector.dot(normal);
         float discriminant = 1.0 - niOverNt * niOverNt * (1.0 - dt * dt);
@@ -81,12 +150,12 @@ public:
         }
     }
 
-    Velocity normalize() const {
-        Velocity normalizedVelocity(*this);
+    Vec3f normalize() const {
+        Vec3f normalizedVelocity(*this);
         return normalizedVelocity.normalize();
     }
 
-    Velocity &normalize() {
+    Vec3f &normalize() {
         float velocityLength = length();
         x /= velocityLength;
         y /= velocityLength;
@@ -94,197 +163,47 @@ public:
         return *this;
     }
 
-    Velocity operator+(const Velocity &rhs) const {
-        return {x + rhs.x, y + rhs.y, z + rhs.z};
-    }
-
-    Velocity operator*(float rhs) const {
-        return {rhs * x, rhs * y, rhs * z};
-    }
-
-    Velocity &operator*=(float rhs) {
-        x *= rhs;
-        y *= rhs;
-        z *= rhs;
-        return *this;
-    }
-
-    friend Velocity operator*(float lhs, const Velocity &rhs) {
+    friend Vec3f operator*(float lhs, const Vec3f &rhs) {
         return {lhs * rhs.x, lhs * rhs.y, lhs * rhs.z};
     }
 
-    static Velocity toVelocity(const std::vector<float> &floatList) {
+    static Vec3f toVec3f(const std::vector<float> &floatList) {
         if (floatList.size() == 3) {
             return {floatList[0], floatList[1], floatList[2]};
         } else {
             // TODO error handler
-            return Velocity(0, 0, 0);
+            return Vec3f(0, 0, 0);
         }
+    }
+
+    void clamp(float minVal, float maxVal) {
+        x = x > maxVal ? maxVal : x < minVal ? minVal : x;
+        y = y > maxVal ? maxVal : y < minVal ? minVal : y;
+        z = z > maxVal ? maxVal : z < minVal ? minVal : z;
     }
 
 };
 
-class Coord {
-public:
-    float x, y, z;
-
-    Coord() : x(0.0f), y(0.0f), z(0.0f) {}
-    Coord(float x, float y, float z) : x(x), y(y), z(z) {}
-
-    friend std::istream &operator>>(std::istream &is, Coord &coord) {
-        is >> coord.x >> coord.y >> coord.z;
-    }
-
-    friend std::ostream &operator<<(std::ostream &os, const Coord &coord) {
-        os << "(" << coord.x << ", " << coord.y << ", " << coord.z << ")";
-    }
-
-    float operator[](int dim) const {
-        return dim == 0 ? x : dim == 1 ? y : z;
-    };
-
-    float &operator[](int dim) {
-        return dim == 0 ? x : dim == 1 ? y : z;
-    };
-
-    Coord operator-() const {
-        return {-x, -y, -z};
-    }
-
-    Velocity operator-(const Coord &rhs) const {
-        return {x - rhs.x, y - rhs.y, z - rhs.z};
-    }
-
-    Coord operator+(const Coord &rhs) const {
-        return {x + rhs.x, y + rhs.y, z + rhs.z};
-    }
-
-    Coord operator*(const float rhs) const {
-        return {x * rhs, y * rhs, z * rhs};
-    }
-
-    Coord operator/(const Coord &rhs) const {
-        return {x / rhs.x, y / rhs.y, z / rhs.z};
-    }
-
-    Coord operator/(float rhs) const {
-        return {x / rhs, y / rhs, z / rhs};
-    }
-
-    Coord operator+(const Velocity &rhs) const {
-        return {x + rhs.x, y + rhs.y, z + rhs.z};
-    }
-
-    Coord operator-(const Velocity &rhs) const {
-        return {x - rhs.x, y - rhs.y, z - rhs.z};
-    }
-
-    bool operator>=(const Coord &rhs) const {
-        return x >= rhs.x && y >= rhs.y && z >= rhs.z;
-    }
-
-    bool operator<=(const Coord &rhs) const {
-        return x <= rhs.x && y <= rhs.y && z <= rhs.z;
-    }
-
-    static Coord toCoord(const std::vector<float> &floatList) {
-        if (floatList.size() == 3) {
-            return {floatList[0], floatList[1], floatList[2]};
-        } else {
-            // TODO error handler
-            return Coord(0.0f, 0.0f, 0.0f);
-        }
-    }
-
-};
-
-class Coord2D {
+class Vec2f {
 public:
     float x, y;
 
-    friend Coord2D operator*(float lhs, const Coord2D &rhs) {
+    friend Vec2f operator*(float lhs, const Vec2f &rhs) {
         return {lhs * rhs.x, lhs * rhs.y};
     }
 
-    Coord2D operator-(const Coord2D &rhs) const {
+    Vec2f operator-(const Vec2f &rhs) const {
         return {x - rhs.x, y - rhs.y};
     }
 
-    Coord2D operator+(const Coord2D &rhs) const {
+    Vec2f operator+(const Vec2f &rhs) const {
         return {x + rhs.x, y + rhs.y};
     }
 };
 
-class Coord2Di {
+class Vec2i {
 public:
     int x, y;
-};
-
-
-class Color {
-public:
-    float r, g, b;
-
-    friend std::istream &operator>>(std::istream &is, Color &color) {
-        is >> color.r >> color.g >> color.b;
-    }
-
-    friend std::ostream &operator<<(std::ostream &os, const Color &color) {
-        os << (uint8_t) (color.r > 1.0 ? 255 : (255.99 * color.r))
-           << (uint8_t) (color.g > 1.0 ? 255 : (255.99 * color.g))
-           << (uint8_t) (color.b > 1.0 ? 255 : (255.99 * color.b));
-        return os;
-    }
-
-    void clamp() {
-        r = r > 1.0f ? 1.0f : r;
-        g = g > 1.0f ? 1.0f : g;
-        b = b > 1.0f ? 1.0f : b;
-    }
-
-    friend Color operator*(float lhs, const Color &rhs) {
-        return {lhs * rhs.r, lhs * rhs.g, lhs * rhs.b};
-    }
-
-    friend Color operator*(const Color &lhs, const Color &rhs) {
-        return {lhs.r * rhs.r, lhs.g * rhs.g, lhs.b * rhs.b};
-    }
-
-    Color &operator+=(const Color &rhs) {
-        r += rhs.r;
-        g += rhs.g;
-        b += rhs.b;
-        return *this;
-    }
-
-    Color &operator/=(float divider) {
-        r /= divider;
-        g /= divider;
-        b /= divider;
-        return *this;
-    }
-
-    Color operator/(float divider) {
-        Color result(*this);
-        result.r /= divider;
-        result.g /= divider;
-        result.b /= divider;
-        return result;
-    }
-
-    Color operator+(const Color &rhs) const {
-        return {r + rhs.r, g + rhs.g, b + rhs.b};
-    }
-
-    static Color toColor(const std::vector<float> &floatList) {
-        if (floatList.size() == 3) {
-            return {floatList[0], floatList[1], floatList[2]};
-        } else {
-            // TODO error handler
-            return {};
-        }
-    }
-
 };
 
 struct Vec3i {
@@ -293,13 +212,13 @@ struct Vec3i {
 
 class Material;
 
-class HitRecord {
+class IntersectionRecord {
 public:
     float t = -1.0f;
-    Coord point;
-    Velocity normal;
+    Vec3f point;
+    Vec3f normal;
     Material *material;
-    Coord2D texCoord;
+    Vec2f texCoord;
 };
 
 class LightRecord {
@@ -313,11 +232,11 @@ public:
 
 class ShadeRecord {
 public:
-    Color emit = {.0f, .0f, .0f};
-    Color attenuation = {.0f, .0f, .0f};
+    Vec3f emit = {.0f, .0f, .0f};
+    Vec3f attenuation = {.0f, .0f, .0f};
 
     bool isHasAttenuation() const {
-        return attenuation.r >= 1e-6 && attenuation.g >= 1e-6 && attenuation.b >= 1e-6;
+        return attenuation.x >= 1e-6 && attenuation.y >= 1e-6 && attenuation.z >= 1e-6;
     }
 };
 
@@ -330,7 +249,7 @@ namespace Util {
 
     float randomInUnit();
 
-    Velocity randomSphere();
+    Vec3f randomSphere();
 
     EmitType russianRoulette(float reflectivity, float refractivity);
 

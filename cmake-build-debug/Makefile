@@ -979,6 +979,60 @@ src/GLUtil.cpp.s:
 	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/GLUtil.cpp.s
 .PHONY : src/GLUtil.cpp.s
 
+src/GeometryGroupObj.obj: src/GeometryGroupObj.cpp.obj
+
+.PHONY : src/GeometryGroupObj.obj
+
+# target to build an object file
+src/GeometryGroupObj.cpp.obj:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/GeometryGroupObj.cpp.obj
+.PHONY : src/GeometryGroupObj.cpp.obj
+
+src/GeometryGroupObj.i: src/GeometryGroupObj.cpp.i
+
+.PHONY : src/GeometryGroupObj.i
+
+# target to preprocess a source file
+src/GeometryGroupObj.cpp.i:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/GeometryGroupObj.cpp.i
+.PHONY : src/GeometryGroupObj.cpp.i
+
+src/GeometryGroupObj.s: src/GeometryGroupObj.cpp.s
+
+.PHONY : src/GeometryGroupObj.s
+
+# target to generate assembly for a file
+src/GeometryGroupObj.cpp.s:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/GeometryGroupObj.cpp.s
+.PHONY : src/GeometryGroupObj.cpp.s
+
+src/GroupObj.obj: src/GroupObj.cpp.obj
+
+.PHONY : src/GroupObj.obj
+
+# target to build an object file
+src/GroupObj.cpp.obj:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/GroupObj.cpp.obj
+.PHONY : src/GroupObj.cpp.obj
+
+src/GroupObj.i: src/GroupObj.cpp.i
+
+.PHONY : src/GroupObj.i
+
+# target to preprocess a source file
+src/GroupObj.cpp.i:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/GroupObj.cpp.i
+.PHONY : src/GroupObj.cpp.i
+
+src/GroupObj.s: src/GroupObj.cpp.s
+
+.PHONY : src/GroupObj.s
+
+# target to generate assembly for a file
+src/GroupObj.cpp.s:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/GroupObj.cpp.s
+.PHONY : src/GroupObj.cpp.s
+
 src/Hittable.obj: src/Hittable.cpp.obj
 
 .PHONY : src/Hittable.obj
@@ -1005,33 +1059,6 @@ src/Hittable.s: src/Hittable.cpp.s
 src/Hittable.cpp.s:
 	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/Hittable.cpp.s
 .PHONY : src/Hittable.cpp.s
-
-src/HittableList.obj: src/HittableList.cpp.obj
-
-.PHONY : src/HittableList.obj
-
-# target to build an object file
-src/HittableList.cpp.obj:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/HittableList.cpp.obj
-.PHONY : src/HittableList.cpp.obj
-
-src/HittableList.i: src/HittableList.cpp.i
-
-.PHONY : src/HittableList.i
-
-# target to preprocess a source file
-src/HittableList.cpp.i:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/HittableList.cpp.i
-.PHONY : src/HittableList.cpp.i
-
-src/HittableList.s: src/HittableList.cpp.s
-
-.PHONY : src/HittableList.s
-
-# target to generate assembly for a file
-src/HittableList.cpp.s:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/HittableList.cpp.s
-.PHONY : src/HittableList.cpp.s
 
 src/IllumModelFactory.obj: src/IllumModelFactory.cpp.obj
 
@@ -1384,6 +1411,33 @@ src/Scene.cpp.s:
 	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/Scene.cpp.s
 .PHONY : src/Scene.cpp.s
 
+src/SelectorObj.obj: src/SelectorObj.cpp.obj
+
+.PHONY : src/SelectorObj.obj
+
+# target to build an object file
+src/SelectorObj.cpp.obj:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/SelectorObj.cpp.obj
+.PHONY : src/SelectorObj.cpp.obj
+
+src/SelectorObj.i: src/SelectorObj.cpp.i
+
+.PHONY : src/SelectorObj.i
+
+# target to preprocess a source file
+src/SelectorObj.cpp.i:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/SelectorObj.cpp.i
+.PHONY : src/SelectorObj.cpp.i
+
+src/SelectorObj.s: src/SelectorObj.cpp.s
+
+.PHONY : src/SelectorObj.s
+
+# target to generate assembly for a file
+src/SelectorObj.cpp.s:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/SelectorObj.cpp.s
+.PHONY : src/SelectorObj.cpp.s
+
 src/Shader.obj: src/Shader.cpp.obj
 
 .PHONY : src/Shader.obj
@@ -1518,6 +1572,33 @@ src/Texture.s: src/Texture.cpp.s
 src/Texture.cpp.s:
 	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/Texture.cpp.s
 .PHONY : src/Texture.cpp.s
+
+src/TransformObj.obj: src/TransformObj.cpp.obj
+
+.PHONY : src/TransformObj.obj
+
+# target to build an object file
+src/TransformObj.cpp.obj:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/TransformObj.cpp.obj
+.PHONY : src/TransformObj.cpp.obj
+
+src/TransformObj.i: src/TransformObj.cpp.i
+
+.PHONY : src/TransformObj.i
+
+# target to preprocess a source file
+src/TransformObj.cpp.i:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/TransformObj.cpp.i
+.PHONY : src/TransformObj.cpp.i
+
+src/TransformObj.s: src/TransformObj.cpp.s
+
+.PHONY : src/TransformObj.s
+
+# target to generate assembly for a file
+src/TransformObj.cpp.s:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/TransformObj.cpp.s
+.PHONY : src/TransformObj.cpp.s
 
 src/Triangle.obj: src/Triangle.cpp.obj
 
@@ -1743,12 +1824,15 @@ help:
 	@echo ... src/GLUtil.obj
 	@echo ... src/GLUtil.i
 	@echo ... src/GLUtil.s
+	@echo ... src/GeometryGroupObj.obj
+	@echo ... src/GeometryGroupObj.i
+	@echo ... src/GeometryGroupObj.s
+	@echo ... src/GroupObj.obj
+	@echo ... src/GroupObj.i
+	@echo ... src/GroupObj.s
 	@echo ... src/Hittable.obj
 	@echo ... src/Hittable.i
 	@echo ... src/Hittable.s
-	@echo ... src/HittableList.obj
-	@echo ... src/HittableList.i
-	@echo ... src/HittableList.s
 	@echo ... src/IllumModelFactory.obj
 	@echo ... src/IllumModelFactory.i
 	@echo ... src/IllumModelFactory.s
@@ -1788,6 +1872,9 @@ help:
 	@echo ... src/Scene.obj
 	@echo ... src/Scene.i
 	@echo ... src/Scene.s
+	@echo ... src/SelectorObj.obj
+	@echo ... src/SelectorObj.i
+	@echo ... src/SelectorObj.s
 	@echo ... src/Shader.obj
 	@echo ... src/Shader.i
 	@echo ... src/Shader.s
@@ -1803,6 +1890,9 @@ help:
 	@echo ... src/Texture.obj
 	@echo ... src/Texture.i
 	@echo ... src/Texture.s
+	@echo ... src/TransformObj.obj
+	@echo ... src/TransformObj.i
+	@echo ... src/TransformObj.s
 	@echo ... src/Triangle.obj
 	@echo ... src/Triangle.i
 	@echo ... src/Triangle.s

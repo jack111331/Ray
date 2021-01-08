@@ -9,7 +9,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <random>
 #include "ShaderProgram.h"
-#include "HittableList.h"
+#include "GeometryGroupObj.h"
 #include "SSAODefferedShadingPipeline.h"
 
 SSAODefferedGBufferPass::SSAODefferedGBufferPass(PassSetting *passSetting) : Pass(passSetting), m_outputFrameTextureId{0},
@@ -95,8 +95,8 @@ void SSAODefferedGBufferPass::renderPass(const std::vector<ShadeObject *> &shadi
                 m_shader->uniformMat4f("model", model);
 
                 const LambertianMaterial *material = (LambertianMaterial *) object->m_material;
-                m_shader->uniform3f("objectColor", material->m_diffuseColor.r, material->m_diffuseColor.g,
-                                    material->m_diffuseColor.b);
+                m_shader->uniform3f("objectColor", material->m_diffuseColor.x, material->m_diffuseColor.y,
+                                    material->m_diffuseColor.z);
 
                 // draw call
                 glDrawElements(GL_TRIANGLES, object->m_objectInfo.m_indicesAmount, GL_UNSIGNED_INT, 0);
@@ -178,7 +178,7 @@ void SSAODefferedAmbientOcclusionPass::generateSampleList() {
     std::uniform_real_distribution<GLfloat> randomFloats(0.0, 1.0);
     std::default_random_engine generator;
     for (uint32_t i = 0; i < 64; ++i) {
-        Velocity sample(
+        Vec3f sample(
                 randomFloats(generator) * 2.0 - 1.0,
                 randomFloats(generator) * 2.0 - 1.0,
                 randomFloats(generator)
@@ -191,13 +191,13 @@ void SSAODefferedAmbientOcclusionPass::generateSampleList() {
     }
 }
 
-std::vector<Velocity> SSAODefferedAmbientOcclusionPass::generateNoiseList() {
+std::vector<Vec3f> SSAODefferedAmbientOcclusionPass::generateNoiseList() {
     std::uniform_real_distribution<GLfloat> randomFloats(0.0, 1.0);
     std::default_random_engine generator;
-    std::vector<Velocity> ssaoNoise;
+    std::vector<Vec3f> ssaoNoise;
     for (uint32_t i = 0; i < 16; ++i)
     {
-        Velocity sample(
+        Vec3f sample(
                 randomFloats(generator) * 2.0 - 1.0,
                 randomFloats(generator) * 2.0 - 1.0,
                 0.0f
@@ -344,11 +344,7 @@ void SSAODefferedShadingPipeline::setupPipeline() {
     m_shadingPass->specifyInput((size_t)SSAODefferedShadingPass::SSAODefferedShadingInput::OCCLUSION, ambientOcclusionPass->getOutputFrameTexture((size_t)SSAODefferedAmbientOcclusionPass::SSAODefferedAmbientOcclusionOutput::OCCLUSION));
     m_shadingPass->addRequirePass(ambientOcclusionPass);
 
-    auto hittableList = m_scene->m_hittableList->m_hittableList;
-    for (auto hittable : hittableList) {
-        std::vector<ShadeObject *> shadeObjectList = hittable->createVAO();
-        m_objectList.insert(m_objectList.end(), shadeObjectList.begin(), shadeObjectList.end());
-    }
+    m_scene->m_group->createVAO(m_objectList);
 }
 
 
@@ -391,7 +387,7 @@ void SSAODefferedShadingPass::renderPass(const std::vector<ShadeObject *> &shadi
         // TODO Area Light and Light uniform move to shader handle
         m_shader->uniform1i("lightAmount", setting->m_lightList.size());
 
-        const Coord &eyeCoord = setting->m_camera->m_eyeCoord;
+        const Vec3f &eyeCoord = setting->m_camera->m_eyeCoord;
         m_shader->uniform3f("viewPos", eyeCoord.x, eyeCoord.y, eyeCoord.z);
 
         // draw call

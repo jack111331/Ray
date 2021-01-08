@@ -23,8 +23,8 @@ public:
         NONE
     };
     // return value is for one hit and end, shadeRecord is for following scatter
-    virtual void calculatePhong(const Scene *scene, Ray &ray, const HitRecord &record, const LightRecord &shadeLightRecord, ShadeRecord &shadeRecord) const = 0;
-    virtual void calculatePhotonMapping(const Scene *scene, const PhotonMappingModel &photonMappingModel, Ray &ray, const HitRecord &record, ShadeRecord &shadeRecord) const = 0;
+    virtual void calculatePhong(const Scene *scene, Ray &ray, const IntersectionRecord &record, const LightRecord &shadeLightRecord, ShadeRecord &shadeRecord) const = 0;
+    virtual void calculatePhotonMapping(const Scene *scene, const PhotonMappingModel &photonMappingModel, Ray &ray, const IntersectionRecord &record, ShadeRecord &shadeRecord) const = 0;
 
     virtual MaterialType getType() {return NONE;}
 

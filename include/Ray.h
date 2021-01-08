@@ -9,9 +9,9 @@
 
 class Ray {
 public:
-    Coord pointAt(double t) const;
-    Coord origin;
-    Velocity velocity;
+    Vec3f pointAt(double t) const;
+    Vec3f origin;
+    Vec3f velocity;
 
     friend std::ostream& operator << (std::ostream& os, const Ray &ray) {
         os << "Origin=" << ray.origin << ", Velocity= " << ray.velocity;

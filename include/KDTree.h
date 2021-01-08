@@ -11,8 +11,8 @@
 
 class CoordData {
 public:
-    CoordData(const Coord &origin): m_origin(origin) {}
-    Coord m_origin;
+    CoordData(const Vec3f &origin): m_origin(origin) {}
+    Vec3f m_origin;
 };
 
 template<typename T>
@@ -43,17 +43,17 @@ public:
         }
     }
 
-    void search(const Coord &min, const Coord &max, std::vector<T *> &photonList) {
+    void search(const Vec3f &min, const Vec3f &max, std::vector<T *> &photonList) {
         search(m_root, min, max, 0, photonList);
     }
 
-    void nearestSearch(const Coord &point, int k, std::priority_queue<CoordDataElement<T>> &photonHeap) {
-        Coord min = {-1e9, -1e9, -1e9};
-        Coord max = {1e9, 1e9, 1e9};
+    void nearestSearch(const Vec3f &point, int k, std::priority_queue<CoordDataElement<T>> &photonHeap) {
+        Vec3f min = {-1e9, -1e9, -1e9};
+        Vec3f max = {1e9, 1e9, 1e9};
         nearestSearch(m_root, point, k, 0, photonHeap);
     }
 
-    void nearestSearchBF(const Coord &point, int k, std::priority_queue<CoordDataElement<T>> &photonHeap) {
+    void nearestSearchBF(const Vec3f &point, int k, std::priority_queue<CoordDataElement<T>> &photonHeap) {
         nearestSearchBF(m_root, point, k, 0, photonHeap);
     }
 
@@ -84,7 +84,7 @@ private:
         }
     }
 
-    void search(KDTreeNode<T> *node, const Coord &min, const Coord &max, int depth, std::vector<T *> &photonList){
+    void search(KDTreeNode<T> *node, const Vec3f &min, const Vec3f &max, int depth, std::vector<T *> &photonList){
         if (node->m_data.m_origin >= min && node->m_data.m_origin <= max) {
             photonList.push_back(&node->m_data);
         }
@@ -97,7 +97,7 @@ private:
         }
     }
 
-    void nearestSearch(KDTreeNode<T> *node, const Coord &point, int k, int depth, std::priority_queue<CoordDataElement<T>> &photonHeap){
+    void nearestSearch(KDTreeNode<T> *node, const Vec3f &point, int k, int depth, std::priority_queue<CoordDataElement<T>> &photonHeap){
         // update distance
         float nodeToPointDistance = (node->m_data.m_origin - point).lengthWithoutSquare();
         if (photonHeap.size() < k || nodeToPointDistance < photonHeap.top().m_distance) {
@@ -124,7 +124,7 @@ private:
         }
     }
 
-    void nearestSearchBF(KDTreeNode<T> *node, const Coord &point, int k, int depth, std::priority_queue<CoordDataElement<T>> &photonHeap) {
+    void nearestSearchBF(KDTreeNode<T> *node, const Vec3f &point, int k, int depth, std::priority_queue<CoordDataElement<T>> &photonHeap) {
         // update distance
         float nodeToPointDistance = (node->m_data.m_origin - point).length();
         if (photonHeap.size() < k || nodeToPointDistance < photonHeap.top().m_distance) {
@@ -144,7 +144,7 @@ private:
         }
     }
 
-    float pointToNearestBoundingBoxDistance(const Coord &boundingBoxMin, const Coord &boundingBoxMax, const Coord &point) {
+    float pointToNearestBoundingBoxDistance(const Vec3f &boundingBoxMin, const Vec3f &boundingBoxMax, const Vec3f &point) {
         float distance = 0.0;
         for (int dim = 0; dim < DIMENSION; ++dim) {
             if (point[dim] < boundingBoxMin[dim] || point[dim] > boundingBoxMax[dim]) {

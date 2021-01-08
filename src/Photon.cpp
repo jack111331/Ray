@@ -4,7 +4,7 @@
 
 #include <Photon.h>
 #include <Dielectric.h>
-#include "HittableList.h"
+#include "GeometryGroupObj.h"
 
 using namespace std;
 
@@ -27,8 +27,8 @@ void PhotonMappingModel::setup(Scene *scene, int photonAmount, float photonPower
     for (auto light : scene->m_lightList) {
         for (int i = 0; i < m_photonAmount; ++i) {
             Ray photonTraceRay;
-            Coord photonPosition;
-            Velocity photonDirection;
+            Vec3f photonPosition;
+            Vec3f photonDirection;
             do {
                 // determine photon position and emit direction
                 photonPosition = light->getLightOrigin();
@@ -46,14 +46,14 @@ bool PhotonMappingModel::photonTracing(const Scene *scene, Ray &ray, float power
         return true;
     }
     // hit photon and store photon
-    HitRecord record;
-    if (scene->m_hittableList->isHit(ray, record)) {
+    IntersectionRecord record;
+    if (scene->m_group->isHit(ray, record)) {
         // calculate refractivity and reflectivity
         float reflectivity = 0.0, refractivity = 0.0;
-        Velocity refractedDirection;
+        Vec3f refractedDirection;
         if (record.material->getType() == Material::MaterialType::DIELECTRIC) {
             DielectricMaterial *dielectricMaterial = (DielectricMaterial *) record.material;
-            Velocity outwardNormal;
+            Vec3f outwardNormal;
             float cosine;
             float niOverNt;
             if (ray.velocity.dot(record.normal) > 0.0) {
@@ -93,7 +93,7 @@ bool PhotonMappingModel::photonTracing(const Scene *scene, Ray &ray, float power
             // reflected or transmitted ray
             // influenced power
         } else if (emitType == EmitType::REFLECTED) {
-            Velocity reflectedDirection = ray.velocity.reflect(record.normal);
+            Vec3f reflectedDirection = ray.velocity.reflect(record.normal);
             ray = {record.point, reflectedDirection};
             photonTracing(scene, ray, power, depth + 1);
         } else if (emitType == EmitType::TRANSMITTED) {
@@ -105,9 +105,9 @@ bool PhotonMappingModel::photonTracing(const Scene *scene, Ray &ray, float power
     return false;
 }
 
-Color PhotonMappingModel::castRay(const Scene *scene, Ray &ray, int depth, bool debugFlag) {
-    HitRecord record;
-    if (scene->m_hittableList->isHit(ray, record)) {
+Vec3f PhotonMappingModel::castRay(const Scene *scene, Ray &ray, int depth, bool debugFlag) {
+    IntersectionRecord record;
+    if (scene->m_group->isHit(ray, record)) {
         ShadeRecord shadeRecord;
         record.material->calculatePhotonMapping(scene, *this, ray, record, shadeRecord);
         if (depth > 4 || !shadeRecord.isHasAttenuation()) {

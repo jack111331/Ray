@@ -5,7 +5,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <GLUtil.h>
 #include "InstantRadiosity.h"
-#include "HittableList.h"
+#include "GeometryGroupObj.h"
 
 void InstantRadiosityPipeline::setupPipeline() {
     if(!m_scene || !m_camera) {
@@ -29,11 +29,7 @@ void InstantRadiosityPipeline::setupPipeline() {
     m_shadingPass = new PhongShadingPass(shadingSetting);
     m_shadingPass->setupPassSetting(shadingSetting);
 
-    auto hittableList = m_scene->m_hittableList->m_hittableList;
-    for (auto hittable : hittableList) {
-        std::vector<ShadeObject *> shadeObjectList = hittable->createVAO();
-        m_objectList.insert(m_objectList.end(), shadeObjectList.begin(), shadeObjectList.end());
-    }
+    m_scene->m_group->createVAO(m_objectList);
 }
 
 void InstantRadiosityPipeline::renderAllPass() {

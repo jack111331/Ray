@@ -4,7 +4,7 @@
 
 #include "Light.h"
 
-Coord Light::getLightOrigin() const {
+Vec3f Light::getLightOrigin() const {
     return m_origin;
 }
 
@@ -12,6 +12,6 @@ bool Light::readLightInfo(const YAML::Node &node) {
     if(!node["position"] || !node["color"]) {
         return false;
     }
-    m_origin = Coord::toCoord(node["position"].as<std::vector<float>>());
-    m_emitColor = Color::toColor(node["color"].as<std::vector<float>>());
+    m_origin = Vec3f::toVec3f(node["position"].as<std::vector<float>>());
+    m_emitColor = Vec3f::toVec3f(node["color"].as<std::vector<float>>());
 }

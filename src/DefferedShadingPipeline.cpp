@@ -8,7 +8,7 @@
 #include <glm/ext/matrix_transform.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include "ShaderProgram.h"
-#include "HittableList.h"
+#include "GeometryGroupObj.h"
 #include "DefferedShadingPipeline.h"
 
 DefferedGBufferPass::DefferedGBufferPass(PassSetting *passSetting) : Pass(passSetting), m_outputFrameTextureId{0},
@@ -92,8 +92,8 @@ void DefferedGBufferPass::renderPass(const std::vector<ShadeObject *> &shadingLi
                 m_shader->uniformMat4f("model", model);
 
                 const LambertianMaterial *material = (LambertianMaterial *) object->m_material;
-                m_shader->uniform3f("objectColor", material->m_diffuseColor.r, material->m_diffuseColor.g,
-                                    material->m_diffuseColor.b);
+                m_shader->uniform3f("objectColor", material->m_diffuseColor.x, material->m_diffuseColor.y,
+                                    material->m_diffuseColor.z);
 
                 // draw call
                 glDrawElements(GL_TRIANGLES, object->m_objectInfo.m_indicesAmount, GL_UNSIGNED_INT, 0);
@@ -186,11 +186,7 @@ void DefferedShadingPipeline::setupPipeline() {
     m_shadingPass->specifyInput((size_t)DefferedShadingPass::DefferedShadingInput::COLOR, gBufferPass->getOutputFrameTexture((size_t)DefferedGBufferPass::DefferedGBufferOutput::COLOR));
     m_shadingPass->addRequirePass(gBufferPass);
 
-    auto hittableList = m_scene->m_hittableList->m_hittableList;
-    for (auto hittable : hittableList) {
-        std::vector<ShadeObject *> shadeObjectList = hittable->createVAO();
-        m_objectList.insert(m_objectList.end(), shadeObjectList.begin(), shadeObjectList.end());
-    }
+    m_scene->m_group->createVAO(m_objectList);
 }
 
 
@@ -230,7 +226,7 @@ void DefferedShadingPass::renderPass(const std::vector<ShadeObject *> &shadingLi
         // TODO Area Light and Light uniform move to shader handle
         m_shader->uniform1i("lightAmount", setting->m_lightList.size());
 
-        const Coord &eyeCoord = setting->m_camera->m_eyeCoord;
+        const Vec3f &eyeCoord = setting->m_camera->m_eyeCoord;
         m_shader->uniform3f("viewPos", eyeCoord.x, eyeCoord.y, eyeCoord.z);
 
         // draw call

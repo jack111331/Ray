@@ -26,10 +26,10 @@ struct OctreeNode {
 class Octree {
 public:
     Octree(const ObjectBoundingBox &boundingBox) {
-        Velocity diff = boundingBox.m_bounding[1] - boundingBox.m_bounding[0];
+        Vec3f diff = boundingBox.m_bounding[1] - boundingBox.m_bounding[0];
         float dim = std::max(diff.x, std::max(diff.y, diff.z));
-        Coord centroid = (boundingBox.m_bounding[1] + boundingBox.m_bounding[0]);
-        Velocity radius = {dim, dim, dim};
+        Vec3f centroid = (boundingBox.m_bounding[1] + boundingBox.m_bounding[0]);
+        Vec3f radius = {dim, dim, dim};
         m_bound[0] = (centroid - radius) * 0.5f;
         m_bound[1] = (centroid + radius) * 0.5f;
         m_root = new OctreeNode;
@@ -59,16 +59,16 @@ public:
     }
 
 private:
-    void insert(OctreeNode *node, const Hittable *object, const Coord &boundMin, const Coord &boundMax, int depth);
+    void insert(OctreeNode *node, const Hittable *object, const Vec3f &boundMin, const Vec3f &boundMax, int depth);
 
-    void computeChildBound(uint32_t index, const Coord &nodeCentroid, const Coord &boundMin, const Coord &boundMax,
-                           Coord &pMin, Coord &pMax);
+    void computeChildBound(uint32_t index, const Vec3f &nodeCentroid, const Vec3f &boundMin, const Vec3f &boundMax,
+                           Vec3f &pMin, Vec3f &pMax);
 
-    void build(OctreeNode *node, const Coord &boundMin, const Coord &boundMax);
+    void build(OctreeNode *node, const Vec3f &boundMin, const Vec3f &boundMax);
 
 
 public:
-    Coord m_bound[2]; // for compute node centroid for later space partition
+    Vec3f m_bound[2]; // for compute node centroid for later space partition
     OctreeNode *m_root = nullptr;
 };
 

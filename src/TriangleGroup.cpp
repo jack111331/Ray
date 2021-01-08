@@ -5,6 +5,8 @@
 #include "TriangleGroup.h"
 #include <queue>
 #include <GL/glew.h>
+#include "GroupObj.h"
+#include "GeometryGroupObj.h"
 
 #include "OBJ_Loader.h"
 #include "TriMesh.h"
@@ -13,10 +15,11 @@
 using namespace std;
 
 BVH::BVH(TriangleGroup *triangleGroup) : m_octree(nullptr) {
+
     updateBVH(triangleGroup);
 }
 
-bool BVH::isHit(const Ray &ray, HitRecord &record, float tmin) {
+bool BVH::isHit(const Ray &ray, IntersectionRecord &record, float tmin, const glm::mat4 &transformMat) {
     float tNear = 1e9, tFar = -1e9;
     if (!m_octree->m_root->m_nodeBoundingBox.isHit(ray, tNear, tFar)) {
         return false;
@@ -29,8 +32,7 @@ bool BVH::isHit(const Ray &ray, HitRecord &record, float tmin) {
         pq.pop();
         if (node->m_isLeaf) {
             for (uint32_t i = 0; i < node->m_data.size(); ++i) {
-                if (node->m_data[i]->isHit(ray, record, tmin)) {
-                    record.material = node->m_data[i]->m_material;
+                if (node->m_data[i]->isHit(ray, record, tmin, transformMat)) {
                     isHitted = true;
                 }
             }
@@ -56,6 +58,36 @@ void BVH::updateBVH(TriangleGroup *triangleGroup) {
     m_octree = new Octree(triangleGroup->m_boundingBox);
     for (auto triangle: triangleGroup->m_triangles) {
         m_octree->insert(triangle);
+    }
+    m_octree->build();
+}
+
+BVH::BVH(GroupObj *group) : m_octree(nullptr) {
+    updateBVH(group);
+}
+
+void BVH::updateBVH(GroupObj *group) {
+    if (m_octree) {
+        delete m_octree;
+    }
+    m_octree = new Octree(group->getBoundingBox());
+    for (auto member: group->m_groupMemberList) {
+        m_octree->insert(member);
+    }
+    m_octree->build();
+}
+
+BVH::BVH(GeometryGroupObj *group) : m_octree(nullptr) {
+    updateBVH(group);
+}
+
+void BVH::updateBVH(GeometryGroupObj *group) {
+    if (m_octree) {
+        delete m_octree;
+    }
+    m_octree = new Octree(group->getBoundingBox());
+    for (auto member: group->m_geometryList) {
+        m_octree->insert(member);
     }
     m_octree->build();
 }
@@ -102,23 +134,21 @@ bool TriangleGroup::fromObj(const objl::Mesh &mesh, const Scene *scene, const st
         nodeList.push_back(node);
         m_boundingBox.updateBoundingBox(node->m_coord);
     }
+    const std::string &validMaterialName = materialName.empty()?mesh.MeshMaterial.name:materialName;
+    auto it = scene->m_materialTable.find(validMaterialName);
+    Material *foundMaterial = nullptr;
+    if (it != scene->m_materialTable.end()) {
+        foundMaterial = it->second;
+    }
+
     for (int j = 0; j < mesh.Indices.size(); j += 3) {
         Triangle *triangle = new Triangle();
-        if (materialName.empty()) {
-            triangle->fromTriangleNode(mesh.MeshMaterial.name, scene, nodeList[mesh.Indices[j]],
-                                       nodeList[mesh.Indices[j + 1]],
-                                       nodeList[mesh.Indices[j + 2]]);
-        } else {
-            triangle->fromTriangleNode(materialName, scene, nodeList[mesh.Indices[j]],
-                                       nodeList[mesh.Indices[j + 1]],
-                                       nodeList[mesh.Indices[j + 2]]);
-        }
+        triangle->fromTriangleNode(foundMaterial, scene, nodeList[mesh.Indices[j]],
+                                   nodeList[mesh.Indices[j + 1]],
+                                   nodeList[mesh.Indices[j + 2]]);
         m_triangles.push_back(triangle);
     }
-    auto it = scene->m_materialTable.find(materialName);
-    if (it != scene->m_materialTable.end()) {
-        setMaterial(it->second);
-    }
+    setMaterial(foundMaterial);
     m_accel = new BVH(this);
     return true;
 }
@@ -130,22 +160,36 @@ bool TriangleGroup::readObjectInfo(const YAML::Node &node, const Scene *scene) {
 
     m_individualTriangle = node["individual_triangle"].as<bool>();
 
+    Material *foundMaterial = nullptr;
     if (!m_individualTriangle && !node["material"]) {
         return false;
+    }
+
+    if(node["material"]) {
+        auto it = scene->m_materialTable.find(node["material"].as<std::string>());
+        if (it != scene->m_materialTable.end()) {
+            foundMaterial = it->second;
+        }
     }
     std::vector<TriangleNode *> nodeList;
     auto verticesNode = node["vertices"];
     for (uint32_t i = 0; i < verticesNode.size(); ++i) {
-        TriangleNode *node = new TriangleNode(Coord::toCoord(verticesNode[i].as<std::vector<float>>()), {0, 0},
+        TriangleNode *node = new TriangleNode(Vec3f::toVec3f(verticesNode[i].as<std::vector<float>>()), {0, 0},
                                               {0, 0, 0}, false);
         nodeList.push_back(node);
         m_boundingBox.updateBoundingBox((*--nodeList.end())->m_coord);
     }
+
     auto trianglesNode = node["triangles"];
     for (uint32_t i = 0; i < trianglesNode.size(); ++i) {
-        std::vector<uint32_t> triangleIndices = trianglesNode[i]["indices"].as<std::vector<uint32_t>>();
         Triangle *triangle = new Triangle();
-        triangle->fromTriangleNode(trianglesNode[i]["material"].as<std::string>(), scene, nodeList[triangleIndices[0]],
+        auto it = scene->m_materialTable.find(trianglesNode[i]["material"].as<std::string>());
+        if (it != scene->m_materialTable.end()) {
+            foundMaterial = it->second;
+        }
+
+        std::vector<uint32_t> triangleIndices = trianglesNode[i]["indices"].as<std::vector<uint32_t>>();
+        triangle->fromTriangleNode(foundMaterial, scene, nodeList[triangleIndices[0]],
                                    nodeList[triangleIndices[1]],
                                    nodeList[triangleIndices[2]]);
         m_triangles.push_back(triangle);
@@ -156,23 +200,21 @@ bool TriangleGroup::readObjectInfo(const YAML::Node &node, const Scene *scene) {
     return true;
 }
 
-bool TriangleGroup::isHit(const Ray &ray, HitRecord &record, float tmin) const {
+bool TriangleGroup::isHit(const Ray &ray, IntersectionRecord &record, float tmin, const glm::mat4 &transformMat) const {
     if (m_accel) {
-        return m_accel->isHit(ray, record, tmin);
+        return m_accel->isHit(ray, record, tmin, transformMat);
     }
     bool isHitted = false;
     for (auto triangle: m_triangles) {
-        isHitted = std::max(isHitted, triangle->isHit(ray, record, tmin));
+        isHitted = std::max(isHitted, triangle->isHit(ray, record, tmin, transformMat));
     }
     return isHitted;
 }
 
-std::vector<ShadeObject *> TriangleGroup::createVAO() {
-    vector<ShadeObject *> result;
+void TriangleGroup::createVAO(std::vector<ShadeObject *> &shadeObjectList) {
     if (m_individualTriangle) {
         for (auto triangle: m_triangles) {
-            vector<ShadeObject *> triangleVAO = triangle->createVAO();
-            result.insert(result.end(), triangleVAO.begin(), triangleVAO.end());
+            triangle->createVAO(shadeObjectList);
         }
     } else {
         // VAO
@@ -180,9 +222,9 @@ std::vector<ShadeObject *> TriangleGroup::createVAO() {
         glGenVertexArrays(1, &vao);
         glBindVertexArray(vao);
 
-        std::vector<Coord> vertices;
-        std::vector<Velocity> normals;
-        std::vector<Coord2D> texCoords;
+        std::vector<Vec3f> vertices;
+        std::vector<Vec3f> normals;
+        std::vector<Vec2f> texCoords;
         std::vector<uint32_t> indices;
 
 
@@ -204,7 +246,7 @@ std::vector<ShadeObject *> TriangleGroup::createVAO() {
         uint32_t meshVbo;
         glGenBuffers(1, &meshVbo);
         glBindBuffer(GL_ARRAY_BUFFER, meshVbo);
-        glBufferData(GL_ARRAY_BUFFER, sizeof(Coord) * vertices.size(), vertices.data(), GL_STATIC_DRAW);
+        glBufferData(GL_ARRAY_BUFFER, sizeof(Vec3f) * vertices.size(), vertices.data(), GL_STATIC_DRAW);
         glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
         glEnableVertexAttribArray(0);
 
@@ -212,7 +254,7 @@ std::vector<ShadeObject *> TriangleGroup::createVAO() {
         uint32_t normalVbo;
         glGenBuffers(1, &normalVbo);
         glBindBuffer(GL_ARRAY_BUFFER, normalVbo);
-        glBufferData(GL_ARRAY_BUFFER, sizeof(Velocity) * normals.size(), normals.data(), GL_DYNAMIC_DRAW);
+        glBufferData(GL_ARRAY_BUFFER, sizeof(Vec3f) * normals.size(), normals.data(), GL_DYNAMIC_DRAW);
         glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
         glEnableVertexAttribArray(1);
 
@@ -220,7 +262,7 @@ std::vector<ShadeObject *> TriangleGroup::createVAO() {
         uint32_t texCoordVbo;
         glGenBuffers(1, &texCoordVbo);
         glBindBuffer(GL_ARRAY_BUFFER, texCoordVbo);
-        glBufferData(GL_ARRAY_BUFFER, sizeof(Coord2D) * texCoords.size(), texCoords.data(), GL_DYNAMIC_DRAW);
+        glBufferData(GL_ARRAY_BUFFER, sizeof(Vec2f) * texCoords.size(), texCoords.data(), GL_DYNAMIC_DRAW);
         glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), nullptr);
         glEnableVertexAttribArray(2);
 
@@ -239,19 +281,19 @@ std::vector<ShadeObject *> TriangleGroup::createVAO() {
             std::cout << "feature size : " << themesh->feature_size() << std::endl;
 
             glBindBuffer(GL_ARRAY_BUFFER, meshVbo);
-            glBufferData(GL_ARRAY_BUFFER, sizeof(Coord) * themesh->vertices.size(), themesh->vertices.data(),
+            glBufferData(GL_ARRAY_BUFFER, sizeof(Vec3f) * themesh->vertices.size(), themesh->vertices.data(),
                          GL_STATIC_DRAW);
             glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
 
             glBindBuffer(GL_ARRAY_BUFFER, normalVbo);
-            glBufferData(GL_ARRAY_BUFFER, sizeof(Velocity) * themesh->normals.size(), themesh->normals.data(),
+            glBufferData(GL_ARRAY_BUFFER, sizeof(Vec3f) * themesh->normals.size(), themesh->normals.data(),
                          GL_DYNAMIC_DRAW);
             glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
 
             uint32_t pdir1Vbo;
             glGenBuffers(1, &pdir1Vbo);
             glBindBuffer(GL_ARRAY_BUFFER, pdir1Vbo);
-            glBufferData(GL_ARRAY_BUFFER, sizeof(Coord) * themesh->pdir1.size(), themesh->pdir1.data(),
+            glBufferData(GL_ARRAY_BUFFER, sizeof(Vec3f) * themesh->pdir1.size(), themesh->pdir1.data(),
                          GL_DYNAMIC_DRAW);
             glVertexAttribPointer(3, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
             glEnableVertexAttribArray(3);
@@ -259,7 +301,7 @@ std::vector<ShadeObject *> TriangleGroup::createVAO() {
             uint32_t pdir2Vbo;
             glGenBuffers(1, &pdir2Vbo);
             glBindBuffer(GL_ARRAY_BUFFER, pdir2Vbo);
-            glBufferData(GL_ARRAY_BUFFER, sizeof(Coord) * themesh->pdir2.size(), themesh->pdir2.data(),
+            glBufferData(GL_ARRAY_BUFFER, sizeof(Vec3f) * themesh->pdir2.size(), themesh->pdir2.data(),
                          GL_DYNAMIC_DRAW);
             glVertexAttribPointer(4, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
             glEnableVertexAttribArray(4);
@@ -311,16 +353,15 @@ std::vector<ShadeObject *> TriangleGroup::createVAO() {
                          GL_STATIC_DRAW);
 
             glBindVertexArray(0);
-            result.push_back(new ShadeObject({vao, (int) newIndices.size()}, m_material));
-            return result;
+            shadeObjectList.push_back(new ShadeObject({vao, (int) newIndices.size()}, m_material));
+            return;
         }
 
         glBindVertexArray(0);
 
-        result.push_back(new ShadeObject({vao, (int) indices.size()}, m_material));
+        shadeObjectList.push_back(new ShadeObject({vao, (int) indices.size()}, m_material));
 
     }
-    return result;
 }
 
 ObjectBoundingBox TriangleGroup::getBoundingBox() const {

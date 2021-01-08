@@ -11,7 +11,7 @@
 class Texture {
 public:
     Texture(const std::string &filename);
-    Color getColor(const Coord2D &texCoord);
+    Vec3f getColor(const Vec2f &texCoord);
     uint8_t *m_image;
     int m_width, m_height, m_channel;
 };

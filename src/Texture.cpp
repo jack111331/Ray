@@ -16,20 +16,20 @@ Texture::Texture(const std::string &filename) {
     }
 }
 
-Color Texture::getColor(const Coord2D &texCoord) {
+Vec3f Texture::getColor(const Vec2f &texCoord) {
     float width = m_width, height = m_height;
-    Coord2D texCoordFlip = {texCoord.x, 1.0f - texCoord.y};
-    Coord2Di cornerCoord[4] = {{(int) floor(texCoordFlip.x * width),     (int) floor(texCoordFlip.y * height-1)},
-                               {(int) floor(texCoordFlip.x * width),     (int) floor(texCoordFlip.y * height)},
-                               {(int) floor(texCoordFlip.x * width + 1), (int) floor(texCoordFlip.y * height-1)},
-                               {(int) floor(texCoordFlip.x * width + 1), (int) floor(texCoordFlip.y * height)}};
+    Vec2f texCoordFlip = {texCoord.x, 1.0f - texCoord.y};
+    Vec2i cornerCoord[4] = {{(int) floor(texCoordFlip.x * width),     (int) floor(texCoordFlip.y * height - 1)},
+                            {(int) floor(texCoordFlip.x * width),     (int) floor(texCoordFlip.y * height)},
+                            {(int) floor(texCoordFlip.x * width + 1), (int) floor(texCoordFlip.y * height-1)},
+                            {(int) floor(texCoordFlip.x * width + 1), (int) floor(texCoordFlip.y * height)}};
 
-    Color cornerColor[4];
+    Vec3f cornerColor[4];
     for (int i = 0; i < 4; ++i) {
         int index = 3 * (cornerCoord[i].y * m_width + cornerCoord[i].x);
-        cornerColor[i].r = (float) m_image[index] / 255.99f;
-        cornerColor[i].g = (float) m_image[index + 1] / 255.99f;
-        cornerColor[i].b = (float) m_image[index + 2] / 255.99f;
+        cornerColor[i].x = (float) m_image[index] / 255.99f;
+        cornerColor[i].y = (float) m_image[index + 1] / 255.99f;
+        cornerColor[i].z = (float) m_image[index + 2] / 255.99f;
     }
     float alpha = texCoordFlip.x * width - cornerCoord[0].x;
     float beta = texCoordFlip.y * height - cornerCoord[0].y;

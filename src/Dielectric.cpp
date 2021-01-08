@@ -7,9 +7,9 @@
 
 using namespace std;
 
-void DielectricMaterial::calculatePhong(const Scene *scene, Ray &ray, const HitRecord &record,
+void DielectricMaterial::calculatePhong(const Scene *scene, Ray &ray, const IntersectionRecord &record,
                                const LightRecord &shadeLightRecord, ShadeRecord &shadeRecord) const {
-    Velocity outwardNormal;
+    Vec3f outwardNormal;
     float cosine;
     float niOverNt;
     if (ray.velocity.dot(record.normal) > 0.0) {
@@ -24,7 +24,7 @@ void DielectricMaterial::calculatePhong(const Scene *scene, Ray &ray, const HitR
     }
     float reflectivity = Util::schlickApprox(cosine, m_constantReferenceIndex);
     float refractivity = 1.0 - reflectivity;
-    Velocity refractedDirection;
+    Vec3f refractedDirection;
     if (!ray.velocity.refract(outwardNormal, niOverNt, refractedDirection)) {
         reflectivity = 1.0f;
         refractivity = 0.0f;
@@ -39,8 +39,8 @@ void DielectricMaterial::calculatePhong(const Scene *scene, Ray &ray, const HitR
     shadeRecord.attenuation = {1.0f, 1.0f, 1.0f};
 }
 
-void DielectricMaterial::calculatePhotonMapping(const Scene *scene, const PhotonMappingModel &model, Ray &ray, const HitRecord &record, ShadeRecord &shadeRecord) const {
-    Velocity outwardNormal;
+void DielectricMaterial::calculatePhotonMapping(const Scene *scene, const PhotonMappingModel &model, Ray &ray, const IntersectionRecord &record, ShadeRecord &shadeRecord) const {
+    Vec3f outwardNormal;
     float cosine;
     float niOverNt;
     if (ray.velocity.dot(record.normal) > 0.0) {
@@ -55,7 +55,7 @@ void DielectricMaterial::calculatePhotonMapping(const Scene *scene, const Photon
     }
     float reflectivity = Util::schlickApprox(cosine, m_constantReferenceIndex);
     float refractivity = 1.0 - reflectivity;
-    Velocity refractedDirection;
+    Vec3f refractedDirection;
     if (!ray.velocity.refract(outwardNormal, niOverNt, refractedDirection)) {
         reflectivity = 1.0f;
         refractivity = 0.0f;
