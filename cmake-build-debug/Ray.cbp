@@ -357,6 +357,9 @@
 		<Unit filename="D:/Code/Ray/include/AreaLight.h">
 			<Option target="Ray"/>
 		</Unit>
+		<Unit filename="D:/Code/Ray/include/BLASNode.h">
+			<Option target="Ray"/>
+		</Unit>
 		<Unit filename="D:/Code/Ray/include/BVH.h">
 			<Option target="Ray"/>
 		</Unit>
@@ -376,6 +379,9 @@
 			<Option target="Ray"/>
 		</Unit>
 		<Unit filename="D:/Code/Ray/include/GeometryGroupObj.h">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/include/GroupBVHTranslator.h">
 			<Option target="Ray"/>
 		</Unit>
 		<Unit filename="D:/Code/Ray/include/GroupObj.h">
@@ -445,6 +451,9 @@
 			<Option target="Ray"/>
 		</Unit>
 		<Unit filename="D:/Code/Ray/include/SuggestedContourPipeline.h">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/include/TLASNode.h">
 			<Option target="Ray"/>
 		</Unit>
 		<Unit filename="D:/Code/Ray/include/Texture.h">
@@ -664,6 +673,9 @@
 			<Option target="Ray"/>
 		</Unit>
 		<Unit filename="D:/Code/Ray/src/GeometryGroupObj.cpp">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/src/GroupBVHTranslator.cpp">
 			<Option target="Ray"/>
 		</Unit>
 		<Unit filename="D:/Code/Ray/src/GroupObj.cpp">

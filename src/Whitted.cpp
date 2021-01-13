@@ -4,7 +4,7 @@
 
 #include <Dielectric.h>
 #include "Whitted.h"
-#include "GeometryGroupObj.h"
+#include "GroupObj.h"
 
 void WhittedPipeline::setupPipeline() {
     WhittedModel *model = new WhittedModel();

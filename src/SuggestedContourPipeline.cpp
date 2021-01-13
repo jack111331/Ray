@@ -10,7 +10,7 @@
 #include <backends/imgui_impl_opengl3.h>
 #include <backends/imgui_impl_glfw.h>
 #include "ShaderProgram.h"
-#include "GeometryGroupObj.h"
+#include "GroupObj.h"
 #include "SuggestedContourPipeline.h"
 
 SuggestedContourShadingPass::SuggestedContourShadingPass(PassSetting *passSetting) : Pass(passSetting), m_outputFrameTextureId{0},

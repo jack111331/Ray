@@ -8,10 +8,11 @@
 #include "Utility.h"
 #include "Ray.h"
 #include "Hittable.h"
+#include "BLASNode.h"
 
-class Sphere : public Hittable {
+class Sphere : public BLASNode {
 public:
-    Sphere() : m_origin{0, 0, 0}, m_radius(0) {};
+    Sphere() : BLASNode(), m_origin{0, 0, 0}, m_radius(0) {};
 
     Sphere(Vec3f origin, float radius) : m_origin(origin), m_radius(radius) {};
 

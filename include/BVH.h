@@ -72,4 +72,29 @@ public:
     OctreeNode *m_root = nullptr;
 };
 
+class TriangleGroup;
+class GroupObj;
+class GeometryGroupObj;
+
+class BVH {
+public:
+    BVH(TriangleGroup *triangleGroup);
+
+    void updateBVH(TriangleGroup *triangleGroup);
+
+    // TODO we need refactor
+    BVH(GroupObj *group);
+
+    void updateBVH(GroupObj *group);
+
+    BVH(GeometryGroupObj *group);
+
+    void updateBVH(GeometryGroupObj *group);
+
+    bool isHit(const Ray &ray, IntersectionRecord &record, float tmin=0.0001f, const glm::mat4 &transformMat = glm::mat4(1.0));
+
+    Octree *m_octree;
+
+};
+
 #endif //RAY_BVH_H

@@ -5,7 +5,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <GLUtil.h>
 #include "InstantRadiosity.h"
-#include "GeometryGroupObj.h"
+#include "GroupObj.h"
 
 void InstantRadiosityPipeline::setupPipeline() {
     if(!m_scene || !m_camera) {

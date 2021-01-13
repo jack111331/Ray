@@ -43,10 +43,10 @@ CMakeFiles/Ray.dir/public/imgui/imgui_widgets.cpp.obj
 CMakeFiles/Ray.dir/src/AmbientOcclusion.cpp.obj
  ../dependency/include/GLFW/glfw3.h
  ../include/AmbientOcclusion.h
+ ../include/BLASNode.h
  ../include/BVH.h
  ../include/Camera.h
  ../include/Dielectric.h
- ../include/GeometryGroupObj.h
  ../include/GroupObj.h
  ../include/Hittable.h
  ../include/IllumModel.h
@@ -56,6 +56,7 @@ CMakeFiles/Ray.dir/src/AmbientOcclusion.cpp.obj
  ../include/Pipeline.h
  ../include/Ray.h
  ../include/Scene.h
+ ../include/TLASNode.h
  ../include/Texture.h
  ../include/Triangle.h
  ../include/TriangleGroup.h
@@ -246,10 +247,10 @@ CMakeFiles/Ray.dir/src/AmbientOcclusion.cpp.obj
 CMakeFiles/Ray.dir/src/AmbientOcclusionVolumeShadingPipeline.cpp.obj
  ../dependency/include/GLFW/glfw3.h
  ../include/AmbientOcclusionVolumeShadingPipeline.h
+ ../include/BLASNode.h
  ../include/BVH.h
  ../include/Camera.h
  ../include/GLUtil.h
- ../include/GeometryGroupObj.h
  ../include/GroupObj.h
  ../include/Hittable.h
  ../include/IllumModel.h
@@ -261,6 +262,7 @@ CMakeFiles/Ray.dir/src/AmbientOcclusionVolumeShadingPipeline.cpp.obj
  ../include/Scene.h
  ../include/ShaderInclude.h
  ../include/ShaderProgram.h
+ ../include/TLASNode.h
  ../include/Texture.h
  ../include/Triangle.h
  ../include/TriangleGroup.h
@@ -474,6 +476,7 @@ CMakeFiles/Ray.dir/src/AreaLight.cpp.obj
  ../include/Ray.h
  ../include/Scene.h
  ../include/Utility.h
+ ../include/utility.h
  ../public/glm/glm/common.hpp
  ../public/glm/glm/detail/_fixes.hpp
  ../public/glm/glm/detail/_swizzle.hpp
@@ -658,10 +661,19 @@ CMakeFiles/Ray.dir/src/AreaLight.cpp.obj
  ../public/yaml-cpp/include/yaml-cpp/yaml.h
  D:/Code/Ray/src/AreaLight.cpp
 CMakeFiles/Ray.dir/src/BVH.cpp.obj
+ ../include/BLASNode.h
  ../include/BVH.h
+ ../include/Camera.h
+ ../include/GeometryGroupObj.h
+ ../include/GroupObj.h
  ../include/Hittable.h
+ ../include/Light.h
  ../include/Material.h
  ../include/Ray.h
+ ../include/Scene.h
+ ../include/TLASNode.h
+ ../include/Triangle.h
+ ../include/TriangleGroup.h
  ../include/Utility.h
  ../public/glm/glm/common.hpp
  ../public/glm/glm/detail/_fixes.hpp
@@ -1010,13 +1022,13 @@ CMakeFiles/Ray.dir/src/Config.cpp.obj
  ../include/AmbientOcclusion.h
  ../include/AmbientOcclusionVolumeShadingPipeline.h
  ../include/AreaLight.h
+ ../include/BLASNode.h
  ../include/BVH.h
  ../include/Camera.h
  ../include/Config.h
  ../include/DefferedShadingPipeline.h
  ../include/Dielectric.h
  ../include/GeometryGroupObj.h
- ../include/GroupObj.h
  ../include/Hittable.h
  ../include/IllumModel.h
  ../include/IllumModelFactory.h
@@ -1034,6 +1046,7 @@ CMakeFiles/Ray.dir/src/Config.cpp.obj
  ../include/Scene.h
  ../include/Sphere.h
  ../include/SuggestedContourPipeline.h
+ ../include/TLASNode.h
  ../include/Texture.h
  ../include/Triangle.h
  ../include/TriangleGroup.h
@@ -1224,11 +1237,11 @@ CMakeFiles/Ray.dir/src/Config.cpp.obj
  D:/Code/Ray/src/Config.cpp
 CMakeFiles/Ray.dir/src/DefferedShadingPipeline.cpp.obj
  ../dependency/include/GLFW/glfw3.h
+ ../include/BLASNode.h
  ../include/BVH.h
  ../include/Camera.h
  ../include/DefferedShadingPipeline.h
  ../include/GLUtil.h
- ../include/GeometryGroupObj.h
  ../include/GroupObj.h
  ../include/Hittable.h
  ../include/IllumModel.h
@@ -1240,6 +1253,7 @@ CMakeFiles/Ray.dir/src/DefferedShadingPipeline.cpp.obj
  ../include/Scene.h
  ../include/ShaderInclude.h
  ../include/ShaderProgram.h
+ ../include/TLASNode.h
  ../include/Texture.h
  ../include/Triangle.h
  ../include/TriangleGroup.h
@@ -1791,16 +1805,17 @@ CMakeFiles/Ray.dir/src/GLUtil.cpp.obj
  ../public/yaml-cpp/include/yaml-cpp/yaml.h
  D:/Code/Ray/src/GLUtil.cpp
 CMakeFiles/Ray.dir/src/GeometryGroupObj.cpp.obj
+ ../include/BLASNode.h
  ../include/BVH.h
  ../include/Camera.h
  ../include/GeometryGroupObj.h
- ../include/GroupObj.h
  ../include/Hittable.h
  ../include/Light.h
  ../include/Material.h
  ../include/Ray.h
  ../include/Scene.h
  ../include/Sphere.h
+ ../include/TLASNode.h
  ../include/Triangle.h
  ../include/TriangleGroup.h
  ../include/Utility.h
@@ -1973,7 +1988,192 @@ CMakeFiles/Ray.dir/src/GeometryGroupObj.cpp.obj
  ../public/yaml-cpp/include/yaml-cpp/traits.h
  ../public/yaml-cpp/include/yaml-cpp/yaml.h
  D:/Code/Ray/src/GeometryGroupObj.cpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj
+ ../include/BLASNode.h
+ ../include/BVH.h
+ ../include/Camera.h
+ ../include/GroupBVHTranslator.h
+ ../include/GroupObj.h
+ ../include/Hittable.h
+ ../include/Light.h
+ ../include/Material.h
+ ../include/Ray.h
+ ../include/Scene.h
+ ../include/TLASNode.h
+ ../include/Triangle.h
+ ../include/TriangleGroup.h
+ ../include/Utility.h
+ ../public/glm/glm/common.hpp
+ ../public/glm/glm/detail/_fixes.hpp
+ ../public/glm/glm/detail/_swizzle.hpp
+ ../public/glm/glm/detail/_swizzle_func.hpp
+ ../public/glm/glm/detail/_vectorize.hpp
+ ../public/glm/glm/detail/compute_common.hpp
+ ../public/glm/glm/detail/compute_vector_relational.hpp
+ ../public/glm/glm/detail/func_common.inl
+ ../public/glm/glm/detail/func_common_simd.inl
+ ../public/glm/glm/detail/func_exponential.inl
+ ../public/glm/glm/detail/func_exponential_simd.inl
+ ../public/glm/glm/detail/func_geometric.inl
+ ../public/glm/glm/detail/func_geometric_simd.inl
+ ../public/glm/glm/detail/func_matrix.inl
+ ../public/glm/glm/detail/func_matrix_simd.inl
+ ../public/glm/glm/detail/func_vector_relational.inl
+ ../public/glm/glm/detail/func_vector_relational_simd.inl
+ ../public/glm/glm/detail/qualifier.hpp
+ ../public/glm/glm/detail/setup.hpp
+ ../public/glm/glm/detail/type_mat2x2.hpp
+ ../public/glm/glm/detail/type_mat2x2.inl
+ ../public/glm/glm/detail/type_mat2x3.hpp
+ ../public/glm/glm/detail/type_mat2x3.inl
+ ../public/glm/glm/detail/type_mat2x4.hpp
+ ../public/glm/glm/detail/type_mat2x4.inl
+ ../public/glm/glm/detail/type_mat3x2.hpp
+ ../public/glm/glm/detail/type_mat3x2.inl
+ ../public/glm/glm/detail/type_mat3x3.hpp
+ ../public/glm/glm/detail/type_mat3x3.inl
+ ../public/glm/glm/detail/type_mat3x4.hpp
+ ../public/glm/glm/detail/type_mat3x4.inl
+ ../public/glm/glm/detail/type_mat4x2.hpp
+ ../public/glm/glm/detail/type_mat4x2.inl
+ ../public/glm/glm/detail/type_mat4x3.hpp
+ ../public/glm/glm/detail/type_mat4x3.inl
+ ../public/glm/glm/detail/type_mat4x4.hpp
+ ../public/glm/glm/detail/type_mat4x4.inl
+ ../public/glm/glm/detail/type_mat4x4_simd.inl
+ ../public/glm/glm/detail/type_vec1.hpp
+ ../public/glm/glm/detail/type_vec1.inl
+ ../public/glm/glm/detail/type_vec2.hpp
+ ../public/glm/glm/detail/type_vec2.inl
+ ../public/glm/glm/detail/type_vec3.hpp
+ ../public/glm/glm/detail/type_vec3.inl
+ ../public/glm/glm/detail/type_vec4.hpp
+ ../public/glm/glm/detail/type_vec4.inl
+ ../public/glm/glm/detail/type_vec4_simd.inl
+ ../public/glm/glm/exponential.hpp
+ ../public/glm/glm/ext/matrix_double2x2.hpp
+ ../public/glm/glm/ext/matrix_double2x2_precision.hpp
+ ../public/glm/glm/ext/matrix_double2x3.hpp
+ ../public/glm/glm/ext/matrix_double2x3_precision.hpp
+ ../public/glm/glm/ext/matrix_double2x4.hpp
+ ../public/glm/glm/ext/matrix_double2x4_precision.hpp
+ ../public/glm/glm/ext/matrix_double3x2.hpp
+ ../public/glm/glm/ext/matrix_double3x2_precision.hpp
+ ../public/glm/glm/ext/matrix_double3x3.hpp
+ ../public/glm/glm/ext/matrix_double3x3_precision.hpp
+ ../public/glm/glm/ext/matrix_double3x4.hpp
+ ../public/glm/glm/ext/matrix_double3x4_precision.hpp
+ ../public/glm/glm/ext/matrix_double4x2.hpp
+ ../public/glm/glm/ext/matrix_double4x2_precision.hpp
+ ../public/glm/glm/ext/matrix_double4x3.hpp
+ ../public/glm/glm/ext/matrix_double4x3_precision.hpp
+ ../public/glm/glm/ext/matrix_double4x4.hpp
+ ../public/glm/glm/ext/matrix_double4x4_precision.hpp
+ ../public/glm/glm/ext/matrix_float2x2.hpp
+ ../public/glm/glm/ext/matrix_float2x2_precision.hpp
+ ../public/glm/glm/ext/matrix_float2x3.hpp
+ ../public/glm/glm/ext/matrix_float2x3_precision.hpp
+ ../public/glm/glm/ext/matrix_float2x4.hpp
+ ../public/glm/glm/ext/matrix_float2x4_precision.hpp
+ ../public/glm/glm/ext/matrix_float3x2.hpp
+ ../public/glm/glm/ext/matrix_float3x2_precision.hpp
+ ../public/glm/glm/ext/matrix_float3x3.hpp
+ ../public/glm/glm/ext/matrix_float3x3_precision.hpp
+ ../public/glm/glm/ext/matrix_float3x4.hpp
+ ../public/glm/glm/ext/matrix_float3x4_precision.hpp
+ ../public/glm/glm/ext/matrix_float4x2.hpp
+ ../public/glm/glm/ext/matrix_float4x2_precision.hpp
+ ../public/glm/glm/ext/matrix_float4x3.hpp
+ ../public/glm/glm/ext/matrix_float4x3_precision.hpp
+ ../public/glm/glm/ext/matrix_float4x4.hpp
+ ../public/glm/glm/ext/matrix_float4x4_precision.hpp
+ ../public/glm/glm/ext/scalar_int_sized.hpp
+ ../public/glm/glm/ext/scalar_uint_sized.hpp
+ ../public/glm/glm/ext/vector_bool2.hpp
+ ../public/glm/glm/ext/vector_bool2_precision.hpp
+ ../public/glm/glm/ext/vector_bool3.hpp
+ ../public/glm/glm/ext/vector_bool3_precision.hpp
+ ../public/glm/glm/ext/vector_bool4.hpp
+ ../public/glm/glm/ext/vector_bool4_precision.hpp
+ ../public/glm/glm/ext/vector_double2.hpp
+ ../public/glm/glm/ext/vector_double2_precision.hpp
+ ../public/glm/glm/ext/vector_double3.hpp
+ ../public/glm/glm/ext/vector_double3_precision.hpp
+ ../public/glm/glm/ext/vector_double4.hpp
+ ../public/glm/glm/ext/vector_double4_precision.hpp
+ ../public/glm/glm/ext/vector_float2.hpp
+ ../public/glm/glm/ext/vector_float2_precision.hpp
+ ../public/glm/glm/ext/vector_float3.hpp
+ ../public/glm/glm/ext/vector_float3_precision.hpp
+ ../public/glm/glm/ext/vector_float4.hpp
+ ../public/glm/glm/ext/vector_float4_precision.hpp
+ ../public/glm/glm/ext/vector_int2.hpp
+ ../public/glm/glm/ext/vector_int2_sized.hpp
+ ../public/glm/glm/ext/vector_int3.hpp
+ ../public/glm/glm/ext/vector_int3_sized.hpp
+ ../public/glm/glm/ext/vector_int4.hpp
+ ../public/glm/glm/ext/vector_int4_sized.hpp
+ ../public/glm/glm/ext/vector_uint2.hpp
+ ../public/glm/glm/ext/vector_uint2_sized.hpp
+ ../public/glm/glm/ext/vector_uint3.hpp
+ ../public/glm/glm/ext/vector_uint3_sized.hpp
+ ../public/glm/glm/ext/vector_uint4.hpp
+ ../public/glm/glm/ext/vector_uint4_sized.hpp
+ ../public/glm/glm/geometric.hpp
+ ../public/glm/glm/mat2x2.hpp
+ ../public/glm/glm/mat2x3.hpp
+ ../public/glm/glm/mat2x4.hpp
+ ../public/glm/glm/mat3x2.hpp
+ ../public/glm/glm/mat3x3.hpp
+ ../public/glm/glm/mat3x4.hpp
+ ../public/glm/glm/mat4x2.hpp
+ ../public/glm/glm/mat4x3.hpp
+ ../public/glm/glm/mat4x4.hpp
+ ../public/glm/glm/matrix.hpp
+ ../public/glm/glm/simd/common.h
+ ../public/glm/glm/simd/exponential.h
+ ../public/glm/glm/simd/geometric.h
+ ../public/glm/glm/simd/matrix.h
+ ../public/glm/glm/simd/neon.h
+ ../public/glm/glm/simd/platform.h
+ ../public/glm/glm/vec2.hpp
+ ../public/glm/glm/vec3.hpp
+ ../public/glm/glm/vec4.hpp
+ ../public/glm/glm/vector_relational.hpp
+ ../public/yaml-cpp/include/yaml-cpp/binary.h
+ ../public/yaml-cpp/include/yaml-cpp/dll.h
+ ../public/yaml-cpp/include/yaml-cpp/emitter.h
+ ../public/yaml-cpp/include/yaml-cpp/emitterdef.h
+ ../public/yaml-cpp/include/yaml-cpp/emittermanip.h
+ ../public/yaml-cpp/include/yaml-cpp/emitterstyle.h
+ ../public/yaml-cpp/include/yaml-cpp/exceptions.h
+ ../public/yaml-cpp/include/yaml-cpp/mark.h
+ ../public/yaml-cpp/include/yaml-cpp/node/convert.h
+ ../public/yaml-cpp/include/yaml-cpp/node/detail/impl.h
+ ../public/yaml-cpp/include/yaml-cpp/node/detail/iterator.h
+ ../public/yaml-cpp/include/yaml-cpp/node/detail/iterator_fwd.h
+ ../public/yaml-cpp/include/yaml-cpp/node/detail/memory.h
+ ../public/yaml-cpp/include/yaml-cpp/node/detail/node.h
+ ../public/yaml-cpp/include/yaml-cpp/node/detail/node_data.h
+ ../public/yaml-cpp/include/yaml-cpp/node/detail/node_iterator.h
+ ../public/yaml-cpp/include/yaml-cpp/node/detail/node_ref.h
+ ../public/yaml-cpp/include/yaml-cpp/node/emit.h
+ ../public/yaml-cpp/include/yaml-cpp/node/impl.h
+ ../public/yaml-cpp/include/yaml-cpp/node/iterator.h
+ ../public/yaml-cpp/include/yaml-cpp/node/node.h
+ ../public/yaml-cpp/include/yaml-cpp/node/parse.h
+ ../public/yaml-cpp/include/yaml-cpp/node/ptr.h
+ ../public/yaml-cpp/include/yaml-cpp/node/type.h
+ ../public/yaml-cpp/include/yaml-cpp/noexcept.h
+ ../public/yaml-cpp/include/yaml-cpp/null.h
+ ../public/yaml-cpp/include/yaml-cpp/ostream_wrapper.h
+ ../public/yaml-cpp/include/yaml-cpp/parser.h
+ ../public/yaml-cpp/include/yaml-cpp/stlemitter.h
+ ../public/yaml-cpp/include/yaml-cpp/traits.h
+ ../public/yaml-cpp/include/yaml-cpp/yaml.h
+ D:/Code/Ray/src/GroupBVHTranslator.cpp
 CMakeFiles/Ray.dir/src/GroupObj.cpp.obj
+ ../include/BLASNode.h
  ../include/BVH.h
  ../include/Camera.h
  ../include/GeometryGroupObj.h
@@ -1984,6 +2184,7 @@ CMakeFiles/Ray.dir/src/GroupObj.cpp.obj
  ../include/Ray.h
  ../include/Scene.h
  ../include/SelectorObj.h
+ ../include/TLASNode.h
  ../include/TransformObj.h
  ../include/Triangle.h
  ../include/TriangleGroup.h
@@ -2349,6 +2550,7 @@ CMakeFiles/Ray.dir/src/IllumModelFactory.cpp.obj
  ../include/Scene.h
  ../include/Utility.h
  ../include/Whitted.h
+ ../include/utility.h
  ../public/glm/glm/common.hpp
  ../public/glm/glm/detail/_fixes.hpp
  ../public/glm/glm/detail/_swizzle.hpp
@@ -2534,10 +2736,10 @@ CMakeFiles/Ray.dir/src/IllumModelFactory.cpp.obj
  D:/Code/Ray/src/IllumModelFactory.cpp
 CMakeFiles/Ray.dir/src/InstantRadiosity.cpp.obj
  ../dependency/include/GLFW/glfw3.h
+ ../include/BLASNode.h
  ../include/BVH.h
  ../include/Camera.h
  ../include/GLUtil.h
- ../include/GeometryGroupObj.h
  ../include/GroupObj.h
  ../include/Hittable.h
  ../include/IllumModel.h
@@ -2549,6 +2751,7 @@ CMakeFiles/Ray.dir/src/InstantRadiosity.cpp.obj
  ../include/Pipeline.h
  ../include/Ray.h
  ../include/Scene.h
+ ../include/TLASNode.h
  ../include/Triangle.h
  ../include/TriangleGroup.h
  ../include/Utility.h
@@ -2902,6 +3105,7 @@ CMakeFiles/Ray.dir/src/Lambertian.cpp.obj
  ../include/Scene.h
  ../include/Texture.h
  ../include/Utility.h
+ ../include/utility.h
  ../public/glm/glm/common.hpp
  ../public/glm/glm/detail/_fixes.hpp
  ../public/glm/glm/detail/_swizzle.hpp
@@ -3435,10 +3639,10 @@ CMakeFiles/Ray.dir/src/Material.cpp.obj
  D:/Code/Ray/src/Material.cpp
 CMakeFiles/Ray.dir/src/PhongShadingPipeline.cpp.obj
  ../dependency/include/GLFW/glfw3.h
+ ../include/BLASNode.h
  ../include/BVH.h
  ../include/Camera.h
  ../include/GLUtil.h
- ../include/GeometryGroupObj.h
  ../include/GroupObj.h
  ../include/Hittable.h
  ../include/IllumModel.h
@@ -3451,6 +3655,7 @@ CMakeFiles/Ray.dir/src/PhongShadingPipeline.cpp.obj
  ../include/Scene.h
  ../include/ShaderInclude.h
  ../include/ShaderProgram.h
+ ../include/TLASNode.h
  ../include/Texture.h
  ../include/Triangle.h
  ../include/TriangleGroup.h
@@ -3652,10 +3857,10 @@ CMakeFiles/Ray.dir/src/PhongShadingPipeline.cpp.obj
  D:/Code/Ray/src/PhongShadingPipeline.cpp
 CMakeFiles/Ray.dir/src/Photon.cpp.obj
  ../dependency/include/GLFW/glfw3.h
+ ../include/BLASNode.h
  ../include/BVH.h
  ../include/Camera.h
  ../include/Dielectric.h
- ../include/GeometryGroupObj.h
  ../include/GroupObj.h
  ../include/Hittable.h
  ../include/IllumModel.h
@@ -3666,6 +3871,7 @@ CMakeFiles/Ray.dir/src/Photon.cpp.obj
  ../include/Pipeline.h
  ../include/Ray.h
  ../include/Scene.h
+ ../include/TLASNode.h
  ../include/Triangle.h
  ../include/TriangleGroup.h
  ../include/Utility.h
@@ -3854,10 +4060,10 @@ CMakeFiles/Ray.dir/src/Photon.cpp.obj
  D:/Code/Ray/src/Photon.cpp
 CMakeFiles/Ray.dir/src/Pipeline.cpp.obj
  ../dependency/include/GLFW/glfw3.h
+ ../include/BLASNode.h
  ../include/BVH.h
  ../include/Camera.h
  ../include/GeometryGroupObj.h
- ../include/GroupObj.h
  ../include/Hittable.h
  ../include/IllumModel.h
  ../include/Lambertian.h
@@ -3868,6 +4074,7 @@ CMakeFiles/Ray.dir/src/Pipeline.cpp.obj
  ../include/Scene.h
  ../include/ShaderInclude.h
  ../include/ShaderProgram.h
+ ../include/TLASNode.h
  ../include/Texture.h
  ../include/Triangle.h
  ../include/TriangleGroup.h
@@ -4082,6 +4289,7 @@ CMakeFiles/Ray.dir/src/PipelineFactory.cpp.obj
  ../include/SuggestedContourPipeline.h
  ../include/Utility.h
  ../include/Whitted.h
+ ../include/utility.h
  ../public/glm/glm/common.hpp
  ../public/glm/glm/detail/_fixes.hpp
  ../public/glm/glm/detail/_swizzle.hpp
@@ -4408,10 +4616,10 @@ CMakeFiles/Ray.dir/src/Ray.cpp.obj
  D:/Code/Ray/src/Ray.cpp
 CMakeFiles/Ray.dir/src/SSAODefferedShadingPipeline.cpp.obj
  ../dependency/include/GLFW/glfw3.h
+ ../include/BLASNode.h
  ../include/BVH.h
  ../include/Camera.h
  ../include/GLUtil.h
- ../include/GeometryGroupObj.h
  ../include/GroupObj.h
  ../include/Hittable.h
  ../include/IllumModel.h
@@ -4424,6 +4632,7 @@ CMakeFiles/Ray.dir/src/SSAODefferedShadingPipeline.cpp.obj
  ../include/Scene.h
  ../include/ShaderInclude.h
  ../include/ShaderProgram.h
+ ../include/TLASNode.h
  ../include/Texture.h
  ../include/Triangle.h
  ../include/TriangleGroup.h
@@ -4626,6 +4835,7 @@ CMakeFiles/Ray.dir/src/SSAODefferedShadingPipeline.cpp.obj
 CMakeFiles/Ray.dir/src/Scene.cpp.obj
  ../dependency/include/GLFW/glfw3.h
  ../include/AreaLight.h
+ ../include/BLASNode.h
  ../include/BVH.h
  ../include/Camera.h
  ../include/Dielectric.h
@@ -4640,7 +4850,7 @@ CMakeFiles/Ray.dir/src/Scene.cpp.obj
  ../include/Pipeline.h
  ../include/Ray.h
  ../include/Scene.h
- ../include/Sphere.h
+ ../include/TLASNode.h
  ../include/Texture.h
  ../include/Triangle.h
  ../include/TriangleGroup.h
@@ -4829,16 +5039,17 @@ CMakeFiles/Ray.dir/src/Scene.cpp.obj
  ../public/yaml-cpp/include/yaml-cpp/yaml.h
  D:/Code/Ray/src/Scene.cpp
 CMakeFiles/Ray.dir/src/SelectorObj.cpp.obj
+ ../include/BLASNode.h
  ../include/BVH.h
  ../include/Camera.h
  ../include/GeometryGroupObj.h
- ../include/GroupObj.h
  ../include/Hittable.h
  ../include/Light.h
  ../include/Material.h
  ../include/Ray.h
  ../include/Scene.h
  ../include/SelectorObj.h
+ ../include/TLASNode.h
  ../include/TransformObj.h
  ../include/Triangle.h
  ../include/TriangleGroup.h
@@ -5175,6 +5386,7 @@ CMakeFiles/Ray.dir/src/ShaderProgram.cpp.obj
  ../public/glm/glm/vector_relational.hpp
  D:/Code/Ray/src/ShaderProgram.cpp
 CMakeFiles/Ray.dir/src/Sphere.cpp.obj
+ ../include/BLASNode.h
  ../include/Hittable.h
  ../include/Material.h
  ../include/Ray.h
@@ -5352,10 +5564,10 @@ CMakeFiles/Ray.dir/src/Sphere.cpp.obj
  D:/Code/Ray/src/Sphere.cpp
 CMakeFiles/Ray.dir/src/SuggestedContourPipeline.cpp.obj
  ../dependency/include/GLFW/glfw3.h
+ ../include/BLASNode.h
  ../include/BVH.h
  ../include/Camera.h
  ../include/GLUtil.h
- ../include/GeometryGroupObj.h
  ../include/GroupObj.h
  ../include/Hittable.h
  ../include/IllumModel.h
@@ -5368,6 +5580,7 @@ CMakeFiles/Ray.dir/src/SuggestedContourPipeline.cpp.obj
  ../include/ShaderInclude.h
  ../include/ShaderProgram.h
  ../include/SuggestedContourPipeline.h
+ ../include/TLASNode.h
  ../include/Texture.h
  ../include/Triangle.h
  ../include/TriangleGroup.h
@@ -5714,15 +5927,16 @@ CMakeFiles/Ray.dir/src/Texture.cpp.obj
  ../public/glm/glm/vector_relational.hpp
  D:/Code/Ray/src/Texture.cpp
 CMakeFiles/Ray.dir/src/TransformObj.cpp.obj
+ ../include/BLASNode.h
  ../include/BVH.h
  ../include/Camera.h
  ../include/GeometryGroupObj.h
- ../include/GroupObj.h
  ../include/Hittable.h
  ../include/Light.h
  ../include/Material.h
  ../include/Ray.h
  ../include/Scene.h
+ ../include/TLASNode.h
  ../include/TransformObj.h
  ../include/Triangle.h
  ../include/TriangleGroup.h
@@ -5931,6 +6145,7 @@ CMakeFiles/Ray.dir/src/TransformObj.cpp.obj
  ../public/yaml-cpp/include/yaml-cpp/yaml.h
  D:/Code/Ray/src/TransformObj.cpp
 CMakeFiles/Ray.dir/src/Triangle.cpp.obj
+ ../include/BLASNode.h
  ../include/Camera.h
  ../include/Hittable.h
  ../include/Light.h
@@ -6110,6 +6325,7 @@ CMakeFiles/Ray.dir/src/Triangle.cpp.obj
  ../public/yaml-cpp/include/yaml-cpp/yaml.h
  D:/Code/Ray/src/Triangle.cpp
 CMakeFiles/Ray.dir/src/TriangleGroup.cpp.obj
+ ../include/BLASNode.h
  ../include/BVH.h
  ../include/Camera.h
  ../include/GeometryGroupObj.h
@@ -6120,6 +6336,7 @@ CMakeFiles/Ray.dir/src/TriangleGroup.cpp.obj
  ../include/OBJ_Loader.h
  ../include/Ray.h
  ../include/Scene.h
+ ../include/TLASNode.h
  ../include/TriMesh/Box.h
  ../include/TriMesh/Color.h
  ../include/TriMesh/TriMesh.h
@@ -6442,10 +6659,10 @@ CMakeFiles/Ray.dir/src/Utility.cpp.obj
  D:/Code/Ray/src/Utility.cpp
 CMakeFiles/Ray.dir/src/Whitted.cpp.obj
  ../dependency/include/GLFW/glfw3.h
+ ../include/BLASNode.h
  ../include/BVH.h
  ../include/Camera.h
  ../include/Dielectric.h
- ../include/GeometryGroupObj.h
  ../include/GroupObj.h
  ../include/Hittable.h
  ../include/IllumModel.h
@@ -6454,6 +6671,7 @@ CMakeFiles/Ray.dir/src/Whitted.cpp.obj
  ../include/Pipeline.h
  ../include/Ray.h
  ../include/Scene.h
+ ../include/TLASNode.h
  ../include/Triangle.h
  ../include/TriangleGroup.h
  ../include/Utility.h

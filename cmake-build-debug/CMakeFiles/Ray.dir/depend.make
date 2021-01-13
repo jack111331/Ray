@@ -42,10 +42,10 @@ CMakeFiles/Ray.dir/public/imgui/imgui_widgets.cpp.obj: ../public/imgui/imstb_tex
 
 CMakeFiles/Ray.dir/src/AmbientOcclusion.cpp.obj: ../dependency/include/GLFW/glfw3.h
 CMakeFiles/Ray.dir/src/AmbientOcclusion.cpp.obj: ../include/AmbientOcclusion.h
+CMakeFiles/Ray.dir/src/AmbientOcclusion.cpp.obj: ../include/BLASNode.h
 CMakeFiles/Ray.dir/src/AmbientOcclusion.cpp.obj: ../include/BVH.h
 CMakeFiles/Ray.dir/src/AmbientOcclusion.cpp.obj: ../include/Camera.h
 CMakeFiles/Ray.dir/src/AmbientOcclusion.cpp.obj: ../include/Dielectric.h
-CMakeFiles/Ray.dir/src/AmbientOcclusion.cpp.obj: ../include/GeometryGroupObj.h
 CMakeFiles/Ray.dir/src/AmbientOcclusion.cpp.obj: ../include/GroupObj.h
 CMakeFiles/Ray.dir/src/AmbientOcclusion.cpp.obj: ../include/Hittable.h
 CMakeFiles/Ray.dir/src/AmbientOcclusion.cpp.obj: ../include/IllumModel.h
@@ -55,6 +55,7 @@ CMakeFiles/Ray.dir/src/AmbientOcclusion.cpp.obj: ../include/Material.h
 CMakeFiles/Ray.dir/src/AmbientOcclusion.cpp.obj: ../include/Pipeline.h
 CMakeFiles/Ray.dir/src/AmbientOcclusion.cpp.obj: ../include/Ray.h
 CMakeFiles/Ray.dir/src/AmbientOcclusion.cpp.obj: ../include/Scene.h
+CMakeFiles/Ray.dir/src/AmbientOcclusion.cpp.obj: ../include/TLASNode.h
 CMakeFiles/Ray.dir/src/AmbientOcclusion.cpp.obj: ../include/Texture.h
 CMakeFiles/Ray.dir/src/AmbientOcclusion.cpp.obj: ../include/Triangle.h
 CMakeFiles/Ray.dir/src/AmbientOcclusion.cpp.obj: ../include/TriangleGroup.h
@@ -245,10 +246,10 @@ CMakeFiles/Ray.dir/src/AmbientOcclusion.cpp.obj: ../src/AmbientOcclusion.cpp
 
 CMakeFiles/Ray.dir/src/AmbientOcclusionVolumeShadingPipeline.cpp.obj: ../dependency/include/GLFW/glfw3.h
 CMakeFiles/Ray.dir/src/AmbientOcclusionVolumeShadingPipeline.cpp.obj: ../include/AmbientOcclusionVolumeShadingPipeline.h
+CMakeFiles/Ray.dir/src/AmbientOcclusionVolumeShadingPipeline.cpp.obj: ../include/BLASNode.h
 CMakeFiles/Ray.dir/src/AmbientOcclusionVolumeShadingPipeline.cpp.obj: ../include/BVH.h
 CMakeFiles/Ray.dir/src/AmbientOcclusionVolumeShadingPipeline.cpp.obj: ../include/Camera.h
 CMakeFiles/Ray.dir/src/AmbientOcclusionVolumeShadingPipeline.cpp.obj: ../include/GLUtil.h
-CMakeFiles/Ray.dir/src/AmbientOcclusionVolumeShadingPipeline.cpp.obj: ../include/GeometryGroupObj.h
 CMakeFiles/Ray.dir/src/AmbientOcclusionVolumeShadingPipeline.cpp.obj: ../include/GroupObj.h
 CMakeFiles/Ray.dir/src/AmbientOcclusionVolumeShadingPipeline.cpp.obj: ../include/Hittable.h
 CMakeFiles/Ray.dir/src/AmbientOcclusionVolumeShadingPipeline.cpp.obj: ../include/IllumModel.h
@@ -260,6 +261,7 @@ CMakeFiles/Ray.dir/src/AmbientOcclusionVolumeShadingPipeline.cpp.obj: ../include
 CMakeFiles/Ray.dir/src/AmbientOcclusionVolumeShadingPipeline.cpp.obj: ../include/Scene.h
 CMakeFiles/Ray.dir/src/AmbientOcclusionVolumeShadingPipeline.cpp.obj: ../include/ShaderInclude.h
 CMakeFiles/Ray.dir/src/AmbientOcclusionVolumeShadingPipeline.cpp.obj: ../include/ShaderProgram.h
+CMakeFiles/Ray.dir/src/AmbientOcclusionVolumeShadingPipeline.cpp.obj: ../include/TLASNode.h
 CMakeFiles/Ray.dir/src/AmbientOcclusionVolumeShadingPipeline.cpp.obj: ../include/Texture.h
 CMakeFiles/Ray.dir/src/AmbientOcclusionVolumeShadingPipeline.cpp.obj: ../include/Triangle.h
 CMakeFiles/Ray.dir/src/AmbientOcclusionVolumeShadingPipeline.cpp.obj: ../include/TriangleGroup.h
@@ -473,6 +475,7 @@ CMakeFiles/Ray.dir/src/AreaLight.cpp.obj: ../include/Pipeline.h
 CMakeFiles/Ray.dir/src/AreaLight.cpp.obj: ../include/Ray.h
 CMakeFiles/Ray.dir/src/AreaLight.cpp.obj: ../include/Scene.h
 CMakeFiles/Ray.dir/src/AreaLight.cpp.obj: ../include/Utility.h
+CMakeFiles/Ray.dir/src/AreaLight.cpp.obj: ../include/utility.h
 CMakeFiles/Ray.dir/src/AreaLight.cpp.obj: ../public/glm/glm/common.hpp
 CMakeFiles/Ray.dir/src/AreaLight.cpp.obj: ../public/glm/glm/detail/_fixes.hpp
 CMakeFiles/Ray.dir/src/AreaLight.cpp.obj: ../public/glm/glm/detail/_swizzle.hpp
@@ -657,10 +660,19 @@ CMakeFiles/Ray.dir/src/AreaLight.cpp.obj: ../public/yaml-cpp/include/yaml-cpp/tr
 CMakeFiles/Ray.dir/src/AreaLight.cpp.obj: ../public/yaml-cpp/include/yaml-cpp/yaml.h
 CMakeFiles/Ray.dir/src/AreaLight.cpp.obj: ../src/AreaLight.cpp
 
+CMakeFiles/Ray.dir/src/BVH.cpp.obj: ../include/BLASNode.h
 CMakeFiles/Ray.dir/src/BVH.cpp.obj: ../include/BVH.h
+CMakeFiles/Ray.dir/src/BVH.cpp.obj: ../include/Camera.h
+CMakeFiles/Ray.dir/src/BVH.cpp.obj: ../include/GeometryGroupObj.h
+CMakeFiles/Ray.dir/src/BVH.cpp.obj: ../include/GroupObj.h
 CMakeFiles/Ray.dir/src/BVH.cpp.obj: ../include/Hittable.h
+CMakeFiles/Ray.dir/src/BVH.cpp.obj: ../include/Light.h
 CMakeFiles/Ray.dir/src/BVH.cpp.obj: ../include/Material.h
 CMakeFiles/Ray.dir/src/BVH.cpp.obj: ../include/Ray.h
+CMakeFiles/Ray.dir/src/BVH.cpp.obj: ../include/Scene.h
+CMakeFiles/Ray.dir/src/BVH.cpp.obj: ../include/TLASNode.h
+CMakeFiles/Ray.dir/src/BVH.cpp.obj: ../include/Triangle.h
+CMakeFiles/Ray.dir/src/BVH.cpp.obj: ../include/TriangleGroup.h
 CMakeFiles/Ray.dir/src/BVH.cpp.obj: ../include/Utility.h
 CMakeFiles/Ray.dir/src/BVH.cpp.obj: ../public/glm/glm/common.hpp
 CMakeFiles/Ray.dir/src/BVH.cpp.obj: ../public/glm/glm/detail/_fixes.hpp
@@ -1009,13 +1021,13 @@ CMakeFiles/Ray.dir/src/Config.cpp.obj: ../dependency/include/GLFW/glfw3.h
 CMakeFiles/Ray.dir/src/Config.cpp.obj: ../include/AmbientOcclusion.h
 CMakeFiles/Ray.dir/src/Config.cpp.obj: ../include/AmbientOcclusionVolumeShadingPipeline.h
 CMakeFiles/Ray.dir/src/Config.cpp.obj: ../include/AreaLight.h
+CMakeFiles/Ray.dir/src/Config.cpp.obj: ../include/BLASNode.h
 CMakeFiles/Ray.dir/src/Config.cpp.obj: ../include/BVH.h
 CMakeFiles/Ray.dir/src/Config.cpp.obj: ../include/Camera.h
 CMakeFiles/Ray.dir/src/Config.cpp.obj: ../include/Config.h
 CMakeFiles/Ray.dir/src/Config.cpp.obj: ../include/DefferedShadingPipeline.h
 CMakeFiles/Ray.dir/src/Config.cpp.obj: ../include/Dielectric.h
 CMakeFiles/Ray.dir/src/Config.cpp.obj: ../include/GeometryGroupObj.h
-CMakeFiles/Ray.dir/src/Config.cpp.obj: ../include/GroupObj.h
 CMakeFiles/Ray.dir/src/Config.cpp.obj: ../include/Hittable.h
 CMakeFiles/Ray.dir/src/Config.cpp.obj: ../include/IllumModel.h
 CMakeFiles/Ray.dir/src/Config.cpp.obj: ../include/IllumModelFactory.h
@@ -1033,6 +1045,7 @@ CMakeFiles/Ray.dir/src/Config.cpp.obj: ../include/SSAODefferedShadingPipeline.h
 CMakeFiles/Ray.dir/src/Config.cpp.obj: ../include/Scene.h
 CMakeFiles/Ray.dir/src/Config.cpp.obj: ../include/Sphere.h
 CMakeFiles/Ray.dir/src/Config.cpp.obj: ../include/SuggestedContourPipeline.h
+CMakeFiles/Ray.dir/src/Config.cpp.obj: ../include/TLASNode.h
 CMakeFiles/Ray.dir/src/Config.cpp.obj: ../include/Texture.h
 CMakeFiles/Ray.dir/src/Config.cpp.obj: ../include/Triangle.h
 CMakeFiles/Ray.dir/src/Config.cpp.obj: ../include/TriangleGroup.h
@@ -1223,11 +1236,11 @@ CMakeFiles/Ray.dir/src/Config.cpp.obj: ../public/yaml-cpp/include/yaml-cpp/yaml.
 CMakeFiles/Ray.dir/src/Config.cpp.obj: ../src/Config.cpp
 
 CMakeFiles/Ray.dir/src/DefferedShadingPipeline.cpp.obj: ../dependency/include/GLFW/glfw3.h
+CMakeFiles/Ray.dir/src/DefferedShadingPipeline.cpp.obj: ../include/BLASNode.h
 CMakeFiles/Ray.dir/src/DefferedShadingPipeline.cpp.obj: ../include/BVH.h
 CMakeFiles/Ray.dir/src/DefferedShadingPipeline.cpp.obj: ../include/Camera.h
 CMakeFiles/Ray.dir/src/DefferedShadingPipeline.cpp.obj: ../include/DefferedShadingPipeline.h
 CMakeFiles/Ray.dir/src/DefferedShadingPipeline.cpp.obj: ../include/GLUtil.h
-CMakeFiles/Ray.dir/src/DefferedShadingPipeline.cpp.obj: ../include/GeometryGroupObj.h
 CMakeFiles/Ray.dir/src/DefferedShadingPipeline.cpp.obj: ../include/GroupObj.h
 CMakeFiles/Ray.dir/src/DefferedShadingPipeline.cpp.obj: ../include/Hittable.h
 CMakeFiles/Ray.dir/src/DefferedShadingPipeline.cpp.obj: ../include/IllumModel.h
@@ -1239,6 +1252,7 @@ CMakeFiles/Ray.dir/src/DefferedShadingPipeline.cpp.obj: ../include/Ray.h
 CMakeFiles/Ray.dir/src/DefferedShadingPipeline.cpp.obj: ../include/Scene.h
 CMakeFiles/Ray.dir/src/DefferedShadingPipeline.cpp.obj: ../include/ShaderInclude.h
 CMakeFiles/Ray.dir/src/DefferedShadingPipeline.cpp.obj: ../include/ShaderProgram.h
+CMakeFiles/Ray.dir/src/DefferedShadingPipeline.cpp.obj: ../include/TLASNode.h
 CMakeFiles/Ray.dir/src/DefferedShadingPipeline.cpp.obj: ../include/Texture.h
 CMakeFiles/Ray.dir/src/DefferedShadingPipeline.cpp.obj: ../include/Triangle.h
 CMakeFiles/Ray.dir/src/DefferedShadingPipeline.cpp.obj: ../include/TriangleGroup.h
@@ -1790,16 +1804,17 @@ CMakeFiles/Ray.dir/src/GLUtil.cpp.obj: ../public/yaml-cpp/include/yaml-cpp/trait
 CMakeFiles/Ray.dir/src/GLUtil.cpp.obj: ../public/yaml-cpp/include/yaml-cpp/yaml.h
 CMakeFiles/Ray.dir/src/GLUtil.cpp.obj: ../src/GLUtil.cpp
 
+CMakeFiles/Ray.dir/src/GeometryGroupObj.cpp.obj: ../include/BLASNode.h
 CMakeFiles/Ray.dir/src/GeometryGroupObj.cpp.obj: ../include/BVH.h
 CMakeFiles/Ray.dir/src/GeometryGroupObj.cpp.obj: ../include/Camera.h
 CMakeFiles/Ray.dir/src/GeometryGroupObj.cpp.obj: ../include/GeometryGroupObj.h
-CMakeFiles/Ray.dir/src/GeometryGroupObj.cpp.obj: ../include/GroupObj.h
 CMakeFiles/Ray.dir/src/GeometryGroupObj.cpp.obj: ../include/Hittable.h
 CMakeFiles/Ray.dir/src/GeometryGroupObj.cpp.obj: ../include/Light.h
 CMakeFiles/Ray.dir/src/GeometryGroupObj.cpp.obj: ../include/Material.h
 CMakeFiles/Ray.dir/src/GeometryGroupObj.cpp.obj: ../include/Ray.h
 CMakeFiles/Ray.dir/src/GeometryGroupObj.cpp.obj: ../include/Scene.h
 CMakeFiles/Ray.dir/src/GeometryGroupObj.cpp.obj: ../include/Sphere.h
+CMakeFiles/Ray.dir/src/GeometryGroupObj.cpp.obj: ../include/TLASNode.h
 CMakeFiles/Ray.dir/src/GeometryGroupObj.cpp.obj: ../include/Triangle.h
 CMakeFiles/Ray.dir/src/GeometryGroupObj.cpp.obj: ../include/TriangleGroup.h
 CMakeFiles/Ray.dir/src/GeometryGroupObj.cpp.obj: ../include/Utility.h
@@ -1973,6 +1988,191 @@ CMakeFiles/Ray.dir/src/GeometryGroupObj.cpp.obj: ../public/yaml-cpp/include/yaml
 CMakeFiles/Ray.dir/src/GeometryGroupObj.cpp.obj: ../public/yaml-cpp/include/yaml-cpp/yaml.h
 CMakeFiles/Ray.dir/src/GeometryGroupObj.cpp.obj: ../src/GeometryGroupObj.cpp
 
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../include/BLASNode.h
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../include/BVH.h
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../include/Camera.h
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../include/GroupBVHTranslator.h
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../include/GroupObj.h
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../include/Hittable.h
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../include/Light.h
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../include/Material.h
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../include/Ray.h
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../include/Scene.h
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../include/TLASNode.h
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../include/Triangle.h
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../include/TriangleGroup.h
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../include/Utility.h
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/common.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/detail/_fixes.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/detail/_swizzle.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/detail/_swizzle_func.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/detail/_vectorize.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/detail/compute_common.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/detail/compute_vector_relational.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/detail/func_common.inl
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/detail/func_common_simd.inl
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/detail/func_exponential.inl
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/detail/func_exponential_simd.inl
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/detail/func_geometric.inl
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/detail/func_geometric_simd.inl
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/detail/func_matrix.inl
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/detail/func_matrix_simd.inl
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/detail/func_vector_relational.inl
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/detail/func_vector_relational_simd.inl
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/detail/qualifier.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/detail/setup.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/detail/type_mat2x2.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/detail/type_mat2x2.inl
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/detail/type_mat2x3.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/detail/type_mat2x3.inl
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/detail/type_mat2x4.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/detail/type_mat2x4.inl
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/detail/type_mat3x2.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/detail/type_mat3x2.inl
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/detail/type_mat3x3.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/detail/type_mat3x3.inl
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/detail/type_mat3x4.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/detail/type_mat3x4.inl
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/detail/type_mat4x2.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/detail/type_mat4x2.inl
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/detail/type_mat4x3.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/detail/type_mat4x3.inl
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/detail/type_mat4x4.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/detail/type_mat4x4.inl
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/detail/type_mat4x4_simd.inl
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/detail/type_vec1.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/detail/type_vec1.inl
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/detail/type_vec2.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/detail/type_vec2.inl
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/detail/type_vec3.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/detail/type_vec3.inl
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/detail/type_vec4.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/detail/type_vec4.inl
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/detail/type_vec4_simd.inl
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/exponential.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/ext/matrix_double2x2.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/ext/matrix_double2x2_precision.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/ext/matrix_double2x3.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/ext/matrix_double2x3_precision.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/ext/matrix_double2x4.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/ext/matrix_double2x4_precision.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/ext/matrix_double3x2.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/ext/matrix_double3x2_precision.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/ext/matrix_double3x3.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/ext/matrix_double3x3_precision.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/ext/matrix_double3x4.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/ext/matrix_double3x4_precision.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/ext/matrix_double4x2.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/ext/matrix_double4x2_precision.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/ext/matrix_double4x3.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/ext/matrix_double4x3_precision.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/ext/matrix_double4x4.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/ext/matrix_double4x4_precision.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/ext/matrix_float2x2.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/ext/matrix_float2x2_precision.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/ext/matrix_float2x3.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/ext/matrix_float2x3_precision.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/ext/matrix_float2x4.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/ext/matrix_float2x4_precision.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/ext/matrix_float3x2.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/ext/matrix_float3x2_precision.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/ext/matrix_float3x3.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/ext/matrix_float3x3_precision.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/ext/matrix_float3x4.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/ext/matrix_float3x4_precision.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/ext/matrix_float4x2.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/ext/matrix_float4x2_precision.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/ext/matrix_float4x3.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/ext/matrix_float4x3_precision.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/ext/matrix_float4x4.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/ext/matrix_float4x4_precision.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/ext/scalar_int_sized.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/ext/scalar_uint_sized.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/ext/vector_bool2.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/ext/vector_bool2_precision.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/ext/vector_bool3.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/ext/vector_bool3_precision.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/ext/vector_bool4.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/ext/vector_bool4_precision.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/ext/vector_double2.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/ext/vector_double2_precision.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/ext/vector_double3.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/ext/vector_double3_precision.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/ext/vector_double4.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/ext/vector_double4_precision.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/ext/vector_float2.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/ext/vector_float2_precision.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/ext/vector_float3.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/ext/vector_float3_precision.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/ext/vector_float4.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/ext/vector_float4_precision.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/ext/vector_int2.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/ext/vector_int2_sized.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/ext/vector_int3.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/ext/vector_int3_sized.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/ext/vector_int4.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/ext/vector_int4_sized.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/ext/vector_uint2.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/ext/vector_uint2_sized.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/ext/vector_uint3.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/ext/vector_uint3_sized.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/ext/vector_uint4.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/ext/vector_uint4_sized.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/geometric.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/mat2x2.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/mat2x3.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/mat2x4.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/mat3x2.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/mat3x3.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/mat3x4.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/mat4x2.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/mat4x3.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/mat4x4.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/matrix.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/simd/common.h
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/simd/exponential.h
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/simd/geometric.h
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/simd/matrix.h
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/simd/neon.h
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/simd/platform.h
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/vec2.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/vec3.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/vec4.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/glm/glm/vector_relational.hpp
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/yaml-cpp/include/yaml-cpp/binary.h
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/yaml-cpp/include/yaml-cpp/dll.h
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/yaml-cpp/include/yaml-cpp/emitter.h
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/yaml-cpp/include/yaml-cpp/emitterdef.h
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/yaml-cpp/include/yaml-cpp/emittermanip.h
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/yaml-cpp/include/yaml-cpp/emitterstyle.h
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/yaml-cpp/include/yaml-cpp/exceptions.h
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/yaml-cpp/include/yaml-cpp/mark.h
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/yaml-cpp/include/yaml-cpp/node/convert.h
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/yaml-cpp/include/yaml-cpp/node/detail/impl.h
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/yaml-cpp/include/yaml-cpp/node/detail/iterator.h
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/yaml-cpp/include/yaml-cpp/node/detail/iterator_fwd.h
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/yaml-cpp/include/yaml-cpp/node/detail/memory.h
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/yaml-cpp/include/yaml-cpp/node/detail/node.h
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/yaml-cpp/include/yaml-cpp/node/detail/node_data.h
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/yaml-cpp/include/yaml-cpp/node/detail/node_iterator.h
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/yaml-cpp/include/yaml-cpp/node/detail/node_ref.h
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/yaml-cpp/include/yaml-cpp/node/emit.h
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/yaml-cpp/include/yaml-cpp/node/impl.h
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/yaml-cpp/include/yaml-cpp/node/iterator.h
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/yaml-cpp/include/yaml-cpp/node/node.h
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/yaml-cpp/include/yaml-cpp/node/parse.h
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/yaml-cpp/include/yaml-cpp/node/ptr.h
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/yaml-cpp/include/yaml-cpp/node/type.h
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/yaml-cpp/include/yaml-cpp/noexcept.h
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/yaml-cpp/include/yaml-cpp/null.h
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/yaml-cpp/include/yaml-cpp/ostream_wrapper.h
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/yaml-cpp/include/yaml-cpp/parser.h
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/yaml-cpp/include/yaml-cpp/stlemitter.h
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/yaml-cpp/include/yaml-cpp/traits.h
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../public/yaml-cpp/include/yaml-cpp/yaml.h
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../src/GroupBVHTranslator.cpp
+
+CMakeFiles/Ray.dir/src/GroupObj.cpp.obj: ../include/BLASNode.h
 CMakeFiles/Ray.dir/src/GroupObj.cpp.obj: ../include/BVH.h
 CMakeFiles/Ray.dir/src/GroupObj.cpp.obj: ../include/Camera.h
 CMakeFiles/Ray.dir/src/GroupObj.cpp.obj: ../include/GeometryGroupObj.h
@@ -1983,6 +2183,7 @@ CMakeFiles/Ray.dir/src/GroupObj.cpp.obj: ../include/Material.h
 CMakeFiles/Ray.dir/src/GroupObj.cpp.obj: ../include/Ray.h
 CMakeFiles/Ray.dir/src/GroupObj.cpp.obj: ../include/Scene.h
 CMakeFiles/Ray.dir/src/GroupObj.cpp.obj: ../include/SelectorObj.h
+CMakeFiles/Ray.dir/src/GroupObj.cpp.obj: ../include/TLASNode.h
 CMakeFiles/Ray.dir/src/GroupObj.cpp.obj: ../include/TransformObj.h
 CMakeFiles/Ray.dir/src/GroupObj.cpp.obj: ../include/Triangle.h
 CMakeFiles/Ray.dir/src/GroupObj.cpp.obj: ../include/TriangleGroup.h
@@ -2348,6 +2549,7 @@ CMakeFiles/Ray.dir/src/IllumModelFactory.cpp.obj: ../include/Ray.h
 CMakeFiles/Ray.dir/src/IllumModelFactory.cpp.obj: ../include/Scene.h
 CMakeFiles/Ray.dir/src/IllumModelFactory.cpp.obj: ../include/Utility.h
 CMakeFiles/Ray.dir/src/IllumModelFactory.cpp.obj: ../include/Whitted.h
+CMakeFiles/Ray.dir/src/IllumModelFactory.cpp.obj: ../include/utility.h
 CMakeFiles/Ray.dir/src/IllumModelFactory.cpp.obj: ../public/glm/glm/common.hpp
 CMakeFiles/Ray.dir/src/IllumModelFactory.cpp.obj: ../public/glm/glm/detail/_fixes.hpp
 CMakeFiles/Ray.dir/src/IllumModelFactory.cpp.obj: ../public/glm/glm/detail/_swizzle.hpp
@@ -2533,10 +2735,10 @@ CMakeFiles/Ray.dir/src/IllumModelFactory.cpp.obj: ../public/yaml-cpp/include/yam
 CMakeFiles/Ray.dir/src/IllumModelFactory.cpp.obj: ../src/IllumModelFactory.cpp
 
 CMakeFiles/Ray.dir/src/InstantRadiosity.cpp.obj: ../dependency/include/GLFW/glfw3.h
+CMakeFiles/Ray.dir/src/InstantRadiosity.cpp.obj: ../include/BLASNode.h
 CMakeFiles/Ray.dir/src/InstantRadiosity.cpp.obj: ../include/BVH.h
 CMakeFiles/Ray.dir/src/InstantRadiosity.cpp.obj: ../include/Camera.h
 CMakeFiles/Ray.dir/src/InstantRadiosity.cpp.obj: ../include/GLUtil.h
-CMakeFiles/Ray.dir/src/InstantRadiosity.cpp.obj: ../include/GeometryGroupObj.h
 CMakeFiles/Ray.dir/src/InstantRadiosity.cpp.obj: ../include/GroupObj.h
 CMakeFiles/Ray.dir/src/InstantRadiosity.cpp.obj: ../include/Hittable.h
 CMakeFiles/Ray.dir/src/InstantRadiosity.cpp.obj: ../include/IllumModel.h
@@ -2548,6 +2750,7 @@ CMakeFiles/Ray.dir/src/InstantRadiosity.cpp.obj: ../include/PhongShadingPipeline
 CMakeFiles/Ray.dir/src/InstantRadiosity.cpp.obj: ../include/Pipeline.h
 CMakeFiles/Ray.dir/src/InstantRadiosity.cpp.obj: ../include/Ray.h
 CMakeFiles/Ray.dir/src/InstantRadiosity.cpp.obj: ../include/Scene.h
+CMakeFiles/Ray.dir/src/InstantRadiosity.cpp.obj: ../include/TLASNode.h
 CMakeFiles/Ray.dir/src/InstantRadiosity.cpp.obj: ../include/Triangle.h
 CMakeFiles/Ray.dir/src/InstantRadiosity.cpp.obj: ../include/TriangleGroup.h
 CMakeFiles/Ray.dir/src/InstantRadiosity.cpp.obj: ../include/Utility.h
@@ -2901,6 +3104,7 @@ CMakeFiles/Ray.dir/src/Lambertian.cpp.obj: ../include/Ray.h
 CMakeFiles/Ray.dir/src/Lambertian.cpp.obj: ../include/Scene.h
 CMakeFiles/Ray.dir/src/Lambertian.cpp.obj: ../include/Texture.h
 CMakeFiles/Ray.dir/src/Lambertian.cpp.obj: ../include/Utility.h
+CMakeFiles/Ray.dir/src/Lambertian.cpp.obj: ../include/utility.h
 CMakeFiles/Ray.dir/src/Lambertian.cpp.obj: ../public/glm/glm/common.hpp
 CMakeFiles/Ray.dir/src/Lambertian.cpp.obj: ../public/glm/glm/detail/_fixes.hpp
 CMakeFiles/Ray.dir/src/Lambertian.cpp.obj: ../public/glm/glm/detail/_swizzle.hpp
@@ -3434,10 +3638,10 @@ CMakeFiles/Ray.dir/src/Material.cpp.obj: ../public/yaml-cpp/include/yaml-cpp/yam
 CMakeFiles/Ray.dir/src/Material.cpp.obj: ../src/Material.cpp
 
 CMakeFiles/Ray.dir/src/PhongShadingPipeline.cpp.obj: ../dependency/include/GLFW/glfw3.h
+CMakeFiles/Ray.dir/src/PhongShadingPipeline.cpp.obj: ../include/BLASNode.h
 CMakeFiles/Ray.dir/src/PhongShadingPipeline.cpp.obj: ../include/BVH.h
 CMakeFiles/Ray.dir/src/PhongShadingPipeline.cpp.obj: ../include/Camera.h
 CMakeFiles/Ray.dir/src/PhongShadingPipeline.cpp.obj: ../include/GLUtil.h
-CMakeFiles/Ray.dir/src/PhongShadingPipeline.cpp.obj: ../include/GeometryGroupObj.h
 CMakeFiles/Ray.dir/src/PhongShadingPipeline.cpp.obj: ../include/GroupObj.h
 CMakeFiles/Ray.dir/src/PhongShadingPipeline.cpp.obj: ../include/Hittable.h
 CMakeFiles/Ray.dir/src/PhongShadingPipeline.cpp.obj: ../include/IllumModel.h
@@ -3450,6 +3654,7 @@ CMakeFiles/Ray.dir/src/PhongShadingPipeline.cpp.obj: ../include/Ray.h
 CMakeFiles/Ray.dir/src/PhongShadingPipeline.cpp.obj: ../include/Scene.h
 CMakeFiles/Ray.dir/src/PhongShadingPipeline.cpp.obj: ../include/ShaderInclude.h
 CMakeFiles/Ray.dir/src/PhongShadingPipeline.cpp.obj: ../include/ShaderProgram.h
+CMakeFiles/Ray.dir/src/PhongShadingPipeline.cpp.obj: ../include/TLASNode.h
 CMakeFiles/Ray.dir/src/PhongShadingPipeline.cpp.obj: ../include/Texture.h
 CMakeFiles/Ray.dir/src/PhongShadingPipeline.cpp.obj: ../include/Triangle.h
 CMakeFiles/Ray.dir/src/PhongShadingPipeline.cpp.obj: ../include/TriangleGroup.h
@@ -3651,10 +3856,10 @@ CMakeFiles/Ray.dir/src/PhongShadingPipeline.cpp.obj: ../public/yaml-cpp/include/
 CMakeFiles/Ray.dir/src/PhongShadingPipeline.cpp.obj: ../src/PhongShadingPipeline.cpp
 
 CMakeFiles/Ray.dir/src/Photon.cpp.obj: ../dependency/include/GLFW/glfw3.h
+CMakeFiles/Ray.dir/src/Photon.cpp.obj: ../include/BLASNode.h
 CMakeFiles/Ray.dir/src/Photon.cpp.obj: ../include/BVH.h
 CMakeFiles/Ray.dir/src/Photon.cpp.obj: ../include/Camera.h
 CMakeFiles/Ray.dir/src/Photon.cpp.obj: ../include/Dielectric.h
-CMakeFiles/Ray.dir/src/Photon.cpp.obj: ../include/GeometryGroupObj.h
 CMakeFiles/Ray.dir/src/Photon.cpp.obj: ../include/GroupObj.h
 CMakeFiles/Ray.dir/src/Photon.cpp.obj: ../include/Hittable.h
 CMakeFiles/Ray.dir/src/Photon.cpp.obj: ../include/IllumModel.h
@@ -3665,6 +3870,7 @@ CMakeFiles/Ray.dir/src/Photon.cpp.obj: ../include/Photon.h
 CMakeFiles/Ray.dir/src/Photon.cpp.obj: ../include/Pipeline.h
 CMakeFiles/Ray.dir/src/Photon.cpp.obj: ../include/Ray.h
 CMakeFiles/Ray.dir/src/Photon.cpp.obj: ../include/Scene.h
+CMakeFiles/Ray.dir/src/Photon.cpp.obj: ../include/TLASNode.h
 CMakeFiles/Ray.dir/src/Photon.cpp.obj: ../include/Triangle.h
 CMakeFiles/Ray.dir/src/Photon.cpp.obj: ../include/TriangleGroup.h
 CMakeFiles/Ray.dir/src/Photon.cpp.obj: ../include/Utility.h
@@ -3853,10 +4059,10 @@ CMakeFiles/Ray.dir/src/Photon.cpp.obj: ../public/yaml-cpp/include/yaml-cpp/yaml.
 CMakeFiles/Ray.dir/src/Photon.cpp.obj: ../src/Photon.cpp
 
 CMakeFiles/Ray.dir/src/Pipeline.cpp.obj: ../dependency/include/GLFW/glfw3.h
+CMakeFiles/Ray.dir/src/Pipeline.cpp.obj: ../include/BLASNode.h
 CMakeFiles/Ray.dir/src/Pipeline.cpp.obj: ../include/BVH.h
 CMakeFiles/Ray.dir/src/Pipeline.cpp.obj: ../include/Camera.h
 CMakeFiles/Ray.dir/src/Pipeline.cpp.obj: ../include/GeometryGroupObj.h
-CMakeFiles/Ray.dir/src/Pipeline.cpp.obj: ../include/GroupObj.h
 CMakeFiles/Ray.dir/src/Pipeline.cpp.obj: ../include/Hittable.h
 CMakeFiles/Ray.dir/src/Pipeline.cpp.obj: ../include/IllumModel.h
 CMakeFiles/Ray.dir/src/Pipeline.cpp.obj: ../include/Lambertian.h
@@ -3867,6 +4073,7 @@ CMakeFiles/Ray.dir/src/Pipeline.cpp.obj: ../include/Ray.h
 CMakeFiles/Ray.dir/src/Pipeline.cpp.obj: ../include/Scene.h
 CMakeFiles/Ray.dir/src/Pipeline.cpp.obj: ../include/ShaderInclude.h
 CMakeFiles/Ray.dir/src/Pipeline.cpp.obj: ../include/ShaderProgram.h
+CMakeFiles/Ray.dir/src/Pipeline.cpp.obj: ../include/TLASNode.h
 CMakeFiles/Ray.dir/src/Pipeline.cpp.obj: ../include/Texture.h
 CMakeFiles/Ray.dir/src/Pipeline.cpp.obj: ../include/Triangle.h
 CMakeFiles/Ray.dir/src/Pipeline.cpp.obj: ../include/TriangleGroup.h
@@ -4081,6 +4288,7 @@ CMakeFiles/Ray.dir/src/PipelineFactory.cpp.obj: ../include/Scene.h
 CMakeFiles/Ray.dir/src/PipelineFactory.cpp.obj: ../include/SuggestedContourPipeline.h
 CMakeFiles/Ray.dir/src/PipelineFactory.cpp.obj: ../include/Utility.h
 CMakeFiles/Ray.dir/src/PipelineFactory.cpp.obj: ../include/Whitted.h
+CMakeFiles/Ray.dir/src/PipelineFactory.cpp.obj: ../include/utility.h
 CMakeFiles/Ray.dir/src/PipelineFactory.cpp.obj: ../public/glm/glm/common.hpp
 CMakeFiles/Ray.dir/src/PipelineFactory.cpp.obj: ../public/glm/glm/detail/_fixes.hpp
 CMakeFiles/Ray.dir/src/PipelineFactory.cpp.obj: ../public/glm/glm/detail/_swizzle.hpp
@@ -4407,10 +4615,10 @@ CMakeFiles/Ray.dir/src/Ray.cpp.obj: ../public/glm/glm/vector_relational.hpp
 CMakeFiles/Ray.dir/src/Ray.cpp.obj: ../src/Ray.cpp
 
 CMakeFiles/Ray.dir/src/SSAODefferedShadingPipeline.cpp.obj: ../dependency/include/GLFW/glfw3.h
+CMakeFiles/Ray.dir/src/SSAODefferedShadingPipeline.cpp.obj: ../include/BLASNode.h
 CMakeFiles/Ray.dir/src/SSAODefferedShadingPipeline.cpp.obj: ../include/BVH.h
 CMakeFiles/Ray.dir/src/SSAODefferedShadingPipeline.cpp.obj: ../include/Camera.h
 CMakeFiles/Ray.dir/src/SSAODefferedShadingPipeline.cpp.obj: ../include/GLUtil.h
-CMakeFiles/Ray.dir/src/SSAODefferedShadingPipeline.cpp.obj: ../include/GeometryGroupObj.h
 CMakeFiles/Ray.dir/src/SSAODefferedShadingPipeline.cpp.obj: ../include/GroupObj.h
 CMakeFiles/Ray.dir/src/SSAODefferedShadingPipeline.cpp.obj: ../include/Hittable.h
 CMakeFiles/Ray.dir/src/SSAODefferedShadingPipeline.cpp.obj: ../include/IllumModel.h
@@ -4423,6 +4631,7 @@ CMakeFiles/Ray.dir/src/SSAODefferedShadingPipeline.cpp.obj: ../include/SSAODeffe
 CMakeFiles/Ray.dir/src/SSAODefferedShadingPipeline.cpp.obj: ../include/Scene.h
 CMakeFiles/Ray.dir/src/SSAODefferedShadingPipeline.cpp.obj: ../include/ShaderInclude.h
 CMakeFiles/Ray.dir/src/SSAODefferedShadingPipeline.cpp.obj: ../include/ShaderProgram.h
+CMakeFiles/Ray.dir/src/SSAODefferedShadingPipeline.cpp.obj: ../include/TLASNode.h
 CMakeFiles/Ray.dir/src/SSAODefferedShadingPipeline.cpp.obj: ../include/Texture.h
 CMakeFiles/Ray.dir/src/SSAODefferedShadingPipeline.cpp.obj: ../include/Triangle.h
 CMakeFiles/Ray.dir/src/SSAODefferedShadingPipeline.cpp.obj: ../include/TriangleGroup.h
@@ -4625,6 +4834,7 @@ CMakeFiles/Ray.dir/src/SSAODefferedShadingPipeline.cpp.obj: ../src/SSAODefferedS
 
 CMakeFiles/Ray.dir/src/Scene.cpp.obj: ../dependency/include/GLFW/glfw3.h
 CMakeFiles/Ray.dir/src/Scene.cpp.obj: ../include/AreaLight.h
+CMakeFiles/Ray.dir/src/Scene.cpp.obj: ../include/BLASNode.h
 CMakeFiles/Ray.dir/src/Scene.cpp.obj: ../include/BVH.h
 CMakeFiles/Ray.dir/src/Scene.cpp.obj: ../include/Camera.h
 CMakeFiles/Ray.dir/src/Scene.cpp.obj: ../include/Dielectric.h
@@ -4639,7 +4849,7 @@ CMakeFiles/Ray.dir/src/Scene.cpp.obj: ../include/Photon.h
 CMakeFiles/Ray.dir/src/Scene.cpp.obj: ../include/Pipeline.h
 CMakeFiles/Ray.dir/src/Scene.cpp.obj: ../include/Ray.h
 CMakeFiles/Ray.dir/src/Scene.cpp.obj: ../include/Scene.h
-CMakeFiles/Ray.dir/src/Scene.cpp.obj: ../include/Sphere.h
+CMakeFiles/Ray.dir/src/Scene.cpp.obj: ../include/TLASNode.h
 CMakeFiles/Ray.dir/src/Scene.cpp.obj: ../include/Texture.h
 CMakeFiles/Ray.dir/src/Scene.cpp.obj: ../include/Triangle.h
 CMakeFiles/Ray.dir/src/Scene.cpp.obj: ../include/TriangleGroup.h
@@ -4828,16 +5038,17 @@ CMakeFiles/Ray.dir/src/Scene.cpp.obj: ../public/yaml-cpp/include/yaml-cpp/traits
 CMakeFiles/Ray.dir/src/Scene.cpp.obj: ../public/yaml-cpp/include/yaml-cpp/yaml.h
 CMakeFiles/Ray.dir/src/Scene.cpp.obj: ../src/Scene.cpp
 
+CMakeFiles/Ray.dir/src/SelectorObj.cpp.obj: ../include/BLASNode.h
 CMakeFiles/Ray.dir/src/SelectorObj.cpp.obj: ../include/BVH.h
 CMakeFiles/Ray.dir/src/SelectorObj.cpp.obj: ../include/Camera.h
 CMakeFiles/Ray.dir/src/SelectorObj.cpp.obj: ../include/GeometryGroupObj.h
-CMakeFiles/Ray.dir/src/SelectorObj.cpp.obj: ../include/GroupObj.h
 CMakeFiles/Ray.dir/src/SelectorObj.cpp.obj: ../include/Hittable.h
 CMakeFiles/Ray.dir/src/SelectorObj.cpp.obj: ../include/Light.h
 CMakeFiles/Ray.dir/src/SelectorObj.cpp.obj: ../include/Material.h
 CMakeFiles/Ray.dir/src/SelectorObj.cpp.obj: ../include/Ray.h
 CMakeFiles/Ray.dir/src/SelectorObj.cpp.obj: ../include/Scene.h
 CMakeFiles/Ray.dir/src/SelectorObj.cpp.obj: ../include/SelectorObj.h
+CMakeFiles/Ray.dir/src/SelectorObj.cpp.obj: ../include/TLASNode.h
 CMakeFiles/Ray.dir/src/SelectorObj.cpp.obj: ../include/TransformObj.h
 CMakeFiles/Ray.dir/src/SelectorObj.cpp.obj: ../include/Triangle.h
 CMakeFiles/Ray.dir/src/SelectorObj.cpp.obj: ../include/TriangleGroup.h
@@ -5174,6 +5385,7 @@ CMakeFiles/Ray.dir/src/ShaderProgram.cpp.obj: ../public/glm/glm/vec4.hpp
 CMakeFiles/Ray.dir/src/ShaderProgram.cpp.obj: ../public/glm/glm/vector_relational.hpp
 CMakeFiles/Ray.dir/src/ShaderProgram.cpp.obj: ../src/ShaderProgram.cpp
 
+CMakeFiles/Ray.dir/src/Sphere.cpp.obj: ../include/BLASNode.h
 CMakeFiles/Ray.dir/src/Sphere.cpp.obj: ../include/Hittable.h
 CMakeFiles/Ray.dir/src/Sphere.cpp.obj: ../include/Material.h
 CMakeFiles/Ray.dir/src/Sphere.cpp.obj: ../include/Ray.h
@@ -5351,10 +5563,10 @@ CMakeFiles/Ray.dir/src/Sphere.cpp.obj: ../public/yaml-cpp/include/yaml-cpp/yaml.
 CMakeFiles/Ray.dir/src/Sphere.cpp.obj: ../src/Sphere.cpp
 
 CMakeFiles/Ray.dir/src/SuggestedContourPipeline.cpp.obj: ../dependency/include/GLFW/glfw3.h
+CMakeFiles/Ray.dir/src/SuggestedContourPipeline.cpp.obj: ../include/BLASNode.h
 CMakeFiles/Ray.dir/src/SuggestedContourPipeline.cpp.obj: ../include/BVH.h
 CMakeFiles/Ray.dir/src/SuggestedContourPipeline.cpp.obj: ../include/Camera.h
 CMakeFiles/Ray.dir/src/SuggestedContourPipeline.cpp.obj: ../include/GLUtil.h
-CMakeFiles/Ray.dir/src/SuggestedContourPipeline.cpp.obj: ../include/GeometryGroupObj.h
 CMakeFiles/Ray.dir/src/SuggestedContourPipeline.cpp.obj: ../include/GroupObj.h
 CMakeFiles/Ray.dir/src/SuggestedContourPipeline.cpp.obj: ../include/Hittable.h
 CMakeFiles/Ray.dir/src/SuggestedContourPipeline.cpp.obj: ../include/IllumModel.h
@@ -5367,6 +5579,7 @@ CMakeFiles/Ray.dir/src/SuggestedContourPipeline.cpp.obj: ../include/Scene.h
 CMakeFiles/Ray.dir/src/SuggestedContourPipeline.cpp.obj: ../include/ShaderInclude.h
 CMakeFiles/Ray.dir/src/SuggestedContourPipeline.cpp.obj: ../include/ShaderProgram.h
 CMakeFiles/Ray.dir/src/SuggestedContourPipeline.cpp.obj: ../include/SuggestedContourPipeline.h
+CMakeFiles/Ray.dir/src/SuggestedContourPipeline.cpp.obj: ../include/TLASNode.h
 CMakeFiles/Ray.dir/src/SuggestedContourPipeline.cpp.obj: ../include/Texture.h
 CMakeFiles/Ray.dir/src/SuggestedContourPipeline.cpp.obj: ../include/Triangle.h
 CMakeFiles/Ray.dir/src/SuggestedContourPipeline.cpp.obj: ../include/TriangleGroup.h
@@ -5713,15 +5926,16 @@ CMakeFiles/Ray.dir/src/Texture.cpp.obj: ../public/glm/glm/vec4.hpp
 CMakeFiles/Ray.dir/src/Texture.cpp.obj: ../public/glm/glm/vector_relational.hpp
 CMakeFiles/Ray.dir/src/Texture.cpp.obj: ../src/Texture.cpp
 
+CMakeFiles/Ray.dir/src/TransformObj.cpp.obj: ../include/BLASNode.h
 CMakeFiles/Ray.dir/src/TransformObj.cpp.obj: ../include/BVH.h
 CMakeFiles/Ray.dir/src/TransformObj.cpp.obj: ../include/Camera.h
 CMakeFiles/Ray.dir/src/TransformObj.cpp.obj: ../include/GeometryGroupObj.h
-CMakeFiles/Ray.dir/src/TransformObj.cpp.obj: ../include/GroupObj.h
 CMakeFiles/Ray.dir/src/TransformObj.cpp.obj: ../include/Hittable.h
 CMakeFiles/Ray.dir/src/TransformObj.cpp.obj: ../include/Light.h
 CMakeFiles/Ray.dir/src/TransformObj.cpp.obj: ../include/Material.h
 CMakeFiles/Ray.dir/src/TransformObj.cpp.obj: ../include/Ray.h
 CMakeFiles/Ray.dir/src/TransformObj.cpp.obj: ../include/Scene.h
+CMakeFiles/Ray.dir/src/TransformObj.cpp.obj: ../include/TLASNode.h
 CMakeFiles/Ray.dir/src/TransformObj.cpp.obj: ../include/TransformObj.h
 CMakeFiles/Ray.dir/src/TransformObj.cpp.obj: ../include/Triangle.h
 CMakeFiles/Ray.dir/src/TransformObj.cpp.obj: ../include/TriangleGroup.h
@@ -5930,6 +6144,7 @@ CMakeFiles/Ray.dir/src/TransformObj.cpp.obj: ../public/yaml-cpp/include/yaml-cpp
 CMakeFiles/Ray.dir/src/TransformObj.cpp.obj: ../public/yaml-cpp/include/yaml-cpp/yaml.h
 CMakeFiles/Ray.dir/src/TransformObj.cpp.obj: ../src/TransformObj.cpp
 
+CMakeFiles/Ray.dir/src/Triangle.cpp.obj: ../include/BLASNode.h
 CMakeFiles/Ray.dir/src/Triangle.cpp.obj: ../include/Camera.h
 CMakeFiles/Ray.dir/src/Triangle.cpp.obj: ../include/Hittable.h
 CMakeFiles/Ray.dir/src/Triangle.cpp.obj: ../include/Light.h
@@ -6109,6 +6324,7 @@ CMakeFiles/Ray.dir/src/Triangle.cpp.obj: ../public/yaml-cpp/include/yaml-cpp/tra
 CMakeFiles/Ray.dir/src/Triangle.cpp.obj: ../public/yaml-cpp/include/yaml-cpp/yaml.h
 CMakeFiles/Ray.dir/src/Triangle.cpp.obj: ../src/Triangle.cpp
 
+CMakeFiles/Ray.dir/src/TriangleGroup.cpp.obj: ../include/BLASNode.h
 CMakeFiles/Ray.dir/src/TriangleGroup.cpp.obj: ../include/BVH.h
 CMakeFiles/Ray.dir/src/TriangleGroup.cpp.obj: ../include/Camera.h
 CMakeFiles/Ray.dir/src/TriangleGroup.cpp.obj: ../include/GeometryGroupObj.h
@@ -6119,6 +6335,7 @@ CMakeFiles/Ray.dir/src/TriangleGroup.cpp.obj: ../include/Material.h
 CMakeFiles/Ray.dir/src/TriangleGroup.cpp.obj: ../include/OBJ_Loader.h
 CMakeFiles/Ray.dir/src/TriangleGroup.cpp.obj: ../include/Ray.h
 CMakeFiles/Ray.dir/src/TriangleGroup.cpp.obj: ../include/Scene.h
+CMakeFiles/Ray.dir/src/TriangleGroup.cpp.obj: ../include/TLASNode.h
 CMakeFiles/Ray.dir/src/TriangleGroup.cpp.obj: ../include/TriMesh/Box.h
 CMakeFiles/Ray.dir/src/TriangleGroup.cpp.obj: ../include/TriMesh/Color.h
 CMakeFiles/Ray.dir/src/TriangleGroup.cpp.obj: ../include/TriMesh/TriMesh.h
@@ -6441,10 +6658,10 @@ CMakeFiles/Ray.dir/src/Utility.cpp.obj: ../public/glm/glm/vector_relational.hpp
 CMakeFiles/Ray.dir/src/Utility.cpp.obj: ../src/Utility.cpp
 
 CMakeFiles/Ray.dir/src/Whitted.cpp.obj: ../dependency/include/GLFW/glfw3.h
+CMakeFiles/Ray.dir/src/Whitted.cpp.obj: ../include/BLASNode.h
 CMakeFiles/Ray.dir/src/Whitted.cpp.obj: ../include/BVH.h
 CMakeFiles/Ray.dir/src/Whitted.cpp.obj: ../include/Camera.h
 CMakeFiles/Ray.dir/src/Whitted.cpp.obj: ../include/Dielectric.h
-CMakeFiles/Ray.dir/src/Whitted.cpp.obj: ../include/GeometryGroupObj.h
 CMakeFiles/Ray.dir/src/Whitted.cpp.obj: ../include/GroupObj.h
 CMakeFiles/Ray.dir/src/Whitted.cpp.obj: ../include/Hittable.h
 CMakeFiles/Ray.dir/src/Whitted.cpp.obj: ../include/IllumModel.h
@@ -6453,6 +6670,7 @@ CMakeFiles/Ray.dir/src/Whitted.cpp.obj: ../include/Material.h
 CMakeFiles/Ray.dir/src/Whitted.cpp.obj: ../include/Pipeline.h
 CMakeFiles/Ray.dir/src/Whitted.cpp.obj: ../include/Ray.h
 CMakeFiles/Ray.dir/src/Whitted.cpp.obj: ../include/Scene.h
+CMakeFiles/Ray.dir/src/Whitted.cpp.obj: ../include/TLASNode.h
 CMakeFiles/Ray.dir/src/Whitted.cpp.obj: ../include/Triangle.h
 CMakeFiles/Ray.dir/src/Whitted.cpp.obj: ../include/TriangleGroup.h
 CMakeFiles/Ray.dir/src/Whitted.cpp.obj: ../include/Utility.h

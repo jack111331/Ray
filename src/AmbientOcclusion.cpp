@@ -5,7 +5,7 @@
 #include <Dielectric.h>
 #include <Lambertian.h>
 #include "AmbientOcclusion.h"
-#include "GeometryGroupObj.h"
+#include "GroupObj.h"
 
 void AmbientOcclusionPipeline::setupPipeline() {
     AmbientOcclusionModel *model = new AmbientOcclusionModel();

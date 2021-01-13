@@ -4,7 +4,7 @@
 
 #include <Photon.h>
 #include <Dielectric.h>
-#include "GeometryGroupObj.h"
+#include "GroupObj.h"
 
 using namespace std;
 

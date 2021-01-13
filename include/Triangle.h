@@ -10,6 +10,7 @@
 #include "Hittable.h"
 #include "Material.h"
 #include "Scene.h"
+#include "BLASNode.h"
 
 class TriangleNode {
 public:
@@ -33,9 +34,9 @@ public:
     bool m_hasOther = false;
 };
 
-class Triangle : public Hittable {
+class Triangle : public BLASNode {
 public:
-    Triangle() : m_point{} {}
+    Triangle() : BLASNode(), m_point{} {}
 
     Triangle(Vec3f (*coord)[3]) : m_point{} {
         for (int i = 0; i < 3; ++i) {
@@ -66,8 +67,6 @@ public:
     virtual ObjectBoundingBox getBoundingBox() const;
 
     TriangleNode *m_point[3];
-
-    ObjectBoundingBox m_boundingBox;
 };
 
 

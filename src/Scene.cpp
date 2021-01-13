@@ -9,8 +9,6 @@
 #include "IllumModel.h"
 #include <Lambertian.h>
 #include "AreaLight.h"
-#include <Sphere.h>
-#include <TriangleGroup.h>
 
 bool Scene::readSceneInfo(const YAML::Node &node) {
     m_group = new GroupObj();

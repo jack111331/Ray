@@ -16,33 +16,10 @@ namespace objl {
     class Mesh;
 }
 
-class GroupObj;
-class GeometryGroupObj;
 
-class BVH {
+class TriangleGroup : public BLASNode {
 public:
-    BVH(TriangleGroup *triangleGroup);
-
-    void updateBVH(TriangleGroup *triangleGroup);
-
-    // TODO we need refactor
-    BVH(GroupObj *group);
-
-    void updateBVH(GroupObj *group);
-
-    BVH(GeometryGroupObj *group);
-
-    void updateBVH(GeometryGroupObj *group);
-
-    bool isHit(const Ray &ray, IntersectionRecord &record, float tmin=0.0001f, const glm::mat4 &transformMat = glm::mat4(1.0));
-
-    Octree *m_octree;
-
-};
-
-class TriangleGroup : public Hittable {
-public:
-    TriangleGroup() : Hittable(), m_accel(nullptr), m_individualTriangle(false) {}
+    TriangleGroup() : BLASNode(), m_individualTriangle(false) {}
 
     static std::vector<Hittable *> fromObj(const YAML::Node &node, const Scene *scene);
 
@@ -59,11 +36,9 @@ public:
 
 public:
     std::vector<Triangle *> m_triangles;
-    ObjectBoundingBox m_boundingBox;
 
     bool m_individualTriangle;
 
-    BVH *m_accel;
     std::string m_objFilename;
 };
 

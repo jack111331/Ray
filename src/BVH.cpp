@@ -2,6 +2,12 @@
 // Created by Edge on 2020/10/17.
 //
 #include "BVH.h"
+#include "GroupObj.h"
+#include "GeometryGroupObj.h"
+#include "TriangleGroup.h"
+#include <queue>
+
+using namespace std;
 
 void Octree::insert(OctreeNode *node, const Hittable *object, const Vec3f &boundMin, const Vec3f &boundMax, int depth) {
     if (node->m_isLeaf) {
@@ -63,4 +69,82 @@ void Octree::build(OctreeNode *node, const Vec3f &boundMin, const Vec3f &boundMa
             }
         }
     }
+}
+
+BVH::BVH(TriangleGroup *triangleGroup) : m_octree(nullptr) {
+
+    updateBVH(triangleGroup);
+}
+
+bool BVH::isHit(const Ray &ray, IntersectionRecord &record, float tmin, const glm::mat4 &transformMat) {
+    float tNear = 1e9, tFar = -1e9;
+    if (!m_octree->m_root->m_nodeBoundingBox.isHit(ray, tNear, tFar)) {
+        return false;
+    }
+    priority_queue<Octree::QueueElement> pq;
+    pq.push({Octree::QueueElement(m_octree->m_root, 0)});
+    bool isHitted = false;
+    while (!pq.empty() && (pq.top().t < record.t || record.t < 0)) {
+        const OctreeNode *node = pq.top().node;
+        pq.pop();
+        if (node->m_isLeaf) {
+            for (uint32_t i = 0; i < node->m_data.size(); ++i) {
+                if (node->m_data[i]->isHit(ray, record, tmin, transformMat)) {
+                    isHitted = true;
+                }
+            }
+        } else {
+            for (int i = 0; i < 8; ++i) {
+                if (node->m_child[i]) {
+                    float tNearChild = 0, tFarChild = tFar;
+                    if (node->m_child[i]->m_nodeBoundingBox.isHit(ray, tNearChild, tFarChild)) {
+                        float t = (tNearChild < 0 && tFarChild >= 0) ? tFarChild : tNearChild;
+                        pq.push(Octree::QueueElement(node->m_child[i], t));
+                    }
+                }
+            }
+        }
+    }
+    return isHitted;
+}
+
+void BVH::updateBVH(TriangleGroup *triangleGroup) {
+    if (m_octree) {
+        delete m_octree;
+    }
+    m_octree = new Octree(triangleGroup->getBoundingBox());
+    for (auto triangle: triangleGroup->m_triangles) {
+        m_octree->insert(triangle);
+    }
+    m_octree->build();
+}
+
+BVH::BVH(GroupObj *group) : m_octree(nullptr) {
+    updateBVH(group);
+}
+
+void BVH::updateBVH(GroupObj *group) {
+    if (m_octree) {
+        delete m_octree;
+    }
+    m_octree = new Octree(group->getBoundingBox());
+    for (auto member: group->m_groupMemberList) {
+        m_octree->insert(member);
+    }
+    m_octree->build();
+}
+
+BVH::BVH(GeometryGroupObj *group) : m_octree(nullptr) {
+    updateBVH(group);
+}
+
+void BVH::updateBVH(GeometryGroupObj *group) {
+    if (m_octree) {
+        delete m_octree;
+    }
+    m_octree = new Octree(group->getBoundingBox());
+    for (auto member: group->m_groupMemberList) {
+        m_octree->insert(member);
+    }
+    m_octree->build();
 }

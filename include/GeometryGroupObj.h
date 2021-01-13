@@ -7,11 +7,11 @@
 
 #include <vector>
 #include "Hittable.h"
-#include "GroupObj.h"
+#include "TLASNode.h"
 
-class GeometryGroupObj : public Hittable {
+class GeometryGroupObj : public TLASNode {
 public:
-    GeometryGroupObj(): m_accel(nullptr), m_boundingBox() {}
+    GeometryGroupObj(): TLASNode() {}
 
     virtual bool isHit(const Ray &ray, IntersectionRecord &record, float tmin = 0.0001f, const glm::mat4 &transformMat = glm::mat4(1.0)) const;
 
@@ -19,22 +19,9 @@ public:
 
     void addHittable(std::vector<Hittable *> &hittableList);
 
-    virtual void createVAO(std::vector<ShadeObject *> &shadeObjectList) {
-        for (auto member: m_geometryList) {
-            member->createVAO(shadeObjectList);
-        }
-    };
-
     virtual ObjectBoundingBox getBoundingBox() const;
 
     virtual bool readObjectInfo(const YAML::Node &node, const Scene *scene);
-
-    std::vector<Hittable *> m_geometryList;
-
-public:
-    BVH *m_accel;
-
-    ObjectBoundingBox m_boundingBox;
 };
 
 

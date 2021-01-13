@@ -9,10 +9,11 @@
 #include <glm/ext/matrix_float4x4.hpp>
 #include "Utility.h"
 #include "Hittable.h"
+#include "TLASNode.h"
 
-class TransformObj : public Hittable {
+class TransformObj : public TLASNode {
 public:
-    TransformObj() : m_objectToWorldPos(), m_objectToWorldOrientNormal(0.0f, 1.0f, 0.0f), m_objectToWorldOrientUp(0.0f, 1.0f, 0.0f), m_objectToWorldScale(1.0f, 1.0f, 1.0f) {}
+    TransformObj() : TLASNode(), m_objectToWorldPos(), m_objectToWorldOrientNormal(0.0f, 1.0f, 0.0f), m_objectToWorldOrientUp(0.0f, 1.0f, 0.0f), m_objectToWorldScale(1.0f, 1.0f, 1.0f) {}
 
     glm::mat4 getTransformMat() const;
 
@@ -22,21 +23,15 @@ public:
         auto worldToObjectMat = glm::inverse(objectToWorldMat);
         transformedRay.origin = worldToObjectMat * transformedRay.origin;
         transformedRay.velocity = worldToObjectMat * transformedRay.velocity;
-        return m_transformMember->isHit(transformedRay, record, tmin, objectToWorldMat * transformMat);
+        return m_groupMemberList[0]->isHit(transformedRay, record, tmin, objectToWorldMat * transformMat);
     }
-
-    // For local shading
-    virtual void createVAO(std::vector<ShadeObject *> &shadeObjectList) {
-        m_transformMember->createVAO(shadeObjectList);
-    };
 
     virtual bool readObjectInfo(const YAML::Node &node, const Scene *scene);
 
     virtual ObjectBoundingBox getBoundingBox() const {
-        return ObjectBoundingBox::transformToLocal(getTransformMat(), m_transformMember->getBoundingBox());
+        return ObjectBoundingBox::transformToLocal(getTransformMat(), m_groupMemberList[0]->getBoundingBox());
     }
 
-    Hittable *m_transformMember;
     Vec3f m_objectToWorldPos;
     Vec3f m_objectToWorldOrientNormal;
     Vec3f m_objectToWorldOrientUp;

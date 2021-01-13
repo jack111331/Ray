@@ -54,14 +54,14 @@ bool GeometryGroupObj::isHit(const Ray &ray, IntersectionRecord &record, float t
         return m_accel->isHit(ray, record, tmin, transformMat);
     }
     bool isHit = false;
-    for(auto member: m_geometryList) {
+    for(auto member: m_groupMemberList) {
         isHit = std::max(isHit, member->isHit(ray, record, tmin, transformMat));
     }
     return isHit;
 }
 
 void GeometryGroupObj::addHittable(Hittable *hittable) {
-    m_geometryList.push_back(hittable);
+    m_groupMemberList.push_back(hittable);
     m_boundingBox.updateBoundingBox(hittable->getBoundingBox());
 }
 

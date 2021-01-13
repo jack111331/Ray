@@ -9,7 +9,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <random>
 #include "ShaderProgram.h"
-#include "GeometryGroupObj.h"
+#include "GroupObj.h"
 #include "SSAODefferedShadingPipeline.h"
 
 SSAODefferedGBufferPass::SSAODefferedGBufferPass(PassSetting *passSetting) : Pass(passSetting), m_outputFrameTextureId{0},

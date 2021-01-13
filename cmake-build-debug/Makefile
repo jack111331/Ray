@@ -1006,6 +1006,33 @@ src/GeometryGroupObj.cpp.s:
 	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/GeometryGroupObj.cpp.s
 .PHONY : src/GeometryGroupObj.cpp.s
 
+src/GroupBVHTranslator.obj: src/GroupBVHTranslator.cpp.obj
+
+.PHONY : src/GroupBVHTranslator.obj
+
+# target to build an object file
+src/GroupBVHTranslator.cpp.obj:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj
+.PHONY : src/GroupBVHTranslator.cpp.obj
+
+src/GroupBVHTranslator.i: src/GroupBVHTranslator.cpp.i
+
+.PHONY : src/GroupBVHTranslator.i
+
+# target to preprocess a source file
+src/GroupBVHTranslator.cpp.i:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.i
+.PHONY : src/GroupBVHTranslator.cpp.i
+
+src/GroupBVHTranslator.s: src/GroupBVHTranslator.cpp.s
+
+.PHONY : src/GroupBVHTranslator.s
+
+# target to generate assembly for a file
+src/GroupBVHTranslator.cpp.s:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.s
+.PHONY : src/GroupBVHTranslator.cpp.s
+
 src/GroupObj.obj: src/GroupObj.cpp.obj
 
 .PHONY : src/GroupObj.obj
@@ -1827,6 +1854,9 @@ help:
 	@echo ... src/GeometryGroupObj.obj
 	@echo ... src/GeometryGroupObj.i
 	@echo ... src/GeometryGroupObj.s
+	@echo ... src/GroupBVHTranslator.obj
+	@echo ... src/GroupBVHTranslator.i
+	@echo ... src/GroupBVHTranslator.s
 	@echo ... src/GroupObj.obj
 	@echo ... src/GroupObj.i
 	@echo ... src/GroupObj.s

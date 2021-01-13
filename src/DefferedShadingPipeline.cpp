@@ -8,7 +8,7 @@
 #include <glm/ext/matrix_transform.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include "ShaderProgram.h"
-#include "GeometryGroupObj.h"
+#include "GroupObj.h"
 #include "DefferedShadingPipeline.h"
 
 DefferedGBufferPass::DefferedGBufferPass(PassSetting *passSetting) : Pass(passSetting), m_outputFrameTextureId{0},

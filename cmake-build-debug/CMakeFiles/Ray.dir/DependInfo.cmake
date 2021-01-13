@@ -20,6 +20,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "D:/Code/Ray/src/Dielectric.cpp" "D:/Code/Ray/cmake-build-debug/CMakeFiles/Ray.dir/src/Dielectric.cpp.obj"
   "D:/Code/Ray/src/GLUtil.cpp" "D:/Code/Ray/cmake-build-debug/CMakeFiles/Ray.dir/src/GLUtil.cpp.obj"
   "D:/Code/Ray/src/GeometryGroupObj.cpp" "D:/Code/Ray/cmake-build-debug/CMakeFiles/Ray.dir/src/GeometryGroupObj.cpp.obj"
+  "D:/Code/Ray/src/GroupBVHTranslator.cpp" "D:/Code/Ray/cmake-build-debug/CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj"
   "D:/Code/Ray/src/GroupObj.cpp" "D:/Code/Ray/cmake-build-debug/CMakeFiles/Ray.dir/src/GroupObj.cpp.obj"
   "D:/Code/Ray/src/Hittable.cpp" "D:/Code/Ray/cmake-build-debug/CMakeFiles/Ray.dir/src/Hittable.cpp.obj"
   "D:/Code/Ray/src/IllumModelFactory.cpp" "D:/Code/Ray/cmake-build-debug/CMakeFiles/Ray.dir/src/IllumModelFactory.cpp.obj"

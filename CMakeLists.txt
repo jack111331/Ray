@@ -75,42 +75,43 @@ set(SOURCE_LIST)
 set(HEADER_LIST)
 
 list(APPEND SOURCE_LIST
-        src/Utility.cpp
-        src/Ray.cpp
-        src/Sphere.cpp
-        src/Hittable.cpp
-        src/Camera.cpp
-        src/Scene.cpp
-        src/Config.cpp
-        src/Triangle.cpp
-        src/Material.cpp
-        src/Light.cpp
-        src/GeometryGroupObj.cpp
-        src/ShaderProgram.cpp
-        src/IllumModelFactory.cpp
-        src/Whitted.cpp
-        src/Dielectric.cpp
-        src/BVH.cpp
-        src/Photon.cpp
+        src/AmbientOcclusion.cpp
+        src/AmbientOcclusionVolumeShadingPipeline.cpp
         src/AreaLight.cpp
-        src/Lambertian.cpp
-        src/Texture.cpp
+        src/BVH.cpp
+        src/Camera.cpp
+        src/Config.cpp
+        src/DefferedShadingPipeline.cpp
+        src/Dielectric.cpp
+        src/GLUtil.cpp
+        src/GeometryGroupObj.cpp
+        src/GroupBVHTranslator.cpp
+        src/GroupObj.cpp
+        src/Hittable.cpp
+        src/IllumModelFactory.cpp
         src/InstantRadiosity.cpp
         src/KDTree.cpp
-        src/Pipeline.cpp
-        src/GLUtil.cpp
-        src/TriangleGroup.cpp
-        src/PipelineFactory.cpp
-        src/DefferedShadingPipeline.cpp
+        src/Lambertian.cpp
+        src/Light.cpp
+        src/Material.cpp
+        src/Photon.cpp
         src/PhongShadingPipeline.cpp
-        src/SSAODefferedShadingPipeline.cpp
-        src/AmbientOcclusion.cpp
-        src/SuggestedContourPipeline.cpp
-        src/AmbientOcclusionVolumeShadingPipeline.cpp
-        src/Shader.cpp
-        src/TransformObj.cpp
-        src/GroupObj.cpp
+        src/Pipeline.cpp
+        src/PipelineFactory.cpp
+        src/Ray.cpp
+        src/Scene.cpp
         src/SelectorObj.cpp
+        src/Shader.cpp
+        src/ShaderProgram.cpp
+        src/Sphere.cpp
+        src/SSAODefferedShadingPipeline.cpp
+        src/SuggestedContourPipeline.cpp
+        src/Texture.cpp
+        src/TransformObj.cpp
+        src/Triangle.cpp
+        src/TriangleGroup.cpp
+        src/Utility.cpp
+        src/Whitted.cpp
 
         ${IMGUI_SOURCE_LIST}
         )
@@ -118,12 +119,14 @@ list(APPEND HEADER_LIST
         include/AmbientOcclusion.h
         include/AmbientOcclusionVolumeShadingPipeline.h
         include/AreaLight.h
+        include/BLASNode.h
         include/BVH.h
         include/Camera.h
         include/Config.h
         include/DefferedShadingPipeline.h
         include/Dielectric.h
         include/GLUtil.h
+        include/GroupBVHTranslator.h
         include/GroupObj.h
         include/Hittable.h
         include/GeometryGroupObj.h
@@ -148,6 +151,7 @@ list(APPEND HEADER_LIST
         include/SSAODefferedShadingPipeline.h
         include/SuggestedContourPipeline.h
         include/Texture.h
+        include/TLASNode.h
         include/TransformObj.h
         include/Triangle.h
         include/TriangleGroup.h

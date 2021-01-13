@@ -15,6 +15,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/Ray.dir/src/Dielectric.cpp.obj"
   "CMakeFiles/Ray.dir/src/GLUtil.cpp.obj"
   "CMakeFiles/Ray.dir/src/GeometryGroupObj.cpp.obj"
+  "CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj"
   "CMakeFiles/Ray.dir/src/GroupObj.cpp.obj"
   "CMakeFiles/Ray.dir/src/Hittable.cpp.obj"
   "CMakeFiles/Ray.dir/src/IllumModelFactory.cpp.obj"

@@ -21,7 +21,7 @@ bool TransformObj::readObjectInfo(const YAML::Node &node, const Scene *scene) {
     if (node["geometry-group"]) {
         GeometryGroupObj *object = new GeometryGroupObj();
         object->readObjectInfo(node["geometry-group"], scene);
-        m_transformMember = object;
+        m_groupMemberList.push_back(object);
     }
     if(node["position"]) {
         m_objectToWorldPos = Vec3f::toVec3f(node["position"].as<std::vector<float>>());

@@ -7,31 +7,26 @@
 
 
 #include "Hittable.h"
+#include "TLASNode.h"
 
-class SelectorObj : public Hittable {
+class SelectorObj : public TLASNode {
 public:
-    virtual bool isHit(const Ray &ray, IntersectionRecord &record, float tmin = 0.0001f, const glm::mat4 &transformMat = glm::mat4(1.0)) const ;
+    SelectorObj() : TLASNode(), m_selectMemberEnableList() {}
 
-    // For local shading
-    virtual void createVAO(std::vector<ShadeObject *> &shadeObjectList) {
-        for (auto member: m_selectMemberList) {
-            member->createVAO(shadeObjectList);
-        }
-    };
+    virtual bool isHit(const Ray &ray, IntersectionRecord &record, float tmin = 0.0001f, const glm::mat4 &transformMat = glm::mat4(1.0)) const ;
 
     virtual bool readObjectInfo(const YAML::Node &node, const Scene *scene);
 
     virtual ObjectBoundingBox getBoundingBox() const {
         ObjectBoundingBox boundingBox;
-        for (uint32_t memberId = 0; memberId < m_selectMemberList.size();++memberId) {
+        for (uint32_t memberId = 0; memberId < m_groupMemberList.size();++memberId) {
             if(m_selectMemberEnableList[memberId]) {
-                boundingBox.updateBoundingBox(m_selectMemberList[memberId]->getBoundingBox());
+                boundingBox.updateBoundingBox(m_groupMemberList[memberId]->getBoundingBox());
             }
         }
         return boundingBox;
     }
 private:
-    std::vector<Hittable *> m_selectMemberList;
     std::vector<bool> m_selectMemberEnableList;
     // TODO we need cache.....
 };
