@@ -78,6 +78,7 @@ list(APPEND SOURCE_LIST
         src/AmbientOcclusion.cpp
         src/AmbientOcclusionVolumeShadingPipeline.cpp
         src/AreaLight.cpp
+        src/BLASNode.cpp
         src/BVH.cpp
         src/Camera.cpp
         src/Config.cpp
@@ -87,7 +88,6 @@ list(APPEND SOURCE_LIST
         src/GeometryGroupObj.cpp
         src/GroupBVHTranslator.cpp
         src/GroupObj.cpp
-        src/Hittable.cpp
         src/IllumModelFactory.cpp
         src/InstantRadiosity.cpp
         src/KDTree.cpp
@@ -128,7 +128,7 @@ list(APPEND HEADER_LIST
         include/GLUtil.h
         include/GroupBVHTranslator.h
         include/GroupObj.h
-        include/Hittable.h
+        include/ObjectNode.h
         include/GeometryGroupObj.h
         include/IllumModel.h
         include/IllumModelFactory.h

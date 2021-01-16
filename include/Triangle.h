@@ -7,7 +7,7 @@
 
 
 #include "Utility.h"
-#include "Hittable.h"
+#include "ObjectNode.h"
 #include "Material.h"
 #include "Scene.h"
 #include "BLASNode.h"
@@ -23,10 +23,10 @@ public:
 
     TriangleNode(const Vec3f &coord, const Vec2f &texCoord, const Vec3f &normal, bool hasOther) : m_coord(coord),
                                                                                                   m_texCoord(
-                                                                                                               texCoord),
+                                                                                                          texCoord),
                                                                                                   m_normal(normal),
                                                                                                   m_hasOther(
-                                                                                                               hasOther) {}
+                                                                                                          hasOther) {}
 
     Vec3f m_coord;
     Vec2f m_texCoord;
@@ -58,15 +58,22 @@ public:
         m_boundingBox.updateBoundingBox(m_point[2]->m_coord);
     }
 
-    virtual bool isHit(const Ray &ray, IntersectionRecord &record, float tmin = 0.0001f, const glm::mat4 &transformMat = glm::mat4(1.0)) const;
+    virtual bool isHit(const Ray &ray, IntersectionRecord &record, float tmin = 0.0001f,
+                       const glm::mat4 &transformMat = glm::mat4(1.0)) const;
 
-    virtual  void createVAO(std::vector<ShadeObject *> &shadeObjectList);
+    virtual void
+    createVAO(std::vector<ShadeObject *> &shadeObjectList, const glm::mat4 &transformMat = glm::mat4(1.0f));
 
     virtual bool readObjectInfo(const YAML::Node &node, const Scene *scene);
 
     virtual ObjectBoundingBox getBoundingBox() const;
 
+    virtual BLASNodeType getBLASNodeType() {
+        return BLASNodeType::TRIANGLE;
+    }
+
     TriangleNode *m_point[3];
+    uint32_t m_indices[3];
 };
 
 

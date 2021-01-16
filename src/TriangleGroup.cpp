@@ -13,9 +13,9 @@
 
 using namespace std;
 
-std::vector<Hittable *> TriangleGroup::fromObj(const YAML::Node &node, const Scene *scene) {
+std::map<std::string, ObjectNode *> TriangleGroup::fromObj(const YAML::Node &node, const Scene *scene) {
 
-    std::vector<Hittable *> hittableList;
+    std::map<std::string, ObjectNode *> objectTable;
     objl::Loader Loader;
 
     if (!node["filename"])
@@ -25,22 +25,19 @@ std::vector<Hittable *> TriangleGroup::fromObj(const YAML::Node &node, const Sce
     if (result) {
         for (int i = 0; i < Loader.LoadedMeshes.size(); i++) {
             TriangleGroup *triangleGroup = new TriangleGroup();
-
             if (node["material"]) {
                 triangleGroup->fromObj(Loader.LoadedMeshes[i], scene, node["material"].as<std::string>());
             } else {
                 triangleGroup->fromObj(Loader.LoadedMeshes[i], scene);
             }
-
-
             triangleGroup->m_objFilename = node["filename"].as<std::string>();
-            hittableList.push_back(triangleGroup);
+            objectTable[Loader.LoadedMeshes[i].MeshName] = triangleGroup;
         }
     } else {
         std::cerr << "Load obj failed" << std::endl;
         exit(1);
     }
-    return hittableList;
+    return objectTable;
 }
 
 bool TriangleGroup::fromObj(const objl::Mesh &mesh, const Scene *scene, const std::string &materialName) {
@@ -67,6 +64,9 @@ bool TriangleGroup::fromObj(const objl::Mesh &mesh, const Scene *scene, const st
         triangle->fromTriangleNode(foundMaterial, scene, nodeList[mesh.Indices[j]],
                                    nodeList[mesh.Indices[j + 1]],
                                    nodeList[mesh.Indices[j + 2]]);
+        triangle->m_indices[0] = mesh.Indices[j];
+        triangle->m_indices[1] = mesh.Indices[j + 1];
+        triangle->m_indices[2] = mesh.Indices[j + 2];
         m_triangles.push_back(triangle);
     }
     setMaterial(foundMaterial);
@@ -113,6 +113,9 @@ bool TriangleGroup::readObjectInfo(const YAML::Node &node, const Scene *scene) {
         triangle->fromTriangleNode(foundMaterial, scene, nodeList[triangleIndices[0]],
                                    nodeList[triangleIndices[1]],
                                    nodeList[triangleIndices[2]]);
+        triangle->m_indices[0] = triangleIndices[0];
+        triangle->m_indices[1] = triangleIndices[1];
+        triangle->m_indices[2] = triangleIndices[2];
         m_triangles.push_back(triangle);
     }
     if (node["bvh_acceleration"] && node["bvh_acceleration"].as<bool>()) {
@@ -132,10 +135,10 @@ bool TriangleGroup::isHit(const Ray &ray, IntersectionRecord &record, float tmin
     return isHitted;
 }
 
-void TriangleGroup::createVAO(std::vector<ShadeObject *> &shadeObjectList) {
+void TriangleGroup::createVAO(std::vector<ShadeObject *> &shadeObjectList, const glm::mat4 &transformMat) {
     if (m_individualTriangle) {
         for (auto triangle: m_triangles) {
-            triangle->createVAO(shadeObjectList);
+            triangle->createVAO(shadeObjectList, transformMat);
         }
     } else {
         // VAO
@@ -274,13 +277,13 @@ void TriangleGroup::createVAO(std::vector<ShadeObject *> &shadeObjectList) {
                          GL_STATIC_DRAW);
 
             glBindVertexArray(0);
-            shadeObjectList.push_back(new ShadeObject({vao, (int) newIndices.size()}, m_material));
+            shadeObjectList.push_back(new ShadeObject({vao, (int) newIndices.size()}, m_material, transformMat));
             return;
         }
 
         glBindVertexArray(0);
 
-        shadeObjectList.push_back(new ShadeObject({vao, (int) indices.size()}, m_material));
+        shadeObjectList.push_back(new ShadeObject({vao, (int) indices.size()}, m_material, transformMat));
 
     }
 }

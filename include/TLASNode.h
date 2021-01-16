@@ -5,20 +5,33 @@
 #ifndef RAY_TLASNODE_H
 #define RAY_TLASNODE_H
 
-#include "Hittable.h"
+#include "ObjectNode.h"
 #include "TriangleGroup.h"
 
-class TLASNode : public Hittable {
+class TLASNode : public ObjectNode {
 public:
-    TLASNode() : m_accel(nullptr), m_boundingBox() {}
+    TLASNode() : ObjectNode(), m_accel(nullptr), m_boundingBox() {}
 
-    virtual void createVAO(std::vector<ShadeObject *> &shadeObjectList) {
+    virtual void createVAO(std::vector<ShadeObject *> &shadeObjectList, const glm::mat4 &transformMat = glm::mat4(1.0f)) {
         for (auto member: m_groupMemberList) {
-            member->createVAO(shadeObjectList);
+            member->createVAO(shadeObjectList, transformMat);
         }
     };
 
-    std::vector<Hittable *> m_groupMemberList;
+    virtual TwoLevelBVHType getTypeInTwoLevelBVH() {
+        return TwoLevelBVHType::TLAS;
+    }
+
+    enum class TLASNodeType {
+        GROUP,
+        GEOMETRY_GROUP,
+        SELECTOR,
+        TRANSFORM
+    };
+
+    virtual TLASNodeType getTlasNodeType() = 0;
+
+    std::vector<ObjectNode *> m_groupMemberList;
 protected:
     ObjectBoundingBox m_boundingBox;
 

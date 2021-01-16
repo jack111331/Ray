@@ -72,9 +72,7 @@ void PhongShadingPass::renderPass(const std::vector<ShadeObject *> &shadingList)
                 m_shader->uniformMat4f("view", setting->m_viewMatrix);
 
                 // world transformation
-                // TODO Bundle model matrix
-                glm::mat4 model = glm::mat4(1.0f);
-                m_shader->uniformMat4f("model", model);
+                m_shader->uniformMat4f("model", object->m_transformMat);
 
                 // TODO Area Light and Light uniform move to shader handle
                 m_shader->uniform1i("lightAmount", setting->m_lightList.size());

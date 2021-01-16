@@ -60,17 +60,6 @@ bool GeometryGroupObj::isHit(const Ray &ray, IntersectionRecord &record, float t
     return isHit;
 }
 
-void GeometryGroupObj::addHittable(Hittable *hittable) {
-    m_groupMemberList.push_back(hittable);
-    m_boundingBox.updateBoundingBox(hittable->getBoundingBox());
-}
-
-void GeometryGroupObj::addHittable(std::vector<Hittable *> &hittableList) {
-    for (auto hittable: hittableList) {
-        addHittable(hittable);
-    }
-}
-
 ObjectBoundingBox GeometryGroupObj::getBoundingBox() const {
     return m_boundingBox;
 }
@@ -82,19 +71,20 @@ bool GeometryGroupObj::readObjectInfo(const YAML::Node &node, const Scene *scene
     }
     auto geometryNode = node["geometry"];
     for (uint32_t i = 0; i < geometryNode.size(); ++i) {
-        if (geometryNode[i]["type"].as<std::string>() == "sphere") {
-            Sphere *object = new Sphere();
-            object->readObjectInfo(geometryNode[i], scene);
-            addHittable(object);
-        } else if (geometryNode[i]["type"].as<std::string>() == "triangle-group") {
-            TriangleGroup *object = new TriangleGroup();
-            object->readObjectInfo(geometryNode[i], scene);
-            addHittable(object);
-        } else if (geometryNode[i]["type"].as<std::string>() == "obj") {
-            auto object = TriangleGroup::fromObj(geometryNode[i], scene);
-            addHittable(object);
+        auto meshIt = scene->m_meshTable.find(geometryNode[i]["instance-name"].as<std::string>());
+        if(meshIt != scene->m_meshTable.end()) {
+            addHittable(meshIt->second);
+        } else {
+            std::cerr << "Can't load mesh instance " << geometryNode[i]["instance-name"].as<std::string>() << std::endl;
+            exit(1);
         }
+        std::cout << geometryNode[i]["instance-name"].as<std::string>() << std::endl;
     }
     m_accel = new BVH(this);
     return true;
+}
+
+void GeometryGroupObj::addHittable(ObjectNode *mesh) {
+    m_groupMemberList.push_back(mesh);
+    m_boundingBox.updateBoundingBox(mesh->getBoundingBox());
 }

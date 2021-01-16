@@ -31,7 +31,7 @@ bool Sphere::isHit(const Ray &ray, IntersectionRecord &record, float tmin, const
     return false;
 }
 
-void Sphere::createVAO(std::vector<ShadeObject *> &shadeObjectList) {
+void Sphere::createVAO(std::vector<ShadeObject *> &shadeObjectList, const glm::mat4 &transformMat) {
     int stacks = 20;
     int slices = 20;
     const float PI = 3.14f;
@@ -111,11 +111,11 @@ void Sphere::createVAO(std::vector<ShadeObject *> &shadeObjectList) {
 
     glBindVertexArray(0);
 
-    shadeObjectList.push_back(new ShadeObject({vao, 6 * (slices * stacks + slices)}, m_material));
+    shadeObjectList.push_back(new ShadeObject({vao, 6 * (slices * stacks + slices)}, m_material, transformMat));
 }
 
 bool Sphere::readObjectInfo(const YAML::Node &node, const Scene *scene) {
-    bool result = Hittable::readObjectInfo(node, scene);
+    bool result = BLASNode::readObjectInfo(node, scene);
     result = min(result, node["position"] && node["radius"]);
     if (!result) {
         std::cerr << "No require sphere node" << std::endl;

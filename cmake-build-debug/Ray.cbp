@@ -387,9 +387,6 @@
 		<Unit filename="D:/Code/Ray/include/GroupObj.h">
 			<Option target="Ray"/>
 		</Unit>
-		<Unit filename="D:/Code/Ray/include/Hittable.h">
-			<Option target="Ray"/>
-		</Unit>
 		<Unit filename="D:/Code/Ray/include/IllumModel.h">
 			<Option target="Ray"/>
 		</Unit>
@@ -412,6 +409,9 @@
 			<Option target="Ray"/>
 		</Unit>
 		<Unit filename="D:/Code/Ray/include/OBJ_Loader.h">
+			<Option target="Ray"/>
+		</Unit>
+		<Unit filename="D:/Code/Ray/include/ObjectNode.h">
 			<Option target="Ray"/>
 		</Unit>
 		<Unit filename="D:/Code/Ray/include/PhongShadingPipeline.h">
@@ -654,6 +654,9 @@
 		<Unit filename="D:/Code/Ray/src/AreaLight.cpp">
 			<Option target="Ray"/>
 		</Unit>
+		<Unit filename="D:/Code/Ray/src/BLASNode.cpp">
+			<Option target="Ray"/>
+		</Unit>
 		<Unit filename="D:/Code/Ray/src/BVH.cpp">
 			<Option target="Ray"/>
 		</Unit>
@@ -679,9 +682,6 @@
 			<Option target="Ray"/>
 		</Unit>
 		<Unit filename="D:/Code/Ray/src/GroupObj.cpp">
-			<Option target="Ray"/>
-		</Unit>
-		<Unit filename="D:/Code/Ray/src/Hittable.cpp">
 			<Option target="Ray"/>
 		</Unit>
 		<Unit filename="D:/Code/Ray/src/IllumModelFactory.cpp">

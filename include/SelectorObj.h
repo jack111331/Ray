@@ -6,7 +6,7 @@
 #define RAY_SELECTOROBJ_H
 
 
-#include "Hittable.h"
+#include "ObjectNode.h"
 #include "TLASNode.h"
 
 class SelectorObj : public TLASNode {
@@ -26,6 +26,11 @@ public:
         }
         return boundingBox;
     }
+
+    virtual TLASNodeType getTlasNodeType() {
+        return TLASNodeType::SELECTOR;
+    }
+
 private:
     std::vector<bool> m_selectMemberEnableList;
     // TODO we need cache.....

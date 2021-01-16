@@ -1,12 +1,11 @@
 //
-// Created by Edge on 2020/7/13.
+// Created by Edge on 2021/1/14.
 //
 
-#include "Hittable.h"
-#include "Utility.h"
+#include "BLASNode.h"
 #include "Scene.h"
 
-bool Hittable::readObjectInfo(const YAML::Node &node, const Scene *scene) {
+bool BLASNode::readObjectInfo(const YAML::Node &node, const Scene *scene) {
     if(!node["material"]) {
         std::cerr << "No require object node" << std::endl;
         return false;

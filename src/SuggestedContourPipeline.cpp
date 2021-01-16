@@ -71,9 +71,7 @@ void SuggestedContourShadingPass::renderPass(const std::vector<ShadeObject *> &s
             m_shader->uniformMat4f("view", setting->m_viewMatrix);
 
             // world transformation
-            // TODO Bundle model matrix
-            glm::mat4 model = glm::mat4(1.0f);
-            m_shader->uniformMat4f("model", model);
+            m_shader->uniformMat4f("model", object->m_transformMat);
 
             const Vec3f &eyeCoord = setting->m_camera->m_eyeCoord;
             m_shader->uniform3f("viewPos", eyeCoord.x, eyeCoord.y, eyeCoord.z);

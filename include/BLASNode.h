@@ -5,18 +5,37 @@
 #ifndef RAY_BLASNODE_H
 #define RAY_BLASNODE_H
 
-#include "Hittable.h"
+#include "ObjectNode.h"
 
 class BVH;
 
-class BLASNode : public Hittable {
+class BLASNode : public ObjectNode {
 public:
-    BLASNode() : Hittable(), m_accel(nullptr), m_boundingBox() {}
+    BLASNode() : ObjectNode(), m_material(nullptr), m_accel(nullptr), m_boundingBox() {}
 
+    virtual bool readObjectInfo(const YAML::Node &node, const Scene *scene);
+
+    void setMaterial(Material *material) {
+        m_material = material;
+    }
+
+    virtual TwoLevelBVHType getTypeInTwoLevelBVH() {
+        return TwoLevelBVHType::BLAS;
+    }
+
+    enum class BLASNodeType {
+        SPHERE,
+        TRIANGLE,
+        TRIANGLE_GROUP
+    };
+
+    virtual BLASNodeType getBLASNodeType() = 0;
+
+    BVH *m_accel;
 protected:
     ObjectBoundingBox m_boundingBox;
 
-    BVH *m_accel;
+    Material *m_material;
 };
 
 #endif //RAY_BLASNODE_H

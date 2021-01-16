@@ -19,6 +19,11 @@ public:
     virtual bool readObjectInfo(const YAML::Node &node, const Scene *scene);
 
     virtual ObjectBoundingBox getBoundingBox() const;
+
+    virtual TLASNodeType getTlasNodeType() {
+        return TLASNodeType::GROUP;
+    }
+
 };
 
 

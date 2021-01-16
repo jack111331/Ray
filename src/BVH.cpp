@@ -9,7 +9,7 @@
 
 using namespace std;
 
-void Octree::insert(OctreeNode *node, const Hittable *object, const Vec3f &boundMin, const Vec3f &boundMax, int depth) {
+void Octree::insert(OctreeNode *node, const ObjectNode *object, const Vec3f &boundMin, const Vec3f &boundMax, int depth) {
     if (node->m_isLeaf) {
         // insert extent into node or reallocate node extents' to child node
         if (node->m_data.empty() || depth == 16) {
@@ -51,6 +51,7 @@ void Octree::computeChildBound(uint32_t index, const Vec3f &nodeCentroid, const 
 }
 
 void Octree::build(OctreeNode *node, const Vec3f &boundMin, const Vec3f &boundMax) {
+    m_nodeCount++;
     if (node->m_isLeaf) {
         // update node bounding box
         for (auto object: node->m_data) {
@@ -147,4 +148,22 @@ void BVH::updateBVH(GeometryGroupObj *group) {
         m_octree->insert(member);
     }
     m_octree->build();
+}
+
+void BVH::flattenBVH(Octree *tree, OctreeNode *node) {
+    if (node->m_isLeaf) {
+        node->m_startIdx = tree->m_packedIndices.size();
+        for(auto mesh: node->m_data) {
+            Triangle *triangle = (Triangle *)mesh;
+            tree->m_packedIndices.push_back(triangle->m_indices[0]);
+            tree->m_packedIndices.push_back(triangle->m_indices[1]);
+            tree->m_packedIndices.push_back(triangle->m_indices[2]);
+        }
+    } else {
+        for(int i = 0;i < 8;++i) {
+            if(node->m_child[i]) {
+                flattenBVH(tree, node->m_child[i]);
+            }
+        }
+    }
 }

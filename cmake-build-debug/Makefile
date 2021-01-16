@@ -817,6 +817,33 @@ src/AreaLight.cpp.s:
 	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/AreaLight.cpp.s
 .PHONY : src/AreaLight.cpp.s
 
+src/BLASNode.obj: src/BLASNode.cpp.obj
+
+.PHONY : src/BLASNode.obj
+
+# target to build an object file
+src/BLASNode.cpp.obj:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/BLASNode.cpp.obj
+.PHONY : src/BLASNode.cpp.obj
+
+src/BLASNode.i: src/BLASNode.cpp.i
+
+.PHONY : src/BLASNode.i
+
+# target to preprocess a source file
+src/BLASNode.cpp.i:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/BLASNode.cpp.i
+.PHONY : src/BLASNode.cpp.i
+
+src/BLASNode.s: src/BLASNode.cpp.s
+
+.PHONY : src/BLASNode.s
+
+# target to generate assembly for a file
+src/BLASNode.cpp.s:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/BLASNode.cpp.s
+.PHONY : src/BLASNode.cpp.s
+
 src/BVH.obj: src/BVH.cpp.obj
 
 .PHONY : src/BVH.obj
@@ -1059,33 +1086,6 @@ src/GroupObj.s: src/GroupObj.cpp.s
 src/GroupObj.cpp.s:
 	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/GroupObj.cpp.s
 .PHONY : src/GroupObj.cpp.s
-
-src/Hittable.obj: src/Hittable.cpp.obj
-
-.PHONY : src/Hittable.obj
-
-# target to build an object file
-src/Hittable.cpp.obj:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/Hittable.cpp.obj
-.PHONY : src/Hittable.cpp.obj
-
-src/Hittable.i: src/Hittable.cpp.i
-
-.PHONY : src/Hittable.i
-
-# target to preprocess a source file
-src/Hittable.cpp.i:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/Hittable.cpp.i
-.PHONY : src/Hittable.cpp.i
-
-src/Hittable.s: src/Hittable.cpp.s
-
-.PHONY : src/Hittable.s
-
-# target to generate assembly for a file
-src/Hittable.cpp.s:
-	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/Hittable.cpp.s
-.PHONY : src/Hittable.cpp.s
 
 src/IllumModelFactory.obj: src/IllumModelFactory.cpp.obj
 
@@ -1833,6 +1833,9 @@ help:
 	@echo ... src/AreaLight.obj
 	@echo ... src/AreaLight.i
 	@echo ... src/AreaLight.s
+	@echo ... src/BLASNode.obj
+	@echo ... src/BLASNode.i
+	@echo ... src/BLASNode.s
 	@echo ... src/BVH.obj
 	@echo ... src/BVH.i
 	@echo ... src/BVH.s
@@ -1860,9 +1863,6 @@ help:
 	@echo ... src/GroupObj.obj
 	@echo ... src/GroupObj.i
 	@echo ... src/GroupObj.s
-	@echo ... src/Hittable.obj
-	@echo ... src/Hittable.i
-	@echo ... src/Hittable.s
 	@echo ... src/IllumModelFactory.obj
 	@echo ... src/IllumModelFactory.i
 	@echo ... src/IllumModelFactory.s

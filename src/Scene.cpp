@@ -8,7 +8,9 @@
 #include "GroupObj.h"
 #include "IllumModel.h"
 #include <Lambertian.h>
+#include <Sphere.h>
 #include "AreaLight.h"
+#include "ObjectNode.h"
 
 bool Scene::readSceneInfo(const YAML::Node &node) {
     m_group = new GroupObj();
@@ -41,6 +43,23 @@ bool Scene::readSceneInfo(const YAML::Node &node) {
             }
         }
     }
+    if(node["mesh"]) {
+        auto meshNode = node["mesh"];
+        for (uint32_t i = 0; i < meshNode.size(); ++i) {
+            if (meshNode[i]["type"].as<std::string>() == "sphere") {
+                Sphere *object = new Sphere();
+                object->readObjectInfo(meshNode[i], this);
+                addHittable(meshNode[i]["name"].as<std::string>(), object);
+            } else if (meshNode[i]["type"].as<std::string>() == "triangle-group") {
+                TriangleGroup *object = new TriangleGroup();
+                object->readObjectInfo(meshNode[i], this);
+                addHittable(meshNode[i]["name"].as<std::string>(), object);
+            } else if (meshNode[i]["type"].as<std::string>() == "obj") {
+                auto object = TriangleGroup::fromObj(meshNode[i], this);
+                addHittable(object);
+            }
+        }
+    }
     if(node["object"]) {
         if(node["object"][0]) {
             m_group->readObjectInfo(node["object"][0], this);
@@ -50,4 +69,14 @@ bool Scene::readSceneInfo(const YAML::Node &node) {
         }
     }
     return true;
+}
+
+void Scene::addHittable(const std::string &meshName, ObjectNode *mesh) {
+    m_meshTable[meshName] = mesh;
+}
+
+void Scene::addHittable(std::map<std::string, ObjectNode *> &meshTable) {
+    for (auto mesh: meshTable) {
+        addHittable(mesh.first, mesh.second);
+    }
 }

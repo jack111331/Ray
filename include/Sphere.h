@@ -7,7 +7,7 @@
 
 #include "Utility.h"
 #include "Ray.h"
-#include "Hittable.h"
+#include "ObjectNode.h"
 #include "BLASNode.h"
 
 class Sphere : public BLASNode {
@@ -18,11 +18,16 @@ public:
 
     virtual bool isHit(const Ray &ray, IntersectionRecord &record, float tmin=0.0001f, const glm::mat4 &transformMat = glm::mat4(1.0)) const;
 
-    virtual  void createVAO(std::vector<ShadeObject *> &shadeObjectList);
+    virtual  void createVAO(std::vector<ShadeObject *> &shadeObjectList, const glm::mat4 &transformMat = glm::mat4(1.0f));
 
     virtual bool readObjectInfo(const YAML::Node &node, const Scene *scene);
 
     virtual ObjectBoundingBox getBoundingBox() const;
+
+    virtual BLASNodeType getBLASNodeType() {
+        return BLASNodeType::SPHERE;
+    }
+
 
     Vec3f m_origin;
     float m_radius;

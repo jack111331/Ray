@@ -48,7 +48,7 @@ bool Triangle::isHit(const Ray &ray, IntersectionRecord &record, float tmin, con
     return false;
 }
 
-void Triangle::createVAO(std::vector<ShadeObject *> &shadeObjectList) {
+void Triangle::createVAO(std::vector<ShadeObject *> &shadeObjectList, const glm::mat4 &transformMat) {
     // VAO
     uint32_t vao;
     glGenVertexArrays(1, &vao);
@@ -83,12 +83,12 @@ void Triangle::createVAO(std::vector<ShadeObject *> &shadeObjectList) {
 
     glBindVertexArray(0);
 
-    shadeObjectList.push_back(new ShadeObject({vao, 3}, m_material));
+    shadeObjectList.push_back(new ShadeObject({vao, 3}, m_material, transformMat));
 
 }
 
 bool Triangle::readObjectInfo(const YAML::Node &node, const Scene *scene) {
-    bool result = Hittable::readObjectInfo(node, scene);
+    bool result = BLASNode::readObjectInfo(node, scene);
     if(!result) {
         return false;
     }

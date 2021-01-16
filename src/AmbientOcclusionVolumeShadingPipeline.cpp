@@ -92,9 +92,7 @@ void AmbientOcclusionVolumeGBufferPass::renderPass(const std::vector<ShadeObject
                 m_shader->uniformMat4f("view", setting->m_viewMatrix);
 
                 // world transformation
-                // TODO Bundle model matrix
-                glm::mat4 model = glm::mat4(1.0f);
-                m_shader->uniformMat4f("model", model);
+                m_shader->uniformMat4f("model", object->m_transformMat);
 
                 const LambertianMaterial *material = (LambertianMaterial *) object->m_material;
                 m_shader->uniform3f("objectColor", material->m_diffuseColor.x, material->m_diffuseColor.y,
@@ -172,9 +170,7 @@ void AmbientOcclusionVolumeBoundingPass::renderPass(const std::vector<ShadeObjec
             // object binding
             glBindVertexArray(object->m_objectInfo.m_vao);
             // world transformation
-            // TODO Bundle model matrix
-            glm::mat4 model = glm::mat4(1.0f);
-            m_shader->uniformMat4f("model", model);
+            m_shader->uniformMat4f("model", object->m_transformMat);
             m_shader->uniformMat4f("worldToScreenMatrix", setting->m_projectionMatrix * setting->m_viewMatrix);
             m_shader->uniform1f("maxObscuranceDistance", 1.5f);
             m_shader->uniform1f("invMaxObscuranceDistance", 1.0 / 1.5f);
@@ -344,7 +340,6 @@ void AmbientOcclusionVolumeShadingPass::renderPass(const std::vector<ShadeObject
         glActiveTexture(GL_TEXTURE0 + 3);
         glBindTexture(GL_TEXTURE_2D, m_inputFrameTextureId[3]);
 
-        // FIXME bad value
         m_shader->uniformBlockBind("Lights", (int) AmbientOcclusionVolumeShadingUBOInput::LIGHT);
         glBindBufferBase(GL_UNIFORM_BUFFER, (int) AmbientOcclusionVolumeShadingUBOInput::LIGHT, setting->m_lightUBO);
 

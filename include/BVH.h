@@ -6,13 +6,15 @@
 #define RAY_BVH_H
 
 #include "Utility.h"
-#include "Hittable.h"
+#include "ObjectNode.h"
 
 struct OctreeNode {
     OctreeNode *m_child[8] = {};
-    std::vector<const Hittable *> m_data;
+    std::vector<const ObjectNode *> m_data;
     ObjectBoundingBox m_nodeBoundingBox;
+    int m_inTwoLevelBVHId;
     bool m_isLeaf = true;
+    int m_startIdx;
 
     ~OctreeNode() {
         for (uint32_t i = 0; i < 8; ++i) {
@@ -35,7 +37,7 @@ public:
         m_root = new OctreeNode;
     }
 
-    void insert(const Hittable *object) {
+    void insert(const ObjectNode *object) {
         insert(m_root, object, m_bound[0], m_bound[1], 0);
     }
 
@@ -59,7 +61,7 @@ public:
     }
 
 private:
-    void insert(OctreeNode *node, const Hittable *object, const Vec3f &boundMin, const Vec3f &boundMax, int depth);
+    void insert(OctreeNode *node, const ObjectNode *object, const Vec3f &boundMin, const Vec3f &boundMax, int depth);
 
     void computeChildBound(uint32_t index, const Vec3f &nodeCentroid, const Vec3f &boundMin, const Vec3f &boundMax,
                            Vec3f &pMin, Vec3f &pMax);
@@ -70,6 +72,9 @@ private:
 public:
     Vec3f m_bound[2]; // for compute node centroid for later space partition
     OctreeNode *m_root = nullptr;
+    int m_nodeCount = 0;
+    std::vector<uint32_t> m_packedIndices;
+
 };
 
 class TriangleGroup;
@@ -93,7 +98,15 @@ public:
 
     bool isHit(const Ray &ray, IntersectionRecord &record, float tmin=0.0001f, const glm::mat4 &transformMat = glm::mat4(1.0));
 
+    void flattenBVH() {
+        flattenBVH(m_octree, m_octree->m_root);
+    }
+
     Octree *m_octree;
+private:
+    void flattenBVH(Octree *tree, OctreeNode *node);
+
+
 
 };
 

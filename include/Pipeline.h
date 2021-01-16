@@ -9,7 +9,7 @@
 #include <vector>
 #include <glm/glm.hpp>
 #include <GLFW/glfw3.h>
-#include "Hittable.h"
+#include "ObjectNode.h"
 #include "Camera.h"
 #include "IllumModel.h"
 

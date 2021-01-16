@@ -5,7 +5,7 @@
 #ifndef RAY_TRIANGLEGROUP_H
 #define RAY_TRIANGLEGROUP_H
 
-#include "Hittable.h"
+#include "ObjectNode.h"
 #include "Triangle.h"
 #include "BVH.h"
 
@@ -21,18 +21,24 @@ class TriangleGroup : public BLASNode {
 public:
     TriangleGroup() : BLASNode(), m_individualTriangle(false) {}
 
-    static std::vector<Hittable *> fromObj(const YAML::Node &node, const Scene *scene);
+    static std::map<std::string, ObjectNode *> fromObj(const YAML::Node &node, const Scene *scene);
 
     bool fromObj(const objl::Mesh &mesh, const Scene *scene, const std::string &materialName = "");
 
     bool readObjectInfo(const YAML::Node &node, const Scene *scene);
 
-    virtual bool isHit(const Ray &ray, IntersectionRecord &record, float tmin = 0.0001f, const glm::mat4 &transformMat = glm::mat4(1.0)) const;
+    virtual bool isHit(const Ray &ray, IntersectionRecord &record, float tmin = 0.0001f,
+                       const glm::mat4 &transformMat = glm::mat4(1.0)) const;
 
     // For local shading
-    virtual  void createVAO(std::vector<ShadeObject *> &shadeObjectList);
+    virtual void createVAO(std::vector<ShadeObject *> &shadeObjectList, const glm::mat4 &transformMat = glm::mat4(1.0f));
 
     virtual ObjectBoundingBox getBoundingBox() const;
+
+    virtual BLASNodeType getBLASNodeType() {
+        return BLASNodeType::TRIANGLE_GROUP;
+    }
+
 
 public:
     std::vector<Triangle *> m_triangles;

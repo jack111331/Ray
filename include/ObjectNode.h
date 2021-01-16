@@ -2,8 +2,8 @@
 // Created by Edge on 2020/7/7.
 //
 
-#ifndef RAY_HITTABLE_H
-#define RAY_HITTABLE_H
+#ifndef RAY_OBJECTNODE_H
+#define RAY_OBJECTNODE_H
 
 #include <glm/ext/matrix_float4x4.hpp>
 #include "Ray.h"
@@ -15,9 +15,10 @@ struct ObjectInfo {
 };
 
 struct ShadeObject {
-    ShadeObject(ObjectInfo objectInfo, Material *material): m_objectInfo(objectInfo), m_material(material) {}
+    ShadeObject(ObjectInfo objectInfo, Material *material, const glm::mat4& transformMat): m_objectInfo(objectInfo), m_material(material), m_transformMat(transformMat) {}
     ObjectInfo m_objectInfo;
     Material *m_material;
+    glm::mat4 m_transformMat;
 };
 
 class ObjectBoundingBox {
@@ -57,34 +58,27 @@ public:
     Vec3f m_bounding[2];
 };
 
-class Hittable {
+class ObjectNode {
 public:
-    Hittable() : m_material(nullptr) {}
+    ObjectNode() {}
 
-    virtual bool isHit(const Ray &ray, IntersectionRecord &record, float tmin=0.0001f, const glm::mat4 &transformMat = glm::mat4(1.0)) const {
-        std::cerr << "Not defined isHit" << std::endl;
-        exit(1);
-    }
-
-    // For local shading
-    virtual void createVAO(std::vector<ShadeObject *> &shadeObjectList) {
-        std::cerr << "Not defined createVAO" << std::endl;
-        exit(1);
+    enum class TwoLevelBVHType {
+        TLAS,
+        BLAS
     };
 
-    void setMaterial(Material *material) {
-        m_material = material;
-    }
+    virtual bool isHit(const Ray &ray, IntersectionRecord &record, float tmin=0.0001f, const glm::mat4 &transformMat = glm::mat4(1.0)) const = 0;
 
-    virtual bool readObjectInfo(const YAML::Node &node, const Scene *scene);
+    // For local shading
+    virtual void createVAO(std::vector<ShadeObject *> &shadeObjectList, const glm::mat4 &transformMat = glm::mat4(1.0f)) = 0;
 
-    virtual ObjectBoundingBox getBoundingBox() const {
-        std::cerr << "Not defined getBoundingBox" << std::endl;
-        exit(1);
-    }
+    virtual bool readObjectInfo(const YAML::Node &node, const Scene *scene) = 0;
 
-    Material *m_material;
+    virtual TwoLevelBVHType getTypeInTwoLevelBVH() = 0;
 
+    virtual ObjectBoundingBox getBoundingBox() const = 0;
+
+    int m_inTwoLevelBVHId;
 };
 
-#endif //RAY_HITTABLE_H
+#endif //RAY_OBJECTNODE_H
