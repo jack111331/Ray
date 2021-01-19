@@ -7,6 +7,7 @@
 #include "Pipeline.h"
 #include <Lambertian.h>
 #include "GeometryGroupObj.h"
+#include "GroupBVHTranslator.h"
 #include "imgui.h"
 #include "imgui_impl_glfw.h"
 #include "imgui_impl_opengl3.h"
@@ -182,6 +183,8 @@ void GPURayTracingPipeline::setupEnvironment() {
 
     glGenTextures(1, &m_frameTextureId);
     glBindTexture(GL_TEXTURE_2D, m_frameTextureId);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA32F, m_camera->m_width,  m_camera->m_height, 0, GL_RGBA,
+                 GL_FLOAT, nullptr);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
@@ -210,17 +213,19 @@ void GPURayTracingPipeline::setupEnvironment() {
     glBindVertexArray(0);
 
     m_screenShader = new ShaderProgram(ShaderInclude::load("resource/shader/ray_tracing_shading/screen_shading.vs"), ShaderInclude::load("resource/shader/ray_tracing_shading/screen_shading.fs"));
+    m_rayTracingShader = new ShaderProgram(ShaderInclude::load("resource/shader/ray_tracing_shading/whitted_tracing.cs"));
+
+    m_translator = new GroupBVHTranslator(m_scene);
 }
 
 void GPURayTracingPipeline::pipelineLoop() {
     // Ray tracing
-    generateImage();
     while (!glfwWindowShouldClose(m_window)) {
         glfwPollEvents();
         glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-        m_camera->bufferToTexture(m_frameTextureId);
+        generateImage();
 
         m_screenShader->bind();
         glBindVertexArray(m_quadVao);
@@ -274,24 +279,23 @@ void GPURayTracingPipeline::generateImage() {
     Vec3f unitHorizontalScreen = 1 / (float) (m_camera->m_width - 1) * 2.0 * widthFactor * left.normalize();
     Vec3f unitVerticalScreen =
             1 / (float) (m_camera->m_height - 1) * 2.0 * heightFactor * m_camera->m_up.normalize();
-    for (int i = 0; i < m_camera->m_height; ++i) {
-        for (int j = 0; j < m_camera->m_width; ++j) {
-            bool debugFlag = false;
-            Vec3f currentRayOnScreen = leftUpper - (float) j * unitHorizontalScreen - (float) i * unitVerticalScreen;
-            Ray ray = {
-                    m_camera->m_eyeCoord,
-                    currentRayOnScreen - m_camera->m_eyeCoord
-            };
-            m_camera->m_screen[i][j] = traceRay(ray, debugFlag);
-            for(int k = 0;k < m_jitterSampleAmount;++k) {
-                Ray perturbatedRay = {ray.origin,
-                                      ray.velocity + Util::randomInUnit() * unitHorizontalScreen +
-                                      Util::randomInUnit() * unitVerticalScreen};
-                m_camera->m_screen[i][j] += traceRay(perturbatedRay, debugFlag);
-            }
-            m_camera->m_screen[i][j] /= (float)(1 + m_jitterSampleAmount);
-        }
-    }
+
+    m_translator->updateTranslator();
+
+    m_rayTracingShader->bind();
+    m_rayTracingShader->uniform3f("initial_pos", m_camera->m_eyeCoord.x, m_camera->m_eyeCoord.y, m_camera->m_eyeCoord.z);
+    m_rayTracingShader->uniform3f("initial_vel", leftUpper.x, leftUpper.y, leftUpper.z);
+    m_rayTracingShader->uniform3f("horizon_unit", unitHorizontalScreen.x, unitHorizontalScreen.y, unitHorizontalScreen.z);
+    m_rayTracingShader->uniform3f("vertical_unit", unitVerticalScreen.x, unitVerticalScreen.y, unitVerticalScreen.z);
+    m_rayTracingShader->uniform1i("top_level_bvh_index", m_translator->m_tlasStartNodeIndex);
+    glActiveTexture(GL_TEXTURE0);
+    m_rayTracingShader->bindImageTextureWrite(m_frameTextureId, 0);
+    m_rayTracingShader->bindSSBOBuffer(m_translator->m_bvhSSBO, 0);
+    m_rayTracingShader->bindSSBOBuffer(m_translator->m_meshIndicesSSBO, 1);
+    m_rayTracingShader->bindSSBOBuffer(m_translator->m_meshVerticesSSBO, 2);
+    m_rayTracingShader->bindSSBOBuffer(m_translator->m_meshNormalsSSBO, 3);
+    m_rayTracingShader->bindSSBOBuffer(m_translator->m_transformSSBO, 4);
+    m_rayTracingShader->dispatch(m_camera->m_width, m_camera->m_height, 1);
 }
 
 void LocalRenderingPipeline::setupGUILayout() {

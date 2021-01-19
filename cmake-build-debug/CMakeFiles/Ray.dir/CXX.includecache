@@ -78,6 +78,16 @@ ObjectNode.h
 TriangleGroup.h
 ../include/TriangleGroup.h
 
+../include/TransformObj.h
+glm/ext/matrix_float4x4.hpp
+-
+Utility.h
+../include/Utility.h
+ObjectNode.h
+../include/ObjectNode.h
+TLASNode.h
+../include/TLASNode.h
+
 ../include/Triangle.h
 Utility.h
 ../include/Utility.h
@@ -1355,6 +1365,8 @@ yaml-cpp/node/emit.h
 ../public/yaml-cpp/include/yaml-cpp/yaml-cpp/node/emit.h
 
 D:/Code/Ray/src/GroupBVHTranslator.cpp
+TransformObj.h
+-
 GroupBVHTranslator.h
 D:/Code/Ray/src/GroupBVHTranslator.h
 

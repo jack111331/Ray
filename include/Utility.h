@@ -212,6 +212,33 @@ struct Vec3i {
     int x, y, z;
 };
 
+struct Vec4f {
+    Vec4f(): x(0), y(0), z(0), w(0) {}
+    Vec4f(float x, float y, float z, float w) : x(x), y(y), z(z), w(w) {}
+    Vec4f(const Vec3f &v, float w) : x(v.x), y(v.y), z(v.z), w(w) {}
+    Vec4f &min(const Vec4f &rhs) {
+        x = std::min(x, rhs.x);
+        y = std::min(y, rhs.y);
+        z = std::min(z, rhs.z);
+        w = std::min(w, rhs.w);
+        return *this;
+    }
+    Vec4f &max(const Vec4f &rhs) {
+        x = std::max(x, rhs.x);
+        y = std::max(y, rhs.y);
+        z = std::max(z, rhs.z);
+        w = std::max(w, rhs.w);
+        return *this;
+    }
+    float x, y, z, w;
+};
+
+struct Vec4i {
+    Vec4i(): x(0), y(0), z(0), w(0) {}
+    Vec4i(int x, int y, int z, int w) : x(x), y(y), z(z), w(w) {}
+    int x, y, z, w;
+};
+
 class Material;
 
 class IntersectionRecord {

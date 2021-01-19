@@ -19,13 +19,17 @@
 class PipelineFactory {
 public:
     static Pipeline *generatePipeline(const std::string &typeName, const std::string &pipelineName) {
-        if (typeName == "ray-tracing") {
+        if (typeName == "cpu-ray-tracing") {
             if (pipelineName == "whitted") {
-                return new WhittedPipeline();
+                return new WhittedCPUPipeline();
             } else if (pipelineName == "photon-mapping") {
                 return new PhotonMappingPipeline();
             } else if (pipelineName == "ambient-occlusion") {
                 return new AmbientOcclusionPipeline();
+            }
+        } else if (typeName == "gpu-ray-tracing") {
+            if (pipelineName == "whitted") {
+                return new WhittedGPUPipeline();
             }
         } else if (typeName == "local-rendering") {
             if (pipelineName == "phong-shading") {

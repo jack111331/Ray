@@ -41,7 +41,6 @@ std::map<std::string, ObjectNode *> TriangleGroup::fromObj(const YAML::Node &nod
 }
 
 bool TriangleGroup::fromObj(const objl::Mesh &mesh, const Scene *scene, const std::string &materialName) {
-    std::vector<TriangleNode *> nodeList;
     for (int j = 0; j < mesh.Vertices.size(); j++) {
         TriangleNode *node = new TriangleNode{{mesh.Vertices[j].Position.X, mesh.Vertices[j].Position.Y,
                                                mesh.Vertices[j].Position.Z},
@@ -49,7 +48,7 @@ bool TriangleGroup::fromObj(const objl::Mesh &mesh, const Scene *scene, const st
                                                mesh.Vertices[j].TextureCoordinate.Y},
                                               {mesh.Vertices[j].Normal.X, mesh.Vertices[j].Normal.Y,
                                                mesh.Vertices[j].Normal.Z}, true};
-        nodeList.push_back(node);
+        m_nodeList.push_back(node);
         m_boundingBox.updateBoundingBox(node->m_coord);
     }
     const std::string &validMaterialName = materialName.empty()?mesh.MeshMaterial.name:materialName;
@@ -61,9 +60,9 @@ bool TriangleGroup::fromObj(const objl::Mesh &mesh, const Scene *scene, const st
 
     for (int j = 0; j < mesh.Indices.size(); j += 3) {
         Triangle *triangle = new Triangle();
-        triangle->fromTriangleNode(foundMaterial, scene, nodeList[mesh.Indices[j]],
-                                   nodeList[mesh.Indices[j + 1]],
-                                   nodeList[mesh.Indices[j + 2]]);
+        triangle->fromTriangleNode(foundMaterial, scene, m_nodeList[mesh.Indices[j]],
+                                   m_nodeList[mesh.Indices[j + 1]],
+                                   m_nodeList[mesh.Indices[j + 2]]);
         triangle->m_indices[0] = mesh.Indices[j];
         triangle->m_indices[1] = mesh.Indices[j + 1];
         triangle->m_indices[2] = mesh.Indices[j + 2];
@@ -92,13 +91,13 @@ bool TriangleGroup::readObjectInfo(const YAML::Node &node, const Scene *scene) {
             foundMaterial = it->second;
         }
     }
-    std::vector<TriangleNode *> nodeList;
+
     auto verticesNode = node["vertices"];
     for (uint32_t i = 0; i < verticesNode.size(); ++i) {
         TriangleNode *node = new TriangleNode(Vec3f::toVec3f(verticesNode[i].as<std::vector<float>>()), {0, 0},
                                               {0, 0, 0}, false);
-        nodeList.push_back(node);
-        m_boundingBox.updateBoundingBox((*--nodeList.end())->m_coord);
+        m_nodeList.push_back(node);
+        m_boundingBox.updateBoundingBox(node->m_coord);
     }
 
     auto trianglesNode = node["triangles"];
@@ -110,9 +109,9 @@ bool TriangleGroup::readObjectInfo(const YAML::Node &node, const Scene *scene) {
         }
 
         std::vector<uint32_t> triangleIndices = trianglesNode[i]["indices"].as<std::vector<uint32_t>>();
-        triangle->fromTriangleNode(foundMaterial, scene, nodeList[triangleIndices[0]],
-                                   nodeList[triangleIndices[1]],
-                                   nodeList[triangleIndices[2]]);
+        triangle->fromTriangleNode(foundMaterial, scene, m_nodeList[triangleIndices[0]],
+                                   m_nodeList[triangleIndices[1]],
+                                   m_nodeList[triangleIndices[2]]);
         triangle->m_indices[0] = triangleIndices[0];
         triangle->m_indices[1] = triangleIndices[1];
         triangle->m_indices[2] = triangleIndices[2];

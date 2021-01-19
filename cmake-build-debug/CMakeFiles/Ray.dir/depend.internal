@@ -2177,6 +2177,7 @@ CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj
  ../include/Ray.h
  ../include/Scene.h
  ../include/TLASNode.h
+ ../include/TransformObj.h
  ../include/Triangle.h
  ../include/TriangleGroup.h
  ../include/Utility.h
@@ -4063,6 +4064,8 @@ CMakeFiles/Ray.dir/src/Pipeline.cpp.obj
  ../include/BVH.h
  ../include/Camera.h
  ../include/GeometryGroupObj.h
+ ../include/GroupBVHTranslator.h
+ ../include/GroupObj.h
  ../include/IllumModel.h
  ../include/Lambertian.h
  ../include/Light.h

@@ -15,6 +15,7 @@ struct OctreeNode {
     int m_inTwoLevelBVHId;
     bool m_isLeaf = true;
     int m_startIdx;
+    int m_intermediateNodeIdx = -1;
 
     ~OctreeNode() {
         for (uint32_t i = 0; i < 8; ++i) {
@@ -98,13 +99,13 @@ public:
 
     bool isHit(const Ray &ray, IntersectionRecord &record, float tmin=0.0001f, const glm::mat4 &transformMat = glm::mat4(1.0));
 
-    void flattenBVH() {
-        flattenBVH(m_octree, m_octree->m_root);
+    void flattenBVH(int offsetVertices) {
+        flattenBVH(m_octree, m_octree->m_root, offsetVertices);
     }
 
     Octree *m_octree;
 private:
-    void flattenBVH(Octree *tree, OctreeNode *node);
+    void flattenBVH(Octree *tree, OctreeNode *node, int offsetVertices);
 
 
 

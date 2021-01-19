@@ -146,6 +146,8 @@ private:
     int m_jitterSampleAmount;
 };
 
+class GroupBVHTranslator;
+
 class GPURayTracingPipeline : public Pipeline {
 public:
     GPURayTracingPipeline() : m_model(nullptr), m_jitterSampleAmount(0) {}
@@ -163,14 +165,6 @@ public:
 protected:
     void generateImage();
 
-    Vec3f traceRay(Ray &ray, bool debugFlag = false) {
-        if (m_model) {
-            return m_model->castRay(m_scene, ray, 0, debugFlag);
-        } else {
-            return m_backgroundColor;
-        }
-    }
-
     virtual void setupGUILayout();
 
     IlluminationModel *m_model;
@@ -183,6 +177,10 @@ private:
     uint32_t m_quadVao;
 
     ShaderProgram *m_screenShader;
+
+    ShaderProgram *m_rayTracingShader;
+
+    GroupBVHTranslator *m_translator;
 
     int m_jitterSampleAmount;
 };

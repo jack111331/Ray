@@ -2176,6 +2176,7 @@ CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../include/ObjectNode.h
 CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../include/Ray.h
 CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../include/Scene.h
 CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../include/TLASNode.h
+CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../include/TransformObj.h
 CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../include/Triangle.h
 CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../include/TriangleGroup.h
 CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj: ../include/Utility.h
@@ -4062,6 +4063,8 @@ CMakeFiles/Ray.dir/src/Pipeline.cpp.obj: ../include/BLASNode.h
 CMakeFiles/Ray.dir/src/Pipeline.cpp.obj: ../include/BVH.h
 CMakeFiles/Ray.dir/src/Pipeline.cpp.obj: ../include/Camera.h
 CMakeFiles/Ray.dir/src/Pipeline.cpp.obj: ../include/GeometryGroupObj.h
+CMakeFiles/Ray.dir/src/Pipeline.cpp.obj: ../include/GroupBVHTranslator.h
+CMakeFiles/Ray.dir/src/Pipeline.cpp.obj: ../include/GroupObj.h
 CMakeFiles/Ray.dir/src/Pipeline.cpp.obj: ../include/IllumModel.h
 CMakeFiles/Ray.dir/src/Pipeline.cpp.obj: ../include/Lambertian.h
 CMakeFiles/Ray.dir/src/Pipeline.cpp.obj: ../include/Light.h

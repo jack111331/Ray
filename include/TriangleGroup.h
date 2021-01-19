@@ -45,6 +45,8 @@ public:
 
     bool m_individualTriangle;
 
+    std::vector<TriangleNode *> m_nodeList;
+
     std::string m_objFilename;
 };
 

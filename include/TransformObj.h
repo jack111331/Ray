@@ -30,6 +30,7 @@ public:
         auto worldToObjectMat = glm::inverse(objectToWorldMat);
         transformedRay.origin = worldToObjectMat * transformedRay.origin;
         transformedRay.velocity = worldToObjectMat * transformedRay.velocity;
+        // FIXME Deal with transform on light
         return m_groupMemberList[0]->isHit(transformedRay, record, tmin, objectToWorldMat * transformMat);
     }
 

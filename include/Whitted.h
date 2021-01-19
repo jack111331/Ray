@@ -12,7 +12,7 @@
 #include "IllumModel.h"
 #include "Pipeline.h"
 
-class WhittedPipeline: public CPURayTracingPipeline {
+class WhittedCPUPipeline: public CPURayTracingPipeline {
 public:
     virtual void setupPipeline();
 
@@ -22,6 +22,15 @@ private:
     int m_maxDepth;
 };
 
+class WhittedGPUPipeline: public GPURayTracingPipeline {
+public:
+    virtual void setupPipeline();
+
+    virtual bool readPipelineInfo(const YAML::Node &node);
+
+private:
+    int m_maxDepth;
+};
 
 class WhittedModel : public IlluminationModel {
 public:

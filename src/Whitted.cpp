@@ -6,7 +6,7 @@
 #include "Whitted.h"
 #include "GroupObj.h"
 
-void WhittedPipeline::setupPipeline() {
+void WhittedCPUPipeline::setupPipeline() {
     WhittedModel *model = new WhittedModel();
     model->setupBackgroundColor(m_backgroundColor);
     model->setupMaxDepth(m_maxDepth);
@@ -15,8 +15,27 @@ void WhittedPipeline::setupPipeline() {
     m_camera->initializeScreen();
 }
 
-bool WhittedPipeline::readPipelineInfo(const YAML::Node &node) {
+bool WhittedCPUPipeline::readPipelineInfo(const YAML::Node &node) {
     bool result = CPURayTracingPipeline::readPipelineInfo(node);
+    if(!result || !node["max-depth"]) {
+        std::cerr << "No require whitted pipeline node" << std::endl;
+        return false;
+    }
+    m_maxDepth = node["max-depth"].as<int>();
+    return true;
+}
+
+void WhittedGPUPipeline::setupPipeline() {
+    WhittedModel *model = new WhittedModel();
+    model->setupBackgroundColor(m_backgroundColor);
+    model->setupMaxDepth(m_maxDepth);
+    setIlluminationModel(model);
+
+    // TODO bind material to different closest_hit and any_hit program
+}
+
+bool WhittedGPUPipeline::readPipelineInfo(const YAML::Node &node) {
+    bool result = GPURayTracingPipeline::readPipelineInfo(node);
     if(!result || !node["max-depth"]) {
         std::cerr << "No require whitted pipeline node" << std::endl;
         return false;
