@@ -28,7 +28,7 @@ public:
         for (auto mesh: m_meshTable) {
             BLASNode *blasNode = (BLASNode *) mesh.second;
             if (blasNode->getBLASNodeType() == BLASNode::BLASNodeType::TRIANGLE_GROUP) {
-                TriangleGroup *triangleGroup = (TriangleGroup *)mesh.second;
+                TriangleGroup *triangleGroup = (TriangleGroup *) mesh.second;
                 nodeCount += blasNode->m_accel->m_octree->m_nodeCount;
                 m_blasRootStartIndicesList.push_back(nodeCount);
 
@@ -45,99 +45,121 @@ public:
             }
         }
 
-        for(auto material: m_materialTable) {
-            if(material.second->getType() == Material::LAMBERTIAN) {
-                LambertianMaterial *lambertianMaterial = (LambertianMaterial *)material.second;
+        for (auto material: m_materialTable) {
+            if (material.second->getType() == Material::LAMBERTIAN) {
+                LambertianMaterial *lambertianMaterial = (LambertianMaterial *) material.second;
                 m_materialIdTable[material.second] = m_materialList.size();
                 m_materialList.push_back(Vec4f(lambertianMaterial->m_diffuseColor, 0.0f));
-            } else if(material.second->getType() == Material::DIELECTRIC) {
+            } else if (material.second->getType() == Material::DIELECTRIC) {
                 m_materialIdTable[material.second] = m_materialList.size();
                 m_materialList.push_back(Vec4f(0.0f, 0.0f, 0.0f, 0.8f));
             }
         }
 
         traverseInitGroupFirstStage(m_group);
-        m_tlasStartNodeIndex = nodeCount + m_meshInstanceSize;
-        // TODO tag active mesh to store space?
-        m_meshNodeList.resize(m_tlasStartNodeIndex + m_tlasSize);
+        m_meshNodeList.resize(nodeCount);
+        m_blasNodeList.resize(m_meshInstanceSize);
+        m_tlasNodeList.resize(m_tlasSize);
         int meshId = 0;
         for (auto mesh: m_meshTable) {
             BLASNode *blasNode = (BLASNode *) mesh.second;
             if (blasNode->getBLASNodeType() == BLASNode::BLASNodeType::TRIANGLE_GROUP) {
-                TriangleGroup *triangleGroup = (TriangleGroup *)mesh.second;
-                traverseInitBLASNode(triangleGroup->m_accel->m_octree->m_root, nullptr, m_meshRootStartIndicesList[meshId]);
+                TriangleGroup *triangleGroup = (TriangleGroup *) mesh.second;
+                traverseInitMeshNode(triangleGroup->m_accel->m_octree->m_root, nullptr,
+                                     m_meshRootStartIndicesList[meshId]);
                 meshId++;
             }
         }
         m_transformMatList.resize(m_meshInstanceSize);
         m_materialInstanceList.resize(m_meshInstanceSize);
-        traverseInitGroupSecondStage(m_group, nullptr);
-
-//        reduceNode(m_tlasStartNodeIndex);
+        traverseInitBLASGroupSecondStage(m_group, nullptr);
+        traverseInitTLASGroupSecondStage(m_group, nullptr);
+        m_nodeList.insert(m_nodeList.end(), m_meshNodeList.begin(), m_meshNodeList.end());
+        m_nodeList.insert(m_nodeList.end(), m_blasNodeList.begin(), m_blasNodeList.end());
+        m_nodeList.insert(m_nodeList.end(), m_tlasNodeList.begin(), m_tlasNodeList.end());
+        m_tlasStartNodeIndex = m_meshNodeList.size() + m_blasNodeList.size() + m_group->m_inTwoLevelBVHId;
+        reduceNode(m_tlasStartNodeIndex);
         // TODO update original node idx from nodeList
         // TODO compress space
 
-        std::cout << "TLAS Start Node Index " << m_tlasStartNodeIndex << ", mesh instance size " << m_meshInstanceSize << " , tlas size " << m_tlasSize << std::endl;
+#ifdef DEBUG_FLAG
+        std::cout << "TLAS Start Node Index " << m_tlasStartNodeIndex << ", mesh instance size " << m_meshInstanceSize
+                  << " , tlas size " << m_tlasSize << std::endl;
         std::cout << "flattenBVHIndices " << m_flattenBVHIndices.size() << std::endl;
         for (int i = 0; i < m_flattenBVHIndices.size(); i += 3) {
-            std::cout << m_flattenBVHIndices[i] << " " << m_flattenBVHIndices[i + 1] << " " << m_flattenBVHIndices[i + 2]
+            std::cout << m_flattenBVHIndices[i] << " " << m_flattenBVHIndices[i + 1] << " "
+                      << m_flattenBVHIndices[i + 2]
                       << std::endl;
         }
 
         std::cout << "node" << std::endl;
-        for (int i = 0; i < m_meshNodeList.size(); ++i) {
-            std::cout << "(" << m_meshNodeList[i].boundingBoxMin.x << ", " << m_meshNodeList[i].boundingBoxMin.y << ", " << m_meshNodeList[i].boundingBoxMin.z << ") (" << m_meshNodeList[i].boundingBoxMax.x << ", " << m_meshNodeList[i].boundingBoxMax.y << ", " << m_meshNodeList[i].boundingBoxMax.z << ") " << " " << m_meshNodeList[i].lrLeaf.x << " " << m_meshNodeList[i].lrLeaf.y << " " << m_meshNodeList[i].lrLeaf.z
+        for (int i = 0; i < m_nodeList.size(); ++i) {
+            std::cout << "(" << m_nodeList[i].boundingBoxMin.x << ", " << m_nodeList[i].boundingBoxMin.y << ", "
+                      << m_nodeList[i].boundingBoxMin.z << ") (" << m_nodeList[i].boundingBoxMax.x << ", "
+                      << m_nodeList[i].boundingBoxMax.y << ", " << m_nodeList[i].boundingBoxMax.z << ") " << " "
+                      << m_nodeList[i].lrLeaf.x << " " << m_nodeList[i].lrLeaf.y << " " << m_nodeList[i].lrLeaf.z
                       << std::endl;
         }
-
+#endif
         // initialize ssbo
         glGenBuffers(1, &m_meshIndicesSSBO);
         glBindBuffer(GL_SHADER_STORAGE_BUFFER, m_meshIndicesSSBO);
-        glBufferData(GL_SHADER_STORAGE_BUFFER, m_flattenBVHIndices.size() * sizeof(uint32_t), m_flattenBVHIndices.data(),
+        glBufferData(GL_SHADER_STORAGE_BUFFER, m_flattenBVHIndices.size() * sizeof(uint32_t),
+                     m_flattenBVHIndices.data(),
                      GL_DYNAMIC_DRAW);
 
         glGenBuffers(1, &m_bvhSSBO);
         glBindBuffer(GL_SHADER_STORAGE_BUFFER, m_bvhSSBO);
-        glBufferData(GL_SHADER_STORAGE_BUFFER, m_meshNodeList.size() * sizeof(Node), m_meshNodeList.data(), GL_DYNAMIC_DRAW);
+        glBufferData(GL_SHADER_STORAGE_BUFFER, m_nodeList.size() * sizeof(Node), m_nodeList.data(), GL_DYNAMIC_DRAW);
 
         glGenBuffers(1, &m_meshVerticesSSBO);
         glBindBuffer(GL_SHADER_STORAGE_BUFFER, m_meshVerticesSSBO);
-        glBufferData(GL_SHADER_STORAGE_BUFFER, m_flattenBVHVertices.size() * sizeof(Vec4f), m_flattenBVHVertices.data(), GL_DYNAMIC_DRAW);
+        glBufferData(GL_SHADER_STORAGE_BUFFER, m_flattenBVHVertices.size() * sizeof(Vec4f), m_flattenBVHVertices.data(),
+                     GL_DYNAMIC_DRAW);
 
         glGenBuffers(1, &m_meshNormalsSSBO);
         glBindBuffer(GL_SHADER_STORAGE_BUFFER, m_meshNormalsSSBO);
-        glBufferData(GL_SHADER_STORAGE_BUFFER, m_flattenBVHNormals.size() * sizeof(Vec4f), m_flattenBVHNormals.data(), GL_DYNAMIC_DRAW);
+        glBufferData(GL_SHADER_STORAGE_BUFFER, m_flattenBVHNormals.size() * sizeof(Vec4f), m_flattenBVHNormals.data(),
+                     GL_DYNAMIC_DRAW);
 
         glGenBuffers(1, &m_transformSSBO);
         glBindBuffer(GL_SHADER_STORAGE_BUFFER, m_transformSSBO);
-        glBufferData(GL_SHADER_STORAGE_BUFFER, m_transformMatList.size() * sizeof(glm::mat4), m_transformMatList.data(), GL_DYNAMIC_DRAW);
+        glBufferData(GL_SHADER_STORAGE_BUFFER, m_transformMatList.size() * sizeof(glm::mat4), m_transformMatList.data(),
+                     GL_DYNAMIC_DRAW);
 
         glGenBuffers(1, &m_materialSSBO);
         glBindBuffer(GL_SHADER_STORAGE_BUFFER, m_materialSSBO);
-        glBufferData(GL_SHADER_STORAGE_BUFFER, m_materialList.size() * sizeof(Vec4f), m_materialList.data(), GL_DYNAMIC_DRAW);
+        glBufferData(GL_SHADER_STORAGE_BUFFER, m_materialList.size() * sizeof(Vec4f), m_materialList.data(),
+                     GL_DYNAMIC_DRAW);
 
         glGenBuffers(1, &m_materialInstanceSSBO);
         glBindBuffer(GL_SHADER_STORAGE_BUFFER, m_materialInstanceSSBO);
-        glBufferData(GL_SHADER_STORAGE_BUFFER, m_materialInstanceList.size() * sizeof(uint32_t), m_materialInstanceList.data(), GL_DYNAMIC_DRAW);
+        glBufferData(GL_SHADER_STORAGE_BUFFER, m_materialInstanceList.size() * sizeof(uint32_t),
+                     m_materialInstanceList.data(), GL_DYNAMIC_DRAW);
 
         // reserve all transform node and selector node, but transform will goes to concrete geometry
     }
 
     void updateTranslator() {
-        for (auto member: m_group->m_groupMemberList) {
-            traverseUpdateGroup(member);
-        }
+        /*
+        traverseUpdateGroup(m_group);
+
         glBindBuffer(GL_SHADER_STORAGE_BUFFER, m_bvhSSBO);
-        glBufferSubData(GL_SHADER_STORAGE_BUFFER, m_tlasStartNodeIndex * sizeof(Node),
-                        (m_meshNodeList.size() - m_tlasStartNodeIndex) * sizeof(Node), &m_meshNodeList[m_tlasStartNodeIndex]);
+        glBufferSubData(GL_SHADER_STORAGE_BUFFER, (m_meshNodeList.size() + m_blasNodeList.size()) * sizeof(Node),
+                        m_tlasNodeList.size() * sizeof(Node), m_tlasNodeList.data());
+                        */
     }
 
 private:
     void traverseInitGroupFirstStage(ObjectNode *node);
 
-    int traverseInitGroupSecondStage(ObjectNode *node, ObjectNode *rightNode, const glm::mat4 &transformMat = glm::mat4(1.0f));
+    int traverseInitBLASGroupSecondStage(ObjectNode *node, ObjectNode *rightNode,
+                                         const glm::mat4 &transformMat = glm::mat4(1.0f));
 
-    int traverseInitBLASNode(OctreeNode *node, OctreeNode *rightNode, int meshStartIndices);
+    int traverseInitTLASGroupSecondStage(ObjectNode *node, ObjectNode *rightNode,
+                                         const glm::mat4 &transformMat = glm::mat4(1.0f));
+
+    int traverseInitMeshNode(OctreeNode *node, OctreeNode *rightNode, int meshStartIndices);
 
     void reduceNode(int nodeIdx);
 
@@ -150,8 +172,12 @@ private:
     std::vector<Node> m_meshNodeList;
     std::vector<Node> m_blasNodeList;
     std::vector<Node> m_tlasNodeList;
-    int m_curTlas = 0;
+    // node for all 3 above nodes
+    std::vector<Node> m_nodeList;
+    // final layout is [meshNode, blasNode, tlasNode]
+    int m_curMesh = 0;
     int m_curBlas = 0;
+    int m_curTlas = 0;
     int m_curMeshInstance = 0;
 
     std::vector<uint32_t> m_flattenBVHIndices;
