@@ -27,7 +27,6 @@ public:
                                                                                                   m_normal(normal),
                                                                                                   m_hasOther(
                                                                                                           hasOther) {}
-
     Vec3f m_coord;
     Vec2f m_texCoord;
     Vec3f m_normal;

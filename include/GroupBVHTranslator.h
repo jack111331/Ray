@@ -8,10 +8,9 @@
 
 #include <GL/glew.h>
 #include "GroupObj.h"
+#include "Lambertian.h"
 
 class GroupBVHTranslator {
-    // TODO flatten material to texture
-    // their leaf node of tlas is transform, my transform can be in any node
 public:
 
     struct Node {
@@ -46,10 +45,21 @@ public:
             }
         }
 
+        for(auto material: m_materialTable) {
+            if(material.second->getType() == Material::LAMBERTIAN) {
+                LambertianMaterial *lambertianMaterial = (LambertianMaterial *)material.second;
+                m_materialIdTable[material.second] = m_materialList.size();
+                m_materialList.push_back(Vec4f(lambertianMaterial->m_diffuseColor, 0.0f));
+            } else if(material.second->getType() == Material::DIELECTRIC) {
+                m_materialIdTable[material.second] = m_materialList.size();
+                m_materialList.push_back(Vec4f(0.0f, 0.0f, 0.0f, 0.8f));
+            }
+        }
+
         traverseInitGroupFirstStage(m_group);
         m_tlasStartNodeIndex = nodeCount + m_meshInstanceSize;
         // TODO tag active mesh to store space?
-        m_nodeList.resize(m_tlasStartNodeIndex + m_tlasSize);
+        m_meshNodeList.resize(m_tlasStartNodeIndex + m_tlasSize);
         int meshId = 0;
         for (auto mesh: m_meshTable) {
             BLASNode *blasNode = (BLASNode *) mesh.second;
@@ -60,9 +70,10 @@ public:
             }
         }
         m_transformMatList.resize(m_meshInstanceSize);
+        m_materialInstanceList.resize(m_meshInstanceSize);
         traverseInitGroupSecondStage(m_group, nullptr);
 
-        reduceNode(m_tlasStartNodeIndex);
+//        reduceNode(m_tlasStartNodeIndex);
         // TODO update original node idx from nodeList
         // TODO compress space
 
@@ -74,8 +85,8 @@ public:
         }
 
         std::cout << "node" << std::endl;
-        for (int i = 0; i < m_nodeList.size(); ++i) {
-            std::cout << "(" << m_nodeList[i].boundingBoxMin.x << ", " << m_nodeList[i].boundingBoxMin.y << ", " << m_nodeList[i].boundingBoxMin.z << ") (" << m_nodeList[i].boundingBoxMax.x << ", " << m_nodeList[i].boundingBoxMax.y << ", " << m_nodeList[i].boundingBoxMax.z << ") " << " " << m_nodeList[i].lrLeaf.x << " " << m_nodeList[i].lrLeaf.y << " " << m_nodeList[i].lrLeaf.z
+        for (int i = 0; i < m_meshNodeList.size(); ++i) {
+            std::cout << "(" << m_meshNodeList[i].boundingBoxMin.x << ", " << m_meshNodeList[i].boundingBoxMin.y << ", " << m_meshNodeList[i].boundingBoxMin.z << ") (" << m_meshNodeList[i].boundingBoxMax.x << ", " << m_meshNodeList[i].boundingBoxMax.y << ", " << m_meshNodeList[i].boundingBoxMax.z << ") " << " " << m_meshNodeList[i].lrLeaf.x << " " << m_meshNodeList[i].lrLeaf.y << " " << m_meshNodeList[i].lrLeaf.z
                       << std::endl;
         }
 
@@ -87,7 +98,7 @@ public:
 
         glGenBuffers(1, &m_bvhSSBO);
         glBindBuffer(GL_SHADER_STORAGE_BUFFER, m_bvhSSBO);
-        glBufferData(GL_SHADER_STORAGE_BUFFER, m_nodeList.size() * sizeof(Node), m_nodeList.data(), GL_DYNAMIC_DRAW);
+        glBufferData(GL_SHADER_STORAGE_BUFFER, m_meshNodeList.size() * sizeof(Node), m_meshNodeList.data(), GL_DYNAMIC_DRAW);
 
         glGenBuffers(1, &m_meshVerticesSSBO);
         glBindBuffer(GL_SHADER_STORAGE_BUFFER, m_meshVerticesSSBO);
@@ -100,7 +111,16 @@ public:
         glGenBuffers(1, &m_transformSSBO);
         glBindBuffer(GL_SHADER_STORAGE_BUFFER, m_transformSSBO);
         glBufferData(GL_SHADER_STORAGE_BUFFER, m_transformMatList.size() * sizeof(glm::mat4), m_transformMatList.data(), GL_DYNAMIC_DRAW);
-// reserve all transform node and selector node, but transform will goes to concrete geometry
+
+        glGenBuffers(1, &m_materialSSBO);
+        glBindBuffer(GL_SHADER_STORAGE_BUFFER, m_materialSSBO);
+        glBufferData(GL_SHADER_STORAGE_BUFFER, m_materialList.size() * sizeof(Vec4f), m_materialList.data(), GL_DYNAMIC_DRAW);
+
+        glGenBuffers(1, &m_materialInstanceSSBO);
+        glBindBuffer(GL_SHADER_STORAGE_BUFFER, m_materialInstanceSSBO);
+        glBufferData(GL_SHADER_STORAGE_BUFFER, m_materialInstanceList.size() * sizeof(uint32_t), m_materialInstanceList.data(), GL_DYNAMIC_DRAW);
+
+        // reserve all transform node and selector node, but transform will goes to concrete geometry
     }
 
     void updateTranslator() {
@@ -109,7 +129,7 @@ public:
         }
         glBindBuffer(GL_SHADER_STORAGE_BUFFER, m_bvhSSBO);
         glBufferSubData(GL_SHADER_STORAGE_BUFFER, m_tlasStartNodeIndex * sizeof(Node),
-                        (m_nodeList.size() - m_tlasStartNodeIndex) * sizeof(Node), &m_nodeList[m_tlasStartNodeIndex]);
+                        (m_meshNodeList.size() - m_tlasStartNodeIndex) * sizeof(Node), &m_meshNodeList[m_tlasStartNodeIndex]);
     }
 
 private:
@@ -127,7 +147,9 @@ private:
     int m_tlasSize = 0;
     int m_meshInstanceSize = 0;
 
-    std::vector<Node> m_nodeList;
+    std::vector<Node> m_meshNodeList;
+    std::vector<Node> m_blasNodeList;
+    std::vector<Node> m_tlasNodeList;
     int m_curTlas = 0;
     int m_curBlas = 0;
     int m_curMeshInstance = 0;
@@ -136,12 +158,16 @@ private:
     std::vector<Vec4f> m_flattenBVHVertices;
     std::vector<Vec4f> m_flattenBVHNormals;
     std::vector<glm::mat4> m_transformMatList;
+    std::vector<uint32_t> m_materialInstanceList;
 
     std::vector<int> m_blasRootStartIndicesList;
     std::vector<int> m_meshRootStartIndicesList;
 
     const std::map<std::string, Material *> &m_materialTable;
     const std::map<std::string, ObjectNode *> &m_meshTable;
+
+    std::vector<Vec4f> m_materialList;
+    std::map<Material *, int> m_materialIdTable;
 
 public:
     int m_tlasStartNodeIndex = 0;
@@ -150,7 +176,9 @@ public:
     uint32_t m_meshVerticesSSBO;
     uint32_t m_meshNormalsSSBO;
     uint32_t m_transformSSBO;
+    uint32_t m_materialInstanceSSBO;
     uint32_t m_bvhSSBO;
+    uint32_t m_materialSSBO;
 };
 
 

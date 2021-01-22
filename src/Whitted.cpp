@@ -3,8 +3,13 @@
 //
 
 #include <Dielectric.h>
+#include <ShaderInclude.h>
+#include <GL/glew.h>
+#include <Lambertian.h>
 #include "Whitted.h"
 #include "GroupObj.h"
+#include "ShaderProgram.h"
+#include "GroupBVHTranslator.h"
 
 void WhittedCPUPipeline::setupPipeline() {
     WhittedModel *model = new WhittedModel();
@@ -26,12 +31,28 @@ bool WhittedCPUPipeline::readPipelineInfo(const YAML::Node &node) {
 }
 
 void WhittedGPUPipeline::setupPipeline() {
-    WhittedModel *model = new WhittedModel();
-    model->setupBackgroundColor(m_backgroundColor);
-    model->setupMaxDepth(m_maxDepth);
-    setIlluminationModel(model);
+    m_rayTracingShader = new ShaderProgram(ShaderInclude::load("resource/shader/ray_tracing_shading/whitted_tracing.cs"));
+    std::vector<Vec4f> lightList;
+    for(auto light: m_scene->m_lightList) {
+        lightList.push_back(Vec4f(light->getLightOrigin(), 1.0f));
+    }
 
-    // TODO bind material to different closest_hit and any_hit program
+    m_rayTracingShader->bind();
+    glGenBuffers(1, &m_lightSSBO);
+    glBindBuffer(GL_SHADER_STORAGE_BUFFER, m_lightSSBO);
+    glBufferData(GL_SHADER_STORAGE_BUFFER, lightList.size() * sizeof(Vec4f), lightList.data(), GL_DYNAMIC_DRAW);
+
+
+    m_rayTracingShader->uniform1i("number_of_lights", lightList.size());
+
+    m_rayTracingShader->bindSSBOBuffer(m_translator->m_meshIndicesSSBO, 1);
+    m_rayTracingShader->bindSSBOBuffer(m_translator->m_meshVerticesSSBO, 2);
+    m_rayTracingShader->bindSSBOBuffer(m_translator->m_meshNormalsSSBO, 3);
+    m_rayTracingShader->bindSSBOBuffer(m_translator->m_materialInstanceSSBO, 5);
+    m_rayTracingShader->bindSSBOBuffer(m_lightSSBO, 6);
+    m_rayTracingShader->bindSSBOBuffer(m_translator->m_materialSSBO, 7);
+    // TODO bind material
+
 }
 
 bool WhittedGPUPipeline::readPipelineInfo(const YAML::Node &node) {

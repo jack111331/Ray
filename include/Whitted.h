@@ -30,6 +30,8 @@ public:
 
 private:
     int m_maxDepth;
+    uint32_t m_lightSSBO;
+
 };
 
 class WhittedModel : public IlluminationModel {

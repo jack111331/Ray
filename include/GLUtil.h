@@ -18,6 +18,13 @@ namespace RayUtil {
     };
 
     uint32_t generateLightUBO(const std::vector<Light *> &lightList);
+
+    void generateStaticSSBO(uint32_t &ssboId, void *data, size_t size);
+
+    void generateDynamicSSBO(uint32_t &ssboId, void *data, size_t size);
+
+    void updateSSBO(uint32_t ssboId, void *data, size_t offset, size_t size);
+
     float lerp(float a, float b, float portion);
 }
 

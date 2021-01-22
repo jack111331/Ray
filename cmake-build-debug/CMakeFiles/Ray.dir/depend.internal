@@ -2171,12 +2171,14 @@ CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj
  ../include/Camera.h
  ../include/GroupBVHTranslator.h
  ../include/GroupObj.h
+ ../include/Lambertian.h
  ../include/Light.h
  ../include/Material.h
  ../include/ObjectNode.h
  ../include/Ray.h
  ../include/Scene.h
  ../include/TLASNode.h
+ ../include/Texture.h
  ../include/TransformObj.h
  ../include/Triangle.h
  ../include/TriangleGroup.h
@@ -6665,19 +6667,25 @@ CMakeFiles/Ray.dir/src/Whitted.cpp.obj
  ../include/BVH.h
  ../include/Camera.h
  ../include/Dielectric.h
+ ../include/GroupBVHTranslator.h
  ../include/GroupObj.h
  ../include/IllumModel.h
+ ../include/Lambertian.h
  ../include/Light.h
  ../include/Material.h
  ../include/ObjectNode.h
  ../include/Pipeline.h
  ../include/Ray.h
  ../include/Scene.h
+ ../include/ShaderInclude.h
+ ../include/ShaderProgram.h
  ../include/TLASNode.h
+ ../include/Texture.h
  ../include/Triangle.h
  ../include/TriangleGroup.h
  ../include/Utility.h
  ../include/Whitted.h
+ ../public/glew/include/GL/glew.h
  ../public/glm/glm/common.hpp
  ../public/glm/glm/detail/_fixes.hpp
  ../public/glm/glm/detail/_swizzle.hpp

@@ -150,7 +150,7 @@ class GroupBVHTranslator;
 
 class GPURayTracingPipeline : public Pipeline {
 public:
-    GPURayTracingPipeline() : m_model(nullptr), m_jitterSampleAmount(0) {}
+    GPURayTracingPipeline() : m_jitterSampleAmount(0) {}
 
     virtual void setupEnvironment();
 
@@ -158,18 +158,16 @@ public:
 
     virtual bool readPipelineInfo(const YAML::Node &node);
 
-    void setIlluminationModel(IlluminationModel *model) {
-        m_model = model;
-    }
-
 protected:
     void generateImage();
 
     virtual void setupGUILayout();
 
-    IlluminationModel *m_model;
+    ShaderProgram *m_rayTracingShader;
 
     Vec3f m_backgroundColor = {.0f, .0f, .0f};
+
+    GroupBVHTranslator *m_translator;
 
 private:
     uint32_t m_frameTextureId;
@@ -177,10 +175,6 @@ private:
     uint32_t m_quadVao;
 
     ShaderProgram *m_screenShader;
-
-    ShaderProgram *m_rayTracingShader;
-
-    GroupBVHTranslator *m_translator;
 
     int m_jitterSampleAmount;
 };

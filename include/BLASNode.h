@@ -19,6 +19,10 @@ public:
         m_material = material;
     }
 
+    Material *getMaterial() const {
+        return m_material;
+    }
+
     virtual TwoLevelBVHType getTypeInTwoLevelBVH() {
         return TwoLevelBVHType::BLAS;
     }
@@ -32,6 +36,8 @@ public:
     virtual BLASNodeType getBLASNodeType() = 0;
 
     BVH *m_accel;
+
+    int m_intermediateNodeIdx = -1;
 protected:
     ObjectBoundingBox m_boundingBox;
 

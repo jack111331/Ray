@@ -84,13 +84,16 @@ bool TriangleGroup::readObjectInfo(const YAML::Node &node, const Scene *scene) {
     if (!m_individualTriangle && !node["material"]) {
         return false;
     }
-
     if(node["material"]) {
         auto it = scene->m_materialTable.find(node["material"].as<std::string>());
         if (it != scene->m_materialTable.end()) {
             foundMaterial = it->second;
         }
     }
+    if(!m_individualTriangle) {
+        setMaterial(foundMaterial);
+    }
+
 
     auto verticesNode = node["vertices"];
     for (uint32_t i = 0; i < verticesNode.size(); ++i) {
@@ -103,9 +106,11 @@ bool TriangleGroup::readObjectInfo(const YAML::Node &node, const Scene *scene) {
     auto trianglesNode = node["triangles"];
     for (uint32_t i = 0; i < trianglesNode.size(); ++i) {
         Triangle *triangle = new Triangle();
-        auto it = scene->m_materialTable.find(trianglesNode[i]["material"].as<std::string>());
-        if (it != scene->m_materialTable.end()) {
-            foundMaterial = it->second;
+        if(m_individualTriangle) {
+            auto it = scene->m_materialTable.find(trianglesNode[i]["material"].as<std::string>());
+            if (it != scene->m_materialTable.end()) {
+                foundMaterial = it->second;
+            }
         }
 
         std::vector<uint32_t> triangleIndices = trianglesNode[i]["indices"].as<std::vector<uint32_t>>();

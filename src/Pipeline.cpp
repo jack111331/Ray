@@ -213,7 +213,6 @@ void GPURayTracingPipeline::setupEnvironment() {
     glBindVertexArray(0);
 
     m_screenShader = new ShaderProgram(ShaderInclude::load("resource/shader/ray_tracing_shading/screen_shading.vs"), ShaderInclude::load("resource/shader/ray_tracing_shading/screen_shading.fs"));
-    m_rayTracingShader = new ShaderProgram(ShaderInclude::load("resource/shader/ray_tracing_shading/whitted_tracing.cs"));
 
     m_translator = new GroupBVHTranslator(m_scene);
 }
@@ -283,6 +282,8 @@ void GPURayTracingPipeline::generateImage() {
     m_translator->updateTranslator();
 
     m_rayTracingShader->bind();
+    // random vector
+    m_rayTracingShader->uniform3f("random_vector", ((float)rand() / (RAND_MAX)), ((float)rand() / (RAND_MAX)), ((float)rand() / (RAND_MAX)));
     m_rayTracingShader->uniform3f("initial_pos", m_camera->m_eyeCoord.x, m_camera->m_eyeCoord.y, m_camera->m_eyeCoord.z);
     m_rayTracingShader->uniform3f("initial_vel", leftUpper.x, leftUpper.y, leftUpper.z);
     m_rayTracingShader->uniform3f("horizon_unit", unitHorizontalScreen.x, unitHorizontalScreen.y, unitHorizontalScreen.z);
@@ -290,11 +291,10 @@ void GPURayTracingPipeline::generateImage() {
     m_rayTracingShader->uniform1i("top_level_bvh_index", m_translator->m_tlasStartNodeIndex);
     glActiveTexture(GL_TEXTURE0);
     m_rayTracingShader->bindImageTextureWrite(m_frameTextureId, 0);
+
     m_rayTracingShader->bindSSBOBuffer(m_translator->m_bvhSSBO, 0);
-    m_rayTracingShader->bindSSBOBuffer(m_translator->m_meshIndicesSSBO, 1);
-    m_rayTracingShader->bindSSBOBuffer(m_translator->m_meshVerticesSSBO, 2);
-    m_rayTracingShader->bindSSBOBuffer(m_translator->m_meshNormalsSSBO, 3);
     m_rayTracingShader->bindSSBOBuffer(m_translator->m_transformSSBO, 4);
+
     m_rayTracingShader->dispatch(m_camera->m_width, m_camera->m_height, 1);
 }
 
