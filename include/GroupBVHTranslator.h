@@ -10,6 +10,8 @@
 #include "GroupObj.h"
 #include "Lambertian.h"
 
+
+
 class GroupBVHTranslator {
 public:
 
@@ -79,9 +81,7 @@ public:
         m_nodeList.insert(m_nodeList.end(), m_tlasNodeList.begin(), m_tlasNodeList.end());
         m_tlasStartNodeIndex = m_meshNodeList.size() + m_blasNodeList.size() + m_group->m_inTwoLevelBVHId;
         reduceNode(m_tlasStartNodeIndex);
-        // TODO update original node idx from nodeList
-        // TODO compress space
-
+        // TODO compress mesh and blas space
 #ifdef DEBUG_FLAG
         std::cout << "TLAS Start Node Index " << m_tlasStartNodeIndex << ", mesh instance size " << m_meshInstanceSize
                   << " , tlas size " << m_tlasSize << std::endl;
@@ -141,13 +141,16 @@ public:
     }
 
     void updateTranslator() {
-        /*
-        traverseUpdateGroup(m_group);
+        m_curTlas = 0;
+        traverseInitTLASGroupSecondStage(m_group, nullptr);
+        m_nodeList.resize(m_meshNodeList.size() + m_blasNodeList.size());
+        m_nodeList.insert(m_nodeList.end(), m_tlasNodeList.begin(), m_tlasNodeList.end());
+        m_tlasStartNodeIndex = m_meshNodeList.size() + m_blasNodeList.size() + m_group->m_inTwoLevelBVHId;
+        reduceNode(m_tlasStartNodeIndex);
 
         glBindBuffer(GL_SHADER_STORAGE_BUFFER, m_bvhSSBO);
         glBufferSubData(GL_SHADER_STORAGE_BUFFER, (m_meshNodeList.size() + m_blasNodeList.size()) * sizeof(Node),
-                        m_tlasNodeList.size() * sizeof(Node), m_tlasNodeList.data());
-                        */
+                        m_tlasNodeList.size() * sizeof(Node), &m_nodeList[m_meshNodeList.size() + m_blasNodeList.size()]);
     }
 
 private:
@@ -156,14 +159,11 @@ private:
     int traverseInitBLASGroupSecondStage(ObjectNode *node, ObjectNode *rightNode,
                                          const glm::mat4 &transformMat = glm::mat4(1.0f));
 
-    int traverseInitTLASGroupSecondStage(ObjectNode *node, ObjectNode *rightNode,
-                                         const glm::mat4 &transformMat = glm::mat4(1.0f));
+    int traverseInitTLASGroupSecondStage(ObjectNode *node, ObjectNode *rightNode);
 
     int traverseInitMeshNode(OctreeNode *node, OctreeNode *rightNode, int meshStartIndices);
 
     void reduceNode(int nodeIdx);
-
-    void traverseUpdateGroup(ObjectNode *node);
 
     GroupObj *m_group;
     int m_tlasSize = 0;

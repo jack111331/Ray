@@ -69,27 +69,15 @@ int GroupBVHTranslator::traverseInitBLASGroupSecondStage(ObjectNode *node, Objec
     }
 }
 
-int GroupBVHTranslator::traverseInitTLASGroupSecondStage(ObjectNode *node, ObjectNode *rightNode,
-                                                         const glm::mat4 &transformMat) {
+int GroupBVHTranslator::traverseInitTLASGroupSecondStage(ObjectNode *node, ObjectNode *rightNode) {
     if (node->getTypeInTwoLevelBVH() == ObjectNode::TwoLevelBVHType::TLAS) {
         TLASNode *tlasNode = (TLASNode *) node;
-
-        bool isTransformObj = false;
-        glm::mat4 newTransformMat;
-
-        if (tlasNode->getTlasNodeType() == TLASNode::TLASNodeType::TRANSFORM) {
-            isTransformObj = true;
-            TransformObj *transformObj = (TransformObj *) tlasNode;
-            newTransformMat = transformObj->getTransformMat() * transformMat;
-        }
 
         for (int memberId = tlasNode->m_groupMemberList.size() - 1; memberId >= 0; --memberId) {
             traverseInitTLASGroupSecondStage(tlasNode->m_groupMemberList[memberId],
                                              memberId + 1 >= tlasNode->m_groupMemberList.size() ? nullptr
                                                                                                 : tlasNode->m_groupMemberList[
-                                                     memberId + 1],
-                                             isTransformObj ? newTransformMat
-                                                            : transformMat);
+                                                     memberId + 1]);
         }
         tlasNode->m_inTwoLevelBVHId = m_curTlas++;
 
@@ -176,46 +164,6 @@ void GroupBVHTranslator::reduceNode(int nodeIdx) {
             reduceNode(m_nodeList[nodeIdx].lrLeaf.y);
             m_nodeList[nodeIdx].boundingBoxMin.min(m_nodeList[m_nodeList[nodeIdx].lrLeaf.y].boundingBoxMin);
             m_nodeList[nodeIdx].boundingBoxMax.max(m_nodeList[m_nodeList[nodeIdx].lrLeaf.y].boundingBoxMax);
-        }
-    }
-}
-
-void GroupBVHTranslator::traverseUpdateGroup(ObjectNode *node) {
-    // FIXME node should point to correct reduced pos
-    if (node->getTypeInTwoLevelBVH() == ObjectNode::TwoLevelBVHType::TLAS) {
-        TLASNode *tlasNode = (TLASNode *) node;
-        for (int memberId = tlasNode->m_groupMemberList.size() - 1; memberId >= 0; --memberId) {
-            traverseUpdateGroup(tlasNode->m_groupMemberList[memberId]);
-        }
-        int leftIndex = m_tlasNodeList[tlasNode->m_inTwoLevelBVHId].lrLeaf.x;
-        int rightIndex = m_tlasNodeList[tlasNode->m_inTwoLevelBVHId].lrLeaf.y;
-        if (leftIndex >= m_meshNodeList.size() && leftIndex < (m_meshNodeList.size() + m_blasNodeList.size())) {
-            m_tlasNodeList[tlasNode->m_inTwoLevelBVHId].boundingBoxMin = m_blasNodeList[leftIndex -
-                                                                                        m_meshNodeList.size()].boundingBoxMin;
-            m_tlasNodeList[tlasNode->m_inTwoLevelBVHId].boundingBoxMax = m_blasNodeList[leftIndex -
-                                                                                        m_meshNodeList.size()].boundingBoxMax;
-        } else {
-            m_tlasNodeList[tlasNode->m_inTwoLevelBVHId].boundingBoxMin = m_tlasNodeList[leftIndex -
-                                                                                        m_meshNodeList.size() -
-                                                                                        m_blasNodeList.size()].boundingBoxMin;
-            m_tlasNodeList[tlasNode->m_inTwoLevelBVHId].boundingBoxMax = m_tlasNodeList[leftIndex -
-                                                                                        m_meshNodeList.size() -
-                                                                                        m_blasNodeList.size()].boundingBoxMax;
-        }
-        if(rightIndex != -1) {
-            if (rightIndex >= m_meshNodeList.size() && rightIndex < (m_meshNodeList.size() + m_blasNodeList.size())) {
-                m_tlasNodeList[tlasNode->m_inTwoLevelBVHId].boundingBoxMin.min(m_blasNodeList[rightIndex -
-                                                                                            m_meshNodeList.size()].boundingBoxMin);
-                m_tlasNodeList[tlasNode->m_inTwoLevelBVHId].boundingBoxMax.max(m_blasNodeList[rightIndex -
-                                                                                            m_meshNodeList.size()].boundingBoxMax);
-            } else {
-                m_tlasNodeList[tlasNode->m_inTwoLevelBVHId].boundingBoxMin.min(m_tlasNodeList[rightIndex -
-                                                                                            m_meshNodeList.size() -
-                                                                                            m_blasNodeList.size()].boundingBoxMin);
-                m_tlasNodeList[tlasNode->m_inTwoLevelBVHId].boundingBoxMax.max(m_tlasNodeList[rightIndex -
-                                                                                            m_meshNodeList.size() -
-                                                                                            m_blasNodeList.size()].boundingBoxMax);
-            }
         }
     }
 }
