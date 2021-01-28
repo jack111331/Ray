@@ -24,6 +24,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Ray.dir/src/Lambertian.cpp.obj"
   "CMakeFiles/Ray.dir/src/Light.cpp.obj"
   "CMakeFiles/Ray.dir/src/Material.cpp.obj"
+  "CMakeFiles/Ray.dir/src/ONB.cpp.obj"
+  "CMakeFiles/Ray.dir/src/PathTrace.cpp.obj"
   "CMakeFiles/Ray.dir/src/PhongShadingPipeline.cpp.obj"
   "CMakeFiles/Ray.dir/src/Photon.cpp.obj"
   "CMakeFiles/Ray.dir/src/Pipeline.cpp.obj"

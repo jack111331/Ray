@@ -7,7 +7,7 @@
 
 using namespace std;
 
-void DielectricMaterial::calculatePhong(const Scene *scene, Ray &ray, const IntersectionRecord &record,
+Ray DielectricMaterial::calculatePhong(const Scene *scene, const Ray &ray, const IntersectionRecord &record,
                                const LightRecord &shadeLightRecord, ShadeRecord &shadeRecord) const {
     Vec3f outwardNormal;
     float cosine;
@@ -32,14 +32,14 @@ void DielectricMaterial::calculatePhong(const Scene *scene, Ray &ray, const Inte
 
     EmitType emitType = Util::russianRoulette(reflectivity, refractivity);
     if (emitType == EmitType::REFLECTED) {
-        ray = {record.point, ray.velocity.reflect(record.normal)};
+        return {record.point, ray.velocity.reflect(record.normal)};
     } else if (emitType == EmitType::TRANSMITTED) {
-        ray = {record.point, refractedDirection};
+        return {record.point, refractedDirection};
     }
     shadeRecord.attenuation = {1.0f, 1.0f, 1.0f};
 }
 
-void DielectricMaterial::calculatePhotonMapping(const Scene *scene, const PhotonMappingModel &model, Ray &ray, const IntersectionRecord &record, ShadeRecord &shadeRecord) const {
+Ray DielectricMaterial::calculatePhotonMapping(const Scene *scene, const PhotonMappingModel &model, const Ray &ray, const IntersectionRecord &record, ShadeRecord &shadeRecord) const {
     Vec3f outwardNormal;
     float cosine;
     float niOverNt;
@@ -63,11 +63,18 @@ void DielectricMaterial::calculatePhotonMapping(const Scene *scene, const Photon
 
     EmitType emitType = Util::russianRoulette(reflectivity, refractivity);
     if (emitType == EmitType::REFLECTED) {
-        ray = {record.point, ray.velocity.reflect(record.normal)};
+        return {record.point, ray.velocity.reflect(record.normal)};
     } else if (emitType == EmitType::TRANSMITTED) {
-        ray = {record.point, refractedDirection};
+        return {record.point, refractedDirection};
     }
     shadeRecord.attenuation = {1.0f, 1.0f, 1.0f};
+}
+
+Material::MaterialProperty DielectricMaterial::getProperty() {
+    MaterialProperty property;
+    property.type = 1;
+    property.param0.x = m_constantReferenceIndex;
+    return property;
 }
 
 bool DielectricMaterial::readMaterialInfo(const YAML::Node &node) {

@@ -15,6 +15,7 @@
 #include "AmbientOcclusion.h"
 #include "SuggestedContourPipeline.h"
 #include "AmbientOcclusionVolumeShadingPipeline.h"
+#include "PathTrace.h"
 
 class PipelineFactory {
 public:
@@ -26,10 +27,14 @@ public:
                 return new PhotonMappingPipeline();
             } else if (pipelineName == "ambient-occlusion") {
                 return new AmbientOcclusionPipeline();
+            } else if(pipelineName == "path-trace") {
+                return new PathTraceCPUPipeline();
             }
         } else if (typeName == "gpu-ray-tracing") {
             if (pipelineName == "whitted") {
                 return new WhittedGPUPipeline();
+            } else if(pipelineName == "path-trace") {
+                return new PathTraceGPUPipeline();
             }
         } else if (typeName == "local-rendering") {
             if (pipelineName == "phong-shading") {

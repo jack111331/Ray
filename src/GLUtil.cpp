@@ -25,6 +25,23 @@ namespace RayUtil {
         return lightUbo;
     }
 
+    void generateStaticSSBO(uint32_t &ssboId, void *data, size_t size) {
+        glGenBuffers(1, &ssboId);
+        glBindBuffer(GL_SHADER_STORAGE_BUFFER, ssboId);
+        glBufferData(GL_SHADER_STORAGE_BUFFER, size, data, GL_STATIC_DRAW);
+    }
+
+    void generateDynamicSSBO(uint32_t &ssboId, void *data, size_t size) {
+        glGenBuffers(1, &ssboId);
+        glBindBuffer(GL_SHADER_STORAGE_BUFFER, ssboId);
+        glBufferData(GL_SHADER_STORAGE_BUFFER, size, data, GL_DYNAMIC_DRAW);
+    }
+
+    void updateSSBO(uint32_t ssboId, void *data, size_t offset, size_t size) {
+        glBindBuffer(GL_SHADER_STORAGE_BUFFER, ssboId);
+        glBufferSubData(GL_SHADER_STORAGE_BUFFER, offset, size, data);
+    }
+
     float lerp(float a, float b, float portion) {
         return portion * a + (1.0 - portion) * b;
     }

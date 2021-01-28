@@ -94,6 +94,8 @@ list(APPEND SOURCE_LIST
         src/Lambertian.cpp
         src/Light.cpp
         src/Material.cpp
+        src/ONB.cpp
+        src/PathTrace.cpp
         src/Photon.cpp
         src/PhongShadingPipeline.cpp
         src/Pipeline.cpp
@@ -137,6 +139,8 @@ list(APPEND HEADER_LIST
         include/Lambertian.h
         include/Light.h
         include/Material.h
+        include/ONB.h
+        include/PathTrace.h
         include/PhongShadingPipeline.h
         include/Photon.h
         include/Pipeline.h

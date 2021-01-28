@@ -105,7 +105,7 @@ bool PhotonMappingModel::photonTracing(const Scene *scene, Ray &ray, float power
     return false;
 }
 
-Vec3f PhotonMappingModel::castRay(const Scene *scene, Ray &ray, int depth, bool debugFlag) {
+Vec3f PhotonMappingModel::castRay(const Scene *scene, const Ray &ray, int depth, bool debugFlag) {
     IntersectionRecord record;
     if (scene->m_group->isHit(ray, record)) {
         ShadeRecord shadeRecord;

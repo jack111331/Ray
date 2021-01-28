@@ -10,8 +10,34 @@ namespace Util {
         r0 *= r0;
         return r0 + (1 - r0) * pow((1.0 - cosine), 5);
     }
+
     float randomInUnit() {
-        return rand() / (RAND_MAX+1.0f);
+        return rand() / (RAND_MAX + 1.0f);
+    }
+
+    Vec3f randomInHemisphere() {
+        float r1 = randomInUnit(), r2 = randomInUnit();
+        float PI = acos(-1);
+        float x = cos(2 * PI * r1) * 2 * sqrt(r2 * (2 - r2));
+        float y = sin(2 * PI * r1) * 2 * sqrt(r2 * (2 - r2));
+        float z = 1 - r2;
+        return Vec3f(x, y, z);
+    }
+
+    Vec3f randomCosineDirection() {
+        float r1 = randomInUnit();
+        auto r2 = randomInUnit();
+        auto z = sqrt(1 - r2);
+        float PI = acos(-1);
+        auto phi = 2 * PI * r1;
+        auto x = cos(phi) * sqrt(r2);
+        auto y = sin(phi) * sqrt(r2);
+
+        return Vec3f(x, y, z);
+    }
+
+    float randomIn(float min, float max) {
+        return min + (max - min) * randomInUnit();
     }
 
     Vec3f randomSphere() {

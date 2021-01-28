@@ -3,12 +3,13 @@
 //
 
 #include <Photon.h>
+#include <ONB.h>
 #include "Lambertian.h"
 
 using namespace std;
 
-void LambertianMaterial::calculatePhong(const Scene *scene, Ray &ray, const IntersectionRecord &record,
-                                         const LightRecord &shadeLightRecord, ShadeRecord &shadeRecord) const {
+Ray LambertianMaterial::calculatePhong(const Scene *scene, const Ray &ray, const IntersectionRecord &record,
+                                        const LightRecord &shadeLightRecord, ShadeRecord &shadeRecord) const {
     // calculate diffuse and specular
     Vec3f normal = record.normal.normalize();
     if (ray.velocity.dot(normal) > .0f) {
@@ -16,7 +17,7 @@ void LambertianMaterial::calculatePhong(const Scene *scene, Ray &ray, const Inte
     }
     float diffuseIntensity = .0f;
     float specularIntensity = .0f;
-    if(shadeLightRecord.isShadedLightList.size() != scene->m_lightList.size()) {
+    if (shadeLightRecord.isShadedLightList.size() != scene->m_lightList.size()) {
         std::cerr << "Shade light amount isn't consistent with scene light list" << std::endl;
         exit(1);
     }
@@ -35,10 +36,12 @@ void LambertianMaterial::calculatePhong(const Scene *scene, Ray &ray, const Inte
     shadeRecord.attenuation =
             resultColor * (m_diffuseTexture ? m_diffuseTexture->getColor(record.texCoord) : Vec3f{1.0f, 1.0f,
                                                                                                   1.0f});
+    return {Vec3f(.0f, .0f, .0f), Vec3f(.0f, .0f, .0f)};
+
 }
 
-void
-LambertianMaterial::calculatePhotonMapping(const Scene *scene, const PhotonMappingModel &photonMappingModel, Ray &ray,
+Ray
+LambertianMaterial::calculatePhotonMapping(const Scene *scene, const PhotonMappingModel &photonMappingModel, const Ray &ray,
                                            const IntersectionRecord &record, ShadeRecord &shadeRecord) const {
     priority_queue<CoordDataElement<Photon>> photonHeap;
     photonMappingModel.m_kdTree->nearestSearch(record.point, photonMappingModel.TRACE_PHOTON_AMOUNT, photonHeap);
@@ -60,7 +63,25 @@ LambertianMaterial::calculatePhotonMapping(const Scene *scene, const PhotonMappi
     if (ray.velocity.dot(record.normal) * diffuseDirection.dot(record.normal) > 0.0) {
         diffuseDirection = -diffuseDirection;
     }
-    ray = {record.point, diffuseDirection};
+    return {record.point, diffuseDirection};
+}
+
+Vec3f LambertianMaterial::calculateScatter(const Ray &ray, const IntersectionRecord &record, ShadeRecord &shadeRecord, float &pdf) const {
+    ONB onb(record.ffNormal);
+    Vec3f scatteredDirection = onb.toWorldCoordSystem(Util::randomCosineDirection());
+    scatteredDirection.normalize();
+    shadeRecord.emit = Vec3f(.0f, .0f, .0f);
+    shadeRecord.attenuation = m_diffuseColor;
+    const float PI = acos(-1);
+    pdf = onb.m_direction.dot(scatteredDirection) / PI;
+    return scatteredDirection;
+}
+
+float LambertianMaterial::calculateScatterPdf(const Ray &ray, const IntersectionRecord &record,
+                                              const Vec3f &scatteredDirection) const {
+    const float PI = acos(-1);
+    float pdf = record.ffNormal.dot(scatteredDirection);
+    return pdf < 0 ? 0 : pdf / PI;
 }
 
 bool LambertianMaterial::readMaterialInfo(const YAML::Node &node) {
@@ -74,4 +95,11 @@ bool LambertianMaterial::readMaterialInfo(const YAML::Node &node) {
     m_constantSpecularExp = node["specular-exp"].as<float>();
     m_constantRoughness = node["roughness"].as<float>();
     return true;
+}
+
+Material::MaterialProperty LambertianMaterial::getProperty() {
+    MaterialProperty property;
+    property.type = 0;
+    property.param0 = Vec4f(m_diffuseColor, 1.0f);
+    return property;
 }

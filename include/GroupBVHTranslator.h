@@ -9,7 +9,7 @@
 #include <GL/glew.h>
 #include "GroupObj.h"
 #include "Lambertian.h"
-
+#include "GLUtil.h"
 
 
 class GroupBVHTranslator {
@@ -48,14 +48,8 @@ public:
         }
 
         for (auto material: m_materialTable) {
-            if (material.second->getType() == Material::LAMBERTIAN) {
-                LambertianMaterial *lambertianMaterial = (LambertianMaterial *) material.second;
-                m_materialIdTable[material.second] = m_materialList.size();
-                m_materialList.push_back(Vec4f(lambertianMaterial->m_diffuseColor, 0.0f));
-            } else if (material.second->getType() == Material::DIELECTRIC) {
-                m_materialIdTable[material.second] = m_materialList.size();
-                m_materialList.push_back(Vec4f(0.0f, 0.0f, 0.0f, 0.8f));
-            }
+            m_materialList.push_back(material.second->getProperty());
+            m_materialIdTable[material.second] = m_materialList.size()-1;
         }
 
         traverseInitGroupFirstStage(m_group);
@@ -102,40 +96,18 @@ public:
         }
 #endif
         // initialize ssbo
-        glGenBuffers(1, &m_meshIndicesSSBO);
-        glBindBuffer(GL_SHADER_STORAGE_BUFFER, m_meshIndicesSSBO);
-        glBufferData(GL_SHADER_STORAGE_BUFFER, m_flattenBVHIndices.size() * sizeof(uint32_t),
-                     m_flattenBVHIndices.data(),
-                     GL_DYNAMIC_DRAW);
-
-        glGenBuffers(1, &m_bvhSSBO);
-        glBindBuffer(GL_SHADER_STORAGE_BUFFER, m_bvhSSBO);
-        glBufferData(GL_SHADER_STORAGE_BUFFER, m_nodeList.size() * sizeof(Node), m_nodeList.data(), GL_DYNAMIC_DRAW);
-
-        glGenBuffers(1, &m_meshVerticesSSBO);
-        glBindBuffer(GL_SHADER_STORAGE_BUFFER, m_meshVerticesSSBO);
-        glBufferData(GL_SHADER_STORAGE_BUFFER, m_flattenBVHVertices.size() * sizeof(Vec4f), m_flattenBVHVertices.data(),
-                     GL_DYNAMIC_DRAW);
-
-        glGenBuffers(1, &m_meshNormalsSSBO);
-        glBindBuffer(GL_SHADER_STORAGE_BUFFER, m_meshNormalsSSBO);
-        glBufferData(GL_SHADER_STORAGE_BUFFER, m_flattenBVHNormals.size() * sizeof(Vec4f), m_flattenBVHNormals.data(),
-                     GL_DYNAMIC_DRAW);
-
-        glGenBuffers(1, &m_transformSSBO);
-        glBindBuffer(GL_SHADER_STORAGE_BUFFER, m_transformSSBO);
-        glBufferData(GL_SHADER_STORAGE_BUFFER, m_transformMatList.size() * sizeof(glm::mat4), m_transformMatList.data(),
-                     GL_DYNAMIC_DRAW);
-
-        glGenBuffers(1, &m_materialSSBO);
-        glBindBuffer(GL_SHADER_STORAGE_BUFFER, m_materialSSBO);
-        glBufferData(GL_SHADER_STORAGE_BUFFER, m_materialList.size() * sizeof(Vec4f), m_materialList.data(),
-                     GL_DYNAMIC_DRAW);
-
-        glGenBuffers(1, &m_materialInstanceSSBO);
-        glBindBuffer(GL_SHADER_STORAGE_BUFFER, m_materialInstanceSSBO);
-        glBufferData(GL_SHADER_STORAGE_BUFFER, m_materialInstanceList.size() * sizeof(uint32_t),
-                     m_materialInstanceList.data(), GL_DYNAMIC_DRAW);
+        RayUtil::generateStaticSSBO(m_meshIndicesSSBO, m_flattenBVHIndices.data(),
+                                    m_flattenBVHIndices.size() * sizeof(uint32_t));
+        RayUtil::generateDynamicSSBO(m_bvhSSBO, m_nodeList.data(), m_nodeList.size() * sizeof(Node));
+        RayUtil::generateStaticSSBO(m_meshVerticesSSBO, m_flattenBVHVertices.data(),
+                                    m_flattenBVHVertices.size() * sizeof(Vec4f));
+        RayUtil::generateStaticSSBO(m_meshNormalsSSBO, m_flattenBVHNormals.data(),
+                                    m_flattenBVHNormals.size() * sizeof(Vec4f));
+        RayUtil::generateDynamicSSBO(m_transformSSBO, m_transformMatList.data(),
+                                     m_transformMatList.size() * sizeof(glm::mat4));
+        RayUtil::generateDynamicSSBO(m_materialSSBO, m_materialList.data(), m_materialList.size() * sizeof(Material::MaterialProperty));
+        RayUtil::generateDynamicSSBO(m_materialInstanceSSBO, m_materialInstanceList.data(),
+                                     m_materialInstanceList.size() * sizeof(uint32_t));
 
         // reserve all transform node and selector node, but transform will goes to concrete geometry
     }
@@ -148,9 +120,9 @@ public:
         m_tlasStartNodeIndex = m_meshNodeList.size() + m_blasNodeList.size() + m_group->m_inTwoLevelBVHId;
         reduceNode(m_tlasStartNodeIndex);
 
-        glBindBuffer(GL_SHADER_STORAGE_BUFFER, m_bvhSSBO);
-        glBufferSubData(GL_SHADER_STORAGE_BUFFER, (m_meshNodeList.size() + m_blasNodeList.size()) * sizeof(Node),
-                        m_tlasNodeList.size() * sizeof(Node), &m_nodeList[m_meshNodeList.size() + m_blasNodeList.size()]);
+        RayUtil::updateSSBO(m_bvhSSBO, &m_nodeList[m_meshNodeList.size() + m_blasNodeList.size()],
+                            (m_meshNodeList.size() + m_blasNodeList.size()) * sizeof(Node),
+                            m_tlasNodeList.size() * sizeof(Node));
     }
 
 private:
@@ -192,7 +164,7 @@ private:
     const std::map<std::string, Material *> &m_materialTable;
     const std::map<std::string, ObjectNode *> &m_meshTable;
 
-    std::vector<Vec4f> m_materialList;
+    std::vector<Material::MaterialProperty> m_materialList;
     std::map<Material *, int> m_materialIdTable;
 
 public:

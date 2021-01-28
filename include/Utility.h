@@ -167,6 +167,10 @@ public:
         return {lhs * rhs.x, lhs * rhs.y, lhs * rhs.z};
     }
 
+    bool nearZero() const {
+        return x <= 1e-6 && y <= 1e-6 && z <= 1e-6;
+    }
+
     static Vec3f toVec3f(const std::vector<float> &floatList) {
         if (floatList.size() == 3) {
             return {floatList[0], floatList[1], floatList[2]};
@@ -246,6 +250,7 @@ public:
     float t = -1.0f;
     Vec3f point;
     Vec3f normal;
+    Vec3f ffNormal;
     Material *material;
     Vec2f texCoord;
 };
@@ -265,7 +270,7 @@ public:
     Vec3f attenuation = {.0f, .0f, .0f};
 
     bool isHasAttenuation() const {
-        return attenuation.x >= 1e-6 && attenuation.y >= 1e-6 && attenuation.z >= 1e-6;
+        return !attenuation.nearZero();
     }
 };
 
@@ -278,9 +283,27 @@ namespace Util {
 
     float randomInUnit();
 
+    Vec3f randomInHemisphere();
+
+    Vec3f randomCosineDirection();
+
+    float randomIn(float min, float max);
+
     Vec3f randomSphere();
 
     EmitType russianRoulette(float reflectivity, float refractivity);
+
+    inline Vec3f randomInUnitSphere() {
+        while (true) {
+            Vec3f p(randomIn(-1.0, 1.0f), randomIn(-1.0, 1.0f), randomIn(-1.0, 1.0f));
+            if (p.lengthWithoutSquare() >= 1) continue;
+            return p;
+        }
+    }
+
+    inline Vec3f randomUnitVector() {
+        return randomInUnitSphere().normalize();
+    }
 
 };
 

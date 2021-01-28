@@ -12,7 +12,7 @@ class IlluminationModel {
 public:
     virtual void setup(Scene *scene) {};
 
-    virtual Vec3f castRay(const Scene *scene, Ray &ray, int depth = 0, bool debugFlag = 0) = 0;
+    virtual Vec3f castRay(const Scene *scene, const Ray &ray, int depth = 0, bool debugFlag = 0) = 0;
 
     void setupBackgroundColor(const Vec3f &backgroundColor) {
         m_backgroundColor = backgroundColor;

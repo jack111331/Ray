@@ -1214,6 +1214,7 @@ CMakeFiles/Ray.dir/src/Config.cpp.obj
  ../include/Light.h
  ../include/Material.h
  ../include/ObjectNode.h
+ ../include/PathTrace.h
  ../include/PhongShadingPipeline.h
  ../include/Photon.h
  ../include/Pipeline.h
@@ -2169,6 +2170,7 @@ CMakeFiles/Ray.dir/src/GroupBVHTranslator.cpp.obj
  ../include/BLASNode.h
  ../include/BVH.h
  ../include/Camera.h
+ ../include/GLUtil.h
  ../include/GroupBVHTranslator.h
  ../include/GroupObj.h
  ../include/Lambertian.h
@@ -3101,6 +3103,7 @@ CMakeFiles/Ray.dir/src/Lambertian.cpp.obj
  ../include/Lambertian.h
  ../include/Light.h
  ../include/Material.h
+ ../include/ONB.h
  ../include/ObjectNode.h
  ../include/Photon.h
  ../include/Pipeline.h
@@ -3639,6 +3642,356 @@ CMakeFiles/Ray.dir/src/Material.cpp.obj
  ../public/yaml-cpp/include/yaml-cpp/traits.h
  ../public/yaml-cpp/include/yaml-cpp/yaml.h
  D:/Code/Ray/src/Material.cpp
+CMakeFiles/Ray.dir/src/ONB.cpp.obj
+ ../include/ONB.h
+ ../include/Utility.h
+ ../public/glm/glm/common.hpp
+ ../public/glm/glm/detail/_fixes.hpp
+ ../public/glm/glm/detail/_swizzle.hpp
+ ../public/glm/glm/detail/_swizzle_func.hpp
+ ../public/glm/glm/detail/_vectorize.hpp
+ ../public/glm/glm/detail/compute_common.hpp
+ ../public/glm/glm/detail/compute_vector_relational.hpp
+ ../public/glm/glm/detail/func_common.inl
+ ../public/glm/glm/detail/func_common_simd.inl
+ ../public/glm/glm/detail/func_exponential.inl
+ ../public/glm/glm/detail/func_exponential_simd.inl
+ ../public/glm/glm/detail/func_geometric.inl
+ ../public/glm/glm/detail/func_geometric_simd.inl
+ ../public/glm/glm/detail/func_matrix.inl
+ ../public/glm/glm/detail/func_matrix_simd.inl
+ ../public/glm/glm/detail/func_vector_relational.inl
+ ../public/glm/glm/detail/func_vector_relational_simd.inl
+ ../public/glm/glm/detail/qualifier.hpp
+ ../public/glm/glm/detail/setup.hpp
+ ../public/glm/glm/detail/type_mat2x2.hpp
+ ../public/glm/glm/detail/type_mat2x2.inl
+ ../public/glm/glm/detail/type_mat2x3.hpp
+ ../public/glm/glm/detail/type_mat2x3.inl
+ ../public/glm/glm/detail/type_mat2x4.hpp
+ ../public/glm/glm/detail/type_mat2x4.inl
+ ../public/glm/glm/detail/type_mat3x2.hpp
+ ../public/glm/glm/detail/type_mat3x2.inl
+ ../public/glm/glm/detail/type_mat3x3.hpp
+ ../public/glm/glm/detail/type_mat3x3.inl
+ ../public/glm/glm/detail/type_mat3x4.hpp
+ ../public/glm/glm/detail/type_mat3x4.inl
+ ../public/glm/glm/detail/type_mat4x2.hpp
+ ../public/glm/glm/detail/type_mat4x2.inl
+ ../public/glm/glm/detail/type_mat4x3.hpp
+ ../public/glm/glm/detail/type_mat4x3.inl
+ ../public/glm/glm/detail/type_mat4x4.hpp
+ ../public/glm/glm/detail/type_mat4x4.inl
+ ../public/glm/glm/detail/type_mat4x4_simd.inl
+ ../public/glm/glm/detail/type_vec1.hpp
+ ../public/glm/glm/detail/type_vec1.inl
+ ../public/glm/glm/detail/type_vec2.hpp
+ ../public/glm/glm/detail/type_vec2.inl
+ ../public/glm/glm/detail/type_vec3.hpp
+ ../public/glm/glm/detail/type_vec3.inl
+ ../public/glm/glm/detail/type_vec4.hpp
+ ../public/glm/glm/detail/type_vec4.inl
+ ../public/glm/glm/detail/type_vec4_simd.inl
+ ../public/glm/glm/exponential.hpp
+ ../public/glm/glm/ext/matrix_double2x2.hpp
+ ../public/glm/glm/ext/matrix_double2x2_precision.hpp
+ ../public/glm/glm/ext/matrix_double2x3.hpp
+ ../public/glm/glm/ext/matrix_double2x3_precision.hpp
+ ../public/glm/glm/ext/matrix_double2x4.hpp
+ ../public/glm/glm/ext/matrix_double2x4_precision.hpp
+ ../public/glm/glm/ext/matrix_double3x2.hpp
+ ../public/glm/glm/ext/matrix_double3x2_precision.hpp
+ ../public/glm/glm/ext/matrix_double3x3.hpp
+ ../public/glm/glm/ext/matrix_double3x3_precision.hpp
+ ../public/glm/glm/ext/matrix_double3x4.hpp
+ ../public/glm/glm/ext/matrix_double3x4_precision.hpp
+ ../public/glm/glm/ext/matrix_double4x2.hpp
+ ../public/glm/glm/ext/matrix_double4x2_precision.hpp
+ ../public/glm/glm/ext/matrix_double4x3.hpp
+ ../public/glm/glm/ext/matrix_double4x3_precision.hpp
+ ../public/glm/glm/ext/matrix_double4x4.hpp
+ ../public/glm/glm/ext/matrix_double4x4_precision.hpp
+ ../public/glm/glm/ext/matrix_float2x2.hpp
+ ../public/glm/glm/ext/matrix_float2x2_precision.hpp
+ ../public/glm/glm/ext/matrix_float2x3.hpp
+ ../public/glm/glm/ext/matrix_float2x3_precision.hpp
+ ../public/glm/glm/ext/matrix_float2x4.hpp
+ ../public/glm/glm/ext/matrix_float2x4_precision.hpp
+ ../public/glm/glm/ext/matrix_float3x2.hpp
+ ../public/glm/glm/ext/matrix_float3x2_precision.hpp
+ ../public/glm/glm/ext/matrix_float3x3.hpp
+ ../public/glm/glm/ext/matrix_float3x3_precision.hpp
+ ../public/glm/glm/ext/matrix_float3x4.hpp
+ ../public/glm/glm/ext/matrix_float3x4_precision.hpp
+ ../public/glm/glm/ext/matrix_float4x2.hpp
+ ../public/glm/glm/ext/matrix_float4x2_precision.hpp
+ ../public/glm/glm/ext/matrix_float4x3.hpp
+ ../public/glm/glm/ext/matrix_float4x3_precision.hpp
+ ../public/glm/glm/ext/matrix_float4x4.hpp
+ ../public/glm/glm/ext/matrix_float4x4_precision.hpp
+ ../public/glm/glm/ext/scalar_int_sized.hpp
+ ../public/glm/glm/ext/scalar_uint_sized.hpp
+ ../public/glm/glm/ext/vector_bool2.hpp
+ ../public/glm/glm/ext/vector_bool2_precision.hpp
+ ../public/glm/glm/ext/vector_bool3.hpp
+ ../public/glm/glm/ext/vector_bool3_precision.hpp
+ ../public/glm/glm/ext/vector_bool4.hpp
+ ../public/glm/glm/ext/vector_bool4_precision.hpp
+ ../public/glm/glm/ext/vector_double2.hpp
+ ../public/glm/glm/ext/vector_double2_precision.hpp
+ ../public/glm/glm/ext/vector_double3.hpp
+ ../public/glm/glm/ext/vector_double3_precision.hpp
+ ../public/glm/glm/ext/vector_double4.hpp
+ ../public/glm/glm/ext/vector_double4_precision.hpp
+ ../public/glm/glm/ext/vector_float2.hpp
+ ../public/glm/glm/ext/vector_float2_precision.hpp
+ ../public/glm/glm/ext/vector_float3.hpp
+ ../public/glm/glm/ext/vector_float3_precision.hpp
+ ../public/glm/glm/ext/vector_float4.hpp
+ ../public/glm/glm/ext/vector_float4_precision.hpp
+ ../public/glm/glm/ext/vector_int2.hpp
+ ../public/glm/glm/ext/vector_int2_sized.hpp
+ ../public/glm/glm/ext/vector_int3.hpp
+ ../public/glm/glm/ext/vector_int3_sized.hpp
+ ../public/glm/glm/ext/vector_int4.hpp
+ ../public/glm/glm/ext/vector_int4_sized.hpp
+ ../public/glm/glm/ext/vector_uint2.hpp
+ ../public/glm/glm/ext/vector_uint2_sized.hpp
+ ../public/glm/glm/ext/vector_uint3.hpp
+ ../public/glm/glm/ext/vector_uint3_sized.hpp
+ ../public/glm/glm/ext/vector_uint4.hpp
+ ../public/glm/glm/ext/vector_uint4_sized.hpp
+ ../public/glm/glm/geometric.hpp
+ ../public/glm/glm/mat2x2.hpp
+ ../public/glm/glm/mat2x3.hpp
+ ../public/glm/glm/mat2x4.hpp
+ ../public/glm/glm/mat3x2.hpp
+ ../public/glm/glm/mat3x3.hpp
+ ../public/glm/glm/mat3x4.hpp
+ ../public/glm/glm/mat4x2.hpp
+ ../public/glm/glm/mat4x3.hpp
+ ../public/glm/glm/mat4x4.hpp
+ ../public/glm/glm/matrix.hpp
+ ../public/glm/glm/simd/common.h
+ ../public/glm/glm/simd/exponential.h
+ ../public/glm/glm/simd/geometric.h
+ ../public/glm/glm/simd/matrix.h
+ ../public/glm/glm/simd/neon.h
+ ../public/glm/glm/simd/platform.h
+ ../public/glm/glm/vec2.hpp
+ ../public/glm/glm/vec3.hpp
+ ../public/glm/glm/vec4.hpp
+ ../public/glm/glm/vector_relational.hpp
+ D:/Code/Ray/src/ONB.cpp
+CMakeFiles/Ray.dir/src/PathTrace.cpp.obj
+ ../dependency/include/GLFW/glfw3.h
+ ../include/BLASNode.h
+ ../include/BVH.h
+ ../include/Camera.h
+ ../include/Dielectric.h
+ ../include/GLUtil.h
+ ../include/GroupBVHTranslator.h
+ ../include/GroupObj.h
+ ../include/IllumModel.h
+ ../include/Lambertian.h
+ ../include/Light.h
+ ../include/Material.h
+ ../include/ObjectNode.h
+ ../include/PathTrace.h
+ ../include/Pipeline.h
+ ../include/Ray.h
+ ../include/Scene.h
+ ../include/ShaderInclude.h
+ ../include/ShaderProgram.h
+ ../include/TLASNode.h
+ ../include/Texture.h
+ ../include/Triangle.h
+ ../include/TriangleGroup.h
+ ../include/Utility.h
+ ../public/glew/include/GL/glew.h
+ ../public/glm/glm/common.hpp
+ ../public/glm/glm/detail/_fixes.hpp
+ ../public/glm/glm/detail/_swizzle.hpp
+ ../public/glm/glm/detail/_swizzle_func.hpp
+ ../public/glm/glm/detail/_vectorize.hpp
+ ../public/glm/glm/detail/compute_common.hpp
+ ../public/glm/glm/detail/compute_vector_relational.hpp
+ ../public/glm/glm/detail/func_common.inl
+ ../public/glm/glm/detail/func_common_simd.inl
+ ../public/glm/glm/detail/func_exponential.inl
+ ../public/glm/glm/detail/func_exponential_simd.inl
+ ../public/glm/glm/detail/func_geometric.inl
+ ../public/glm/glm/detail/func_geometric_simd.inl
+ ../public/glm/glm/detail/func_integer.inl
+ ../public/glm/glm/detail/func_integer_simd.inl
+ ../public/glm/glm/detail/func_matrix.inl
+ ../public/glm/glm/detail/func_matrix_simd.inl
+ ../public/glm/glm/detail/func_packing.inl
+ ../public/glm/glm/detail/func_packing_simd.inl
+ ../public/glm/glm/detail/func_trigonometric.inl
+ ../public/glm/glm/detail/func_trigonometric_simd.inl
+ ../public/glm/glm/detail/func_vector_relational.inl
+ ../public/glm/glm/detail/func_vector_relational_simd.inl
+ ../public/glm/glm/detail/qualifier.hpp
+ ../public/glm/glm/detail/setup.hpp
+ ../public/glm/glm/detail/type_half.hpp
+ ../public/glm/glm/detail/type_half.inl
+ ../public/glm/glm/detail/type_mat2x2.hpp
+ ../public/glm/glm/detail/type_mat2x2.inl
+ ../public/glm/glm/detail/type_mat2x3.hpp
+ ../public/glm/glm/detail/type_mat2x3.inl
+ ../public/glm/glm/detail/type_mat2x4.hpp
+ ../public/glm/glm/detail/type_mat2x4.inl
+ ../public/glm/glm/detail/type_mat3x2.hpp
+ ../public/glm/glm/detail/type_mat3x2.inl
+ ../public/glm/glm/detail/type_mat3x3.hpp
+ ../public/glm/glm/detail/type_mat3x3.inl
+ ../public/glm/glm/detail/type_mat3x4.hpp
+ ../public/glm/glm/detail/type_mat3x4.inl
+ ../public/glm/glm/detail/type_mat4x2.hpp
+ ../public/glm/glm/detail/type_mat4x2.inl
+ ../public/glm/glm/detail/type_mat4x3.hpp
+ ../public/glm/glm/detail/type_mat4x3.inl
+ ../public/glm/glm/detail/type_mat4x4.hpp
+ ../public/glm/glm/detail/type_mat4x4.inl
+ ../public/glm/glm/detail/type_mat4x4_simd.inl
+ ../public/glm/glm/detail/type_vec1.hpp
+ ../public/glm/glm/detail/type_vec1.inl
+ ../public/glm/glm/detail/type_vec2.hpp
+ ../public/glm/glm/detail/type_vec2.inl
+ ../public/glm/glm/detail/type_vec3.hpp
+ ../public/glm/glm/detail/type_vec3.inl
+ ../public/glm/glm/detail/type_vec4.hpp
+ ../public/glm/glm/detail/type_vec4.inl
+ ../public/glm/glm/detail/type_vec4_simd.inl
+ ../public/glm/glm/exponential.hpp
+ ../public/glm/glm/ext/matrix_double2x2.hpp
+ ../public/glm/glm/ext/matrix_double2x2_precision.hpp
+ ../public/glm/glm/ext/matrix_double2x3.hpp
+ ../public/glm/glm/ext/matrix_double2x3_precision.hpp
+ ../public/glm/glm/ext/matrix_double2x4.hpp
+ ../public/glm/glm/ext/matrix_double2x4_precision.hpp
+ ../public/glm/glm/ext/matrix_double3x2.hpp
+ ../public/glm/glm/ext/matrix_double3x2_precision.hpp
+ ../public/glm/glm/ext/matrix_double3x3.hpp
+ ../public/glm/glm/ext/matrix_double3x3_precision.hpp
+ ../public/glm/glm/ext/matrix_double3x4.hpp
+ ../public/glm/glm/ext/matrix_double3x4_precision.hpp
+ ../public/glm/glm/ext/matrix_double4x2.hpp
+ ../public/glm/glm/ext/matrix_double4x2_precision.hpp
+ ../public/glm/glm/ext/matrix_double4x3.hpp
+ ../public/glm/glm/ext/matrix_double4x3_precision.hpp
+ ../public/glm/glm/ext/matrix_double4x4.hpp
+ ../public/glm/glm/ext/matrix_double4x4_precision.hpp
+ ../public/glm/glm/ext/matrix_float2x2.hpp
+ ../public/glm/glm/ext/matrix_float2x2_precision.hpp
+ ../public/glm/glm/ext/matrix_float2x3.hpp
+ ../public/glm/glm/ext/matrix_float2x3_precision.hpp
+ ../public/glm/glm/ext/matrix_float2x4.hpp
+ ../public/glm/glm/ext/matrix_float2x4_precision.hpp
+ ../public/glm/glm/ext/matrix_float3x2.hpp
+ ../public/glm/glm/ext/matrix_float3x2_precision.hpp
+ ../public/glm/glm/ext/matrix_float3x3.hpp
+ ../public/glm/glm/ext/matrix_float3x3_precision.hpp
+ ../public/glm/glm/ext/matrix_float3x4.hpp
+ ../public/glm/glm/ext/matrix_float3x4_precision.hpp
+ ../public/glm/glm/ext/matrix_float4x2.hpp
+ ../public/glm/glm/ext/matrix_float4x2_precision.hpp
+ ../public/glm/glm/ext/matrix_float4x3.hpp
+ ../public/glm/glm/ext/matrix_float4x3_precision.hpp
+ ../public/glm/glm/ext/matrix_float4x4.hpp
+ ../public/glm/glm/ext/matrix_float4x4_precision.hpp
+ ../public/glm/glm/ext/scalar_int_sized.hpp
+ ../public/glm/glm/ext/scalar_uint_sized.hpp
+ ../public/glm/glm/ext/vector_bool2.hpp
+ ../public/glm/glm/ext/vector_bool2_precision.hpp
+ ../public/glm/glm/ext/vector_bool3.hpp
+ ../public/glm/glm/ext/vector_bool3_precision.hpp
+ ../public/glm/glm/ext/vector_bool4.hpp
+ ../public/glm/glm/ext/vector_bool4_precision.hpp
+ ../public/glm/glm/ext/vector_double2.hpp
+ ../public/glm/glm/ext/vector_double2_precision.hpp
+ ../public/glm/glm/ext/vector_double3.hpp
+ ../public/glm/glm/ext/vector_double3_precision.hpp
+ ../public/glm/glm/ext/vector_double4.hpp
+ ../public/glm/glm/ext/vector_double4_precision.hpp
+ ../public/glm/glm/ext/vector_float2.hpp
+ ../public/glm/glm/ext/vector_float2_precision.hpp
+ ../public/glm/glm/ext/vector_float3.hpp
+ ../public/glm/glm/ext/vector_float3_precision.hpp
+ ../public/glm/glm/ext/vector_float4.hpp
+ ../public/glm/glm/ext/vector_float4_precision.hpp
+ ../public/glm/glm/ext/vector_int2.hpp
+ ../public/glm/glm/ext/vector_int2_sized.hpp
+ ../public/glm/glm/ext/vector_int3.hpp
+ ../public/glm/glm/ext/vector_int3_sized.hpp
+ ../public/glm/glm/ext/vector_int4.hpp
+ ../public/glm/glm/ext/vector_int4_sized.hpp
+ ../public/glm/glm/ext/vector_uint2.hpp
+ ../public/glm/glm/ext/vector_uint2_sized.hpp
+ ../public/glm/glm/ext/vector_uint3.hpp
+ ../public/glm/glm/ext/vector_uint3_sized.hpp
+ ../public/glm/glm/ext/vector_uint4.hpp
+ ../public/glm/glm/ext/vector_uint4_sized.hpp
+ ../public/glm/glm/fwd.hpp
+ ../public/glm/glm/geometric.hpp
+ ../public/glm/glm/glm.hpp
+ ../public/glm/glm/integer.hpp
+ ../public/glm/glm/mat2x2.hpp
+ ../public/glm/glm/mat2x3.hpp
+ ../public/glm/glm/mat2x4.hpp
+ ../public/glm/glm/mat3x2.hpp
+ ../public/glm/glm/mat3x3.hpp
+ ../public/glm/glm/mat3x4.hpp
+ ../public/glm/glm/mat4x2.hpp
+ ../public/glm/glm/mat4x3.hpp
+ ../public/glm/glm/mat4x4.hpp
+ ../public/glm/glm/matrix.hpp
+ ../public/glm/glm/packing.hpp
+ ../public/glm/glm/simd/common.h
+ ../public/glm/glm/simd/exponential.h
+ ../public/glm/glm/simd/geometric.h
+ ../public/glm/glm/simd/integer.h
+ ../public/glm/glm/simd/matrix.h
+ ../public/glm/glm/simd/neon.h
+ ../public/glm/glm/simd/platform.h
+ ../public/glm/glm/trigonometric.hpp
+ ../public/glm/glm/vec2.hpp
+ ../public/glm/glm/vec3.hpp
+ ../public/glm/glm/vec4.hpp
+ ../public/glm/glm/vector_relational.hpp
+ ../public/yaml-cpp/include/yaml-cpp/binary.h
+ ../public/yaml-cpp/include/yaml-cpp/dll.h
+ ../public/yaml-cpp/include/yaml-cpp/emitter.h
+ ../public/yaml-cpp/include/yaml-cpp/emitterdef.h
+ ../public/yaml-cpp/include/yaml-cpp/emittermanip.h
+ ../public/yaml-cpp/include/yaml-cpp/emitterstyle.h
+ ../public/yaml-cpp/include/yaml-cpp/exceptions.h
+ ../public/yaml-cpp/include/yaml-cpp/mark.h
+ ../public/yaml-cpp/include/yaml-cpp/node/convert.h
+ ../public/yaml-cpp/include/yaml-cpp/node/detail/impl.h
+ ../public/yaml-cpp/include/yaml-cpp/node/detail/iterator.h
+ ../public/yaml-cpp/include/yaml-cpp/node/detail/iterator_fwd.h
+ ../public/yaml-cpp/include/yaml-cpp/node/detail/memory.h
+ ../public/yaml-cpp/include/yaml-cpp/node/detail/node.h
+ ../public/yaml-cpp/include/yaml-cpp/node/detail/node_data.h
+ ../public/yaml-cpp/include/yaml-cpp/node/detail/node_iterator.h
+ ../public/yaml-cpp/include/yaml-cpp/node/detail/node_ref.h
+ ../public/yaml-cpp/include/yaml-cpp/node/emit.h
+ ../public/yaml-cpp/include/yaml-cpp/node/impl.h
+ ../public/yaml-cpp/include/yaml-cpp/node/iterator.h
+ ../public/yaml-cpp/include/yaml-cpp/node/node.h
+ ../public/yaml-cpp/include/yaml-cpp/node/parse.h
+ ../public/yaml-cpp/include/yaml-cpp/node/ptr.h
+ ../public/yaml-cpp/include/yaml-cpp/node/type.h
+ ../public/yaml-cpp/include/yaml-cpp/noexcept.h
+ ../public/yaml-cpp/include/yaml-cpp/null.h
+ ../public/yaml-cpp/include/yaml-cpp/ostream_wrapper.h
+ ../public/yaml-cpp/include/yaml-cpp/parser.h
+ ../public/yaml-cpp/include/yaml-cpp/stlemitter.h
+ ../public/yaml-cpp/include/yaml-cpp/traits.h
+ ../public/yaml-cpp/include/yaml-cpp/yaml.h
+ D:/Code/Ray/src/PathTrace.cpp
 CMakeFiles/Ray.dir/src/PhongShadingPipeline.cpp.obj
  ../dependency/include/GLFW/glfw3.h
  ../include/BLASNode.h
@@ -4065,6 +4418,7 @@ CMakeFiles/Ray.dir/src/Pipeline.cpp.obj
  ../include/BLASNode.h
  ../include/BVH.h
  ../include/Camera.h
+ ../include/GLUtil.h
  ../include/GeometryGroupObj.h
  ../include/GroupBVHTranslator.h
  ../include/GroupObj.h
@@ -4283,6 +4637,7 @@ CMakeFiles/Ray.dir/src/PipelineFactory.cpp.obj
  ../include/Light.h
  ../include/Material.h
  ../include/ObjectNode.h
+ ../include/PathTrace.h
  ../include/PhongShadingPipeline.h
  ../include/Photon.h
  ../include/Pipeline.h
@@ -6667,6 +7022,7 @@ CMakeFiles/Ray.dir/src/Whitted.cpp.obj
  ../include/BVH.h
  ../include/Camera.h
  ../include/Dielectric.h
+ ../include/GLUtil.h
  ../include/GroupBVHTranslator.h
  ../include/GroupObj.h
  ../include/IllumModel.h

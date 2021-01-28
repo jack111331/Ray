@@ -40,6 +40,10 @@ bool Scene::readSceneInfo(const YAML::Node &node) {
                 DielectricMaterial *material = new DielectricMaterial();
                 material->readMaterialInfo(materialNode[i]);
                 m_materialTable[materialNode[i]["name"].as<std::string>()] = material;
+            } else if (materialNode[i]["type"].as<std::string>() == "area-light") {
+                AreaLight *material = new AreaLight();
+                material->readLightInfo(materialNode[i]);
+                m_materialTable[materialNode[i]["name"].as<std::string>()] = material;
             }
         }
     }

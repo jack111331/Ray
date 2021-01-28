@@ -29,6 +29,8 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "D:/Code/Ray/src/Lambertian.cpp" "D:/Code/Ray/cmake-build-debug/CMakeFiles/Ray.dir/src/Lambertian.cpp.obj"
   "D:/Code/Ray/src/Light.cpp" "D:/Code/Ray/cmake-build-debug/CMakeFiles/Ray.dir/src/Light.cpp.obj"
   "D:/Code/Ray/src/Material.cpp" "D:/Code/Ray/cmake-build-debug/CMakeFiles/Ray.dir/src/Material.cpp.obj"
+  "D:/Code/Ray/src/ONB.cpp" "D:/Code/Ray/cmake-build-debug/CMakeFiles/Ray.dir/src/ONB.cpp.obj"
+  "D:/Code/Ray/src/PathTrace.cpp" "D:/Code/Ray/cmake-build-debug/CMakeFiles/Ray.dir/src/PathTrace.cpp.obj"
   "D:/Code/Ray/src/PhongShadingPipeline.cpp" "D:/Code/Ray/cmake-build-debug/CMakeFiles/Ray.dir/src/PhongShadingPipeline.cpp.obj"
   "D:/Code/Ray/src/Photon.cpp" "D:/Code/Ray/cmake-build-debug/CMakeFiles/Ray.dir/src/Photon.cpp.obj"
   "D:/Code/Ray/src/Pipeline.cpp" "D:/Code/Ray/cmake-build-debug/CMakeFiles/Ray.dir/src/Pipeline.cpp.obj"

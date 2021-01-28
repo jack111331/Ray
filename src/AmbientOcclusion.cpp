@@ -36,7 +36,7 @@ bool AmbientOcclusionPipeline::readPipelineInfo(const YAML::Node &node) {
     return true;
 }
 
-Vec3f AmbientOcclusionModel::castRay(const Scene *scene, Ray &ray, int depth, bool debugFlag) {
+Vec3f AmbientOcclusionModel::castRay(const Scene *scene, const Ray &ray, int depth, bool debugFlag) {
     IntersectionRecord record;
     if (scene->m_group->isHit(ray, record)) {
         LightRecord lightRecord;

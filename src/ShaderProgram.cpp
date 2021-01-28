@@ -98,6 +98,11 @@ void ShaderProgram::bindSSBOBuffer(uint32_t bufferId, int location) const {
     glBindBufferBase(GL_SHADER_STORAGE_BUFFER, location, bufferId);
 }
 
+void ShaderProgram::bindImageTextureRead(uint32_t bufferId, int location) const {
+    glBindImageTexture(location, bufferId, 0, GL_FALSE, 0, GL_READ_ONLY,
+                       GL_RGBA32F);
+}
+
 void ShaderProgram::bindImageTextureWrite(uint32_t bufferId, int location) const {
     glBindImageTexture(location, bufferId, 0, GL_FALSE, 0, GL_WRITE_ONLY,
                        GL_RGBA32F);

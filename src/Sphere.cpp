@@ -8,6 +8,7 @@
 using namespace std;
 
 bool Sphere::isHit(const Ray &ray, IntersectionRecord &record, float tmin, const glm::mat4 &transformMat) const {
+    // TODO transform matrix
     double a = ray.velocity.dot(ray.velocity);
     double b = 2 * (ray.origin - m_origin).dot(ray.velocity);
     double c = (ray.origin - m_origin).dot(ray.origin - m_origin) - m_radius * m_radius;
@@ -22,6 +23,7 @@ bool Sphere::isHit(const Ray &ray, IntersectionRecord &record, float tmin, const
                     record.point = transformMat * record.point;
                     Vec3f transformedOrigin = transformMat * m_origin;
                     record.normal = (record.point - transformedOrigin).normalize();
+                    record.ffNormal = ray.velocity.dot(record.normal)<0?record.normal:-record.normal;
                     record.material = m_material;
                     return true;
                 }

@@ -36,8 +36,10 @@ bool Triangle::isHit(const Ray &ray, IntersectionRecord &record, float tmin, con
             if(m_point[0]->m_hasOther) {
                 record.normal = m_point[0]->m_normal + u * (m_point[1]->m_normal - m_point[0]->m_normal) + v * (m_point[2]->m_normal - m_point[0]->m_normal);
             } else {
-                record.normal = planeVector[0].cross(planeVector[1]).normalize();
+                record.normal = planeVector[0].cross(planeVector[1]);
             }
+            record.normal.normalize();
+            record.ffNormal = ray.velocity.dot(record.normal)<0?record.normal:-record.normal;
             auto worldToObjectMat = glm::inverse(transformMat);
             auto noShearTransformMat = glm::mat3(glm::transpose(worldToObjectMat));
             record.normal = noShearTransformMat * record.normal;

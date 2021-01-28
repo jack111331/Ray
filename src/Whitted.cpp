@@ -31,6 +31,10 @@ bool WhittedCPUPipeline::readPipelineInfo(const YAML::Node &node) {
 }
 
 void WhittedGPUPipeline::setupPipeline() {
+
+    m_screenShader = new ShaderProgram(ShaderInclude::load("resource/shader/ray_tracing_shading/screen_shading.vs"),
+                                       ShaderInclude::load("resource/shader/ray_tracing_shading/screen_shading.fs"));
+
     m_rayTracingShader = new ShaderProgram(ShaderInclude::load("resource/shader/ray_tracing_shading/whitted_tracing.cs"));
     std::vector<Vec4f> lightList;
     for(auto light: m_scene->m_lightList) {
@@ -42,9 +46,8 @@ void WhittedGPUPipeline::setupPipeline() {
     glBindBuffer(GL_SHADER_STORAGE_BUFFER, m_lightSSBO);
     glBufferData(GL_SHADER_STORAGE_BUFFER, lightList.size() * sizeof(Vec4f), lightList.data(), GL_DYNAMIC_DRAW);
 
-
     m_rayTracingShader->uniform1i("number_of_lights", lightList.size());
-
+    m_rayTracingShader->uniform1i("max_depth", m_maxDepth);
     m_rayTracingShader->bindSSBOBuffer(m_translator->m_meshIndicesSSBO, 1);
     m_rayTracingShader->bindSSBOBuffer(m_translator->m_meshVerticesSSBO, 2);
     m_rayTracingShader->bindSSBOBuffer(m_translator->m_meshNormalsSSBO, 3);
@@ -65,7 +68,7 @@ bool WhittedGPUPipeline::readPipelineInfo(const YAML::Node &node) {
     return true;
 }
 
-Vec3f WhittedModel::castRay(const Scene *scene, Ray &ray, int depth, bool debugFlag) {
+Vec3f WhittedModel::castRay(const Scene *scene, const Ray &ray, int depth, bool debugFlag) {
     IntersectionRecord record;
     if (scene->m_group->isHit(ray, record)) {
         LightRecord lightRecord;
@@ -78,15 +81,15 @@ Vec3f WhittedModel::castRay(const Scene *scene, Ray &ray, int depth, bool debugF
                     !isHit || lightDirection.length() < (testRecord.point - record.point).length());
         }
         ShadeRecord shadeRecord;
-        record.material->calculatePhong(scene, ray, record, lightRecord, shadeRecord);
+        Ray scatteredRay = record.material->calculatePhong(scene, ray, record, lightRecord, shadeRecord);
         if(debugFlag) {
             std::cout << shadeRecord.emit << std::endl;
             std::cout << shadeRecord.attenuation << std::endl;
         }
-        if(depth > m_maxDepth || !shadeRecord.isHasAttenuation()) {
+        if(depth > m_maxDepth || !shadeRecord.isHasAttenuation() || scatteredRay.velocity.nearZero()) {
             return shadeRecord.emit + shadeRecord.attenuation;
         }
-        return shadeRecord.emit + shadeRecord.attenuation * castRay(scene, ray, depth + 1, debugFlag);
+        return shadeRecord.emit + shadeRecord.attenuation * castRay(scene, scatteredRay, depth + 1, debugFlag);
     }
     return m_backgroundColor;
 }

@@ -23,6 +23,8 @@ public:
 
     void bindSSBOBuffer(uint32_t bufferId, int location) const;
 
+    void bindImageTextureRead(uint32_t bufferId, int location) const;
+
     void bindImageTextureWrite(uint32_t bufferId, int location) const;
 
     void dispatch(int x, int y, int z) const;

@@ -13,13 +13,15 @@
 
 class DielectricMaterial : public Material {
 public:
-    virtual void calculatePhong(const Scene *scene, Ray &ray, const IntersectionRecord &record, const LightRecord &shadeLightRecord, ShadeRecord &shadeRecord) const;
+    virtual Ray calculatePhong(const Scene *scene, const Ray &ray, const IntersectionRecord &record, const LightRecord &shadeLightRecord, ShadeRecord &shadeRecord) const;
 
-    virtual void calculatePhotonMapping(const Scene *scene, const PhotonMappingModel &model, Ray &ray, const IntersectionRecord &record, ShadeRecord &shadeRecord) const;
+    virtual Ray calculatePhotonMapping(const Scene *scene, const PhotonMappingModel &model, const Ray &ray, const IntersectionRecord &record, ShadeRecord &shadeRecord) const;
 
     virtual MaterialType getType() {return DIELECTRIC;}
 
     virtual bool readMaterialInfo(const YAML::Node &node);
+
+    virtual MaterialProperty getProperty();
 
     float m_constantReferenceIndex;
 

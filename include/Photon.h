@@ -46,7 +46,7 @@ public:
 
     bool photonTracing(const Scene *scene, Ray &ray, float power, int depth);
 
-    virtual Vec3f castRay(const Scene *scene, Ray &ray, int depth, bool debugFlag);
+    virtual Vec3f castRay(const Scene *scene, const Ray &ray, int depth, bool debugFlag);
 
 
     virtual std::string getModelName() const {

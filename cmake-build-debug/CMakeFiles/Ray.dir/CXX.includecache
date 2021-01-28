@@ -66,15 +66,13 @@ Utility.h
 yaml-cpp/yaml.h
 -
 
-../include/Dielectric.h
+../include/GLUtil.h
+vector
+-
+cstdint
+-
 Utility.h
 ../include/Utility.h
-Scene.h
-../include/Scene.h
-iostream
--
-Material.h
-../include/Material.h
 
 ../include/GeometryGroupObj.h
 vector
@@ -91,6 +89,8 @@ GroupObj.h
 ../include/GroupObj.h
 Lambertian.h
 ../include/Lambertian.h
+GLUtil.h
+../include/GLUtil.h
 
 ../include/GroupObj.h
 TriangleGroup.h
@@ -194,16 +194,6 @@ string
 Utility.h
 ../include/Utility.h
 
-../include/TransformObj.h
-glm/ext/matrix_float4x4.hpp
--
-Utility.h
-../include/Utility.h
-ObjectNode.h
-../include/ObjectNode.h
-TLASNode.h
-../include/TLASNode.h
-
 ../include/Triangle.h
 Utility.h
 ../include/Utility.h
@@ -235,20 +225,6 @@ stdlib.h
 -
 glm/ext/matrix_float4x4.hpp
 -
-
-../include/Whitted.h
-vector
--
-Ray.h
-../include/Ray.h
-Light.h
-../include/Light.h
-Camera.h
-../include/Camera.h
-IllumModel.h
-../include/IllumModel.h
-Pipeline.h
-../include/Pipeline.h
 
 ../public/glew/include/GL/glew.h
 cstddef
@@ -1660,12 +1636,6 @@ yaml-cpp/node/parse.h
 yaml-cpp/node/emit.h
 ../public/yaml-cpp/include/yaml-cpp/yaml-cpp/node/emit.h
 
-D:/Code/Ray/src/GroupBVHTranslator.cpp
-TransformObj.h
--
-GroupBVHTranslator.h
-D:/Code/Ray/src/GroupBVHTranslator.h
-
 D:/Code/Ray/src/Pipeline.cpp
 ShaderProgram.h
 D:/Code/Ray/src/ShaderProgram.h
@@ -1685,22 +1655,4 @@ imgui_impl_glfw.h
 D:/Code/Ray/src/imgui_impl_glfw.h
 imgui_impl_opengl3.h
 D:/Code/Ray/src/imgui_impl_opengl3.h
-
-D:/Code/Ray/src/Whitted.cpp
-Dielectric.h
--
-ShaderInclude.h
--
-GL/glew.h
--
-Lambertian.h
--
-Whitted.h
-D:/Code/Ray/src/Whitted.h
-GroupObj.h
-D:/Code/Ray/src/GroupObj.h
-ShaderProgram.h
-D:/Code/Ray/src/ShaderProgram.h
-GroupBVHTranslator.h
-D:/Code/Ray/src/GroupBVHTranslator.h
 

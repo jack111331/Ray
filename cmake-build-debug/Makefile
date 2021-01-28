@@ -1249,6 +1249,60 @@ src/Material.cpp.s:
 	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/Material.cpp.s
 .PHONY : src/Material.cpp.s
 
+src/ONB.obj: src/ONB.cpp.obj
+
+.PHONY : src/ONB.obj
+
+# target to build an object file
+src/ONB.cpp.obj:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/ONB.cpp.obj
+.PHONY : src/ONB.cpp.obj
+
+src/ONB.i: src/ONB.cpp.i
+
+.PHONY : src/ONB.i
+
+# target to preprocess a source file
+src/ONB.cpp.i:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/ONB.cpp.i
+.PHONY : src/ONB.cpp.i
+
+src/ONB.s: src/ONB.cpp.s
+
+.PHONY : src/ONB.s
+
+# target to generate assembly for a file
+src/ONB.cpp.s:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/ONB.cpp.s
+.PHONY : src/ONB.cpp.s
+
+src/PathTrace.obj: src/PathTrace.cpp.obj
+
+.PHONY : src/PathTrace.obj
+
+# target to build an object file
+src/PathTrace.cpp.obj:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/PathTrace.cpp.obj
+.PHONY : src/PathTrace.cpp.obj
+
+src/PathTrace.i: src/PathTrace.cpp.i
+
+.PHONY : src/PathTrace.i
+
+# target to preprocess a source file
+src/PathTrace.cpp.i:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/PathTrace.cpp.i
+.PHONY : src/PathTrace.cpp.i
+
+src/PathTrace.s: src/PathTrace.cpp.s
+
+.PHONY : src/PathTrace.s
+
+# target to generate assembly for a file
+src/PathTrace.cpp.s:
+	$(MAKE) -f CMakeFiles\Ray.dir\build.make CMakeFiles/Ray.dir/src/PathTrace.cpp.s
+.PHONY : src/PathTrace.cpp.s
+
 src/PhongShadingPipeline.obj: src/PhongShadingPipeline.cpp.obj
 
 .PHONY : src/PhongShadingPipeline.obj
@@ -1881,6 +1935,12 @@ help:
 	@echo ... src/Material.obj
 	@echo ... src/Material.i
 	@echo ... src/Material.s
+	@echo ... src/ONB.obj
+	@echo ... src/ONB.i
+	@echo ... src/ONB.s
+	@echo ... src/PathTrace.obj
+	@echo ... src/PathTrace.i
+	@echo ... src/PathTrace.s
 	@echo ... src/PhongShadingPipeline.obj
 	@echo ... src/PhongShadingPipeline.i
 	@echo ... src/PhongShadingPipeline.s

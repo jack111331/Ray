@@ -163,19 +163,23 @@ protected:
 
     virtual void setupGUILayout();
 
+    virtual void drawScreen();
+
     ShaderProgram *m_rayTracingShader;
+
+    ShaderProgram *m_screenShader;
 
     Vec3f m_backgroundColor = {.0f, .0f, .0f};
 
     GroupBVHTranslator *m_translator;
 
-private:
     uint32_t m_frameTextureId;
 
     uint32_t m_quadVao;
 
-    ShaderProgram *m_screenShader;
+    int m_cumulatedRay;
 
+private:
     int m_jitterSampleAmount;
 };
 

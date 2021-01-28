@@ -48,7 +48,8 @@ void Pipeline::setupEnvironment() {
 void Pipeline::setupGUIEnvironment() {
     IMGUI_CHECKVERSION();
     ImGui::CreateContext();
-    ImGuiIO& io = ImGui::GetIO(); (void)io;
+    ImGuiIO &io = ImGui::GetIO();
+    (void) io;
     //io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // Enable Keyboard Controls
     //io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
 
@@ -89,11 +90,12 @@ void CPURayTracingPipeline::setupEnvironment() {
     glBufferData(GL_ARRAY_BUFFER, sizeof(quadVertices), quadVertices, GL_STATIC_DRAW);
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), nullptr);
     glEnableVertexAttribArray(0);
-    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void *)(3 * sizeof(float)));
+    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void *) (3 * sizeof(float)));
     glEnableVertexAttribArray(1);
     glBindVertexArray(0);
 
-    m_screenShader = new ShaderProgram(ShaderInclude::load("resource/shader/ray_tracing_shading/screen_shading.vs"), ShaderInclude::load("resource/shader/ray_tracing_shading/screen_shading.fs"));
+    m_screenShader = new ShaderProgram(ShaderInclude::load("resource/shader/ray_tracing_shading/screen_shading.vs"),
+                                       ShaderInclude::load("resource/shader/ray_tracing_shading/screen_shading.fs"));
 }
 
 void CPURayTracingPipeline::pipelineLoop() {
@@ -129,7 +131,8 @@ void CPURayTracingPipeline::setupGUILayout() {
     ImGui_ImplGlfw_NewFrame();
     ImGui::NewFrame();
 
-    ImGui::Begin("Ray rendering Pipeline Window");   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
+    ImGui::Begin(
+            "Ray rendering Pipeline Window");   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
     ImGui::Text("Hello from another window!");
     ImGui::End();
 
@@ -138,7 +141,7 @@ void CPURayTracingPipeline::setupGUILayout() {
 }
 
 bool CPURayTracingPipeline::readPipelineInfo(const YAML::Node &node) {
-    if(node["jitter-sample-amount"]) {
+    if (node["jitter-sample-amount"]) {
         m_jitterSampleAmount = node["jitter-sample-amount"].as<int>();
     }
     return true;
@@ -167,13 +170,13 @@ void CPURayTracingPipeline::generateImage() {
                     currentRayOnScreen - m_camera->m_eyeCoord
             };
             m_camera->m_screen[i][j] = traceRay(ray, debugFlag);
-            for(int k = 0;k < m_jitterSampleAmount;++k) {
-                Ray perturbatedRay = {ray.origin,
-                                      ray.velocity + Util::randomInUnit() * unitHorizontalScreen +
-                                      Util::randomInUnit() * unitVerticalScreen};
+            for (int k = 0; k < m_jitterSampleAmount; ++k) {
+                Ray perturbatedRay = {m_camera->m_eyeCoord,
+                                      currentRayOnScreen - (Util::randomInUnit() * unitHorizontalScreen) -
+                                              (Util::randomInUnit() * unitVerticalScreen) - m_camera->m_eyeCoord};
                 m_camera->m_screen[i][j] += traceRay(perturbatedRay, debugFlag);
             }
-            m_camera->m_screen[i][j] /= (float)(1 + m_jitterSampleAmount);
+            m_camera->m_screen[i][j] /= (float) (1 + m_jitterSampleAmount);
         }
     }
 }
@@ -183,7 +186,7 @@ void GPURayTracingPipeline::setupEnvironment() {
 
     glGenTextures(1, &m_frameTextureId);
     glBindTexture(GL_TEXTURE_2D, m_frameTextureId);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA32F, m_camera->m_width,  m_camera->m_height, 0, GL_RGBA,
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA32F, m_camera->m_width, m_camera->m_height, 0, GL_RGBA,
                  GL_FLOAT, nullptr);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
@@ -208,17 +211,26 @@ void GPURayTracingPipeline::setupEnvironment() {
     glBufferData(GL_ARRAY_BUFFER, sizeof(quadVertices), quadVertices, GL_STATIC_DRAW);
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), nullptr);
     glEnableVertexAttribArray(0);
-    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void *)(3 * sizeof(float)));
+    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void *) (3 * sizeof(float)));
     glEnableVertexAttribArray(1);
     glBindVertexArray(0);
-
-    m_screenShader = new ShaderProgram(ShaderInclude::load("resource/shader/ray_tracing_shading/screen_shading.vs"), ShaderInclude::load("resource/shader/ray_tracing_shading/screen_shading.fs"));
 
     m_translator = new GroupBVHTranslator(m_scene);
 }
 
+void GPURayTracingPipeline::drawScreen() {
+    m_screenShader->bind();
+    glBindVertexArray(m_quadVao);
+
+    m_screenShader->uniform1i("gScreen", 0);
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, m_frameTextureId);
+    glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+}
+
 void GPURayTracingPipeline::pipelineLoop() {
     // Ray tracing
+    m_cumulatedRay = 0;
     while (!glfwWindowShouldClose(m_window)) {
         glfwPollEvents();
         glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
@@ -226,13 +238,9 @@ void GPURayTracingPipeline::pipelineLoop() {
 
         generateImage();
 
-        m_screenShader->bind();
-        glBindVertexArray(m_quadVao);
+        m_cumulatedRay++;
 
-        m_screenShader->uniform1i("gScreen", 0);
-        glActiveTexture(GL_TEXTURE0);
-        glBindTexture(GL_TEXTURE_2D, m_frameTextureId);
-        glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+        drawScreen();
 
 #ifdef GUI_SUPPORT
         setupGUILayout();
@@ -249,7 +257,8 @@ void GPURayTracingPipeline::setupGUILayout() {
     ImGui_ImplGlfw_NewFrame();
     ImGui::NewFrame();
 
-    ImGui::Begin("Ray rendering Pipeline Window");   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
+    ImGui::Begin(
+            "Ray rendering Pipeline Window");   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
     ImGui::Text("Hello from another window!");
     ImGui::End();
 
@@ -258,7 +267,7 @@ void GPURayTracingPipeline::setupGUILayout() {
 }
 
 bool GPURayTracingPipeline::readPipelineInfo(const YAML::Node &node) {
-    if(node["jitter-sample-amount"]) {
+    if (node["jitter-sample-amount"]) {
         m_jitterSampleAmount = node["jitter-sample-amount"].as<int>();
     }
     return true;
@@ -283,13 +292,17 @@ void GPURayTracingPipeline::generateImage() {
 
     m_rayTracingShader->bind();
     // random vector
-    m_rayTracingShader->uniform3f("random_vector", ((float)rand() / (RAND_MAX)), ((float)rand() / (RAND_MAX)), ((float)rand() / (RAND_MAX)));
-    m_rayTracingShader->uniform3f("initial_pos", m_camera->m_eyeCoord.x, m_camera->m_eyeCoord.y, m_camera->m_eyeCoord.z);
+    m_rayTracingShader->uniform3f("random_vector", Util::randomInUnit(), Util::randomInUnit(), Util::randomInUnit());
+    m_rayTracingShader->uniform3f("initial_pos", m_camera->m_eyeCoord.x, m_camera->m_eyeCoord.y,
+                                  m_camera->m_eyeCoord.z);
     m_rayTracingShader->uniform3f("initial_vel", leftUpper.x, leftUpper.y, leftUpper.z);
-    m_rayTracingShader->uniform3f("horizon_unit", unitHorizontalScreen.x, unitHorizontalScreen.y, unitHorizontalScreen.z);
+    m_rayTracingShader->uniform3f("horizon_unit", unitHorizontalScreen.x, unitHorizontalScreen.y,
+                                  unitHorizontalScreen.z);
     m_rayTracingShader->uniform3f("vertical_unit", unitVerticalScreen.x, unitVerticalScreen.y, unitVerticalScreen.z);
     m_rayTracingShader->uniform1i("top_level_bvh_index", m_translator->m_tlasStartNodeIndex);
     glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, m_frameTextureId);
+    m_rayTracingShader->uniform1i("input_color", 0);
     m_rayTracingShader->bindImageTextureWrite(m_frameTextureId, 0);
 
     m_rayTracingShader->bindSSBOBuffer(m_translator->m_bvhSSBO, 0);
@@ -303,7 +316,8 @@ void LocalRenderingPipeline::setupGUILayout() {
     ImGui_ImplGlfw_NewFrame();
     ImGui::NewFrame();
 
-    ImGui::Begin("Local rendering Pipeline Window");   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
+    ImGui::Begin(
+            "Local rendering Pipeline Window");   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
     ImGui::Text("Hello from another window!");
     ImGui::End();
 

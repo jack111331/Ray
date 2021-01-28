@@ -12,11 +12,24 @@
 class LambertianMaterial : public Material {
 public:
 
-    virtual void calculatePhong(const Scene *scene, Ray &ray, const IntersectionRecord &record, const LightRecord &shadeLightRecord, ShadeRecord &shadeRecord) const;
-    virtual void calculatePhotonMapping(const Scene *scene, const PhotonMappingModel &photonMappingModel, Ray &ray,
+    virtual Ray
+    calculatePhong(const Scene *scene, const Ray &ray, const IntersectionRecord &record, const LightRecord &shadeLightRecord,
+                   ShadeRecord &shadeRecord) const;
+
+    virtual Ray calculatePhotonMapping(const Scene *scene, const PhotonMappingModel &photonMappingModel, const Ray &ray,
                                         const IntersectionRecord &record, ShadeRecord &shadeRecord) const;
-    virtual MaterialType getType() {return LAMBERTIAN;}
+
+    virtual Vec3f
+    calculateScatter(const Ray &ray, const IntersectionRecord &record, ShadeRecord &shadeRecord, float &pdf) const;
+
+    virtual float calculateScatterPdf(const Ray &ray, const IntersectionRecord &record,
+                                      const Vec3f &scatteredDirection) const;
+
+    virtual MaterialType getType() { return LAMBERTIAN; }
+
     virtual bool readMaterialInfo(const YAML::Node &node);
+
+    virtual MaterialProperty getProperty();
 
 
     Vec3f m_diffuseColor = {.0f, .0f, .0f};

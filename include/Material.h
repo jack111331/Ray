@@ -22,11 +22,30 @@ public:
         AREALIGHT,
         NONE
     };
+
+    struct MaterialProperty {
+        uint32_t type;
+        uint32_t padding[3];
+        Vec4f param0;
+        Vec4f param1;
+        Vec4f param2;
+        Vec4f param3;
+        Vec4f param4;
+    };
+
     // return value is for one hit and end, shadeRecord is for following scatter
-    virtual void calculatePhong(const Scene *scene, Ray &ray, const IntersectionRecord &record, const LightRecord &shadeLightRecord, ShadeRecord &shadeRecord) const = 0;
-    virtual void calculatePhotonMapping(const Scene *scene, const PhotonMappingModel &photonMappingModel, Ray &ray, const IntersectionRecord &record, ShadeRecord &shadeRecord) const = 0;
+    virtual Ray calculatePhong(const Scene *scene, const Ray &ray, const IntersectionRecord &record, const LightRecord &shadeLightRecord, ShadeRecord &shadeRecord) const = 0;
+
+    virtual Ray calculatePhotonMapping(const Scene *scene, const PhotonMappingModel &photonMappingModel, const Ray &ray, const IntersectionRecord &record, ShadeRecord &shadeRecord) const = 0;
+
+    virtual Vec3f calculateScatter(const Ray &ray, const IntersectionRecord &record, ShadeRecord &shadeRecord, float &pdf) const {}
+
+    virtual float calculateScatterPdf(const Ray &ray, const IntersectionRecord &record,
+                                      const Vec3f &scatteredDirection) const {}
 
     virtual MaterialType getType() {return NONE;}
+
+    virtual MaterialProperty getProperty() = 0;
 
     virtual bool readMaterialInfo(const YAML::Node &node) {return true;};
 

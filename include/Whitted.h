@@ -36,7 +36,7 @@ private:
 
 class WhittedModel : public IlluminationModel {
 public:
-    virtual Vec3f castRay(const Scene *scene, Ray &ray, int depth, bool debugFlag);
+    virtual Vec3f castRay(const Scene *scene, const Ray &ray, int depth, bool debugFlag);
 
     virtual std::string getModelName() const {
         return "Whitted";
