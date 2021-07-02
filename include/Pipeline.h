@@ -175,12 +175,14 @@ protected:
 
     uint32_t m_frameTextureId;
 
+    uint32_t m_randomTextureId[128];
+
     uint32_t m_quadVao;
 
     int m_cumulatedRay;
 
-private:
     int m_jitterSampleAmount;
+
 };
 
 class LocalRenderingPipeline : public Pipeline {

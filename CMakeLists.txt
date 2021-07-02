@@ -114,6 +114,7 @@ list(APPEND SOURCE_LIST
         src/TriangleGroup.cpp
         src/Utility.cpp
         src/Whitted.cpp
+        src/Timer.cpp
 
         ${IMGUI_SOURCE_LIST}
         )
@@ -160,6 +161,7 @@ list(APPEND HEADER_LIST
         include/Triangle.h
         include/TriangleGroup.h
         include/Whitted.h
+        include/Timer.h
 
         include/OBJ_Loader.h
         include/stb_image.h

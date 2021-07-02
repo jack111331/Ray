@@ -10,6 +10,8 @@
 #include "ShaderProgram.h"
 #include "GroupBVHTranslator.h"
 
+#include <random>
+
 void PathTraceCPUPipeline::setupPipeline() {
     PathTraceModel *model = new PathTraceModel();
     model->setupBackgroundColor(m_backgroundColor);
@@ -43,6 +45,21 @@ void PathTraceGPUPipeline::setupPipeline() {
     m_rayTracingShader->bindSSBOBuffer(m_lightSSBO, 6);
     m_rayTracingShader->bindSSBOBuffer(m_translator->m_materialSSBO, 7);
     // TODO bind material
+
+    // generate random texture
+    glGenTextures(m_jitterSampleAmount, m_randomTextureId);
+
+
+    for(int i = 0;i < m_jitterSampleAmount; ++i) {
+        glBindTexture(GL_TEXTURE_2D, m_randomTextureId[i]);
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_R32UI, m_camera->m_width, m_camera->m_height, 0, GL_RED,
+                     GL_UNSIGNED_INT, nullptr);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    }
+    glBindTexture(GL_TEXTURE_2D, 0);
 
 }
 

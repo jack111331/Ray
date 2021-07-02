@@ -14,7 +14,7 @@ ShaderProgram::ShaderProgram(const ShaderInclude::ShaderSource &computeShaderSou
     glLinkProgram(m_programId);
     int success = 0;
     glGetProgramiv(m_programId, GL_LINK_STATUS, &success);
-    if(success == GL_FALSE) {
+    if (success == GL_FALSE) {
         std::string errorMsg("Error while linking program\n");
         int infoLogSize = 0;
         glGetProgramiv(m_programId, GL_INFO_LOG_LENGTH, &infoLogSize);
@@ -29,7 +29,8 @@ ShaderProgram::ShaderProgram(const ShaderInclude::ShaderSource &computeShaderSou
     }
 }
 
-ShaderProgram::ShaderProgram(const ShaderInclude::ShaderSource &vertexShaderSource, const ShaderInclude::ShaderSource &fragmentShaderSource) {
+ShaderProgram::ShaderProgram(const ShaderInclude::ShaderSource &vertexShaderSource,
+                             const ShaderInclude::ShaderSource &fragmentShaderSource) {
     m_programId = glCreateProgram();
 
     addShader(GL_VERTEX_SHADER, vertexShaderSource);
@@ -38,7 +39,7 @@ ShaderProgram::ShaderProgram(const ShaderInclude::ShaderSource &vertexShaderSour
     glLinkProgram(m_programId);
     int success = 0;
     glGetProgramiv(m_programId, GL_LINK_STATUS, &success);
-    if(success == GL_FALSE) {
+    if (success == GL_FALSE) {
         std::string errorMsg("Error while linking program\n");
         int infoLogSize = 0;
         glGetProgramiv(m_programId, GL_INFO_LOG_LENGTH, &infoLogSize);
@@ -54,7 +55,9 @@ ShaderProgram::ShaderProgram(const ShaderInclude::ShaderSource &vertexShaderSour
 
 }
 
-ShaderProgram::ShaderProgram(const ShaderInclude::ShaderSource &vertexShaderSource, const ShaderInclude::ShaderSource &geometryShaderSource, const ShaderInclude::ShaderSource &fragmentShaderSource) {
+ShaderProgram::ShaderProgram(const ShaderInclude::ShaderSource &vertexShaderSource,
+                             const ShaderInclude::ShaderSource &geometryShaderSource,
+                             const ShaderInclude::ShaderSource &fragmentShaderSource) {
     m_programId = glCreateProgram();
 
     addShader(GL_VERTEX_SHADER, vertexShaderSource);
@@ -64,7 +67,7 @@ ShaderProgram::ShaderProgram(const ShaderInclude::ShaderSource &vertexShaderSour
     glLinkProgram(m_programId);
     int success = 0;
     glGetProgramiv(m_programId, GL_LINK_STATUS, &success);
-    if(success == GL_FALSE) {
+    if (success == GL_FALSE) {
         std::string errorMsg("Error while linking program\n");
         int infoLogSize = 0;
         glGetProgramiv(m_programId, GL_INFO_LOG_LENGTH, &infoLogSize);
@@ -108,31 +111,48 @@ void ShaderProgram::bindImageTextureWrite(uint32_t bufferId, int location) const
                        GL_RGBA32F);
 }
 
-void ShaderProgram::dispatch(int x, int y, int z) const {
-    glDispatchCompute(x, y, z);
-    glMemoryBarrier(GL_SHADER_STORAGE_BARRIER_BIT);
+void ShaderProgram::bindImageTextureWriteR32Ui(uint32_t bufferId, int location) const {
+    glBindImageTexture(location, bufferId, 0, GL_FALSE, 0, GL_WRITE_ONLY,
+                       GL_R32UI);
 }
 
-void ShaderProgram::uniformMat4f(const char* uniformName, const glm::mat4 &mat) const {
+void ShaderProgram::dispatch(int x, int y, int z) const {
+    glMemoryBarrier(GL_SHADER_STORAGE_BARRIER_BIT | GL_SHADER_IMAGE_ACCESS_BARRIER_BIT);
+    glDispatchCompute(x, y, z);
+}
+
+void ShaderProgram::uniformMat4f(const char *uniformName, const glm::mat4 &mat) const {
     glUniformMatrix4fv(glGetUniformLocation(m_programId, uniformName), 1, GL_FALSE, &mat[0][0]);
 }
 
-void ShaderProgram::uniform3f(const char* uniformName, float val[]) const {
+void ShaderProgram::uniform3f(const char *uniformName, float val[]) const {
     glUniform3f(glGetUniformLocation(m_programId, uniformName), val[0], val[1], val[2]);
 }
 
-void ShaderProgram::uniform3f(const char* uniformName, float val0, float val1, float val2) const {
+void ShaderProgram::uniform3f(const char *uniformName, float val0, float val1, float val2) const {
     glUniform3f(glGetUniformLocation(m_programId, uniformName), val0, val1, val2);
+}
+
+void ShaderProgram::uniform3f(const char *uniformName, const Vec3f &val) const {
+    glUniform3f(glGetUniformLocation(m_programId, uniformName), val.x, val.y, val.z);
 }
 
 void ShaderProgram::uniform1f(const char *uniformName, float val) const {
     glUniform1f(glGetUniformLocation(m_programId, uniformName), val);
 }
 
-void ShaderProgram::uniform1i(const char* uniformName, int val) const {
+void ShaderProgram::uniform1i(const char *uniformName, int val) const {
     glUniform1i(glGetUniformLocation(m_programId, uniformName), val);
 }
 
-void ShaderProgram::uniformBlockBind(const char* uniformName, int bindPoint) {
+void ShaderProgram::uniform1iv(const char *uniformName, int num, int val[]) const {
+    glUniform1iv(glGetUniformLocation(m_programId, uniformName), num, val);
+}
+
+void ShaderProgram::uniform1uiv(const char *uniformName, int num, uint32_t val[]) const {
+    glUniform1uiv(glGetUniformLocation(m_programId, uniformName), num, val);
+}
+
+void ShaderProgram::uniformBlockBind(const char *uniformName, int bindPoint) {
     glUniformBlockBinding(m_programId, glGetUniformBlockIndex(m_programId, uniformName), bindPoint);
 }

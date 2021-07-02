@@ -6,6 +6,9 @@
 #include <GL/glew.h>
 #include "Pipeline.h"
 #include <Lambertian.h>
+#include <Timer.h>
+#include <unistd.h>
+#include <random>
 #include "GeometryGroupObj.h"
 #include "GroupBVHTranslator.h"
 #include "imgui.h"
@@ -173,7 +176,7 @@ void CPURayTracingPipeline::generateImage() {
             for (int k = 0; k < m_jitterSampleAmount; ++k) {
                 Ray perturbatedRay = {m_camera->m_eyeCoord,
                                       currentRayOnScreen - (Util::randomInUnit() * unitHorizontalScreen) -
-                                              (Util::randomInUnit() * unitVerticalScreen) - m_camera->m_eyeCoord};
+                                      (Util::randomInUnit() * unitVerticalScreen) - m_camera->m_eyeCoord};
                 m_camera->m_screen[i][j] += traceRay(perturbatedRay, debugFlag);
             }
             m_camera->m_screen[i][j] /= (float) (1 + m_jitterSampleAmount);
@@ -231,14 +234,25 @@ void GPURayTracingPipeline::drawScreen() {
 void GPURayTracingPipeline::pipelineLoop() {
     // Ray tracing
     m_cumulatedRay = 0;
+
+    Timer timer;
+    const float RESTRICT_FRAMERATE = 1.f;
+    const float framePerMs = 1000 / RESTRICT_FRAMERATE;
     while (!glfwWindowShouldClose(m_window)) {
         glfwPollEvents();
+
+        timer.updateCurrentTime();
         glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         generateImage();
 
-        m_cumulatedRay++;
+        float diffMs = timer.calculateDiffMilliSecondTime();
+        if (diffMs < framePerMs) {
+//            std::cout << diffMs << " " << framePerMs << std::endl;
+            usleep(framePerMs - diffMs);
+        }
+        m_cumulatedRay += m_jitterSampleAmount;
 
         drawScreen();
 
@@ -293,22 +307,38 @@ void GPURayTracingPipeline::generateImage() {
     m_rayTracingShader->bind();
     // random vector
     m_rayTracingShader->uniform3f("random_vector", Util::randomInUnit(), Util::randomInUnit(), Util::randomInUnit());
-    m_rayTracingShader->uniform3f("initial_pos", m_camera->m_eyeCoord.x, m_camera->m_eyeCoord.y,
-                                  m_camera->m_eyeCoord.z);
-    m_rayTracingShader->uniform3f("initial_vel", leftUpper.x, leftUpper.y, leftUpper.z);
-    m_rayTracingShader->uniform3f("horizon_unit", unitHorizontalScreen.x, unitHorizontalScreen.y,
-                                  unitHorizontalScreen.z);
-    m_rayTracingShader->uniform3f("vertical_unit", unitVerticalScreen.x, unitVerticalScreen.y, unitVerticalScreen.z);
+    m_rayTracingShader->uniform3f("initial_pos", m_camera->m_eyeCoord);
+    m_rayTracingShader->uniform3f("initial_vel", leftUpper);
+    m_rayTracingShader->uniform3f("horizon_unit", unitHorizontalScreen);
+    m_rayTracingShader->uniform3f("vertical_unit", unitVerticalScreen);
     m_rayTracingShader->uniform1i("top_level_bvh_index", m_translator->m_tlasStartNodeIndex);
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, m_frameTextureId);
-    m_rayTracingShader->uniform1i("input_color", 0);
+    glTexBuffer(GL_TEXTURE_2D, GL_RGBA32F, m_frameTextureId);
     m_rayTracingShader->bindImageTextureWrite(m_frameTextureId, 0);
+    std::vector<uint32_t> randomNumberList(m_camera->m_width * m_camera->m_height * m_jitterSampleAmount, 0);
+    std::random_device randomDevice;   // non-deterministic generator
+    std::mt19937 rNGGenerator(randomDevice());
+
+    for(int i = 0;i < m_jitterSampleAmount; ++i) {
+        for(int j = 0;j < randomNumberList.size(); ++j) {
+            randomNumberList[j] = rNGGenerator();
+        }
+        glActiveTexture(GL_TEXTURE0 + i + 1);
+        glBindTexture(GL_TEXTURE_2D, m_randomTextureId[i]);
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_R32UI, m_camera->m_width, m_camera->m_height, 0, GL_RED,
+                     GL_UNSIGNED_INT, randomNumberList.data());
+        glTexBuffer(GL_TEXTURE_2D, GL_R32UI, m_randomTextureId[i]);
+        m_rayTracingShader->bindImageTextureWriteR32Ui(m_randomTextureId[i], i+1);
+    }
+    m_rayTracingShader->uniform1uiv("init_random_seed", m_jitterSampleAmount, m_randomTextureId);
+    m_rayTracingShader->uniform1i("input_color", 0);
+    m_rayTracingShader->uniform1i("sample_per_iteration", m_jitterSampleAmount); // TODO need to refactor name to sample_per_iteration
 
     m_rayTracingShader->bindSSBOBuffer(m_translator->m_bvhSSBO, 0);
     m_rayTracingShader->bindSSBOBuffer(m_translator->m_transformSSBO, 4);
 
-    m_rayTracingShader->dispatch(m_camera->m_width, m_camera->m_height, 1);
+    m_rayTracingShader->dispatch(m_camera->m_width, m_camera->m_height);
 }
 
 void LocalRenderingPipeline::setupGUILayout() {

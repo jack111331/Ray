@@ -2,6 +2,7 @@
 // Created by Edge on 2020/10/14.
 //
 
+#include <time.h>
 #include "Utility.h"
 
 namespace Util {
@@ -12,6 +13,7 @@ namespace Util {
     }
 
     float randomInUnit() {
+        srand(time(nullptr));
         return rand() / (RAND_MAX + 1.0f);
     }
 
