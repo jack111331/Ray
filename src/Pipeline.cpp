@@ -7,8 +7,6 @@
 #include "Pipeline.h"
 #include <Lambertian.h>
 #include <Timer.h>
-#include <unistd.h>
-
 #ifdef __MINGW32__
 #include <unistd.h>
 #else
