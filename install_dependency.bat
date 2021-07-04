@@ -1,4 +1,3 @@
-git submodule update
 mkdir dependency
 cd public
 REM It may need you with system priviledge
@@ -10,8 +9,8 @@ cd yaml-cpp
 mkdir build
 cd build
 REM Generate building YAML-cpp necessary files and build it as dynamic shared library
-cmake -G "CodeBlocks - MinGW Makefiles" -DYAML_BUILD_SHARED_LIBS=ON ../
-cmake --build .
+cmake -DYAML_BUILD_SHARED_LIBS=ON ../
+cmake --build . --config Release
 cmake --install . --prefix ../../../dependency
 cd ..
 rm -rf build
@@ -29,7 +28,7 @@ cd glfw
 mkdir build
 cd build
 REM Generate building GLFW necessary files and build it as dynamic shared library
-cmake -G "CodeBlocks - MinGW Makefiles" -DBUILD_SHARED_LIBS=ON ../
-cmake --build .
+cmake -DBUILD_SHARED_LIBS=ON ../
+cmake --build . --config Release
 cmake --install . --prefix ../../../dependency
 rm -rf build

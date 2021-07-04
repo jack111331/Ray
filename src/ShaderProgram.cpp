@@ -84,7 +84,7 @@ ShaderProgram::~ShaderProgram() {
 }
 
 
-ShaderProgram &ShaderProgram::addShader(uint32_t shaderType, const ShaderInclude::ShaderSource &source) {
+void ShaderProgram::addShader(uint32_t shaderType, const ShaderInclude::ShaderSource &source) {
     Shader shader(source, shaderType);
     glAttachShader(m_programId, shader.m_shaderId);
     // TODO test delete after attach and before compile

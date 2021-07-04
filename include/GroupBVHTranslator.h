@@ -127,12 +127,12 @@ public:
 private:
     void traverseInitGroupFirstStage(ObjectNode *node);
 
-    int traverseInitBLASGroupSecondStage(ObjectNode *node, ObjectNode *rightNode,
+    void traverseInitBLASGroupSecondStage(ObjectNode *node, ObjectNode *rightNode,
                                          const glm::mat4 &transformMat = glm::mat4(1.0f));
 
-    int traverseInitTLASGroupSecondStage(ObjectNode *node, ObjectNode *rightNode);
+    void traverseInitTLASGroupSecondStage(ObjectNode *node, ObjectNode *rightNode);
 
-    int traverseInitMeshNode(OctreeNode *node, OctreeNode *rightNode, int meshStartIndices);
+    void traverseInitMeshNode(OctreeNode *node, OctreeNode *rightNode, int meshStartIndices);
 
     void reduceNode(int nodeIdx);
 

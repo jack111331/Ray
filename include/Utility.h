@@ -20,10 +20,12 @@ public:
 
     friend std::istream &operator>>(std::istream &is, Vec3f &velocity) {
         is >> velocity.x >> velocity.y >> velocity.z;
+        return is;
     }
 
     friend std::ostream &operator<<(std::ostream &os, const Vec3f &velocity) {
         os << "(" << velocity.x << ", " << velocity.y << ", " << velocity.z << ")";
+        return os;
     }
 
     Vec3f &operator+=(const Vec3f &rhs) {

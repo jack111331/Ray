@@ -7,7 +7,8 @@
 #include "Pipeline.h"
 #include <Lambertian.h>
 #include <Timer.h>
-#include <unistd.h>
+#include <thread>
+#include <chrono>
 #include <random>
 #include "GeometryGroupObj.h"
 #include "GroupBVHTranslator.h"
@@ -256,7 +257,8 @@ void GPURayTracingPipeline::pipelineLoop() {
         float diffMs = timer.calculateDiffMilliSecondTime();
         if (diffMs < framePerMs) {
 //            std::cout << diffMs << " " << framePerMs << std::endl;
-            usleep(framePerMs - diffMs);
+            std::this_thread::sleep_for(std::chrono::milliseconds(static_cast<int>(framePerMs - diffMs)));
+//            usleep();
         }
         m_cumulatedRay += m_SamplePerIteration;
 

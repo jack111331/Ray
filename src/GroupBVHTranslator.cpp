@@ -20,7 +20,7 @@ void GroupBVHTranslator::traverseInitGroupFirstStage(ObjectNode *node) {
     }
 }
 
-int GroupBVHTranslator::traverseInitBLASGroupSecondStage(ObjectNode *node, ObjectNode *rightNode,
+void GroupBVHTranslator::traverseInitBLASGroupSecondStage(ObjectNode *node, ObjectNode *rightNode,
                                                          const glm::mat4 &transformMat) {
     if (node->getTypeInTwoLevelBVH() == ObjectNode::TwoLevelBVHType::TLAS) {
         TLASNode *tlasNode = (TLASNode *) node;
@@ -69,7 +69,7 @@ int GroupBVHTranslator::traverseInitBLASGroupSecondStage(ObjectNode *node, Objec
     }
 }
 
-int GroupBVHTranslator::traverseInitTLASGroupSecondStage(ObjectNode *node, ObjectNode *rightNode) {
+void GroupBVHTranslator::traverseInitTLASGroupSecondStage(ObjectNode *node, ObjectNode *rightNode) {
     if (node->getTypeInTwoLevelBVH() == ObjectNode::TwoLevelBVHType::TLAS) {
         TLASNode *tlasNode = (TLASNode *) node;
 
@@ -113,7 +113,7 @@ int GroupBVHTranslator::traverseInitTLASGroupSecondStage(ObjectNode *node, Objec
     }
 }
 
-int GroupBVHTranslator::traverseInitMeshNode(OctreeNode *node, OctreeNode *rightNode, int meshStartIndices) {
+void GroupBVHTranslator::traverseInitMeshNode(OctreeNode *node, OctreeNode *rightNode, int meshStartIndices) {
     node->m_inTwoLevelBVHId = m_curMesh++;
 
     if (node->m_isLeaf) {

@@ -38,10 +38,10 @@ public:
 
     virtual Ray calculatePhotonMapping(const Scene *scene, const PhotonMappingModel &photonMappingModel, const Ray &ray, const IntersectionRecord &record, ShadeRecord &shadeRecord) const = 0;
 
-    virtual Vec3f calculateScatter(const Ray &ray, const IntersectionRecord &record, ShadeRecord &shadeRecord, float &pdf) const {}
+    virtual Vec3f calculateScatter(const Ray &ray, const IntersectionRecord &record, ShadeRecord &shadeRecord, float &pdf) const {return {};}
 
     virtual float calculateScatterPdf(const Ray &ray, const IntersectionRecord &record,
-                                      const Vec3f &scatteredDirection) const {}
+                                      const Vec3f &scatteredDirection) const {return 0.0f;}
 
     virtual MaterialType getType() {return NONE;}
 

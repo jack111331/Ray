@@ -21,7 +21,7 @@ public:
 
     virtual ~ShaderProgram();
 
-    ShaderProgram &addShader(uint32_t shaderType, const ShaderInclude::ShaderSource &shaderSource);
+    void addShader(uint32_t shaderType, const ShaderInclude::ShaderSource &shaderSource);
 
     void bind() const;
 
