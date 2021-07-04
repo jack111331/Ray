@@ -1,0 +1,99 @@
+model:
+  type: gpu-ray-tracing
+  pipeline: path-trace
+  jitter-sample-amount: 100
+  max-depth: 100
+
+scene:
+  material:
+    - name: lambertian.red
+      type: lambertian
+      ambient-color: [0.3, 0.3, 0.3]
+      diffuse-color: [0.8, 0.2, 0.2]
+      specular-color: [0.07, 0.03, 0.1]
+      specular-exp: 0.0
+      roughness: 0.0
+    - name: lambertian.green
+      type: lambertian
+      ambient-color: [0.3, 0.3, 0.3]
+      diffuse-color: [0.2, 0.8, 0.2]
+      specular-color: [0.03, 0.07, 0.1]
+      specular-exp: 0.0
+      roughness: 0.0
+    - name: lambertian.white
+      type: lambertian
+      ambient-color: [0.3, 0.3, 0.3]
+      diffuse-color: [0.5, 0.5, 0.5]
+      specular-color: [0.05, 0.05, 0.05]
+      specular-exp: 0.0
+      roughness: 0.0
+    - name: area.light.1
+      type: area-light
+      position: [-1.0, 2.5, 0.0]
+      color: [20.0, 20.0, 20.0]
+      u-direction: [0.0, 0.0, 4.0]
+      v-direction: [2.0, 0.0, 0.0]
+  mesh:
+    - name: box.left
+      type: obj
+      material: lambertian.green
+      filename: resource/model/cornell/box_left.obj
+    - name: box.right
+      type: obj
+      material: lambertian.red
+      filename: resource/model/cornell/box_right.obj
+    - name: box.top
+      type: obj
+      material: lambertian.white
+      filename: resource/model/cornell/box_top.obj
+    - name: box.bottom
+      type: obj
+      material: lambertian.white
+      filename: resource/model/cornell/box_bottom.obj
+    - name: box.front
+      type: obj
+      material: lambertian.white
+      filename: resource/model/cornell/box_front.obj
+    - name: box.back
+      type: obj
+      material: lambertian.white
+      filename: resource/model/cornell/box_back.obj
+    - name: monkey
+      type: obj
+      material: lambertian.white
+      filename: resource/model/cornell/monkey.obj
+    - name: area.light.1
+      type: triangle-group
+      vertices:
+        - [-1.0, 2.5, 0.0]
+        - [1.0, 2.5, 0.0]
+        - [1.0, 2.5, 4.0]
+        - [-1.0, 2.5, 4.0]
+      individual_triangle: true
+      bvh_acceleration: true
+      triangles:
+        - name: area.light.up.1
+          material: area.light.1
+          indices: [0, 1, 2]
+        - name: area.light.up.2
+          material: area.light.1
+          indices: [0, 2, 3]
+  object:
+    - group:
+      - type: transform
+        orientation-normal: [0.0, 1.0, 0.0]
+        geometry-group:
+          geometry:
+            - instance-name: Cube.001
+            - instance-name: Cube.002
+            - instance-name: Cube.003
+            - instance-name: Cube.004
+            - instance-name: Cube.005
+            - instance-name: Cube.006
+            - instance-name: area.light.1
+viewer:
+  position: [0.0, 0.0, 0.1]
+  direction: [0.0, 0.0, 1.0]
+  up: [0.0, 1.0, 0.0]
+  FOV: 45
+  resolution: [800, 800]

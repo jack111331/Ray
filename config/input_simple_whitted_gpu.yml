@@ -1,0 +1,70 @@
+model:
+  type: gpu-ray-tracing
+  pipeline: whitted
+  jitter-sample-amount: 0
+  max-depth: 1
+
+scene:
+  light:
+    - name: light.1
+      type: point-light
+      position: [0.0, 0.0, 0.0]
+      color: [0.7, 0.7, 0.7]
+#    area-light:
+  material:
+    - name: lambertian.red
+      type: lambertian
+      ambient-color: [0.3, 0.3, 0.3]
+      diffuse-color: [0.8, 0.2, 0.2]
+      specular-color: [0.07, 0.03, 0.1]
+      specular-exp: 0.0
+      roughness: 0.0
+    - name: lambertian.green
+      type: lambertian
+      ambient-color: [0.3, 0.3, 0.3]
+      diffuse-color: [0.2, 0.8, 0.2]
+      specular-color: [0.03, 0.07, 0.1]
+      specular-exp: 0.0
+      roughness: 0.0
+    - name: lambertian.white
+      type: lambertian
+      ambient-color: [0.3, 0.3, 0.3]
+      diffuse-color: [0.5, 0.5, 0.5]
+      specular-color: [0.05, 0.05, 0.05]
+      specular-exp: 0.0
+      roughness: 0.0
+    - name: dielectric.1
+      type: dielectric
+      reference-index: 0.8
+  mesh:
+    - name: box.main
+      type: obj
+      material: lambertian.white
+      filename: resource/model/cornell/box_main.obj
+    - name: box.left
+      type: obj
+      material: lambertian.green
+      filename: resource/model/cornell/box_left.obj
+    - name: box.right
+      type: obj
+      material: lambertian.red
+      filename: resource/model/cornell/box_right.obj
+    - name: monkey
+      type: obj
+      material: dielectric.1
+      filename: resource/model/cornell/monkey.obj
+  object:
+    - group:
+      - type: geometry-group
+        geometry:
+          - instance-name: Cube.001
+          - instance-name: Cube.002
+          - instance-name: Cube.003
+          - instance-name: Suzanne.001
+
+viewer:
+  position: [0.0, 0.0, 0.1]
+  direction: [0.0, 0.0, 1.0]
+  up: [0.0, 1.0, 0.0]
+  FOV: 45
+  resolution: [800, 800]

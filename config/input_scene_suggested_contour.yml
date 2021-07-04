@@ -1,0 +1,53 @@
+model:
+  type: local-rendering
+  pipeline: suggested-contour
+
+scene:
+  light:
+    - name: light.1
+      type: point-light
+      position: [0.0, 5.9, 8.5]
+      color: [0.7, 0.7, 0.7]
+#    area-light:
+  material:
+    - name: lambertian.red
+      type: lambertian
+      ambient-color: [0.0, 0.0, 0.0]
+      diffuse-color: [1.0, 0.2, 0.2]
+      specular-color: [0.07, 0.03, 0.1]
+      specular-exp: 0.0
+      roughness: 0.0
+    - name: lambertian.green
+      type: lambertian
+      ambient-color: [0.0, 0.0, 0.0]
+      diffuse-color: [0.2, 1.0, 0.2]
+      specular-color: [0.03, 0.07, 0.1]
+      specular-exp: 0.0
+      roughness: 0.0
+    - name: lambertian.white
+      type: lambertian
+      ambient-color: [0.0, 0.0, 0.0]
+      diffuse-color: [0.5, 0.5, 0.5]
+      specular-color: [0.05, 0.05, 0.05]
+      specular-exp: 0.0
+      roughness: 0.0
+    - name: dielectric.ball.1
+      type: dielectric
+      reference-index: 0.7
+
+  mesh:
+    - name: fertility
+      type: obj
+      filename: resource/model/fertility_2.obj
+  object:
+    - group:
+      - type: geometry-group
+        geometry:
+          # Bugged
+          - instance-name: fertility
+viewer:
+  position: [0.0, 2.0, 0.1]
+  direction: [0.0, -1.0, 1.0]
+  up: [0.0, 1.0, 0.0]
+  FOV: 45
+  resolution: [800, 800]

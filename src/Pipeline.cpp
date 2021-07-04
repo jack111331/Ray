@@ -313,9 +313,9 @@ void GPURayTracingPipeline::generateImage() {
             randomNumberList[j] = rNGGenerator();
         }
         glBindTexture(GL_TEXTURE_2D, m_randomTextureId[i]);
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_R32UI, m_camera->m_width, m_camera->m_height, 0, GL_RED_INTEGER,
+        glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, m_camera->m_width, m_camera->m_height, GL_RED_INTEGER,
                      GL_UNSIGNED_INT, randomNumberList.data());
-        glGenerateMipmap(GL_TEXTURE_2D);
+//        glGenerateMipmap(GL_TEXTURE_2D);
 //        glTexBuffer(GL_TEXTURE_2D, GL_R32UI, m_randomTextureId[i]);
 //        m_rayTracingShader->bindImageTextureWriteR32Ui(m_randomTextureId[i], i+1);
     }

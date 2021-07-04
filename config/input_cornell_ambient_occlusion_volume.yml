@@ -1,0 +1,99 @@
+model:
+  type: local-rendering
+  pipeline: ambient-occlusion-volume
+
+scene:
+  light:
+    - name: light.1
+      type: point-light
+      position: [0.0, 0.0, 0.0]
+      color: [0.7, 0.7, 0.7]
+#    area-light:
+  material:
+    - name: lambertian.red
+      type: lambertian
+      ambient-color: [0.0, 0.0, 0.0]
+      diffuse-color: [1.0, 0.2, 0.2]
+      specular-color: [0.07, 0.03, 0.1]
+      specular-exp: 0.0
+      roughness: 0.0
+    - name: lambertian.green
+      type: lambertian
+      ambient-color: [0.0, 0.0, 0.0]
+      diffuse-color: [0.2, 1.0, 0.2]
+      specular-color: [0.03, 0.07, 0.1]
+      specular-exp: 0.0
+      roughness: 0.0
+    - name: lambertian.white
+      type: lambertian
+      ambient-color: [0.0, 0.0, 0.0]
+      diffuse-color: [0.5, 0.5, 0.5]
+      specular-color: [0.05, 0.05, 0.05]
+      specular-exp: 0.0
+      roughness: 0.0
+    - name: dielectric.ball.1
+      type: dielectric
+      reference-index: 0.7
+
+  mesh:
+    - name: monkey
+      type: obj
+      material: lambertian.white
+      filename: resource/model/monkey.obj
+    - name: box
+      type: triangle-group
+      vertices:
+        - [-6.0, -6.0, 0.0]
+        - [-6.0, 6.0, 0.0]
+        - [6.0, 6.0, 0.0]
+        - [6.0, -6.0, 0.0]
+        - [-6.0, -6.0, 12.0]
+        - [-6.0, 6.0, 12.0]
+        - [6.0, 6.0, 12.0]
+        - [6.0, -6.0, 12.0]
+      individual_triangle: true
+      triangles:
+        - name: triangle.up.1
+          material: lambertian.white
+          indices: [1, 2, 5]
+        - name: triangle.up.2
+          material: lambertian.white
+          indices: [2, 6, 5]
+        - name: triangle.down.1
+          material: lambertian.white
+          indices: [0, 4, 3]
+        - name: triangle.down.2
+          material: lambertian.white
+          indices: [3, 4, 7]
+        - name: triangle.left.1
+          material: lambertian.red
+          indices: [0, 1, 4]
+        - name: triangle.left.2
+          material: lambertian.red
+          indices: [1, 5, 4]
+        - name: triangle.right.1
+          material: lambertian.green
+          indices: [3, 7, 2]
+        - name: triangle.right.2
+          material: lambertian.green
+          indices: [2, 7, 6]
+        - name: triangle.back.1
+          material: lambertian.white
+          indices: [4, 5, 7]
+        - name: triangle.back.2
+          material: lambertian.white
+          indices: [7, 5, 6]
+
+  object:
+    - group:
+      - type: geometry-group
+        geometry:
+          - instance-name: Suzanne
+          - instance-name: box
+
+viewer:
+  position: [0.0, 0.0, 0.1]
+  direction: [0.0, 0.0, 1.0]
+  up: [0.0, 1.0, 0.0]
+  FOV: 45
+  resolution: [800, 800]
