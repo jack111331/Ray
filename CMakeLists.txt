@@ -66,6 +66,8 @@ list(APPEND IMGUI_SOURCE_LIST
 
 include_directories("./include")
 include_directories("./include/TriMesh")
+include_directories("./include/glad")
+
 
 if (GUI_SUPPORT)
     add_compile_definitions(GUI_SUPPORT)
@@ -116,6 +118,7 @@ list(APPEND SOURCE_LIST
         src/Whitted.cpp
         src/Timer.cpp
 
+        src/glad.c
         ${IMGUI_SOURCE_LIST}
         )
 list(APPEND HEADER_LIST

@@ -2,7 +2,7 @@
 // Created by Edge on 2020/7/7.
 //
 
-#include <GL/glew.h>
+#include "glad/glad.h"
 #include "Sphere.h"
 
 using namespace std;

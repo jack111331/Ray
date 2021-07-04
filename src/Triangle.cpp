@@ -5,7 +5,7 @@
 #include "Triangle.h"
 
 #include <cmath>
-#include <GL/glew.h>
+#include "glad/glad.h"
 
 using namespace std;
 

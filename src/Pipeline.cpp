@@ -2,8 +2,8 @@
 // Created by Edge on 2020/12/23.
 //
 
+#include "glad/glad.h"
 #include "ShaderProgram.h"
-#include <GL/glew.h>
 #include "Pipeline.h"
 #include <Lambertian.h>
 #include <Timer.h>
@@ -41,7 +41,13 @@ void Pipeline::setupEnvironment() {
     }
     glfwMakeContextCurrent(m_window);
 
-    glewInit();
+    // Deprecated
+//    glewInit();
+    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
+    {
+        std::cout << "Failed to initialize GLAD" << std::endl;
+        exit(1);
+    }
 
     printGraphicCardInfo();
 

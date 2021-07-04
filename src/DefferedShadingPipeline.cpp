@@ -2,7 +2,7 @@
 // Created by Edge on 2020/12/31.
 //
 
-#include <GL/glew.h>
+#include "glad/glad.h"
 #include <Lambertian.h>
 #include <GLUtil.h>
 #include <glm/ext/matrix_transform.hpp>

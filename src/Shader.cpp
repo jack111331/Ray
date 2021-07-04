@@ -2,7 +2,7 @@
 // Created by Edge on 2021/1/8.
 //
 
-#include <GL/glew.h>
+#include "glad/glad.h"
 #include "Shader.h"
 #include "ShaderInclude.h"
 

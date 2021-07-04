@@ -6,7 +6,6 @@
 #define RAY_GROUPBVHTRANSLATOR_H
 
 
-#include <GL/glew.h>
 #include "GroupObj.h"
 #include "Lambertian.h"
 #include "GLUtil.h"

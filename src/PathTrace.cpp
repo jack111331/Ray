@@ -4,7 +4,7 @@
 
 #include <Dielectric.h>
 #include <ShaderInclude.h>
-#include <GL/glew.h>
+#include "glad/glad.h"
 #include "PathTrace.h"
 #include "GroupObj.h"
 #include "ShaderProgram.h"

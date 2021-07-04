@@ -4,7 +4,7 @@
 
 #include <Dielectric.h>
 #include <ShaderInclude.h>
-#include <GL/glew.h>
+#include "glad/glad.h"
 #include <Lambertian.h>
 #include "Whitted.h"
 #include "GroupObj.h"

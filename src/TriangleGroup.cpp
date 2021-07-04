@@ -3,7 +3,7 @@
 //
 
 #include "TriangleGroup.h"
-#include <GL/glew.h>
+#include "glad/glad.h"
 #include "GroupObj.h"
 #include "GeometryGroupObj.h"
 

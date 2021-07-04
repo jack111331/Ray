@@ -4,7 +4,7 @@
 
 #include <cstdint>
 #include <fstream>
-#include <GL/glew.h>
+#include "glad/glad.h"
 #include "Camera.h"
 
 using std::ofstream;

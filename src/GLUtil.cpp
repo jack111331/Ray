@@ -2,7 +2,7 @@
 // Created by Edge on 2020/12/23.
 //
 
-#include <GL/glew.h>
+#include "glad/glad.h"
 #include "GLUtil.h"
 #include "Light.h"
 
