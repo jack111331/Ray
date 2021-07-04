@@ -11,6 +11,33 @@ install:
 
 before_build:
   # Build dependencies
+
+   - cmd: mkdir dependency
+   - cmd: cd public
+
+   - cmd: cd yaml-cpp
+   - cmd: mkdir build
+   - cmd: cd build
+   - cmd: cmake -G "%CMAKE_GENERATOR%" -A %CMAKE_ARCHITECTURE% -DYAML_BUILD_SHARED_LIBS=ON ../
+   - cmd: cmake --build . --config Release
+   - cmd: cmake --install . --prefix ../../../dependency
+   - cmd: cd ..
+   - cmd: rm -rf build
+
+
+   - cmd: cd ..
+
+   - cmd: cd glfw
+   - cmd: mkdir build
+   - cmd: cd build
+
+   - cmd: cmake -G "%CMAKE_GENERATOR%" -A %CMAKE_ARCHITECTURE% -DBUILD_SHARED_LIBS=ON ../
+   - cmd: cmake --build . --config Release
+   - cmd: cmake --install . --prefix ../../../dependency
+   - cmd: rm -rf build
+
+   - cmd: cd ../../../
+
    - cmd: ./install_dependency.bat
    - cmd: mkdir build
    - cmd: cd build
