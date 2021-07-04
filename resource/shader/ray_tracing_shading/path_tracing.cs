@@ -9,7 +9,7 @@
 
 
 layout(local_size_x = 16, local_size_y = 16) in;
-shared vec3 tempRadiance[256];
+shared vec3 tempRadiance[128];
 
 void getNormal(inout IntersectionRecord iRecord, in Ray ray) {
     vec3 normalInTriangle[3] = {flattenBVHNormals[iRecord.triangleId.x].xyz, flattenBVHNormals[iRecord.triangleId.y].xyz, flattenBVHNormals[iRecord.triangleId.z].xyz};
@@ -18,7 +18,7 @@ void getNormal(inout IntersectionRecord iRecord, in Ray ray) {
     iRecord.ffnormal = dot(iRecord.normal, ray.velocity) <= 0.0f?iRecord.normal:(-1.0f * iRecord.normal);
 }
 
-vec3 path_tracing(Ray ray) {
+vec3 path_tracing(Ray ray, inout uint seed) {
     IntersectionRecord iRecord;
     vec4 radiance = vec4(0.0);
     vec4 attenuation = vec4(1.0);
@@ -30,7 +30,7 @@ vec3 path_tracing(Ray ray) {
             MaterialProperty material = materialList[materialInstanceList[iRecord.materialId]];
             vec3 ffnormal = iRecord.ffnormal;
             if(material.type == 0) {
-                vec3 scatter_direction = ffnormal + random_unit_vector();
+                vec3 scatter_direction = ffnormal + random_unit_vector(seed);
                 if (near_zero(scatter_direction))
                     scatter_direction = ffnormal;
                 scatter_direction = normalize(scatter_direction);
@@ -55,8 +55,9 @@ void main() {
     uint sampleId = gl_LocalInvocationID.y * gl_WorkGroupSize.x + gl_LocalInvocationID.x;
 
     if (sampleId < sample_per_iteration) {
-        Ray ray = Ray(initial_pos, initial_vel - (workgroup_xy.x + rand()) * horizon_unit - (workgroup_xy.y + rand()) * vertical_unit);
-        tempRadiance[sampleId] = path_tracing(ray);
+        uint seed = texelFetch(init_random_seed[sampleId], workgroup_xy, 0).r;// The maximal uniform usampler2d array can't be 256...
+        Ray ray = Ray(initial_pos, initial_vel - (workgroup_xy.x + rand(seed)) * horizon_unit - (workgroup_xy.y + rand(seed)) * vertical_unit);
+        tempRadiance[sampleId] = path_tracing(ray, seed);
         barrier();
 
         uint ib = sample_per_iteration / 2;
@@ -65,7 +66,6 @@ void main() {
             barrier();
             ib /= 2;
         }
-
         if (sampleId == 0) {
             vec4 color = texelFetch(input_color, workgroup_xy, 0) + vec4(tempRadiance[0], 1.0f);
             imageStore(output_color, workgroup_xy, vec4(color.rgb, 1.0));

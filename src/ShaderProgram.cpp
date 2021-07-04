@@ -15,15 +15,14 @@ ShaderProgram::ShaderProgram(const ShaderInclude::ShaderSource &computeShaderSou
     int success = 0;
     glGetProgramiv(m_programId, GL_LINK_STATUS, &success);
     if (success == GL_FALSE) {
-        std::string errorMsg("Error while linking program\n");
         int infoLogSize = 0;
         glGetProgramiv(m_programId, GL_INFO_LOG_LENGTH, &infoLogSize);
         char *info = new char[infoLogSize + 1];
-        glGetShaderInfoLog(m_programId, infoLogSize, nullptr, info);
-        errorMsg += info;
+        int infoLength;
+        glGetShaderInfoLog(m_programId, infoLogSize, &infoLength, info);
+        std::cerr << "Error while linking program\nError info length and get length is " << infoLogSize << " " << infoLength << "\nError info is: " << info << std::endl;
         delete[] info;
         glDeleteProgram(m_programId);
-        std::cerr << "Error " << errorMsg << std::endl;
 
         exit(1);
     }
@@ -40,15 +39,14 @@ ShaderProgram::ShaderProgram(const ShaderInclude::ShaderSource &vertexShaderSour
     int success = 0;
     glGetProgramiv(m_programId, GL_LINK_STATUS, &success);
     if (success == GL_FALSE) {
-        std::string errorMsg("Error while linking program\n");
         int infoLogSize = 0;
         glGetProgramiv(m_programId, GL_INFO_LOG_LENGTH, &infoLogSize);
         char *info = new char[infoLogSize + 1];
-        glGetShaderInfoLog(m_programId, infoLogSize, nullptr, info);
-        errorMsg += info;
+        int infoLength;
+        glGetShaderInfoLog(m_programId, infoLogSize, &infoLength, info);
+        std::cerr << "Error while linking program\nError info length and get length is " << infoLogSize << " " << infoLength << "\nError info is: " << info << std::endl;
         delete[] info;
         glDeleteProgram(m_programId);
-        std::cerr << "Error " << errorMsg << std::endl;
 
         exit(1);
     }
@@ -68,15 +66,14 @@ ShaderProgram::ShaderProgram(const ShaderInclude::ShaderSource &vertexShaderSour
     int success = 0;
     glGetProgramiv(m_programId, GL_LINK_STATUS, &success);
     if (success == GL_FALSE) {
-        std::string errorMsg("Error while linking program\n");
         int infoLogSize = 0;
         glGetProgramiv(m_programId, GL_INFO_LOG_LENGTH, &infoLogSize);
         char *info = new char[infoLogSize + 1];
-        glGetShaderInfoLog(m_programId, infoLogSize, nullptr, info);
-        errorMsg += info;
+        int infoLength;
+        glGetShaderInfoLog(m_programId, infoLogSize, &infoLength, info);
+        std::cerr << "Error while linking program\nError info length and get length is " << infoLogSize << " " << infoLength << "\nError info is: " << info << std::endl;
         delete[] info;
         glDeleteProgram(m_programId);
-        std::cerr << "Error " << errorMsg << std::endl;
 
         exit(1);
     }

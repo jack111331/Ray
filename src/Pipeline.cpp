@@ -304,6 +304,22 @@ void GPURayTracingPipeline::generateImage() {
 
     m_translator->updateTranslator();
 
+    std::vector<uint32_t> randomNumberList(m_camera->m_width * m_camera->m_height, 0);
+    static std::random_device randomDevice;   // non-deterministic generator
+    static std::mt19937 rNGGenerator(randomDevice());
+
+    for(int i = 0;i < m_jitterSampleAmount; ++i) {
+        for(int j = 0;j < randomNumberList.size(); ++j) {
+            randomNumberList[j] = rNGGenerator();
+        }
+        glBindTexture(GL_TEXTURE_2D, m_randomTextureId[i]);
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_R32UI, m_camera->m_width, m_camera->m_height, 0, GL_RED_INTEGER,
+                     GL_UNSIGNED_INT, randomNumberList.data());
+        glGenerateMipmap(GL_TEXTURE_2D);
+//        glTexBuffer(GL_TEXTURE_2D, GL_R32UI, m_randomTextureId[i]);
+//        m_rayTracingShader->bindImageTextureWriteR32Ui(m_randomTextureId[i], i+1);
+    }
+
     m_rayTracingShader->bind();
     // random vector
     m_rayTracingShader->uniform3f("random_vector", Util::randomInUnit(), Util::randomInUnit(), Util::randomInUnit());
@@ -312,26 +328,17 @@ void GPURayTracingPipeline::generateImage() {
     m_rayTracingShader->uniform3f("horizon_unit", unitHorizontalScreen);
     m_rayTracingShader->uniform3f("vertical_unit", unitVerticalScreen);
     m_rayTracingShader->uniform1i("top_level_bvh_index", m_translator->m_tlasStartNodeIndex);
+
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, m_frameTextureId);
-    glTexBuffer(GL_TEXTURE_2D, GL_RGBA32F, m_frameTextureId);
     m_rayTracingShader->bindImageTextureWrite(m_frameTextureId, 0);
-    std::vector<uint32_t> randomNumberList(m_camera->m_width * m_camera->m_height * m_jitterSampleAmount, 0);
-    std::random_device randomDevice;   // non-deterministic generator
-    std::mt19937 rNGGenerator(randomDevice());
 
     for(int i = 0;i < m_jitterSampleAmount; ++i) {
-        for(int j = 0;j < randomNumberList.size(); ++j) {
-            randomNumberList[j] = rNGGenerator();
-        }
         glActiveTexture(GL_TEXTURE0 + i + 1);
         glBindTexture(GL_TEXTURE_2D, m_randomTextureId[i]);
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_R32UI, m_camera->m_width, m_camera->m_height, 0, GL_RED,
-                     GL_UNSIGNED_INT, randomNumberList.data());
-        glTexBuffer(GL_TEXTURE_2D, GL_R32UI, m_randomTextureId[i]);
-        m_rayTracingShader->bindImageTextureWriteR32Ui(m_randomTextureId[i], i+1);
+        // Notice: sampler texture id can't use uniform1ui..
+        m_rayTracingShader->uniform1i(("init_random_seed["+std::to_string(i)+"]").c_str(), i + 1);
     }
-    m_rayTracingShader->uniform1uiv("init_random_seed", m_jitterSampleAmount, m_randomTextureId);
     m_rayTracingShader->uniform1i("input_color", 0);
     m_rayTracingShader->uniform1i("sample_per_iteration", m_jitterSampleAmount); // TODO need to refactor name to sample_per_iteration
 

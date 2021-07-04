@@ -13,6 +13,6 @@ uniform int sample_per_iteration;
 uniform vec3 random_vector;
 
 uniform sampler2D input_color;
-uniform sampler2D init_random_seed[256];
+uniform usampler2D init_random_seed[16];
 uniform writeonly image2D output_color;
 

@@ -51,24 +51,28 @@ bool near_zero(vec3 vector) {
     return vector.x<=1e-7&&vector.y<=1e-7&&vector.z<=1e-7;
 }
 
-vec2 seed;
+vec2 seeds;
 
-float rand() {
-    seed -= random_vector.xy;
-    return fract(sin(dot(seed, vec2(12.9898, 78.233))) * 43758.5453);
+float rand(inout uint seed) {
+    seed = (seed ^ 61u) ^ (seed >> 16);
+    seed *= 9;
+    seed = seed ^ (seed >> 4);
+    seed *= 0x27d4eb2d;
+    seed = seed ^ (seed >> 15);
+    return seed / float(65536) / float(65536);
 }
 
-float random_in(float min, float max) {
-    return min + (max - min) * rand();
+float random_in(float min, float max, inout uint seed) {
+    return min + (max - min) * rand(seed);
 }
 
-vec3 random_unit_vector() {
+vec3 random_unit_vector(inout uint seed) {
     for(int i = 0;i < 10;++i) {
-        vec3 p = vec3(random_in(-1.0f, 1.0f), random_in(-1.0f, 1.0f), random_in(-1.0f, 1.0f));
+        vec3 p = vec3(random_in(-1.0f, 1.0f, seed), random_in(-1.0f, 1.0f, seed), random_in(-1.0f, 1.0f, seed));
         if (length(p) >= 1) continue;
         return p;
     }
-    return vec3(random_in(-1.0f, 1.0f), random_in(-1.0f, 1.0f), random_in(-1.0f, 1.0f));
+    return vec3(random_in(-1.0f, 1.0f, seed), random_in(-1.0f, 1.0f, seed), random_in(-1.0f, 1.0f, seed));
 }
 
 ONB generateONB(vec3 direction) {
@@ -85,9 +89,9 @@ ONB generateONB(vec3 direction) {
 
 //vec3
 
-vec3 random_hemisphere() {
-    float r1 = rand();
-    float r2 = rand();
+vec3 random_hemisphere(inout uint seed) {
+    float r1 = rand(seed);
+    float r2 = rand(seed);
     float x = cos(2*PI*r1)*2*sqrt(r2*(1-r2));
     float y = sin(2*PI*r1)*2*sqrt(r2*(1-r2));
     float z = 1 - r2;
