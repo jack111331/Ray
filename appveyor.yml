@@ -4,11 +4,9 @@ environment:
   matrix:
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
       CMAKE_GENERATOR: Visual Studio 14 2015
-      GLEW_GENERATOR: vc14
       CMAKE_PLATFORM: win32
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
       CMAKE_GENERATOR: Visual Studio 15 2017
-      GLEW_GENERATOR: vc15
       CMAKE_PLATFORM: win32
 
 install:
@@ -16,14 +14,12 @@ install:
 
 before_build:
   # Build dependencies
-   - cmd: cd public/glew
-   - cmd: msbuild /p:Configuration=Release build/%GLEW_GENERATOR%/glew.sln
-   - cmd: cd ../..
-
+   - cmd: ./install_dependency.bat
    - cmd: mkdir build
    - cmd: cd build
    - cmd: cmake .. -G "%CMAKE_GENERATOR%" -DCMAKE_GENERATOR_PLATFORM=%CMAKE_PLATFORM%
    - cmd: cd ..
+
 
 build_script:
    - cmake --build build
