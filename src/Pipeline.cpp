@@ -7,8 +7,15 @@
 #include "Pipeline.h"
 #include <Lambertian.h>
 #include <Timer.h>
+#include <unistd.h>
+
+#ifdef __MINGW32__
+#include <unistd.h>
+#else
 #include <thread>
 #include <chrono>
+#endif
+
 #include <random>
 #include "GeometryGroupObj.h"
 #include "GroupBVHTranslator.h"
@@ -44,8 +51,7 @@ void Pipeline::setupEnvironment() {
 
     // Deprecated
 //    glewInit();
-    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
-    {
+    if (!gladLoadGLLoader((GLADloadproc) glfwGetProcAddress)) {
         std::cout << "Failed to initialize GLAD" << std::endl;
         exit(1);
     }
@@ -257,8 +263,11 @@ void GPURayTracingPipeline::pipelineLoop() {
         float diffMs = timer.calculateDiffMilliSecondTime();
         if (diffMs < framePerMs) {
 //            std::cout << diffMs << " " << framePerMs << std::endl;
+#ifdef __MINGW32__
+            usleep(framePerMs - diffMs);
+#else
             std::this_thread::sleep_for(std::chrono::milliseconds(static_cast<int>(framePerMs - diffMs)));
-//            usleep();
+#endif
         }
         m_cumulatedRay += m_SamplePerIteration;
 
