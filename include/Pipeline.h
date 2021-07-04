@@ -150,7 +150,7 @@ class GroupBVHTranslator;
 
 class GPURayTracingPipeline : public Pipeline {
 public:
-    GPURayTracingPipeline() : m_jitterSampleAmount(0) {}
+    GPURayTracingPipeline() : m_SamplePerIteration(0) {}
 
     virtual void setupEnvironment();
 
@@ -175,13 +175,13 @@ protected:
 
     uint32_t m_frameTextureId;
 
-    uint32_t m_randomTextureId[128];
+    uint32_t m_randomTextureId;
 
     uint32_t m_quadVao;
 
     int m_cumulatedRay;
 
-    int m_jitterSampleAmount;
+    int m_SamplePerIteration;
 
 };
 

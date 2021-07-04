@@ -55,7 +55,8 @@ void main() {
     uint sampleId = gl_LocalInvocationID.y * gl_WorkGroupSize.x + gl_LocalInvocationID.x;
 
     if (sampleId < sample_per_iteration) {
-        uint seed = texelFetch(init_random_seed[sampleId], workgroup_xy, 0).r;// The maximal uniform usampler2d array can't be 256...
+        ivec3 randomTexCoord = ivec3(workgroup_xy, sampleId);
+        uint seed = texelFetch(init_random_seed, randomTexCoord, 0).r;// The maximal uniform usampler2d array can't be 256...
         Ray ray = Ray(initial_pos, initial_vel - (workgroup_xy.x + rand(seed)) * horizon_unit - (workgroup_xy.y + rand(seed)) * vertical_unit);
         tempRadiance[sampleId] = path_tracing(ray, seed);
         barrier();

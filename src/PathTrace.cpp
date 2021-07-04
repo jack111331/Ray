@@ -44,21 +44,15 @@ void PathTraceGPUPipeline::setupPipeline() {
     m_rayTracingShader->bindSSBOBuffer(m_translator->m_materialInstanceSSBO, 5);
     m_rayTracingShader->bindSSBOBuffer(m_lightSSBO, 6);
     m_rayTracingShader->bindSSBOBuffer(m_translator->m_materialSSBO, 7);
-    // TODO bind material
 
     // generate random texture
-    glGenTextures(m_jitterSampleAmount, m_randomTextureId);
+    glGenTextures(1, &m_randomTextureId);
 
-    for(int i = 0;i < m_jitterSampleAmount; ++i) {
-        glBindTexture(GL_TEXTURE_2D, m_randomTextureId[i]);
-        glTexStorage2D(GL_TEXTURE_2D, 1, GL_R32UI, m_camera->m_width, m_camera->m_height);
-        // Notice: integer texture not implement GL_LINEAR filter..
-//        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-//        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-//        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-//        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-    }
-    glBindTexture(GL_TEXTURE_2D, 0);
+    glBindTexture(GL_TEXTURE_2D_ARRAY, m_randomTextureId);
+    glTexStorage3D(GL_TEXTURE_2D_ARRAY, 1, GL_R32UI, m_camera->m_width, m_camera->m_height, m_SamplePerIteration);
+    // Notice: integer texture not implement GL_LINEAR filter..
+
+    glBindTexture(GL_TEXTURE_2D_ARRAY, 0);
 
 }
 
