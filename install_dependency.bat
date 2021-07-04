@@ -32,3 +32,5 @@ cmake -DBUILD_SHARED_LIBS=ON ../
 cmake --build . --config Release
 cmake --install . --prefix ../../../dependency
 rm -rf build
+
+cd ../../../
