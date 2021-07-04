@@ -18,7 +18,7 @@ before_build:
    - cmd: cd yaml-cpp
    - cmd: mkdir build
    - cmd: cd build
-   - cmd: cmake -G "%CMAKE_GENERATOR%" -A %CMAKE_ARCHITECTURE% -DYAML_BUILD_SHARED_LIBS=ON ../
+   - cmd: cmake -G "%CMAKE_GENERATOR%" -A %CMAKE_ARCHITECTURE% -DYAML_CPP_BUILD_TESTS=OFF -DYAML_BUILD_SHARED_LIBS=ON ../
    - cmd: cmake --build . --config Release
    - cmd: cmake --install . --prefix ../../../dependency
    - cmd: cd ..
