@@ -6,14 +6,6 @@ set(CMAKE_CXX_STANDARD 11)
 set(GUI_SUPPORT FALSE)
 
 #set(CMAKE_VERBOSE_MAKEFILE ON)
-set(GLEW_VERBOSE TRUE)
-
-set(GLEW_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/public/glew/include")
-set(CMAKE_PREFIX_PATH ${CMAKE_PREFIX_PATH} "public/glew")
-find_package(GLEW REQUIRED)
-if (GLEW_FOUND)
-    message("Found GLEW")
-endif()
 
 find_package(OpenGL REQUIRED)
 
@@ -38,7 +30,8 @@ include_directories("public/yaml-cpp/include")
 set(IMGUI_SOURCE_LIST)
 include_directories("public/imgui")
 include_directories("public/imgui/backends")
-include_directories("public/imgui/example/libs/gl3w")
+add_compile_definitions(IMGUI_IMPL_OPENGL_LOADER_GLAD)
+#include_directories("public/imgui/example/libs/gl3w")
 list(APPEND IMGUI_SOURCE_LIST
         public/imgui/backends/imgui_impl_glfw.cpp
         public/imgui/backends/imgui_impl_opengl3.cpp
@@ -173,4 +166,4 @@ list(APPEND HEADER_LIST
 
 #link_directories("${CMAKE_SOURCE_DIR}/lib")
 add_executable(Ray src/main.cpp ${HEADER_LIST} ${SOURCE_LIST})
-target_link_libraries(Ray GLEW::GLEW glfw OpenGL::GL yaml-cpp ${CMAKE_SOURCE_DIR}/lib/libtrimesh.a)
+target_link_libraries(Ray glfw OpenGL::GL yaml-cpp)

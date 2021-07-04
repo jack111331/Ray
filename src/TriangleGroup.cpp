@@ -8,7 +8,7 @@
 #include "GeometryGroupObj.h"
 
 #include "OBJ_Loader.h"
-#include "TriMesh.h"
+//#include "TriMesh.h"
 
 
 using namespace std;
@@ -201,88 +201,89 @@ void TriangleGroup::createVAO(std::vector<ShadeObject *> &shadeObjectList, const
         glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(uint32_t) * indices.size(), indices.data(), GL_STATIC_DRAW);
 
         if (!m_objFilename.empty()) {
-            trimesh::TriMesh *themesh = trimesh::TriMesh::read(m_objFilename);
-            themesh->need_tstrips();
-            themesh->need_curvatures();
-            themesh->need_dcurv();
-
-            std::cout << "feature size : " << themesh->feature_size() << std::endl;
-
-            glBindBuffer(GL_ARRAY_BUFFER, meshVbo);
-            glBufferData(GL_ARRAY_BUFFER, sizeof(Vec3f) * themesh->vertices.size(), themesh->vertices.data(),
-                         GL_STATIC_DRAW);
-            glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
-
-            glBindBuffer(GL_ARRAY_BUFFER, normalVbo);
-            glBufferData(GL_ARRAY_BUFFER, sizeof(Vec3f) * themesh->normals.size(), themesh->normals.data(),
-                         GL_DYNAMIC_DRAW);
-            glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
-
-            uint32_t pdir1Vbo;
-            glGenBuffers(1, &pdir1Vbo);
-            glBindBuffer(GL_ARRAY_BUFFER, pdir1Vbo);
-            glBufferData(GL_ARRAY_BUFFER, sizeof(Vec3f) * themesh->pdir1.size(), themesh->pdir1.data(),
-                         GL_DYNAMIC_DRAW);
-            glVertexAttribPointer(3, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
-            glEnableVertexAttribArray(3);
-
-            uint32_t pdir2Vbo;
-            glGenBuffers(1, &pdir2Vbo);
-            glBindBuffer(GL_ARRAY_BUFFER, pdir2Vbo);
-            glBufferData(GL_ARRAY_BUFFER, sizeof(Vec3f) * themesh->pdir2.size(), themesh->pdir2.data(),
-                         GL_DYNAMIC_DRAW);
-            glVertexAttribPointer(4, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
-            glEnableVertexAttribArray(4);
-
-            uint32_t curv1Vbo;
-            glGenBuffers(1, &curv1Vbo);
-            glBindBuffer(GL_ARRAY_BUFFER, curv1Vbo);
-            glBufferData(GL_ARRAY_BUFFER, sizeof(float) * themesh->curv1.size(), themesh->curv1.data(),
-                         GL_DYNAMIC_DRAW);
-            glVertexAttribPointer(5, 1, GL_FLOAT, GL_FALSE, sizeof(float), nullptr);
-            glEnableVertexAttribArray(5);
-
-            uint32_t curv2Vbo;
-            glGenBuffers(1, &curv2Vbo);
-            glBindBuffer(GL_ARRAY_BUFFER, curv2Vbo);
-            glBufferData(GL_ARRAY_BUFFER, sizeof(float) * themesh->curv2.size(), themesh->curv2.data(),
-                         GL_DYNAMIC_DRAW);
-            glVertexAttribPointer(6, 1, GL_FLOAT, GL_FALSE, sizeof(float), nullptr);
-            glEnableVertexAttribArray(6);
-
-            uint32_t dcurvVbo;
-            glGenBuffers(1, &dcurvVbo);
-            glBindBuffer(GL_ARRAY_BUFFER, dcurvVbo);
-            glBufferData(GL_ARRAY_BUFFER, 4 * sizeof(float) * themesh->dcurv.size(), themesh->dcurv.data(),
-                         GL_DYNAMIC_DRAW);
-            glVertexAttribPointer(7, 4, GL_FLOAT, GL_FALSE, 4 * sizeof(float), nullptr);
-            glEnableVertexAttribArray(7);
-
-            std::vector<uint32_t> newIndices;
-            const int *t = &themesh->tstrips[0];
-            const int *end = t + themesh->tstrips.size();
-            while (likely(t < end)) {
-                int striplen = *t++;
-                uint32_t tmpList[2];
-                for (int i = 0; i < striplen; ++i) {
-                    if (i < 2) {
-                        tmpList[i] = *t++;
-                    } else {
-                        newIndices.push_back(tmpList[(i - 2) % 2]);
-                        newIndices.push_back(tmpList[(i - 1) % 2]);
-                        tmpList[i % 2] = *t++;
-                        newIndices.push_back(tmpList[i % 2]);
-                    }
-                }
-            }
-
-            glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
-            glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(uint32_t) * newIndices.size(), newIndices.data(),
-                         GL_STATIC_DRAW);
-
-            glBindVertexArray(0);
-            shadeObjectList.push_back(new ShadeObject({vao, (int) newIndices.size()}, m_material, transformMat));
-            return;
+            // TODO clear this old dependency out
+//            trimesh::TriMesh *themesh = trimesh::TriMesh::read(m_objFilename);
+//            themesh->need_tstrips();
+//            themesh->need_curvatures();
+//            themesh->need_dcurv();
+//
+//            std::cout << "feature size : " << themesh->feature_size() << std::endl;
+//
+//            glBindBuffer(GL_ARRAY_BUFFER, meshVbo);
+//            glBufferData(GL_ARRAY_BUFFER, sizeof(Vec3f) * themesh->vertices.size(), themesh->vertices.data(),
+//                         GL_STATIC_DRAW);
+//            glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
+//
+//            glBindBuffer(GL_ARRAY_BUFFER, normalVbo);
+//            glBufferData(GL_ARRAY_BUFFER, sizeof(Vec3f) * themesh->normals.size(), themesh->normals.data(),
+//                         GL_DYNAMIC_DRAW);
+//            glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
+//
+//            uint32_t pdir1Vbo;
+//            glGenBuffers(1, &pdir1Vbo);
+//            glBindBuffer(GL_ARRAY_BUFFER, pdir1Vbo);
+//            glBufferData(GL_ARRAY_BUFFER, sizeof(Vec3f) * themesh->pdir1.size(), themesh->pdir1.data(),
+//                         GL_DYNAMIC_DRAW);
+//            glVertexAttribPointer(3, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
+//            glEnableVertexAttribArray(3);
+//
+//            uint32_t pdir2Vbo;
+//            glGenBuffers(1, &pdir2Vbo);
+//            glBindBuffer(GL_ARRAY_BUFFER, pdir2Vbo);
+//            glBufferData(GL_ARRAY_BUFFER, sizeof(Vec3f) * themesh->pdir2.size(), themesh->pdir2.data(),
+//                         GL_DYNAMIC_DRAW);
+//            glVertexAttribPointer(4, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
+//            glEnableVertexAttribArray(4);
+//
+//            uint32_t curv1Vbo;
+//            glGenBuffers(1, &curv1Vbo);
+//            glBindBuffer(GL_ARRAY_BUFFER, curv1Vbo);
+//            glBufferData(GL_ARRAY_BUFFER, sizeof(float) * themesh->curv1.size(), themesh->curv1.data(),
+//                         GL_DYNAMIC_DRAW);
+//            glVertexAttribPointer(5, 1, GL_FLOAT, GL_FALSE, sizeof(float), nullptr);
+//            glEnableVertexAttribArray(5);
+//
+//            uint32_t curv2Vbo;
+//            glGenBuffers(1, &curv2Vbo);
+//            glBindBuffer(GL_ARRAY_BUFFER, curv2Vbo);
+//            glBufferData(GL_ARRAY_BUFFER, sizeof(float) * themesh->curv2.size(), themesh->curv2.data(),
+//                         GL_DYNAMIC_DRAW);
+//            glVertexAttribPointer(6, 1, GL_FLOAT, GL_FALSE, sizeof(float), nullptr);
+//            glEnableVertexAttribArray(6);
+//
+//            uint32_t dcurvVbo;
+//            glGenBuffers(1, &dcurvVbo);
+//            glBindBuffer(GL_ARRAY_BUFFER, dcurvVbo);
+//            glBufferData(GL_ARRAY_BUFFER, 4 * sizeof(float) * themesh->dcurv.size(), themesh->dcurv.data(),
+//                         GL_DYNAMIC_DRAW);
+//            glVertexAttribPointer(7, 4, GL_FLOAT, GL_FALSE, 4 * sizeof(float), nullptr);
+//            glEnableVertexAttribArray(7);
+//
+//            std::vector<uint32_t> newIndices;
+//            const int *t = &themesh->tstrips[0];
+//            const int *end = t + themesh->tstrips.size();
+//            while (likely(t < end)) {
+//                int striplen = *t++;
+//                uint32_t tmpList[2];
+//                for (int i = 0; i < striplen; ++i) {
+//                    if (i < 2) {
+//                        tmpList[i] = *t++;
+//                    } else {
+//                        newIndices.push_back(tmpList[(i - 2) % 2]);
+//                        newIndices.push_back(tmpList[(i - 1) % 2]);
+//                        tmpList[i % 2] = *t++;
+//                        newIndices.push_back(tmpList[i % 2]);
+//                    }
+//                }
+//            }
+//
+//            glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
+//            glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(uint32_t) * newIndices.size(), newIndices.data(),
+//                         GL_STATIC_DRAW);
+//
+//            glBindVertexArray(0);
+//            shadeObjectList.push_back(new ShadeObject({vao, (int) newIndices.size()}, m_material, transformMat));
+//            return;
         }
 
         glBindVertexArray(0);
