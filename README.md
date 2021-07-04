@@ -1,5 +1,5 @@
 # Ray
-== A robust shading pipeline construction rendering engine ==
+A robust shading pipeline construction rendering engine 
 ## Clone
 - Be sure to clone this project with following command to include all the submodule this project will use
 ```shell
@@ -16,6 +16,9 @@ git clone --recursive https://github.com/jack111331/Ray
 	- API gl: 4.5
 	- Profile: "Core"
 	- Extensions: "GL_ARB_shader_storage_buffer_object"
-- Directly place the "src/" and "include/" directory generated from GLAD website into this project and replace them is enough.
+- Directly place the "src/" and "include/" directory generated from the zip of GLAD website into this project and replace them is enough.
+- Execute "install_dependency.bat" or "install_dependency.sh" according to your OS.
+- Make a directory called "build" in project root directory and cmake them inside it.
+- Build them inside build directory
 ## Reference
 - [GLSL Path Tracer](https://github.com/knightcrawler25/GLSL-PathTracer)
