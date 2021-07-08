@@ -1,2 +1,0 @@
-D:\MinGW\bin\ar.exe qc ..\..\lib\libglewd.a  CMakeFiles/libglew_static.dir/src/glew.c.obj
-D:\MinGW\bin\ranlib.exe ..\..\lib\libglewd.a

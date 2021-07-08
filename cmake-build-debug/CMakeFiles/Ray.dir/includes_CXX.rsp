@@ -1,1 +1,0 @@
--ID:/Code/Ray/public/glm -ID:/Code/Ray/public/yaml-cpp/include -ID:/Code/Ray/public/imgui -ID:/Code/Ray/public/imgui/backends -ID:/Code/Ray/public/imgui/example/libs/gl3w -ID:/Code/Ray/./include -ID:/Code/Ray/./include/TriMesh -ID:/Code/Ray/./include/glad -isystem D:/Code/Ray/public/glew/include -isystem D:/Code/Ray/dependency/include 
