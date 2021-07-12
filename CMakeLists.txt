@@ -26,20 +26,26 @@ add_subdirectory(public/yaml-cpp)
 include_directories("public/yaml-cpp/include")
 #find_package(yaml-cpp REQUIRED)
 
+SET(wxWidgets_ROOT_DIR "${CMAKE_SOURCE_DIR}/public/wxWidgets/")
+SET(wxWidgets_LIB_DIR "${CMAKE_SOURCE_DIR}/dependency/lib/vc_dll")
+SET(wxWidgets_LIBRARIES "${CMAKE_SOURCE_DIR}/public/wxWidgets/lib")
+SET(wxWidgets_INCLUDE_DIRS "${CMAKE_SOURCE_DIR}/public/wxWidgets/include/wx")
+find_package(wxWidgets REQUIRED COMPONENTS net core base gl)
+include(${wxWidgets_USE_FILE})
 
-set(IMGUI_SOURCE_LIST)
-include_directories("public/imgui")
-include_directories("public/imgui/backends")
-add_compile_definitions(IMGUI_IMPL_OPENGL_LOADER_GLAD)
-#include_directories("public/imgui/example/libs/gl3w")
-list(APPEND IMGUI_SOURCE_LIST
-        public/imgui/backends/imgui_impl_glfw.cpp
-        public/imgui/backends/imgui_impl_opengl3.cpp
-        public/imgui/imgui.cpp
-        public/imgui/imgui_draw.cpp
-        public/imgui/imgui_tables.cpp
-        public/imgui/imgui_widgets.cpp
-        )
+#set(IMGUI_SOURCE_LIST)
+#include_directories("public/imgui")
+#include_directories("public/imgui/backends")
+#add_compile_definitions(IMGUI_IMPL_OPENGL_LOADER_GLAD)
+##include_directories("public/imgui/example/libs/gl3w")
+#list(APPEND IMGUI_SOURCE_LIST
+#        public/imgui/backends/imgui_impl_glfw.cpp
+#        public/imgui/backends/imgui_impl_opengl3.cpp
+#        public/imgui/imgui.cpp
+#        public/imgui/imgui_draw.cpp
+#        public/imgui/imgui_tables.cpp
+#        public/imgui/imgui_widgets.cpp
+#        )
 
 #set(CMAKE_MODULE_PATH {CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/modules")
 #message("${CMAKE_MODULE_PATH}")
@@ -110,9 +116,13 @@ list(APPEND SOURCE_LIST
         src/Utility.cpp
         src/Whitted.cpp
         src/Timer.cpp
+        src/Context.cpp
+
+        src/GLPanel.cpp
+        src/MainFrame.cpp
 
         src/glad.c
-        ${IMGUI_SOURCE_LIST}
+#        ${IMGUI_SOURCE_LIST}
         )
 list(APPEND HEADER_LIST
         include/AmbientOcclusion.h
@@ -158,6 +168,11 @@ list(APPEND HEADER_LIST
         include/TriangleGroup.h
         include/Whitted.h
         include/Timer.h
+        include/Context.h
+
+        include/Application.h
+        include/MainFrame.h
+        include/GLPanel.h
 
         include/OBJ_Loader.h
         include/stb_image.h
@@ -165,5 +180,6 @@ list(APPEND HEADER_LIST
 
 
 #link_directories("${CMAKE_SOURCE_DIR}/lib")
-add_executable(Ray src/main.cpp ${HEADER_LIST} ${SOURCE_LIST})
-target_link_libraries(Ray glfw OpenGL::GL yaml-cpp)
+# Add WIN32 to indicate cmake to build the windows GUI application
+add_executable(Ray WIN32 src/main.cpp ${HEADER_LIST} ${SOURCE_LIST})
+target_link_libraries(Ray glfw OpenGL::GL yaml-cpp ${wxWidgets_LIBRARIES})

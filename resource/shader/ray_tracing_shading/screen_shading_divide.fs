@@ -12,5 +12,7 @@ void main() {
     float casted_ray_amount = casted_ray;
     vec4 color = texture(gScreen, vec2(fTexCoord.x, 1.0f - fTexCoord.y)) / casted_ray_amount;
     color = clamp(color, 0.0f, 1.0f);
-    finalColor = vec4(color.rgb, 1.0f);
+//    finalColor = vec4(color.rgb, 1.0f);
+// FIXME
+    finalColor = vec4(1.0f, 0.0f, 0.0f, 1.0f);
 }

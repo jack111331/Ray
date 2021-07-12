@@ -59,7 +59,8 @@ void main() {
         uint seed = texelFetch(init_random_seed, randomTexCoord, 0).r;// The maximal uniform usampler2d array can't be 256...
         Ray ray = Ray(initial_pos, initial_vel - (workgroup_xy.x + rand(seed)) * horizon_unit - (workgroup_xy.y + rand(seed)) * vertical_unit);
         tempRadiance[sampleId] = path_tracing(ray, seed);
-        barrier();
+        /*
+        barrier();// FIXME problem
 
         uint ib = sample_per_iteration / 2;
         while (sampleId < ib) {
@@ -71,5 +72,6 @@ void main() {
             vec4 color = texelFetch(input_color, workgroup_xy, 0) + vec4(tempRadiance[0], 1.0f);
             imageStore(output_color, workgroup_xy, vec4(color.rgb, 1.0));
         }
+        */
     }
 }

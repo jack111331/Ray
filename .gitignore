@@ -1,5 +1,6 @@
 public/*
-cmake-build-debug/
+build/*
+cmake-build-*/*
 docs/
 lib/
 dependency/

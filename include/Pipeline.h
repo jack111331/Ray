@@ -79,9 +79,13 @@ public:
 
     virtual void setupPipeline() = 0;
 
+    virtual void pipelineRender() = 0;
+
     virtual void pipelineLoop() = 0;
 
     virtual bool readPipelineInfo(const YAML::Node &node) { return true; };
+
+    Camera *m_camera;
 
 
 protected:
@@ -101,7 +105,6 @@ protected:
 
     GLFWwindow *m_window;
     Scene *m_scene;
-    Camera *m_camera;
 
 };
 
@@ -110,6 +113,8 @@ public:
     CPURayTracingPipeline() : m_model(nullptr), m_jitterSampleAmount(0) {}
 
     virtual void setupEnvironment();
+
+    virtual void pipelineRender();
 
     virtual void pipelineLoop();
 
@@ -150,9 +155,11 @@ class GroupBVHTranslator;
 
 class GPURayTracingPipeline : public Pipeline {
 public:
-    GPURayTracingPipeline() : m_SamplePerIteration(0) {}
+    GPURayTracingPipeline() : m_SamplePerIteration(0), m_cumulatedRay(0) {}
 
     virtual void setupEnvironment();
+
+    virtual void pipelineRender();
 
     virtual void pipelineLoop();
 
@@ -187,6 +194,8 @@ protected:
 
 class LocalRenderingPipeline : public Pipeline {
 public:
+    virtual void pipelineRender();
+
     virtual void pipelineLoop();
 
 protected:

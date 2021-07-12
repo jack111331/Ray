@@ -7,8 +7,8 @@
 #include <GLUtil.h>
 #include <glm/ext/matrix_transform.hpp>
 #include <glm/gtc/matrix_transform.hpp>
-#include <backends/imgui_impl_opengl3.h>
-#include <backends/imgui_impl_glfw.h>
+//#include <backends/imgui_impl_opengl3.h>
+//#include <backends/imgui_impl_glfw.h>
 #include "ShaderProgram.h"
 #include "GroupObj.h"
 #include "SuggestedContourPipeline.h"
@@ -128,18 +128,18 @@ void SuggestedContourShadingPipeline::blitFrameBuffer() {
 }
 
 void SuggestedContourShadingPipeline::setupGUILayout() {
-    ImGui_ImplOpenGL3_NewFrame();
-    ImGui_ImplGlfw_NewFrame();
-    ImGui::NewFrame();
-
-    ImGui::Begin("Local rendering Pipeline Window");   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
-    ImGui::SliderFloat("feature size", &m_shadingSetting->m_fz, 0.0f, 1.0f);
-    ImGui::SliderFloat("contour limit", &m_shadingSetting->m_c_limit, 0.0f, 1.0f);
-    ImGui::SliderFloat("suggested contour limit", &m_shadingSetting->m_sc_limit, 0.0f, 1.0f);
-    ImGui::SliderFloat("derivative radiant curvater", &m_shadingSetting->m_dwkr_limit, 0.0f, 1.0f);
-    ImGui::End();
-
-    ImGui::Render();
-    ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+//    ImGui_ImplOpenGL3_NewFrame();
+//    ImGui_ImplGlfw_NewFrame();
+//    ImGui::NewFrame();
+//
+//    ImGui::Begin("Local rendering Pipeline Window");   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
+//    ImGui::SliderFloat("feature size", &m_shadingSetting->m_fz, 0.0f, 1.0f);
+//    ImGui::SliderFloat("contour limit", &m_shadingSetting->m_c_limit, 0.0f, 1.0f);
+//    ImGui::SliderFloat("suggested contour limit", &m_shadingSetting->m_sc_limit, 0.0f, 1.0f);
+//    ImGui::SliderFloat("derivative radiant curvater", &m_shadingSetting->m_dwkr_limit, 0.0f, 1.0f);
+//    ImGui::End();
+//
+//    ImGui::Render();
+//    ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
 }

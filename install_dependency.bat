@@ -19,8 +19,6 @@ rm -rf build
 REM Switch to previous directory
 cd ..
 
-REM TODO Consider switch GLEW to GLAD...
-
 
 
 REM Buil GLFW and install it
@@ -30,7 +28,22 @@ cd build
 REM Generate building GLFW necessary files and build it as dynamic shared library
 cmake -DBUILD_SHARED_LIBS=ON ../
 cmake --build . --config Release
+cmake --install . --prefix 
+cd ..
+rm -rf build
+
+REM Switch to previous directory
+cd ..
+
+REM Buil wxWidgets and install it
+cd wxWidgets
+mkdir build_bin
+cd build_bin
+REM Generate building GLFW necessary files and build it as dynamic shared library
+cmake -DwxWidgets_ROOT_DIR:PATH=..\..\..\dependency -A Win32 ../
+cmake --build . --config Release --target install
 cmake --install . --prefix ../../../dependency
 rm -rf build
+
 
 cd ../../../

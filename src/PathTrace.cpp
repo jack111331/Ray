@@ -11,6 +11,8 @@
 #include "GroupBVHTranslator.h"
 
 #include <random>
+#include <wx/debug.h>
+#include <wx/wx.h>
 
 void PathTraceCPUPipeline::setupPipeline() {
     PathTraceModel *model = new PathTraceModel();
@@ -46,13 +48,15 @@ void PathTraceGPUPipeline::setupPipeline() {
     m_rayTracingShader->bindSSBOBuffer(m_translator->m_materialSSBO, 7);
 
     // generate random texture
-    glGenTextures(1, &m_randomTextureId);
-
-    glBindTexture(GL_TEXTURE_2D_ARRAY, m_randomTextureId);
-    glTexStorage3D(GL_TEXTURE_2D_ARRAY, 1, GL_R32UI, m_camera->m_width, m_camera->m_height, m_SamplePerIteration);
-    // Notice: integer texture not implement GL_LINEAR filter..
-
-    glBindTexture(GL_TEXTURE_2D_ARRAY, 0);
+//    glGenTextures(1, &m_randomTextureId);
+//
+//    glBindTexture(GL_TEXTURE_2D_ARRAY, m_randomTextureId);
+//    glTexStorage3D(GL_TEXTURE_2D_ARRAY, 1, GL_R32UI, m_camera->m_width, m_camera->m_height, m_SamplePerIteration);
+////    glTexImage3D(GL_TEXTURE_2D_ARRAY, 0, GL_R32UI, m_camera->m_width, m_camera->m_height, m_SamplePerIteration, 0, GL_RED_INTEGER,
+////                 GL_UNSIGNED_INT, nullptr);
+//    // Notice: integer texture not implement GL_LINEAR filter..
+//
+//    glBindTexture(GL_TEXTURE_2D_ARRAY, 0);
 
 }
 

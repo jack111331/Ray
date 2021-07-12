@@ -13,3 +13,6 @@
 [submodule "public/imgui"]
 	path = public/imgui
 	url = https://github.com/ocornut/imgui
+[submodule "public/wxWidgets"]
+	path = public/wxWidgets
+	url = https://github.com/wxWidgets/wxWidgets

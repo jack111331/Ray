@@ -7,6 +7,13 @@
     <mapping directory="$PROJECT_DIR$/public/glfw" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/public/glm" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/public/imgui" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/public/wxWidgets" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/public/wxWidgets/3rdparty/catch" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/public/wxWidgets/src/expat" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/public/wxWidgets/src/jpeg" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/public/wxWidgets/src/png" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/public/wxWidgets/src/tiff" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/public/wxWidgets/src/zlib" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/public/yaml-cpp" vcs="Git" />
   </component>
 </project>

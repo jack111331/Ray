@@ -17,63 +17,64 @@
 #include <random>
 #include "GeometryGroupObj.h"
 #include "GroupBVHTranslator.h"
-#include "imgui.h"
-#include "imgui_impl_glfw.h"
-#include "imgui_impl_opengl3.h"
+//#include "imgui.h"
+//#include "imgui_impl_glfw.h"
+//#include "imgui_impl_opengl3.h"
+#include "wx/graphics.h"
 
 const char Pipeline::GLSL_VERSION[] = "#version 450";
 
 void Pipeline::setupEnvironment() {
-    if (!glfwInit()) {
-        std::cerr << "[GLFW] init Failed" << std::endl;
-        exit(1);
-    }
-
-    if (!m_scene) {
-        exit(1);
-    }
-
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 5);
-    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-
-    m_window = glfwCreateWindow(m_camera->m_width, m_camera->m_height, "Ray", NULL,
-                                NULL);
-
-    if (m_window == nullptr) {
-        std::cout << "[GLFW] failed to create window" << std::endl;
-        glfwTerminate();
-        exit(1);
-    }
-    glfwMakeContextCurrent(m_window);
-
-    // Deprecated
-//    glewInit();
-    if (!gladLoadGLLoader((GLADloadproc) glfwGetProcAddress)) {
-        std::cout << "Failed to initialize GLAD" << std::endl;
-        exit(1);
-    }
-
-    printGraphicCardInfo();
-
-    setupGUIEnvironment();
+//    if (!glfwInit()) {
+//        std::cerr << "[GLFW] init Failed" << std::endl;
+//        exit(1);
+//    }
+//
+//    if (!m_scene) {
+//        exit(1);
+//    }
+//
+//    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+//    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 5);
+//    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+//
+//    m_window = glfwCreateWindow(m_camera->m_width, m_camera->m_height, "Ray", NULL,
+//                                NULL);
+//
+//    if (m_window == nullptr) {
+//        std::cout << "[GLFW] failed to create window" << std::endl;
+//        glfwTerminate();
+//        exit(1);
+//    }
+//    glfwMakeContextCurrent(m_window);
+//
+//    // Deprecated
+////    glewInit();
+//    if (!gladLoadGLLoader((GLADloadproc) glfwGetProcAddress)) {
+//        std::cout << "Failed to initialize GLAD" << std::endl;
+//        exit(1);
+//    }
+//
+//    printGraphicCardInfo();
+//
+//    setupGUIEnvironment();
 }
 
 void Pipeline::setupGUIEnvironment() {
-    IMGUI_CHECKVERSION();
-    ImGui::CreateContext();
-    ImGuiIO &io = ImGui::GetIO();
-    (void) io;
-    //io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // Enable Keyboard Controls
-    //io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
-
-    // Setup Dear ImGui style
-    ImGui::StyleColorsDark();
-    //ImGui::StyleColorsClassic();
-
-    // Setup Platform/Renderer backends
-    ImGui_ImplGlfw_InitForOpenGL(m_window, true);
-    ImGui_ImplOpenGL3_Init(GLSL_VERSION);
+//    IMGUI_CHECKVERSION();
+//    ImGui::CreateContext();
+//    ImGuiIO &io = ImGui::GetIO();
+//    (void) io;
+//    //io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // Enable Keyboard Controls
+//    //io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
+//
+//    // Setup Dear ImGui style
+//    ImGui::StyleColorsDark();
+//    //ImGui::StyleColorsClassic();
+//
+//    // Setup Platform/Renderer backends
+//    ImGui_ImplGlfw_InitForOpenGL(m_window, true);
+//    ImGui_ImplOpenGL3_Init(GLSL_VERSION);
 }
 
 void CPURayTracingPipeline::setupEnvironment() {
@@ -112,46 +113,70 @@ void CPURayTracingPipeline::setupEnvironment() {
                                        ShaderInclude::load("resource/shader/ray_tracing_shading/screen_shading.fs"));
 }
 
-void CPURayTracingPipeline::pipelineLoop() {
-    // Ray tracing
+void CPURayTracingPipeline::pipelineRender() {
     generateImage();
-    while (!glfwWindowShouldClose(m_window)) {
-        glfwPollEvents();
-        glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-        m_camera->bufferToTexture(m_frameTextureId);
+//    glfwPollEvents();
+    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-        m_screenShader->bind();
-        glBindVertexArray(m_quadVao);
+    m_camera->bufferToTexture(m_frameTextureId);
 
-        m_screenShader->uniform1i("gScreen", 0);
-        glActiveTexture(GL_TEXTURE0);
-        glBindTexture(GL_TEXTURE_2D, m_frameTextureId);
-        glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+    m_screenShader->bind();
+    glBindVertexArray(m_quadVao);
+
+    m_screenShader->uniform1i("gScreen", 0);
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, m_frameTextureId);
+    glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 
 #ifdef GUI_SUPPORT
-        setupGUILayout();
+    setupGUILayout();
 #endif
 
-        glfwSwapBuffers(m_window);
-    }
-    glfwTerminate();
+//    glfwSwapBuffers(m_window);
+}
+
+void CPURayTracingPipeline::pipelineLoop() {
+    // Ray tracing
+//    generateImage();
+//    while (!glfwWindowShouldClose(m_window)) {
+//        glfwPollEvents();
+//        glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+//        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+//
+//        m_camera->bufferToTexture(m_frameTextureId);
+//
+//        m_screenShader->bind();
+//        glBindVertexArray(m_quadVao);
+//
+//        m_screenShader->uniform1i("gScreen", 0);
+//        glActiveTexture(GL_TEXTURE0);
+//        glBindTexture(GL_TEXTURE_2D, m_frameTextureId);
+//        glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+//
+//#ifdef GUI_SUPPORT
+//        setupGUILayout();
+//#endif
+//
+//        glfwSwapBuffers(m_window);
+//    }
+//    glfwTerminate();
 
 }
 
 void CPURayTracingPipeline::setupGUILayout() {
-    ImGui_ImplOpenGL3_NewFrame();
-    ImGui_ImplGlfw_NewFrame();
-    ImGui::NewFrame();
-
-    ImGui::Begin(
-            "Ray rendering Pipeline Window");   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
-    ImGui::Text("Hello from another window!");
-    ImGui::End();
-
-    ImGui::Render();
-    ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+//    ImGui_ImplOpenGL3_NewFrame();
+//    ImGui_ImplGlfw_NewFrame();
+//    ImGui::NewFrame();
+//
+//    ImGui::Begin(
+//            "Ray rendering Pipeline Window");   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
+//    ImGui::Text("Hello from another window!");
+//    ImGui::End();
+//
+//    ImGui::Render();
+//    ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 }
 
 bool CPURayTracingPipeline::readPipelineInfo(const YAML::Node &node) {
@@ -242,57 +267,91 @@ void GPURayTracingPipeline::drawScreen() {
     glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 }
 
-void GPURayTracingPipeline::pipelineLoop() {
-    // Ray tracing
-    m_cumulatedRay = 0;
-
-    Timer timer;
+void GPURayTracingPipeline::pipelineRender() {
+    static Timer timer;
     const float RESTRICT_FRAMERATE = 1.f;
     const float framePerMs = 1000 / RESTRICT_FRAMERATE;
-    while (!glfwWindowShouldClose(m_window)) {
-        glfwPollEvents();
 
-        timer.updateCurrentTime();
-        glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-        generateImage();
+//    glfwPollEvents();
 
-        float diffMs = timer.calculateDiffMilliSecondTime();
-        if (diffMs < framePerMs) {
+    timer.updateCurrentTime();
+    glClearColor(0.0f, 0.8f, 0.0f, 1.0f);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+    generateImage();
+
+    float diffMs = timer.calculateDiffMilliSecondTime();
+    if (diffMs < framePerMs) {
 //            std::cout << diffMs << " " << framePerMs << std::endl;
 #ifdef __MINGW32__
-            usleep(framePerMs - diffMs);
+        usleep(framePerMs - diffMs);
 #else
-            std::this_thread::sleep_for(std::chrono::milliseconds(static_cast<int>(framePerMs - diffMs)));
+        std::this_thread::sleep_for(std::chrono::milliseconds(static_cast<int>(framePerMs - diffMs)));
 #endif
-        }
-        m_cumulatedRay += m_SamplePerIteration;
+    }
+    m_cumulatedRay += m_SamplePerIteration;
 
-        drawScreen();
+    drawScreen();
 
 #ifdef GUI_SUPPORT
-        setupGUILayout();
+    setupGUILayout();
 #endif
 
-        glfwSwapBuffers(m_window);
-    }
-    glfwTerminate();
+//    glfwSwapBuffers(m_window);
+}
+
+void GPURayTracingPipeline::pipelineLoop() {
+    // Ray tracing
+
+    static Timer timer;
+    const float RESTRICT_FRAMERATE = 1.f;
+    const float framePerMs = 1000 / RESTRICT_FRAMERATE;
+
+//    while (!glfwWindowShouldClose(m_window)) {
+//        glfwPollEvents();
+//
+//        timer.updateCurrentTime();
+//        glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+//        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+//
+//        generateImage();
+//
+//        float diffMs = timer.calculateDiffMilliSecondTime();
+//        if (diffMs < framePerMs) {
+////            std::cout << diffMs << " " << framePerMs << std::endl;
+//#ifdef __MINGW32__
+//            usleep(framePerMs - diffMs);
+//#else
+//            std::this_thread::sleep_for(std::chrono::milliseconds(static_cast<int>(framePerMs - diffMs)));
+//#endif
+//        }
+//        m_cumulatedRay += m_SamplePerIteration;
+//
+//        drawScreen();
+//
+//#ifdef GUI_SUPPORT
+//        setupGUILayout();
+//#endif
+//
+//        glfwSwapBuffers(m_window);
+//    }
+//    glfwTerminate();
 
 }
 
 void GPURayTracingPipeline::setupGUILayout() {
-    ImGui_ImplOpenGL3_NewFrame();
-    ImGui_ImplGlfw_NewFrame();
-    ImGui::NewFrame();
-
-    ImGui::Begin(
-            "Ray rendering Pipeline Window");   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
-    ImGui::Text("Hello from another window!");
-    ImGui::End();
-
-    ImGui::Render();
-    ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+//    ImGui_ImplOpenGL3_NewFrame();
+//    ImGui_ImplGlfw_NewFrame();
+//    ImGui::NewFrame();
+//
+//    ImGui::Begin(
+//            "Ray rendering Pipeline Window");   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
+//    ImGui::Text("Hello from another window!");
+//    ImGui::End();
+//
+//    ImGui::Render();
+//    ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 }
 
 bool GPURayTracingPipeline::readPipelineInfo(const YAML::Node &node) {
@@ -328,10 +387,13 @@ void GPURayTracingPipeline::generateImage() {
     static std::mt19937 rNGGenerator(randomDevice());
 
     glBindTexture(GL_TEXTURE_2D_ARRAY, m_randomTextureId);
+//    glTexImage3D(GL_TEXTURE_2D_ARRAY, 0, GL_R32UI, m_camera->m_width, m_camera->m_height, m_SamplePerIteration, 0, GL_RED_INTEGER,
+//                 GL_UNSIGNED_INT, nullptr);
     for (int i = 0; i < m_SamplePerIteration; ++i) {
         for (int j = 0; j < randomNumberList.size(); ++j) {
             randomNumberList[j] = rNGGenerator();
         }
+        // Because in new GUI, the size may alter, so we use dynamic alter glTexSubImage3D instead of static combination of glTexStorage3D and glTexSubImage3D
         glTexSubImage3D(GL_TEXTURE_2D_ARRAY, 0, 0, 0, i, m_camera->m_width, m_camera->m_height, 1, GL_RED_INTEGER,
                         GL_UNSIGNED_INT, randomNumberList.data());
 //        glGenerateMipmap(GL_TEXTURE_2D);
@@ -370,36 +432,50 @@ void GPURayTracingPipeline::generateImage() {
 }
 
 void LocalRenderingPipeline::setupGUILayout() {
-    ImGui_ImplOpenGL3_NewFrame();
-    ImGui_ImplGlfw_NewFrame();
-    ImGui::NewFrame();
-
-    ImGui::Begin(
-            "Local rendering Pipeline Window");   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
-    ImGui::Text("Hello from another window!");
-    ImGui::End();
-
-    ImGui::Render();
-    ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+//    ImGui_ImplOpenGL3_NewFrame();
+//    ImGui_ImplGlfw_NewFrame();
+//    ImGui::NewFrame();
+//
+//    ImGui::Begin(
+//            "Local rendering Pipeline Window");   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
+//    ImGui::Text("Hello from another window!");
+//    ImGui::End();
+//
+//    ImGui::Render();
+//    ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
 }
 
-void LocalRenderingPipeline::pipelineLoop() {
-    while (!glfwWindowShouldClose(m_window)) {
-        glfwPollEvents();
-        glEnable(GL_DEPTH_TEST);
-        glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-        renderAllPass();
+void LocalRenderingPipeline::pipelineRender() {
+//    glfwPollEvents();
+    glEnable(GL_DEPTH_TEST);
+    glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    renderAllPass();
 
 #ifdef GUI_SUPPORT
-        setupGUILayout();
+    setupGUILayout();
 #endif
 
-        glfwSwapBuffers(m_window);
-    }
+//    glfwSwapBuffers(m_window);
+}
 
-    glfwTerminate();
+void LocalRenderingPipeline::pipelineLoop() {
+//    while (!glfwWindowShouldClose(m_window)) {
+//        glfwPollEvents();
+//        glEnable(GL_DEPTH_TEST);
+//        glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+//        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+//        renderAllPass();
+//
+//#ifdef GUI_SUPPORT
+//        setupGUILayout();
+//#endif
+//
+//        glfwSwapBuffers(m_window);
+//    }
+//
+//    glfwTerminate();
 
 }
 
